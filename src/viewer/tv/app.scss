@@ -1,0 +1,61 @@
+@import "src/ref/tv/style/modules";
+
+/**
+ * Override the default colour scheme with a version that
+ * matches the reference applications.
+ */
+
+body {
+	background-color: $app-bg-color !important;
+	color: $color__grey--light !important;
+}
+
+$keyline-color: $color__black4;
+
+.page-title-divider,
+.page-content-divider {
+	border-color: $keyline-color !important;
+}
+
+hr {
+	border-color: $keyline-color !important;
+}
+
+.fs {
+	border-color: $keyline-color !important;
+}
+
+.viewport__window {
+	background-color: $color__black !important;
+}
+
+.toc {
+	a {
+		color: $color__grey--light !important;
+		text-decoration: none !important;
+	}
+}
+
+pre {
+	background-color: #222 !important;
+}
+
+.item-search {
+	border-color: $keyline-color !important;
+
+	.active-item {
+		color: #ccc !important;
+	}
+
+	.previous-items__button {
+		background-color: #333 !important;
+	}
+
+	.previous-items__ul {
+		color: $color__black;
+	}
+}
+
+.results-box {
+	color: $color__black;
+}

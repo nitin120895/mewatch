@@ -1,0 +1,35 @@
+@import "src/ref/tv/style/modules";
+
+.header-full-bleed {
+	@include full-bleed;
+}
+
+.h9 {
+	// Allows us to see how much space is reserved prior to the image loading in.
+	// Normally you'd see this inferred from the content beneath the H9 row but
+	// in the component viewer we don't show any content underneath.
+	background-color: #111;
+}
+
+.hero-demo {
+	margin-bottom: 50px;
+	// Because we're leveraging the header navigation bar we need to ensure its
+	// absolute positioning is relative to where the h9 is placed on the page.
+	position: relative;
+
+	// The app fills the viewport so the footer is always at the bottom, but for
+	// this example we don't want that.
+	> .content {
+		min-height: inherit;
+	}
+}
+
+.color-alpha {
+	label {
+		display: inline-block;
+
+		&:last-child {
+			margin-left: 10px;
+		}
+	}
+}

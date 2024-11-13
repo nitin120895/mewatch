@@ -1,0 +1,50 @@
+@import "shared/style/modules";
+
+.entry-title {
+	font-size: 16px;
+	line-height: 1.3;
+	text-transform: uppercase;
+
+	// Some operators might want to intentionally add leading whitespace ahead of their title
+	// e.g. to account for an overlaying image in a row like PB4.
+	// This allows us to render whitespace.
+	white-space: pre-wrap;
+
+	&__link {
+		color: $color__white;
+	}
+
+	&__tagline {
+		font-family: $font-family-heading;
+		font-size: 12px;
+		text-transform: capitalize;
+		white-space: pre;
+		display: block;
+		margin-top: -5px;
+		margin-bottom: 7px;
+	}
+}
+
+@include mq(tablet) {
+	.entry-title {
+		font-size: 20px;
+
+		&__tagline {
+			font-size: 16px;
+			margin-top: -7px;
+			margin-bottom: 9px;
+		}
+	}
+}
+
+@include mq(desktop) {
+	.entry-title {
+		font-size: 24px;
+
+		&__tagline {
+			font-size: 18px;
+			margin-top: -9px;
+			margin-bottom: 12px;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+@import "shared/style/modules";
+
+.acc-pg-title {
+	font-family: $font-family-heading;
+
+	&__heading {
+		font-size: 30px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	&__link {
+		display: inline-block;
+		font-size: 14px;
+		color: $color__white;
+
+		&:hover,
+		&:focus {
+			color: rgba($color__white, 0.85);
+		}
+
+		// Chevron prefix
+		&:before {
+			content: "";
+			border-style: solid;
+			border-width: 2px 2px 0 0;
+			display: inline-block;
+			height: 8px;
+			left: 4px;
+			position: relative;
+			top: 6px;
+			transform: rotate(-135deg);
+			vertical-align: top;
+			width: 8px;
+			margin-right: 10px;
+		}
+	}
+
+	@include mq($from: tablet) {
+		&__link {
+			margin-top: 60px;
+		}
+	}
+
+	@include mq($from: desktop) {
+		&__link {
+			margin-top: 90px;
+		}
+	}
+}

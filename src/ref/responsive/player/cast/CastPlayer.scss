@@ -1,0 +1,122 @@
+@import "shared/style/modules";
+
+.cast-player {
+	$cast-color: #999;
+	$cast-controls: 40px;
+
+	justify-content: space-between;
+	align-items: center;
+	background-color: #2e2e2e;
+	bottom: 0;
+	display: flex;
+	height: $cast-height-sm;
+	left: 0;
+	position: fixed;
+	right: 0;
+	width: 100%;
+	z-index: 999;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		top: -30px;
+		width: 100%;
+		z-index: -1;
+		pointer-events: none;
+		height: 30px;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000);
+	}
+
+	.cast-controls {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+
+	&__meta {
+		color: $cast-controls;
+		padding: 0 10px 0 40px;
+
+		h4 {
+			font-weight: normal;
+			font-size: 0.875em;
+			margin: 0;
+		}
+
+		p {
+			color: $cast-color;
+			display: block;
+			font-size: 0.85em;
+			margin: 0;
+		}
+	}
+
+	&__description {
+		display: none;
+	}
+
+	&__picture {
+		align-items: flex-end;
+		height: calc(100% - #{$progress-bar-height * 2});
+		min-width: 78px;
+		min-height: 100%;
+
+		img {
+			height: 100%;
+			width: auto;
+			max-width: 100%;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.progress-bar {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		background-color: $color__black3;
+	}
+
+	.navigation {
+		bottom: 0;
+		cursor: pointer;
+		left: $cast-controls;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	@include mq($from: tablet) {
+		$cast-controls: 74px;
+		height: $cast-height-lg;
+
+		&__picture {
+			min-width: 132px;
+		}
+
+		&__meta {
+			display: block;
+			padding: 0 10px 0 $cast-controls;
+
+			h4 {
+				font-size: 1em;
+			}
+
+			p {
+				margin: 0 0 4px;
+			}
+		}
+
+		&__description {
+			display: block;
+		}
+
+		.navigation {
+			left: $cast-controls;
+		}
+	}
+}

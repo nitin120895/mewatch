@@ -1,0 +1,11 @@
+.download-ics {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+
+	&__logo {
+		max-width: 30%;
+		margin: 0 auto;
+	}
+}

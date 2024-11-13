@@ -1,0 +1,97 @@
+@import "shared/style/modules";
+
+.secondary-nav {
+	$columnSpacing: 50px;
+
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+	list-style: none;
+
+	&__category {
+		display: flex;
+
+		&--vertical {
+			flex-direction: column;
+		}
+	}
+
+	&__category--vertical &__content {
+		width: 100%;
+		border-bottom: 1px solid rgba($color__white, 0.2);
+		padding-bottom: 30px;
+	}
+
+	&__category + &__category {
+		margin-top: 28px;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: rgba($color__white, 0.2);
+		}
+
+		> :first-child {
+			margin-top: 28px;
+		}
+	}
+
+	&__links + &__content {
+		padding-left: 30px;
+		margin-left: $columnSpacing;
+		border-left: 1px solid rgba($color__white, 0.2);
+	}
+
+	&__content + &__links {
+		padding-top: 24px;
+	}
+
+	&__row {
+		display: flex;
+		white-space: nowrap;
+	}
+
+	&__row + &__row {
+		margin-top: 16px;
+	}
+
+	&__column {
+		display: flex;
+		flex-direction: column;
+		max-width: 160px;
+
+		&--group-extended {
+			margin-top: 24px;
+		}
+	}
+
+	&__column + &__column {
+		margin-left: $columnSpacing;
+	}
+
+	&__link + &__link--item {
+		margin-top: 4px;
+		display: block;
+	}
+
+	&__link {
+		white-space: nowrap;
+
+		&--primary {
+			display: inline-flex;
+			font-size: 16px;
+			text-transform: uppercase;
+		}
+	}
+
+	&__link + &__row {
+		margin-top: 20px;
+	}
+}

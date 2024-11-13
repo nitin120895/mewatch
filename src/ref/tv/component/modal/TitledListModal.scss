@@ -1,0 +1,76 @@
+@import "src/ref/tv/style/modules";
+
+.titled-list {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	background-color: $color__black;
+
+	&__titleDiv {
+		z-index: 11;
+		margin-left: auto;
+		margin-right: auto;
+		min-width: 400px;
+		height: 336px;
+		position: relative;
+		padding-top: 128px;
+		padding-bottom: 36px;
+		background-image: linear-gradient(
+			to bottom,
+			rgba($color__black, 1),
+			rgba($color__black, 1) 88%,
+			rgba($color__black, 0.3) 95%,
+			rgba($color__black, 0)
+		);
+	}
+
+	&__title {
+		width: 100%;
+		text-align: center;
+		font-weight: bold;
+		font-size: 64px;
+		line-height: 72px;
+	}
+
+	&__items {
+		display: inline-block;
+		height: 540px;
+		margin: 0 auto;
+		position: absolute;
+		left: 50%;
+		white-space: nowrap;
+	}
+
+	&__item {
+		height: 90px;
+		padding: 0 100px;
+		line-height: 90px;
+		font-size: 36px;
+		text-align: center;
+		opacity: 0.7;
+		cursor: pointer;
+
+		&.focused,
+		&:hover {
+			font-weight: bold;
+			opacity: 1;
+			color: $color__primary;
+			background-color: $color__white;
+			border-radius: 8px;
+		}
+	}
+
+	&__cover {
+		position: fixed;
+		bottom: 0;
+		height: 204px;
+		width: 100%;
+		background-image: linear-gradient(
+			to bottom,
+			rgba($color__black, 0.3),
+			rgba($color__black, 1) 70%,
+			rgba($color__black, 1)
+		);
+	}
+}

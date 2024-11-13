@@ -1,0 +1,98 @@
+@import "shared/style/modules";
+
+.a5 {
+	&__label {
+		display: block;
+		margin-bottom: 15px;
+		color: $color__grey--dark;
+	}
+
+	&__lock-level {
+		display: flex;
+	}
+
+	&__rating-select {
+		position: relative;
+	}
+
+	&__arrow-icon {
+		position: absolute;
+		z-index: 1;
+		top: 10px;
+		right: 5px;
+		fill: $color__grey;
+	}
+
+	&__dropdown {
+		position: relative;
+		z-index: 2;
+		height: auto;
+		min-width: 110px;
+		padding: 3px 20px 3px 0;
+		color: $color__black;
+		background-color: transparent;
+		font-size: 16px;
+		border: none;
+		border-radius: 0;
+		border-bottom: 1px solid $color__grey--light;
+		appearance: none;
+		transition: opacity 0.2s ease-in-out;
+
+		&:disabled {
+			opacity: 0.5;
+		}
+
+		// Removes default arrow from firefox
+		text-indent: 0.01px;
+		text-overflow: "";
+
+		// Removes default arrow from IE10+
+		&::-ms-expand {
+			display: none;
+		}
+	}
+
+	&__loading {
+		position: relative;
+		top: 2px;
+		height: 100%;
+		margin-left: 20px;
+
+		&--pending {
+			.a5__loading-pending {
+				opacity: 1;
+				transition-delay: 0.2s;
+			}
+		}
+		&--success {
+			.a5__loading-success {
+				opacity: 1;
+				transition-delay: 0.2s;
+			}
+		}
+		&--error {
+			.a5__loading-error {
+				opacity: 1;
+				transition-delay: 0.2s;
+			}
+
+			.a5__tryagain-btn {
+				display: inline-block;
+			}
+		}
+
+		.spinner__circle {
+			height: 32px;
+		}
+	}
+
+	.accordion-item {
+		margin-top: 20px;
+		&-closing {
+			transition: none;
+		}
+		&-opening {
+			transition: none;
+		}
+	}
+}

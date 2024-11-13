@@ -1,0 +1,190 @@
+@import "shared/style/modules";
+
+.profile-bookmarks {
+	&__title {
+		background: $color__black2;
+		height: 85px;
+	}
+
+	&--hide {
+		display: none;
+	}
+
+	&--undo-btn {
+		margin-left: 10px;
+	}
+
+	&__header {
+		position: relative;
+		height: 100%;
+		align-items: flex-end;
+		display: flex;
+		padding-bottom: 12px;
+
+		.ah-title {
+			font-weight: 300;
+			font-size: 28px;
+			line-height: 1.18;
+			display: flex;
+			justify-content: center;
+			align-self: center;
+		}
+	}
+
+	.packshot-title--overlay {
+		padding-left: 0;
+	}
+
+	&__header-fixed-cta {
+		display: flex;
+		width: 100%;
+		button {
+			margin-left: auto;
+			align-self: center;
+			font-size: 15px;
+		}
+	}
+
+	.desktop-only {
+		display: none;
+	}
+
+	&__edit-block {
+		display: flex;
+		align-items: center;
+		margin: 17px 0 0 auto;
+		align-self: center;
+		justify-content: flex-end;
+
+		button {
+			width: 50%;
+		}
+	}
+
+	&__margin-block {
+		&--editMode {
+			margin-bottom: 100px;
+		}
+	}
+
+	.cs-packshot-list {
+		.page-entry--empty {
+			display: flex;
+			height: 42vh;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+		.overlay-container {
+			position: relative;
+			left: 0;
+			right: 0;
+
+			.packshot-title {
+				font-size: 14px;
+				opacity: 0.96;
+			}
+		}
+	}
+
+	.filter-sort-drop-down-container {
+		display: flex;
+		align-items: center;
+		padding: 0;
+		margin: 0 0 20px;
+
+		.drop-select__current-option {
+			font-size: 18px;
+			font-weight: normal;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.profile-bookmarks {
+		.mobile-only {
+			display: none;
+		}
+
+		.desktop-only {
+			display: initial;
+		}
+
+		&__edit-block {
+			margin-top: 0;
+
+			button {
+				width: auto;
+				margin: 0 0 0 10px;
+			}
+		}
+
+		&__header {
+			padding-bottom: 29px;
+
+			.ah-title {
+				font-size: 38px;
+				line-height: 0.87;
+				padding-top: 0;
+			}
+		}
+
+		&__title {
+			height: 150px;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.profile-bookmarks {
+		&__header {
+			padding-bottom: 46px;
+		}
+		.ah-title {
+			padding-top: 0;
+		}
+
+		&__title {
+			height: 188px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.profile-bookmarks {
+		&__header {
+			.ah-title {
+				font-size: 54px;
+				line-height: normal;
+			}
+		}
+
+		&__title {
+			height: 227px;
+		}
+	}
+}
+
+@media (hover: none) {
+	.profile-bookmarks {
+		.cta-btn--secondary {
+			&:hover {
+				background-color: $color__black;
+			}
+
+			&:active {
+				background-color: rgba($color__white, 0.2);
+			}
+		}
+
+		.cta-btn--primary {
+			&:hover {
+				background-color: $color__primary;
+			}
+
+			&:active {
+				background-color: $color__primary--hover;
+			}
+		}
+	}
+}

@@ -1,0 +1,81 @@
+@import "shared/style/modules";
+
+%mosaic-cell-fill {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+}
+
+$border-width: 1px;
+$outline-width: 2px;
+
+.mosaic-cell {
+	width: 50%;
+	position: relative;
+	display: block;
+	background-size: cover;
+	font-family: $font-family-heading;
+	outline: none !important;
+	overflow: hidden;
+
+	&:focus {
+		.mosaic-cell__border {
+			z-index: 1;
+			// To ensure our outline is seen even if it's similar to the cell image's color
+			// we use both an outline and a border of differing contrast.
+			outline: $outline-width solid $color__primary;
+			outline-offset: -($outline-width + $border-width);
+		}
+	}
+
+	&:hover {
+		.mosaic-cell__image {
+			transform: scale(1.02);
+		}
+	}
+
+	&:before {
+		content: "";
+		display: block;
+		padding-top: 56.25%;
+	}
+
+	&:after {
+		content: "";
+		@extend %mosaic-cell-fill;
+		background: $color__black;
+		opacity: 0;
+		transition: opacity 0.7s ease;
+	}
+
+	&__block {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	&__image {
+		@extend %mosaic-cell-fill;
+		will-change: transform;
+		transition: transform 1s ease;
+	}
+
+	&__title {
+		position: absolute;
+		text-transform: uppercase;
+	}
+
+	&__border {
+		@extend %mosaic-cell-fill;
+		// See also `.mosaic-cell__border`
+		border: $border-width inset lighten($color__black, 40%);
+		pointer-events: none;
+	}
+
+	&--out-of-focus:after {
+		opacity: 0.3;
+	}
+}

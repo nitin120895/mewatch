@@ -1,0 +1,22 @@
+@import "shared/style/modules";
+
+.billing-history {
+	.account-entry__heading {
+		align-items: start;
+	}
+
+	.account-entry__cta-btn {
+		height: auto;
+		padding: 0;
+		margin-bottom: 0;
+		border: none;
+	}
+
+	&__load-btn {
+		margin-top: 10px;
+	}
+
+	&__no-purchase {
+		margin-bottom: 0;
+	}
+}

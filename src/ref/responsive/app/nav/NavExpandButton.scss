@@ -1,0 +1,30 @@
+@import "shared/style/modules";
+
+.nav-expand-btn {
+	$buttonSize: 12px;
+
+	position: absolute;
+	width: $buttonSize;
+	height: $buttonSize;
+	top: 50%;
+	left: 100%;
+	margin-left: 4px;
+	margin-top: -#{$buttonSize * 0.5};
+
+	&:before {
+		$arrowHeight: 8px;
+		$arrowWidth: 10px;
+
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		top: 50%;
+		left: 50%;
+		margin-top: -#{$arrowHeight * 0.5};
+		margin-left: -#{$arrowWidth * 0.5};
+		border: solid transparent;
+		border-width: $arrowHeight #{$arrowWidth * 0.5} 0;
+		border-top-color: $color__white;
+	}
+}

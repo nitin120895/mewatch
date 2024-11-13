@@ -1,0 +1,652 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+@import "ref/responsive/style/app/rows";
+
+// -------------------------------------- //
+// Root elements
+// -------------------------------------- //
+// For 100vh mobile fix
+:root {
+	--app-height: 100%;
+}
+
+html {
+	// Disallow horizontal page scrolling.
+	overflow-x: hidden;
+}
+
+html,
+body,
+#root {
+	// Fill the viewport height and width
+	height: 100%;
+	width: 100%;
+}
+
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+}
+
+a.offline {
+	pointer-events: none;
+	opacity: 0.3;
+}
+
+.root-block {
+	&--notifications {
+		position: fixed;
+		top: 76px;
+		right: 0px;
+		left: 0px;
+		z-index: $depth-toast-notifications;
+
+		@include mq($from: laptop) {
+			top: 88px;
+
+			width: 700px;
+			left: calc(50% - 700px / 2);
+		}
+	}
+
+	> .passive-notification-manager {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		width: calc(100% - 20px);
+		top: 20px;
+	}
+}
+
+// -------------------------------------- //
+// Global App Backgrounds
+// -------------------------------------- //
+
+// Override the default variable values from `_variables.scss`
+// to set a background image and/or colors.
+//
+// Example:
+// $body-bg-image-path: "../../../resource/image/background-page.jpg";
+// $body-bg-color: #3d075b; // Matches the bottom of the above image
+
+%body-background {
+	@if $body-bg-image-path {
+		background: $body-bg-color url($body-bg-image-path) top center no-repeat;
+	} @else {
+		background-color: $body-bg-color;
+	}
+}
+
+%app-background {
+	@if $app-bg-color and $app-bg-color != $body-bg-color {
+		background-color: $app-bg-color;
+	} @else {
+		background-color: inherit;
+	}
+}
+
+body {
+	@extend %body-background;
+
+	@include mq($until: laptop) {
+		&.modal-active {
+			position: fixed;
+		}
+	}
+}
+
+// -------------------------------------- //
+// Global App Elements
+// -------------------------------------- //
+
+.app {
+	// Optional background color
+	@extend %app-background;
+	overflow: hidden;
+
+	&.app-hide-menu {
+		.header,
+		.footer {
+			display: none !important;
+		}
+		.header ~ .content,
+		.header-offset {
+			padding-top: 0;
+		}
+	}
+}
+
+// IE add an extra space every time when we open account menu
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	.app {
+		overflow-x: hidden;
+	}
+}
+
+// If the main content is less than the height of viewport the
+// footer will sit flush against the bottom of the viewport.
+// If the main content exceeds the height of the viewport it will
+// sit off the screen below the main content.
+.content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main {
+	flex: 1 0 auto;
+	height: 100%;
+}
+
+.footer {
+	flex-shrink: 0;
+
+	&__back:hover {
+		color: $color__link--hover;
+	}
+}
+
+// -------------------------------------- //
+// Common Elements
+// -------------------------------------- //
+
+// Apply this as a compositional class to any elements that should adhere to the
+// margins from the grid system.
+
+// For mouse users the window's vertical scrollbars impact the width of the content area.
+// This usually results in content shifting when the user navigates between pages which scroll, and those which don't.
+// Since nothing is simple in web development the width of the scrollbar varies between OS and browser vendors.
+// We can however determine the scrollbar width in an agnostic way: `calc(100vw - 100%)`.
+// The above calculation results in the width of the scrollbar when present, or zero when not present.
+// We can use this to our advantage to offset our app margins to be consistent whether the page scrolls or not.
+// The downside to this approach is that our right margin is now reduced by the width of the scrollbar, which means
+// the amount of peeking content is reduced when a scrollbar is present. This is considered an acceptable trade off.
+
+.grid-margin {
+	$margin: get-grid-margin();
+	margin: 0 $margin;
+}
+
+// Similar to `.grid-margin` above, but for use on children within an element using `.grid-margin`.
+// This allows us to prevent visual flickering without breaking background fills.
+.scrollbar-padding {
+	$padding: get-grid-margin();
+	padding-right: calc(#{$padding} - (100vw - 100%));
+}
+
+$bp-margins: reduce-breakpoints($grid-margin, $display-breakpoints);
+@each $breakpoint in $bp-margins {
+	@include mq($breakpoint) {
+		$margin: get-grid-margin($breakpoint);
+		.grid-margin {
+			margin: 0 $margin;
+		}
+		.scrollbar-padding {
+			// Accounts for an optional scrollbar for mouse users.
+			padding-right: calc(#{$margin} - (100vw - 100%));
+		}
+	}
+}
+
+// Every page entry should reserved their expected height to prevent reflows flickering when the content loads in.
+.page-entry {
+	margin-bottom: $page-entry-bottom-margin-phone;
+
+	&--hero {
+		margin-bottom: $header-content-gap-phone;
+		.ah-row {
+			padding: 20px 10px 10px;
+		}
+	}
+
+	&:first-of-type:not(.page-entry--hero) {
+		margin-top: $header-content-gap-phone;
+	}
+
+	&--empty {
+		color: $color__grey--warm;
+		font-size: 18px;
+	}
+}
+
+@include mq($from: tablet) {
+	.page-entry {
+		&--hero {
+			margin-bottom: $header-content-gap-tablet;
+			& + .page-entry--empty {
+				margin-top: -($header-content-gap-tablet / 2);
+			}
+			.ah-row {
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+		}
+		&:first-of-type:not(.page-entry--hero) {
+			margin-top: $header-content-gap-tablet;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.page-entry {
+		margin-bottom: $page-entry-bottom-margin-laptop;
+	}
+}
+
+@include mq($from: desktop) {
+	.page-entry {
+		&--hero {
+			margin-bottom: $header-content-gap-desktop;
+			& + .page-entry--empty {
+				margin-top: -($header-content-gap-desktop / 2);
+			}
+		}
+		&:first-of-type:not(.page-entry--hero) {
+			margin-top: $header-content-gap-desktop;
+		}
+		.ah-row {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.page-entry {
+		&--hero {
+			margin-bottom: $header-content-gap-uhd;
+			& + .page-entry--empty {
+				margin-top: -($header-content-gap-uhd / 2);
+			}
+		}
+		&:first-of-type:not(.page-entry--hero) {
+			margin-top: $header-content-gap-uhd;
+		}
+	}
+}
+
+// -------------------------------------- //
+// Theme: Profile Switcher
+// -------------------------------------- //
+
+.app--profiles {
+	.header,
+	.side-panel,
+	.content {
+		// Hide content below the profile switcher layer
+		display: none;
+	}
+}
+
+// -------------------------------------- //
+// Theme: Account Pages
+// -------------------------------------- //
+
+// Define a custom breakpoint specific to the account page.
+$account-bp-width: 1026px;
+@include mq-add-breakpoint(account, $account-bp-width);
+$row-peek-padding: (
+	phone: 10px,
+	tablet: 20px,
+	laptop: 40px,
+	desktop: 40px,
+	desktopWide: 40px,
+	uhd: 40px
+);
+
+.app--account {
+	background-color: $color__off-white;
+
+	// The account theme has a centred max width content area so we need to disable
+	// the grid margin from here since we'll enforce it at the page level instead.
+	.content.grid-margin {
+		margin: 0;
+		color: $color__grey--warm;
+	}
+
+	// Enforce a centred, max width content area.
+	.page {
+		max-width: $account-bp-width;
+		margin: 0 auto;
+	}
+
+	.entry-title {
+		font-size: 18px;
+		color: $color__black;
+
+		&__link {
+			color: $color__black;
+
+			&:hover {
+				color: $color__blue--light;
+			}
+		}
+
+		&__tagline {
+			color: $color__black;
+			text-transform: none;
+			font-size: 14px;
+		}
+	}
+
+	.footer {
+		max-width: 1026px;
+		margin: 0 auto;
+
+		&:before {
+			margin-top: 30px;
+			background-color: $color__grey--warm;
+		}
+
+		&__back {
+			color: $color__black2;
+		}
+		&__copy {
+			color: $color__grey--warm;
+		}
+
+		.nav-entry-link,
+		.footer__language-title {
+			color: $color__black5;
+		}
+
+		@include mq($until: desktop) {
+			// Indent the footer items on smaller screens (less than the max-width)
+			&__content,
+			&__bottom {
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+		}
+	}
+
+	.page-entry {
+		margin-top: 4px;
+		margin-bottom: 4px;
+		background-color: $color__white;
+		$margin: get-grid-margin();
+
+		&--hero {
+			background-color: $color__black7;
+			color: $color__white;
+			margin: 0;
+
+			.entry-title__tagline {
+				color: $color__white;
+			}
+		}
+
+		&--empty {
+			padding-top: 0 !important;
+			padding-bottom: 25px !important;
+		}
+
+		@include mq($from: tablet) {
+			margin: 0;
+		}
+	}
+
+	// Alter row-peek to offset based on the different padding values specified for `.page-entry`
+	.page-entry:not(.page-entry--hero) {
+		padding: 30px 10px;
+		overflow: hidden;
+
+		&.A1 {
+			padding: 30px 10px 0;
+
+			@include mq($from: tablet) {
+				padding: 30px 24px 0;
+			}
+
+			@include mq($from: laptop) {
+				padding: 40px 24px 0;
+			}
+
+			@include mq($from: account) {
+				padding: 40px 24px 0;
+			}
+
+			@include mq($from: desktop) {
+				padding: 40px 40px 0;
+			}
+		}
+
+		@include mq($from: tablet) {
+			padding: 30px 24px;
+		}
+
+		@include mq($from: desktop) {
+			padding: 40px;
+		}
+
+		.row-peek {
+			@each $breakpoint, $margin in $row-peek-padding {
+				// stylelint-disable
+				@include mq($from: $breakpoint) {
+					@include row-peek-custom($breakpoint, $margin);
+				}
+				// stylelint-enable
+			}
+		}
+		.full-bleed {
+			width: calc(100% + 80px);
+			left: 0;
+			right: 0;
+			margin-left: -40px;
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
+	.ah-row {
+		margin: 0 auto;
+		max-width: $account-bp-width;
+	}
+
+	// Ensure the static content remains flush at the top when there's more than one static entry
+	.static-entries .page-entry:first-of-type {
+		margin-top: 0;
+	}
+
+	@include mq($from: account) {
+		.page-entry--hero {
+			// Duplicates the styles from `.full-bleed` since we don't have the ability
+			// to contextually add this class to the `pageEntryWrapper` based on the theme.
+			position: relative;
+			@include full-bleed;
+
+			// Undermines any direct child `.full-bleed` rows, since we've moved that ability
+			// up to the parent instead (see above) to allow the blue background colour to bleed
+			// without the content bleeding outside of the constrained content area.
+			> .full-bleed {
+				width: auto;
+				left: auto;
+				right: auto;
+			}
+		}
+	}
+}
+
+// Use this as a compositional class to centre an element both vertically and horizontally.
+// Relative to the viewport unless the parent uses relative positioning.
+// Set the element dimensions externally.
+.vp-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+.page-spinner {
+	// Size of the spinner animation when loading a new page
+	width: 80px;
+	&.vp-center {
+		// The default rule centres relative to the viewport window. Instead we wan't to
+		// vertically centre relative to the parent (space between the header and footer).
+		top: initial;
+		bottom: 50%;
+	}
+}
+
+.icon-btn {
+	$hitAreaSize: 32px;
+	width: $hitAreaSize;
+	height: $hitAreaSize;
+	> .svg-icon {
+		margin: 0 auto;
+	}
+}
+
+.vertical-nav {
+	&__switch-button,
+	.nav-entry-link {
+		&:hover {
+			color: $color--link--hover;
+		}
+	}
+}
+
+body.fake-fullscreen {
+	height: 100%;
+	overflow: hidden;
+}
+
+body.is-fullscreen {
+	height: 100%;
+	height: var(--app-height);
+	overflow: hidden;
+}
+
+.heading-shadow {
+	text-shadow: 0 1px 5px rgba($color__black, 0.7);
+	@include mq($from: desktopWide) {
+		text-shadow: 1px 1px 5px rgba($color__black, 0.7);
+	}
+	@include mq($from: uhd) {
+		text-shadow: 2px 2px 5px rgba($color__black, 0.7);
+	}
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+@media (hover: none) {
+	.footer__back {
+		&:hover {
+			color: $color__grey--light;
+		}
+
+		&:active {
+			color: $color__link--hover;
+		}
+	}
+
+	.vertical-nav {
+		&__switch-button {
+			&:hover {
+				color: $color__white;
+			}
+
+			&:active {
+				color: $color--link--hover;
+			}
+		}
+		.nav-entry-link {
+			&:hover {
+				color: $color__grey--light;
+			}
+
+			&:active {
+				color: $color--link--hover;
+			}
+		}
+	}
+}
+
+.u1,
+.u2,
+.UX3 .below {
+	.overlay-container {
+		position: relative;
+		left: 0;
+		right: 0;
+
+		.packshot-title {
+			font-size: 14px;
+			opacity: 0.96;
+			margin-top: 5px;
+			padding-left: 0;
+
+			&--secondary {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.UX3 .overlay {
+	.overlay-container {
+		position: relative;
+	}
+
+	.packshot__series {
+		margin-bottom: 4px;
+		margin-left: 12px;
+	}
+
+	.packshot__metadata {
+		width: 95%;
+		position: absolute;
+		bottom: 0;
+	}
+}
+
+// we show hover popups for packshots for packshots in page entries, from desktp breakpoint,
+// let's change scrollable overflow for such cases only
+// by default, scrollable overflow is hidden and it doesn't allow to show hover popups in full size
+@include mq($from: desktop) {
+	.page-entry {
+		.scrollable.packshot-list {
+			overflow: visible;
+		}
+	}
+}
+
+.fullscreen-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: $depth-notifications;
+	background: $color__black;
+
+	&--hidden {
+		display: none;
+	}
+}
+
+.app__spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50px;
+	height: 50px;
+	z-index: $depth-player-spinner;
+}
+
+@include mq($from: tablet) {
+	.app__spinner {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+@include mq($from: desktop) {
+	.app__spinner {
+		width: 100px;
+		height: 100px;
+	}
+}

@@ -1,0 +1,80 @@
+@import "src/ref/tv/style/modules";
+
+.d8-cast-crew {
+	font-family: $font-family-heading;
+
+	&__title {
+		position: relative;
+		font-size: 42px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: $d8-title-margin-bottom;
+		height: $d8-title-content-height;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	&__crew-member {
+		padding-right: 20px;
+		text-align: center;
+		cursor: pointer;
+		height: $d8-content-height;
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	&__circle {
+		font-size: 64px;
+		border-radius: 50%;
+		width: 234px;
+		height: $d8-circle-height;
+		background-color: $color__bg-light;
+		color: $color__fg-dark;
+		padding-top: 69px;
+		margin: 0 auto $d8-circle-margin-bottom;
+	}
+
+	&__actor {
+		font-size: 28px;
+		width: 234px;
+		height: $d8-actor-height;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	&__character {
+		height: $d8-character-height;
+		font-size: 24px;
+		color: $color__grey--warm;
+		opacity: 0;
+		width: 234px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+
+		&--show {
+			opacity: 1;
+		}
+	}
+}
+
+.scrollable-list--focused {
+	.d8-cast-crew {
+		&__circle {
+			&--focused {
+				background-color: $color__white;
+				color: $color__primary;
+			}
+		}
+
+		&__character {
+			&--focused {
+				color: $color__white;
+			}
+		}
+	}
+}

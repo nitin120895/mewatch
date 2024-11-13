@@ -1,0 +1,33 @@
+version: '2'
+services:
+  nginx:
+    build: ./nginx
+    depends_on:
+      - web1
+      - web2
+    ports:
+      - '9001:80'
+  web1:
+    build: ./app
+    ports:
+      - '9001'
+    links:
+      - redis
+    env_file: ./app/.env-sample
+    environment:
+      - LOCAL_ENV=true
+      - REDIS_URL=redis://redis:6379
+  web2:
+    build: ./app
+    ports:
+      - '9001'
+    links:
+      - redis
+    env_file: ./app/.env-sample
+    environment:
+      - LOCAL_ENV=true
+      - REDIS_URL=redis://redis:6379
+  redis:
+    image: redis
+    ports:
+      - "6379"

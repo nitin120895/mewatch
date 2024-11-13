@@ -1,0 +1,44 @@
+@import "src/ref/tv/style/modules";
+
+.d3 {
+	font-family: $font-family-heading;
+
+	&__title {
+		margin: 0;
+	}
+
+	&__season-group {
+		position: relative;
+	}
+
+	&__cta-btn {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__episodes {
+		height: $d3-episode-list-height;
+		padding-top: $d3-episode-list-padding-top;
+		position: relative;
+
+		.episode-grid-item__container:hover {
+			outline: $color__white solid 6px;
+		}
+	}
+
+	&__episode:last-child {
+		.episode-grid-item {
+			padding-right: 0;
+		}
+	}
+}
+
+.d3-episode {
+	position: relative;
+
+	&__seasonNo {
+		display: none;
+	}
+}

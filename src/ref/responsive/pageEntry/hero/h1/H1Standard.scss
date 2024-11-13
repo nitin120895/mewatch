@@ -1,0 +1,23 @@
+@import "shared/style/modules";
+
+.h1-hero {
+	@include fluid-aspect(4 3);
+
+	.carousel__frame {
+		transition: transform 300ms $easeInOutQuad;
+
+		&--peek-left {
+			transform: translateX(-50px);
+		}
+
+		&--peek-right {
+			transform: translateX(50px);
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.h1-hero {
+		@include fluid-aspect(3 1);
+	}
+}

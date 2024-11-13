@@ -1,0 +1,170 @@
+@import "shared/style/modules";
+
+$border-payment-white: 4px solid $color__off-white;
+$border-payment-grey: 1px solid $color__grey--lighter;
+
+.subscription-payment-methods {
+	border-top: $border-payment-white;
+	border-bottom: $border-payment-white;
+	font-family: $font-family-heading;
+
+	&__title {
+		font-size: 20px;
+		font-weight: bold;
+		color: $color__black3;
+		padding: 25px 0 20px 10px;
+	}
+
+	&__options {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 40px;
+
+		input[type="radio"] {
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			border: 2px solid #eaeaea;
+			border-radius: 50%;
+			background-clip: content-box;
+			margin-left: auto;
+			align-self: center;
+		}
+
+		input[type="radio"]:checked {
+			border: none;
+			width: 0;
+			height: 0;
+		}
+	}
+
+	&__payment-row {
+		margin: 10px auto;
+		width: 90%;
+	}
+
+	&__payment-type {
+		display: flex;
+		border: 2px solid #f0f0f0;
+		padding: 15px;
+		border-radius: 6px;
+
+		label {
+			line-height: 30px;
+			font-weight: bold;
+			font-size: 17px;
+			color: $color__grey--dark;
+		}
+
+		span,
+		label {
+			margin-right: 7px;
+		}
+
+		span svg {
+			height: 27px;
+			width: 45px;
+			display: inline-block;
+		}
+
+		.card-details {
+			margin: 0;
+			max-height: 34px;
+		}
+	}
+
+	&__payment-type--selected {
+		border-color: #a5238c;
+	}
+
+	&__payment-type-card {
+		display: flex;
+	}
+
+	&__payment-type-card > div {
+		max-width: 150px;
+	}
+
+	&__payment-type-card > div > div {
+		font-size: 13.5px;
+		display: inline-block;
+		white-space: nowrap;
+		margin-top: 4px;
+	}
+
+	&__icon {
+		display: inline-block;
+		g circle {
+			fill: #a5238c;
+		}
+	}
+
+	.card {
+		padding: 10px 32px;
+		border-right: $border-payment-grey;
+	}
+
+	.telco {
+		padding: 20px 30px;
+	}
+
+	&__container {
+		padding: 40px 10px;
+
+		.radio-button {
+			margin: 0;
+		}
+	}
+
+	&__card-container {
+		display: flex;
+		flex-direction: column;
+		margin-top: 17px;
+	}
+}
+
+@include mq($from: tablet) {
+	.subscription-payment-methods {
+		&__title {
+			text-align: center;
+		}
+
+		&__container {
+			padding: 40px;
+		}
+
+		&__tab {
+			height: 40px;
+		}
+
+		.card {
+			border-left: $border-payment-grey;
+		}
+
+		.telco {
+			border-right: $border-payment-grey;
+		}
+
+		&__payment-type {
+			padding: 20px;
+
+			label {
+				font-size: 18px;
+			}
+		}
+
+		&__payment-row {
+			width: 40%;
+		}
+
+		&__payment-type-card > div {
+			max-width: 175px;
+		}
+
+		&__payment-type-card > div > div {
+			font-size: 13.5px;
+			display: inline-block;
+			white-space: nowrap;
+		}
+	}
+}

@@ -1,0 +1,70 @@
+version: 2.0
+image: 426430458084.dkr.ecr.us-west-1.amazonaws.com/nodejs-ci:2.1
+jobs:
+  ci:
+    steps:
+      - yarn install
+      - yarn lint
+      - yarn test:ci
+      - yarn build:qa
+  ci_tv:
+    steps:
+      - yarn install
+      - yarn lint
+      - yarn test:ci
+      - yarn build:qa:tv
+  ci_tizen:
+    steps:
+      - yarn install
+      - yarn build:tizen
+  ci_webos:
+    steps:
+      - yarn install
+      - yarn build:webos
+  ci_xbox:
+    steps:
+      - yarn install
+      - yarn build:xbox
+  snapshot:
+    steps:
+      - ./build/script/ci/snapshot.sh
+    options:
+      docker: true
+      node: true
+  release:
+    steps:
+      - ./build/script/ci/release.sh
+    options:
+      docker: true
+      node: true
+  release_tv:
+    steps:
+      - ./build/script/ci/release-tv.sh
+    options:
+      docker: true
+      node: true
+  deploy:
+    steps:
+      - ./build/script/ci/deploy.sh
+  package_webos:
+    image: 426430458084.dkr.ecr.us-west-1.amazonaws.com/webos-cli-ci:1.1
+    steps:
+      - ares-package --version
+      - ./build/script/package-webos.sh $PWD/bin/app/pub
+  package_webos_hosted:
+    image: 426430458084.dkr.ecr.us-west-1.amazonaws.com/webos-cli-ci:1.1
+    steps:
+      - ares-package --version
+      - ./build/script/package-webos.sh $PWD/bin/app/webos-ipk
+  package_tizen:
+    steps:
+      - yarn package:tizen
+  release_tizen:
+    steps:
+      - CERT_AUTHOR_PASS=$TIZEN_CLIENT_PASSWORD yarn package:tizen
+  shell_xbox:
+    steps:
+      - yarn install
+      - yarn predev:xbox
+options:
+  node: true

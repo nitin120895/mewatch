@@ -1,0 +1,23 @@
+@import "shared/style/modules";
+
+.a3-device {
+	text-align: center;
+	margin-top: 20px;
+	overflow: hidden;
+	margin-left: 40px;
+	width: 74px;
+
+	&__icon {
+		display: block;
+		width: 74px;
+		height: 64px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 11px;
+	}
+
+	&__label {
+		margin-bottom: 0;
+		width: 100%;
+	}
+}

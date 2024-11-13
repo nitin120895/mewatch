@@ -1,0 +1,33 @@
+// -------------------------------------- //
+// Truncate text when it exceeds the bounds
+// of its parent element.
+//
+// For proper styling the parent will need a
+// width set and the element needs to be block
+// or inline-block.
+// -------------------------------------- //
+.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.titlecase {
+	text-transform: capitalize;
+}
+
+.txt {
+	&-left {
+		text-align: left;
+	}
+	&-center {
+		text-align: center;
+	}
+	&-right {
+		text-align: right;
+	}
+}

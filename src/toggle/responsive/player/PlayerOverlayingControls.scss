@@ -1,0 +1,237 @@
+@import "shared/style/modules";
+@import "./playerVariables";
+
+@mixin screen-icon-size($screenSize, $svgIconSize) {
+	.screen-icon {
+		$size: $screenSize;
+		height: $size;
+		width: $size;
+		line-height: $size;
+
+		.svg-icon {
+			width: $svgIconSize;
+			height: $svgIconSize;
+		}
+	}
+}
+
+.player {
+	&-block__spinner {
+		$size: 72px;
+		height: $size;
+		width: $size;
+		z-index: $depth-player-spinner;
+
+		.spinner__circle {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.screen-icon {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		$size: $linear-player-screen-icon-mobile;
+		background: rgba($color__black, 0.7);
+		border-radius: 50%;
+		cursor: pointer;
+		height: $size;
+		line-height: $size;
+		width: $size;
+		z-index: $depth-player-pause;
+
+		.svg-icon {
+			display: inline-block;
+			height: $linear-player-screen-icon-svg-mobile;
+			width: $linear-player-screen-icon-svg-mobile;
+			vertical-align: middle;
+		}
+
+		&__play .svg-icon {
+			opacity: 0.8;
+			margin: 0 0 0 ($size * 0.1);
+		}
+
+		&:hover .svg-icon {
+			color: $color__primary--hover;
+			fill: $color__primary--hover;
+		}
+	}
+}
+
+.player-overlaying-controls {
+	&__wrapper {
+		.player-seek-controls {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: $depth-player-ads;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			svg {
+				cursor: pointer;
+				background-repeat: no-repeat;
+				background-size: contain;
+				width: 48px;
+				height: 48px;
+			}
+
+			&__ctl {
+				margin: 0 $player-touch-btn-margin-mobile;
+			}
+
+			&__rwd:hover,
+			&__ctl:hover,
+			&__fwd:hover .svg-icon {
+				color: $color__primary--hover;
+				fill: $color__primary--hover;
+			}
+			&__rwd:hover,
+			&__ctl:hover,
+			&__fwd:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@include mq($until: desktop, $and: "(orientation: portrait)") {
+	body:not(.is-fullscreen) {
+		.player-overlaying-controls {
+			&__wrapper {
+				.player-seek-controls {
+					height: 56vw;
+					width: 100%;
+					transform: none;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.player {
+		@include screen-icon-size($linear-player-screen-icon-tablet, $linear-player-screen-icon-svg-tablet);
+	}
+
+	.player-overlaying-controls {
+		&__wrapper {
+			.player-seek-controls {
+				svg {
+					width: 74px;
+					height: 74px;
+				}
+
+				&__ctl {
+					margin: 0 $player-touch-btn-margin-tablet;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player-overlaying-controls {
+		&__wrapper {
+			.player-seek-controls {
+				&__ctl {
+					margin: 0 $player-touch-btn-margin-desktop;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		&-block__spinner {
+			$size: 100px;
+			height: $size;
+			width: $size;
+		}
+		@include screen-icon-size(
+			$linear-player-screen-icon-desktop-fullscreen,
+			$linear-player-screen-icon-svg-desktop-fullscreen
+		);
+	}
+
+	.player-overlaying-controls {
+		&__wrapper {
+			.player-seek-controls {
+				svg {
+					width: 148px;
+					height: 148px;
+				}
+				&__rwd .svg-icon {
+					margin-right: $player-touch-btn-margin-desktop;
+				}
+
+				&__fwd .svg-icon {
+					margin-left: $player-touch-btn-margin-desktop;
+				}
+			}
+		}
+	}
+}
+
+.is-fullscreen {
+	.live-player {
+		.player-overlaying-controls__wrapper {
+			.player-seek-controls {
+				height: 30%;
+				height: 56vw;
+				margin: auto;
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	.player-overlaying-controls__wrapper {
+		.player-seek-controls {
+			&__rwd,
+			&__fwd {
+				@include buttons-state-color;
+			}
+		}
+
+		.screen-icon {
+			@include buttons-state-color;
+		}
+	}
+}
+
+// Styles for controls when Casting is active
+.player-overlaying-controls__wrapper--cast-controls {
+	height: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	margin-top: 10%;
+	padding-bottom: 40%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 5;
+	.player-block__spinner {
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%) translateY(-50%);
+		top: 50%;
+		width: 90%;
+		text-align: center;
+	}
+	.screen-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

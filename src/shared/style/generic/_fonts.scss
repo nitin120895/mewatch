@@ -1,0 +1,41 @@
+// Once defined here, declare each font within _typography.scss
+
+// -------------------------------------- //
+// Externally loaded fonts
+// -------------------------------------- //
+
+// Example remote font asset
+// @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+// Example local font asset
+// @font-face {
+// font-family: "Raleway";
+// src: url("../../../resource/ref/font/raleway-regular.woff2") format("woff2"),
+// url("../../../resource/ref/font/raleway-regular.woff") format("woff");
+// font-weight: normal;
+// font-style: normal;
+// }
+
+// -------------------------------------- //
+// Reference App Fonts
+//
+// This Ubuntu url supports the following weights:
+//
+// - 'Regular' at 400 with support for italics
+// - 'Bold' at 700
+//
+// This means 'faux bold' won't work at the regular weight, and italics won't
+// work at the bold weight.
+//
+// Replace this with your own font imports for Services projects if desired,
+// or alternatively add additional weights as needed.
+//
+// Note that the more weights you add the larger the downloaded filesize
+// which impacts initial page load performance. Be mindful when choosing
+// your font and the number of weights you require.
+//
+// Conveniently Google Fonts intelligently delivers its fonts using the most
+// appropriate font format and compression algorthim based on your browser.
+// -------------------------------------- //
+
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");

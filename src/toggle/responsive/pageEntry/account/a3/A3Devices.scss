@@ -1,0 +1,18 @@
+@import "shared/style/modules";
+
+.a3-devices-title {
+	display: inline-flex;
+	width: 100%;
+	flex: 0 1 auto;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 0;
+
+	&__spinner {
+		.spinner__circle {
+			height: 50px;
+			margin-top: 20px;
+			margin: 0 auto;
+		}
+	}
+}

@@ -1,0 +1,31 @@
+@import "shared/style/modules";
+
+.no-airing {
+	display: inline-block;
+	vertical-align: top;
+
+	&__content {
+		position: relative;
+		background-color: #141414;
+	}
+
+	&__packshot {
+		@include fluid-aspect(16 9);
+	}
+
+	&__title {
+		font-size: 12px;
+		line-height: 14px;
+		margin-top: 0.6em;
+		color: $color__white;
+	}
+}
+
+@include mq($from: tablet) {
+	.no-airing {
+		&__title {
+			font-size: 14px;
+			line-height: 16px;
+		}
+	}
+}

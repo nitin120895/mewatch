@@ -1,0 +1,84 @@
+@import "shared/style/modules";
+
+$gridBreakoutDistance: 10px;
+$gridBreakoutDistanceDesktop: 24px;
+
+@mixin gridMarginWidth($breakpoint) {
+	$gutter: get-gutter($breakpoint);
+	$margin: get-grid-margin($breakpoint);
+	$indent: $margin - $gutter / 2;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: to-rem($indent) + 0.25rem;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1000; // above all things
+		background-color: rgba(cyan, 0.3);
+	}
+}
+
+.component {
+	margin-bottom: 50px;
+}
+
+.branded-image-viewer {
+	&__help-text {
+		font-size: 13px;
+		opacity: 0.75;
+		margin-left: 10px;
+	}
+}
+
+.branded-image-viewer.display-grid {
+	.wallpaper {
+		@include gridMarginWidth("phone");
+
+		@each $mq in $display-margins {
+			@include mq($from: $mq) {
+				@include gridMarginWidth($mq);
+			}
+		}
+
+		@include mq($until: tablet) {
+			&:after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: $gridBreakoutDistanceDesktop;
+				bottom: calc(6.25% + #{$gridBreakoutDistance + 7px});
+				left: 0;
+				z-index: 1000; // above all things
+				background-color: rgba(yellow, 0.4);
+			}
+		}
+	}
+	.branded-image__breakout-img {
+		background-color: rgba(magenta, 0.2);
+	}
+	.branded-image__background {
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: $gridBreakoutDistanceDesktop;
+			top: 0;
+			left: 0;
+			z-index: 1000; // above all things
+			background-color: rgba(yellow, 0.4);
+		}
+		&:after {
+			top: auto;
+			bottom: 0;
+		}
+
+		@include mq($until: tablet) {
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

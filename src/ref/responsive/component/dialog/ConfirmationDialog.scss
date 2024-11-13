@@ -1,0 +1,27 @@
+@import "shared/style/modules";
+
+.confirmation-dialog {
+	width: 300px;
+	& > :not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	&__content {
+		word-wrap: break-word;
+	}
+
+	&__buttons {
+		overflow: hidden;
+	}
+
+	&__primary-btn {
+		max-width: 100%;
+	}
+
+	@include mq($from: tablet) {
+		width: 400px;
+		& > :not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+}

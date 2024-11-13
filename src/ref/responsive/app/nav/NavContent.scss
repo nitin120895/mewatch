@@ -1,0 +1,51 @@
+@import "shared/style/modules";
+
+.nav-content {
+	$dropMenuPadding: 30px;
+	$posterWidth: 99px;
+	$tileWidth: 135px;
+	$hero3x1Width: 425px;
+	$packshotSpacing: 10px;
+
+	&__title + &__row {
+		margin-top: 6px;
+	}
+
+	&__row {
+		margin-top: 4px;
+		white-space: nowrap;
+
+		&--scrollable {
+			max-width: ($posterWidth + $packshotSpacing) * 6;
+			margin-right: -$dropMenuPadding;
+			margin-left: -$dropMenuPadding;
+			padding-right: $dropMenuPadding;
+			padding-left: $dropMenuPadding;
+		}
+	}
+
+	&__packshot + &__packshot {
+		margin-left: $packshotSpacing;
+	}
+
+	&__packshot {
+		position: relative;
+		margin: 0;
+		width: $posterWidth;
+
+		&--tile {
+			width: $tileWidth;
+		}
+
+		&--hero3x1 {
+			width: $hero3x1Width;
+		}
+
+		.packshot-title {
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: linear-gradient(to bottom, rgba($color__black, 0), rgba($color__black, 0.6));
+		}
+	}
+}

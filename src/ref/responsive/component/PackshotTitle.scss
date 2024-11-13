@@ -1,0 +1,34 @@
+@import "shared/style/modules";
+
+.packshot-title {
+	display: block;
+	font-size: 0.9rem;
+	line-height: 1.45;
+	pointer-events: none;
+	z-index: $depth-packshot-title;
+
+	&--none {
+		display: none;
+	}
+
+	&--below {
+		margin-top: 5px;
+	}
+
+	&--overlay {
+		// Our Packshot components usually leverage the grid and receive padding from the `.col` class.
+		// This causes havok with absolutely positioned children where `width: 100%` would exceed the bounds
+		// of the parent based on the padding from `.col`. To counteract this we're offsetting it to align
+		// within the parent image's bounding box.
+		$column-padding: get-gutter() / 2;
+
+		position: absolute;
+		padding: 40px 8px 9px;
+		left: $column-padding;
+		right: $column-padding;
+		bottom: 0;
+	}
+}
+
+// Counteract padding from parent `.col`.
+@include generate-breakpoint-gutters(".packshot-title--overlay", ("left", "right"), (2, 2));

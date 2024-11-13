@@ -1,0 +1,23 @@
+{
+	"name": "${app_title}",
+	"short_name": "${app_title}",
+	"theme_color": "#22a7f0",
+	"background_color": "#222",
+	"display": "standalone",
+	"start_url": "{{APP_SHELL_PATH}}",
+	"orientation": "portrait",
+	"icons": [
+		{
+			"src": "{{CLIENT_ASSET_URL}}/images/icons/icon-72.png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "{{CLIENT_ASSET_URL}}/images/icons/icon-192.png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "{{CLIENT_ASSET_URL}}/images/icons/icon-512.png",
+			"sizes": "512x512"
+		}
+	]
+}

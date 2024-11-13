@@ -1,0 +1,14 @@
+@import "shared/style/modules";
+
+.cw-menu-overlay {
+	$bgColor: $color__black6;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: $depth-dropdown-overlays;
+
+	&__container {
+		position: absolute;
+		margin-top: 1em;
+	}
+}

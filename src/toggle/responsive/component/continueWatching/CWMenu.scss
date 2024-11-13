@@ -1,0 +1,39 @@
+@import "shared/style/modules";
+
+.cw-menu {
+	&__container {
+		width: max-content;
+		border-radius: 0.5rem;
+		background: $color__grey--dark;
+		padding: 0.5rem 0;
+	}
+
+	&__item {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		color: $color__white;
+		padding: 0.75rem 1.5rem;
+
+		&:hover {
+			background-color: $color__grey--warm;
+			cursor: pointer;
+		}
+	}
+
+	&__text {
+		margin-left: 0.5rem;
+	}
+
+	&__icon .svg-icon {
+		font-size: 1.2em;
+	}
+}
+
+@include mq($until: phablet) {
+	.cw-menu {
+		&__container {
+			width: 100%;
+		}
+	}
+}

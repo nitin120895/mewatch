@@ -1,0 +1,26 @@
+.tileExample {
+	margin-bottom: 20px;
+
+	.packshot {
+		position: relative;
+		float: none !important;
+	}
+
+	&-sectionHeading {
+		clear: left;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		padding-bottom: 5px;
+		border-color: white;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+
+	& .packshot__image .img-r {
+		background-color: #666;
+	}
+}
+
+.tile-form {
+	margin-bottom: 24px;
+}

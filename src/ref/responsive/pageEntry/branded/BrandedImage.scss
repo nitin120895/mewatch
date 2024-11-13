@@ -1,0 +1,183 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/rows";
+
+$gradient-color: $color__black4;
+
+@mixin brandedImagePaddingLeft($breakpoint) {
+	$gutter: get-gutter($breakpoint);
+	$margin: get-grid-margin($breakpoint);
+	$indent: $margin - $gutter / 2;
+	padding-left: $indent;
+	padding-left: to-rem($indent);
+}
+
+.branded-image {
+	position: relative;
+
+	> .entry-title {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__packshot-wrapper {
+		position: relative;
+		z-index: 4;
+	}
+
+	&__background {
+		position: relative;
+		background-color: $gradient-color;
+	}
+
+	&__col {
+		z-index: 1;
+		position: relative;
+	}
+
+	&__scrollable {
+		display: none;
+		transition: transform 0.5s ease-in-out;
+	}
+
+	.packshot-list {
+		position: relative;
+		z-index: 2;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: auto;
+		padding-right: auto;
+		padding-bottom: get-grid-margin();
+	}
+
+	&__custom-img {
+		@include fluid-aspect(16 9);
+		position: absolute;
+		z-index: 3;
+		width: 100%;
+		/**
+		 * The following properties are part of a fix that allows the branded image to break out of the top and bottom
+		 * of the container while clipping the image on its right side.
+		 *
+		 * This is to prevent the branded image to extend beyond the gradient fade-out, and also prevent it from pushing
+		 * the boundaries of the page beyond the viewport width on mobile.
+		 *
+		 * (See Wallpaper.scss)
+		 */
+		top: $branded-page-entry-outset-distance;
+		height: calc(100% - #{$branded-page-entry-outset-distance * 2});
+	}
+
+	&__breakout-img {
+		display: inline-flex;
+		height: 100%;
+		max-width: none;
+		object-fit: contain;
+		object-position: left center;
+	}
+}
+
+/**
+ *  Breakout Types
+ */
+.branded-image__breakout {
+	position: relative;
+	height: 100%;
+
+	// Top
+	&--top-inset {
+		padding-top: $branded-page-entry-outset-distance;
+	}
+	&--top-outset {
+		height: calc(100% + #{$branded-page-entry-outset-distance});
+		transform: translateY(-$branded-page-entry-outset-distance);
+	}
+
+	// Bottom
+	&--bottom-inset {
+		// 6.25% is the negative margin applied to the container to make it into a 2:1 ratio
+		padding-bottom: calc(6.25% + #{$branded-page-entry-outset-distance});
+
+		@include mq($from: tablet) {
+			padding-bottom: $branded-page-entry-outset-distance;
+		}
+	}
+	&--bottom-outset {
+		@include mq($from: tablet) {
+			height: calc(100% + #{$branded-page-entry-outset-distance});
+
+			&.branded-image__breakout--top-outset {
+				height: calc(100% + #{2 * $branded-page-entry-outset-distance});
+			}
+		}
+	}
+
+	// Left
+	/**
+	 * On mobile screens, both "inset" and "outset" use the same padding-left
+	 */
+	&--left-inset,
+	&--left-outset {
+		left: 0.25rem;
+		@include brandedImagePaddingLeft("phone");
+
+		@each $mq in $display-margins {
+			@include mq($from: $mq) {
+				@include brandedImagePaddingLeft($mq);
+			}
+		}
+	}
+	/**
+	 * From tablet onwards, the branded image is shifted by the same amount as the top/bottom outset type
+	 */
+	&--left-outset {
+		@include mq($from: tablet) {
+			left: -$branded-page-entry-outset-distance;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.branded-image {
+		.wallpaper {
+			margin-bottom: 0;
+		}
+
+		&__col {
+			position: absolute;
+			bottom: 0;
+		}
+
+		.packshot-list {
+			margin-top: 0;
+			padding-bottom: $branded-page-entry-outset-distance;
+			padding-top: $branded-page-entry-outset-distance;
+		}
+
+		&__custom-img {
+			padding-bottom: 0;
+		}
+
+		/**
+		 * This fix is taking care of 1px keylines appearing on the edge of the branded image on some viewport widths
+		 */
+		&__breakout {
+			overflow: hidden;
+
+			&--bottom-edge {
+				.branded-image__breakout-img {
+					transform: translateY(1px);
+				}
+			}
+			&--top-edge {
+				.branded-image__breakout-img {
+					transform: translateY(-1px);
+				}
+			}
+		}
+	}
+	.branded-image__breakout--bottom-edge.branded-image__breakout--top-edge {
+		.branded-image__breakout-img {
+			transform: scale(1.01);
+		}
+	}
+}

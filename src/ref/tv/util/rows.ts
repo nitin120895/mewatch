@@ -1,0 +1,58 @@
+export const rowImageType = {
+	ah1: 'poster',
+	b1: 'block',
+	b2: 'block',
+	b3: 'block',
+	cs1: 'poster',
+	cs2: 'tile',
+	cs3: 'block',
+	cs4: 'square',
+	cs5: 'unset',
+	h1: 'hero3x1',
+	h2: 'hero3x1',
+	h5: 'wallpaper',
+	h6: 'tile',
+	h7: 'tile',
+	h9: 'wallpaper',
+	d1: 'unset',
+	d2: 'unset',
+	d3: 'unset',
+	d4: 'unset',
+	d5: 'tile',
+	d6: 'tile',
+	d7: 'square',
+	p1: 'poster',
+	p2: 'poster',
+	pb1: 'poster,block',
+	pb2: 'poster,block',
+	pb3: 'poster,block',
+	pb4: 'poster,block',
+	s1: 'square',
+	s2: 'square',
+	s3: 'square',
+	sb1: 'square,block',
+	sb2: 'square,block',
+	sb3: 'square,block',
+	sb4: 'square,block',
+	tl1: 'tall',
+	t1: 'tile',
+	t2: 'tile',
+	t3: 'tile',
+	t4: 'tile',
+	t5: 'tile',
+	tb1: 'tile,block',
+	tb2: 'tile,block',
+	tb3: 'tile,block',
+	tb4: 'tile,block',
+	u1: 'poster',
+	u2: 'tile',
+	u3: 'block',
+	u4: 'square'
+};
+
+export function setPaddingStyle(rowDiv, customFields) {
+	if (rowDiv && customFields) {
+		if (customFields.noBottomPadding) rowDiv.classList.add('no-bottom-padding');
+		if (customFields.noTopPadding) rowDiv.classList.add('no-top-padding');
+	}
+}

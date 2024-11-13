@@ -1,0 +1,116 @@
+@import "shared/style/modules";
+
+.account-nav {
+	display: flex;
+	position: relative;
+	align-items: center;
+	height: 100%;
+
+	&--empty {
+		width: 164px;
+	}
+
+	&__profile {
+		flex: 0 0 auto;
+		font-size: 12px;
+	}
+
+	.drop-menu__content {
+		padding: 20px 30px 15px;
+	}
+
+	// Handling the silly focus color change
+	@include not-key-mode() {
+		&__sign-in:focus:not(:hover) {
+			color: $color__white;
+		}
+	}
+
+	// Selecting for the injected column with account actions
+	.secondary-nav__row:first-of-type .secondary-nav__column:last-child {
+		flex: 1 0 auto;
+		max-width: none;
+		align-items: flex-end;
+
+		.secondary-nav__link {
+			margin-top: 0;
+
+			&:hover {
+				color: $color__link--hover;
+			}
+		}
+	}
+
+	.secondary-nav__column:nth-child(2) {
+		min-width: 130px;
+	}
+
+	.nav-entry-link {
+		&:hover {
+			color: $color__link--hover;
+		}
+	}
+
+	.sign-in {
+		font-weight: bold;
+		padding: 0 23px;
+	}
+
+	.cta-btn {
+		&--primary-inverse {
+			color: $color__black3;
+		}
+	}
+
+	&__me-connect {
+		border-top: 1px solid rgba($color__white, 0.2);
+		padding-top: 17px;
+		margin-top: 12px;
+		text-align: center;
+
+		&-email {
+			margin-bottom: 6px;
+			color: #8c8c8c;
+			font-size: 13px;
+			line-height: 15px;
+		}
+
+		&-operation {
+			height: 24px;
+		}
+
+		&-manage {
+			display: inline-block;
+			margin: 0 20px;
+			line-height: 24px;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		svg {
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	&__tooltip {
+		position: absolute;
+
+		.tooltip__text {
+			width: 212px;
+			height: 52px;
+			margin-left: -106px;
+			padding: 5px 16px;
+			font-weight: bold;
+			color: #303030;
+			background-color: $color__white;
+
+			&::after {
+				border-top-color: $color__white;
+			}
+		}
+	}
+}

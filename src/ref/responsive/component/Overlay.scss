@@ -1,0 +1,27 @@
+@import "shared/style/modules";
+
+.overlay {
+	&__backdrop {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: $overlay-layer-color;
+		transition: opacity 0.3s $easeOutCubic;
+		opacity: 1;
+		cursor: pointer;
+		// maintain GPU rendering mode at all times on this overlay
+		// this is because it looks funny as it switches from gpu->non gpu
+		// as the opacity transitions from 0 -> 1
+		transform: translateZ(0px);
+		width: 100%;
+
+		&--hidden {
+			transition: opacity 0.3s $easeOutCubic;
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+}

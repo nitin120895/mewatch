@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.account-page-wrapper {
+	overflow: hidden;
+	padding-top: 4px;
+
+	.page-entry {
+		// no need for the extra margin top
+		margin-top: 0 !important;
+	}
+}
+
+.account-section-description {
+	margin: 50px 0 10px;
+	color: #999;
+
+	// fighting against generic styles to allow for the title to be close to the component
+	&:first-child {
+		margin-top: 20px;
+	}
+}

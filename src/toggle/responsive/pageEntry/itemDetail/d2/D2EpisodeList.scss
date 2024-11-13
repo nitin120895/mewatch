@@ -1,0 +1,134 @@
+@import "shared/style/modules";
+
+.d2 {
+	&__title {
+		margin: 0;
+	}
+
+	&__season-group {
+		flex-direction: column;
+
+		&-inline {
+			flex-direction: row;
+		}
+	}
+
+	&__item-container {
+		.cta-btn {
+			padding: 0 36px;
+			font-size: 16px;
+		}
+	}
+
+	&__episodes-sorting {
+		display: flex;
+		flex-direction: row;
+		position: relative;
+		margin-left: -11px;
+
+		.select__button {
+			padding-left: 10px;
+		}
+	}
+
+	.season-selector-container {
+		display: flex;
+		flex-grow: 1;
+
+		.d1-season-selector {
+			width: 100%;
+		}
+	}
+
+	&__cta-btn {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__description {
+		margin-bottom: 32px;
+	}
+
+	.select {
+		width: auto;
+
+		&--episode {
+			margin-right: 20px;
+
+			&.select--expanded .select--list {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.d2 {
+		.select {
+			&--episode {
+				margin-right: 5px;
+
+				button {
+					text-align: left;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.d2 {
+		&__season-group {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			padding-right: 20px;
+		}
+
+		.season-selector-container {
+			width: auto;
+		}
+
+		&__item-container {
+			.cta-btn {
+				padding: 0 40px;
+				height: 50px;
+				font-size: 18px;
+				margin-top: 16px;
+			}
+		}
+
+		.select--episode {
+			margin-right: 15px;
+			button {
+				text-align: right;
+			}
+		}
+
+		&__episodes-sorting {
+			margin-left: 0;
+		}
+
+		.select__button {
+			padding-right: 35px;
+		}
+
+		.select__button:after {
+			position: absolute;
+			top: 15px;
+			right: 10px;
+			left: auto;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.d2 {
+		.season-selector-container {
+			max-width: 100%;
+		}
+	}
+}

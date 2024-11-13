@@ -1,0 +1,24 @@
+@import "shared/style/modules";
+
+.metadata-block {
+	display: inline-block;
+	padding: 1px 5px;
+	border: 1px solid $color__grey--dark;
+	color: $color__grey--warm;
+	font-size: 11px;
+	font-family: $font-family-body;
+	background-color: rgba($color__black, 0.3);
+}
+
+@include mq($from: tablet) {
+	.metadata-block {
+		color: $color__grey--light;
+		border: 1px solid $color__grey--light;
+	}
+}
+
+@include mq($from: desktopWide) {
+	.metadata-block {
+		font-size: 14px;
+	}
+}

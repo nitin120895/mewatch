@@ -1,0 +1,40 @@
+.ed5-demo {
+	&__settings-col {
+		float: left;
+		margin-right: 15px;
+	}
+
+	&__color-hex,
+	&__color-picker {
+		display: inline-block !important;
+		vertical-align: middle;
+
+		&.is-default-color {
+			opacity: 0.5;
+		}
+	}
+
+	&__color-hex {
+		width: 138px; // allow some space for color picker
+	}
+
+	&__color-picker {
+		width: 28px;
+		height: 32px;
+		padding: 0;
+		margin-left: 5px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	&__debug {
+		.component {
+			margin-bottom: 0 !important;
+		}
+
+		.list-search {
+			margin-top: 15px;
+		}
+	}
+}

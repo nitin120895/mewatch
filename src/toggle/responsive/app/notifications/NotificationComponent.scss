@@ -1,0 +1,17 @@
+@import "shared/style/modules";
+
+.notification-component {
+	&__notifications {
+		position: fixed;
+		z-index: $depth-toast-notifications;
+		background: none;
+		right: 0px;
+		left: 0px;
+		pointer-events: none;
+
+		@include mq($from: laptop) {
+			width: 700px;
+			left: calc(50% - 700px / 2);
+		}
+	}
+}

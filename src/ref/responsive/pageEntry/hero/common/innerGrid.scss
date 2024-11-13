@@ -1,0 +1,16 @@
+@mixin innerGrid($px, $type: padding) {
+	$calc: calc(#{$px} - (100vw - 100%));
+
+	#{$type}: $px $px;
+	#{$type}: $calc $calc;
+
+	@include mq($from: tablet) {
+		#{$type}: 60px $px $px;
+		#{$type}: 60px $calc $calc;
+	}
+
+	@include mq($from: desktop) {
+		#{$type}: 80px $px $px;
+		#{$type}: 80px $calc $calc;
+	}
+}

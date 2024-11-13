@@ -1,0 +1,250 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/forms/blue-theme";
+
+@mixin input-border($color) {
+	box-shadow: 0 -2px 0 -1px $color inset;
+}
+
+@mixin input-focused($color) {
+	box-shadow: 0 -3px 0 -1px $color inset;
+}
+
+@mixin input-state($color) {
+	.txt-input {
+		&__label {
+			color: $color;
+		}
+		&__input {
+			@include input-border($color);
+		}
+	}
+}
+
+.txt-input {
+	width: 100%;
+	font-family: $font-family-heading;
+	position: relative;
+	margin-bottom: 8px;
+
+	&__label {
+		left: 0;
+		position: absolute;
+		transition: all 0.25s $easeOutSine;
+		top: 16px;
+		font-size: 16px;
+		cursor: text;
+	}
+
+	&__input {
+		padding: 0 40px 0 0;
+		margin-top: 12px;
+		height: 32px;
+		font-size: 16px;
+		width: 100%;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		transition: box-shadow 0.2s $easeOutSine;
+		border-radius: 0;
+		-webkit-appearance: none;
+		-moz-appearance: textfield;
+
+		&::-webkit-credentials-auto-fill-button {
+			visibility: hidden;
+		}
+	}
+
+	&__optional {
+		// Optional placeholder text is smaller than regular placeholder text
+		// to ensure it doesn't steal attention away from the actual label.
+		font-size: 13px;
+		opacity: 0.8;
+	}
+
+	&__icon {
+		position: absolute;
+		top: 16px;
+		font-size: 18px;
+		font-weight: bold;
+		right: 8px;
+		opacity: 0;
+		transition: opacity 0.2s $easeOutSine;
+		// fix for IE
+		height: 22px;
+		width: 22px;
+		text-align: center;
+	}
+
+	&__message {
+		line-height: 16px;
+		min-height: 24px;
+		font-size: 12px;
+		text-align: left;
+		margin: 8px 0;
+	}
+
+	&--error,
+	&--success {
+		.txt-input__icon {
+			opacity: 1;
+		}
+	}
+
+	&--success {
+		stroke-width: 2px;
+	}
+
+	&--active {
+		.txt-input__label {
+			line-height: 18px;
+			font-size: 12px;
+			top: -5px;
+		}
+
+		.txt-input__icon {
+			opacity: 0;
+		}
+
+		&.txt-input--error,
+		&.txt-input--success {
+			.txt-input__icon {
+				opacity: 1;
+			}
+		}
+	}
+
+	&--disabled {
+		.txt-input__label {
+			cursor: default;
+		}
+	}
+}
+
+.form-white {
+	// Darker than '$color__grey--warm' for accessibility friendly colour contrast over a white background.
+	$color__input_placeholder: #707070;
+
+	.txt-input {
+		&__input {
+			color: $color__black;
+			@include input-border($color__input_placeholder);
+		}
+
+		&__label,
+		&__message {
+			color: $color__input_placeholder;
+		}
+
+		&--focused {
+			@include input-state($color__primary--darker);
+			color: $color__black;
+
+			.txt-input__input {
+				color: $color__black;
+				@include input-focused($color__primary--darker);
+			}
+		}
+
+		&--error {
+			@include input-state($color__error);
+
+			.txt-input__message {
+				color: $color__error;
+			}
+		}
+
+		&--success {
+			@include input-state($color__success);
+			.txt-input__icon {
+				stroke: $color__success;
+			}
+		}
+
+		&__icon {
+			&--error {
+				color: $color__error;
+			}
+			&--success {
+				color: $color__success;
+			}
+		}
+
+		&:hover {
+			.txt-input__label {
+				color: $color__black;
+			}
+
+			.txt-input__input {
+				@include input-focused($color__primary--darker);
+			}
+
+			&.txt-input--disabled {
+				@include input-state($color__grey--light);
+			}
+		}
+
+		&--disabled {
+			@include input-state($color__grey--light);
+		}
+
+		&--active:hover {
+			.txt-input__label {
+				color: $color__primary--darker;
+			}
+		}
+	}
+}
+
+.form-blue {
+	.txt-input {
+		&__input {
+			color: $color__white;
+			@include input-border($color__blue-text);
+		}
+
+		&__label,
+		&__message {
+			color: $color__blue-text;
+		}
+
+		&--error,
+		&--success {
+			@include input-state($color__white);
+		}
+
+		&--success {
+			stroke: $color__white;
+
+			.txt-input__icon {
+				stroke: $color__white;
+			}
+		}
+
+		&:hover,
+		&--focused {
+			.txt-input__label {
+				color: $color__white;
+			}
+
+			.txt-input__input {
+				@include input-focused($color__white);
+			}
+
+			&.txt-input--disabled .txt-input__input {
+				@include input-border($color__off-white);
+				color: $color__off-white;
+			}
+
+			&.txt-input--disabled .txt-input__label {
+				color: $color__off-white;
+			}
+		}
+
+		&--disabled {
+			.txt-input__input,
+			.txt-input__label {
+				opacity: 0.4;
+			}
+		}
+	}
+}

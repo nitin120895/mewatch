@@ -1,0 +1,87 @@
+@import "src/ref/tv/style/modules";
+
+.h5-asset-list {
+	position: relative;
+	width: 100%;
+	padding: 0 ($h5-list-padding - $h5-item-spacing / 2) 0 $h5-list-padding;
+
+	.asset__badge {
+		opacity: 0;
+	}
+
+	&__list {
+		position: relative;
+		width: 100%;
+		white-space: nowrap;
+
+		> div {
+			display: inline-block;
+		}
+
+		&--alignMiddle {
+			text-align: center;
+		}
+
+		&--t1 {
+			max-height: 309px;
+		}
+	}
+
+	&__image {
+		margin: -10px -80px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	&__background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, rgba($color__bg-dark, 0.01) 30%, #222 40%);
+	}
+
+	&__wallpaper {
+		position: absolute;
+	}
+
+	&__brand {
+		position: absolute;
+		bottom: 0;
+	}
+
+	&__arrow {
+		position: absolute;
+		z-index: 2;
+		background: none;
+		border: 0;
+		font-size: 32px;
+		cursor: pointer;
+		top: 0;
+		color: $color__white;
+		bottom: 0;
+		margin-top: 0;
+		padding: 5px;
+		opacity: 0;
+
+		&--prev {
+			left: 0;
+		}
+
+		&--moveRight {
+			right: 0;
+		}
+
+		.icon {
+			color: $color__white;
+			display: block;
+			font-size: 35px;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,40 @@
+@import "src/ref/tv/style/modules";
+
+.player-info {
+	width: 1245px;
+
+	&__title {
+		font-size: 72px;
+		line-height: 81px;
+		font-weight: bold;
+		text-shadow: 0 2px 4px rgba($color__black, 0.6);
+	}
+
+	&__sub-title {
+		font-size: 36px;
+		line-height: 41px;
+		text-shadow: 0 2px 4px rgba($color__black, 0.6);
+		margin-top: 10px;
+		display: none;
+
+		&--show {
+			display: block;
+		}
+	}
+
+	&__desc {
+		width: 1243px;
+		max-height: 126px;
+		font-size: 28px;
+		line-height: 1.5;
+		color: $caption_color;
+		text-shadow: 0 2px 4px rgba($color__black, 0.5);
+		display: none;
+		overflow: hidden;
+		margin-top: 20px;
+
+		&--show {
+			display: block;
+		}
+	}
+}

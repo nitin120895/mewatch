@@ -1,0 +1,43 @@
+@import "src/ref/tv/style/modules";
+
+$color--user: #ffc800;
+$color--back: #888;
+$color--avg: #0099f8;
+
+.star-rating {
+	&__stars {
+		float: left;
+		margin-top: 6px;
+		width: 150px;
+		height: 30px;
+	}
+
+	&__sr {
+		display: inline-block;
+	}
+
+	&__star {
+		color: $color__back;
+		display: inline-block;
+		font-size: 25px;
+		margin: 0 1px;
+
+		&--avg {
+			color: $color__avg;
+		}
+		&--usr {
+			color: $color--user;
+		}
+	}
+
+	&__label-div {
+		display: inline-block;
+	}
+
+	&__label {
+		display: inline-block;
+		color: $color__fg-light;
+		font-size: 28px;
+		margin-left: 3px;
+	}
+}

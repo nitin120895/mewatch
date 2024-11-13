@@ -1,0 +1,330 @@
+@import "shared/style/modules";
+@import "./playerVariables";
+
+.player {
+	&-buttons {
+		align-items: center;
+		color: $color__white;
+		display: flex;
+		line-height: $player-icon-mobile;
+		justify-content: flex-start;
+		position: relative;
+	}
+
+	&-controls {
+		margin: 2rem;
+		z-index: $depth-player-pause;
+	}
+
+	.player-control-button {
+		cursor: pointer;
+		width: $player-button-width-mobile;
+		height: $player-button-height-mobile;
+
+		&.player-buttons__play {
+			margin: 0 24px 0 0;
+			position: relative;
+			height: auto;
+			width: $player-icon-size;
+
+			.svg-icon {
+				height: $player-icon-mobile;
+				width: $player-icon-size;
+			}
+
+			.spinner {
+				height: $player-icon-mobile;
+				width: $player-icon-size;
+			}
+		}
+		&.player-buttons__share {
+			.svg-icon {
+				stroke: $color__white;
+				width: 20px;
+			}
+		}
+
+		&.player-buttons__volume {
+			width: auto;
+
+			.svg-icon {
+				width: $player-button-width-mobile;
+			}
+
+			&.open {
+				width: 100%;
+				min-width: 10rem;
+			}
+		}
+		&.player-buttons__watch {
+			width: $player-logo-width-mobile;
+			height: $player-logo-height-mobile;
+
+			.player-controls__logo {
+				color: #fff;
+				width: $player-logo-width-mobile;
+				height: $player-logo-height-mobile;
+			}
+		}
+
+		.svg-icon {
+			fill: $color__white;
+		}
+
+		&.disabled {
+			cursor: default;
+			opacity: 0.3;
+		}
+
+		&:not(.disabled):hover .svg-icon {
+			color: $color__primary--hover;
+			fill: $color__primary--hover;
+		}
+
+		&:not(.disabled):hover .svg-icon.spinner__circle {
+			color: $color__white;
+			fill: $color__white;
+		}
+	}
+
+	.align-right {
+		width: 100%;
+		direction: rtl;
+		display: flex;
+		justify-content: right;
+		align-items: center;
+		max-height: $player-button-height-desktop;
+
+		.player-control-button {
+			margin: 0 15px;
+
+			&:first-child {
+				margin-right: 0;
+			}
+
+			position: inherit;
+		}
+
+		.player-control-button.player-buttons__settings,
+		.player-control-button.player-buttons__subtitles,
+		.player-control-button.player-buttons__on-now,
+		.player-control-button.player-buttons__episode-list,
+		.player-control-button.player-buttons__audioLanguages,
+		.player-control-button.player-buttons__playback-speed {
+			position: relative;
+		}
+	}
+}
+
+@mixin phablet-landscape() {
+	.player-controls {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		transform: translateY($player-controls-y-offset);
+		transition: $player-controls-animation;
+	}
+}
+
+@include mq($from: phablet) {
+	.player-controls {
+		&.volume-active {
+			.align-right {
+				display: flex;
+			}
+		}
+
+		.player-control-button {
+			margin: 0 20px;
+
+			&.player-buttons__play {
+				width: auto;
+			}
+
+			&.player-buttons__volume {
+				width: auto;
+
+				&.open {
+					width: auto;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	@include phablet-landscape();
+}
+
+@include mq($from: laptop, $until: tabletLandscape, $and: "(orientation: portrait)") {
+	@include phablet-landscape();
+}
+
+@include mq($from: desktop) {
+	.player {
+		&-controls {
+			margin: 0 4rem 2rem;
+		}
+
+		&-buttons {
+			margin: 0;
+
+			.player-control-button {
+				&player-buttons__play {
+					min-height: $player-icon-mobile;
+					padding: 0;
+					min-width: $player-icon-size;
+					margin: 0 30px 0 0;
+				}
+
+				&player-buttons__play.spinner_circle {
+					left: 0;
+					top: 0;
+				}
+
+				&__fullscreen {
+					padding: 0;
+				}
+
+				&__selector {
+					display: none;
+					padding: 0;
+				}
+			}
+		}
+
+		.player-control-button {
+			cursor: pointer;
+			width: $player-button-width-desktop;
+			height: $player-button-height-desktop;
+
+			&.player-buttons__play {
+				.svg-icon {
+					width: 30px;
+					height: $player-button-height-desktop;
+				}
+
+				.spinner {
+					width: 30px;
+					height: auto;
+				}
+			}
+
+			&.player-buttons__share {
+				.svg-icon {
+					width: $player-button-width-desktop;
+					height: $player-button-height-desktop;
+				}
+			}
+
+			&.player-buttons__volume {
+				.svg-icon {
+					width: $player-button-width-desktop;
+					height: $player-button-height-desktop;
+				}
+			}
+
+			&.player-buttons__watch {
+				width: $player-logo-width-desktop;
+				height: $player-logo-height-desktop;
+
+				.player-controls__logo {
+					width: $player-logo-width-desktop;
+					height: $player-logo-height-desktop;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		&-controls {
+			padding: 261px $player-padding-desktop 52px;
+		}
+
+		&-buttons {
+			line-height: $player-icon-uhd;
+
+			&__play {
+				$icon-size: 26px;
+				min-height: 24px;
+				margin: 0 54px 0 0;
+				min-width: $icon-size;
+
+				.svg-icon {
+					height: $player-icon-uhd;
+					width: $icon-size;
+				}
+
+				.spinner__circle {
+					height: $player-icon-uhd;
+					width: $player-icon-uhd;
+				}
+			}
+		}
+	}
+}
+
+// Mobile portrait mode, overlaying controls below player
+@include mq($until: tablet, $and: "(orientation: portrait)") {
+	.player-controls {
+		margin: 2rem 1rem;
+
+		.align-right {
+			.player-control-button {
+				margin: 0 10px;
+			}
+		}
+	}
+}
+
+@mixin noHover() {
+	.player {
+		.player__cast .player-buttons__volume {
+			display: block;
+
+			&.open {
+				display: flex;
+			}
+		}
+
+		.player-buttons {
+			.player-control-button {
+				&:not(.disabled):hover .svg-icon {
+					color: $color__white;
+					fill: $color__white;
+				}
+
+				&:not(.disabled):active .svg-icon {
+					color: $color__primary;
+					fill: $color__primary;
+				}
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+	.player-buttons > div {
+		&:not(.disabled):hover .svg-icon {
+			color: $color__white;
+			fill: $color__white;
+		}
+	}
+}
+
+.is-fullscreen .chromeless--watch {
+	@include mq($until: desktop) {
+		@include phablet-landscape();
+	}
+}

@@ -1,0 +1,149 @@
+@import "shared/style/modules";
+@import "../../style/forms/blue-theme";
+
+.checkbox {
+	position: relative;
+	line-height: 24px;
+	vertical-align: middle;
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 1px;
+
+	&__label {
+		user-select: none;
+	}
+
+	&__box,
+	&__input,
+	&__tick,
+	&__label {
+		transition: all 0.3s;
+	}
+
+	&__box {
+		content: "";
+		border-width: 1px;
+		border-style: solid;
+		display: inline-block;
+		border-radius: 3px;
+		width: 20px;
+		height: 20px;
+		position: relative;
+		top: -2px;
+		vertical-align: middle;
+		margin-right: 8px;
+	}
+
+	&__input {
+		margin-right: 0;
+	}
+
+	&__tick {
+		position: absolute;
+		left: -1px;
+		stroke-width: 3px;
+		height: 20px;
+		width: 20px;
+		top: 0;
+	}
+
+	&--disabled {
+		cursor: default;
+	}
+
+	&__tick-box-wrap {
+		display: inline-block;
+		position: relative;
+	}
+}
+
+.form-white {
+	color: $color__grey--dark;
+
+	.checkbox {
+		&__box {
+			border-color: $color__grey--dark;
+		}
+
+		&__label {
+			color: $color__grey--dark;
+		}
+
+		&__tick {
+			stroke: $color__white;
+		}
+
+		&__input:checked ~ .checkbox__tick {
+			stroke: $color__grey--dark;
+		}
+
+		&__input:focus ~ .checkbox__box,
+		&:hover .checkbox__box {
+			border-color: $color__primary;
+		}
+
+		&__input:focus ~ .checkbox__label,
+		&:hover .checkbox__label {
+			color: $color__primary;
+		}
+
+		&--disabled,
+		&--disabled:hover {
+			.checkbox__label {
+				color: $color__grey--light;
+			}
+
+			.checkbox__box {
+				border-color: $color__grey--light;
+			}
+
+			.checkbox__input:checked ~ .checkbox__tick {
+				stroke: $color__grey--light;
+			}
+		}
+	}
+}
+
+.form-blue {
+	.checkbox {
+		&__box {
+			border-color: $color__white;
+			box-shadow: 0 0 0 1px transparent;
+		}
+
+		&__label {
+			color: $color__white;
+		}
+
+		&__tick {
+			stroke: transparent;
+		}
+
+		.checkbox__input:checked ~ .checkbox__tick {
+			stroke: $color__white;
+		}
+
+		&:hover .checkbox__box,
+		&__input:focus ~ .checkbox__box {
+			background: rgba(255, 255, 255, 0.2);
+			box-shadow: 0 0 0 1px $color__white;
+		}
+
+		&--disabled,
+		&--disabled:hover {
+			.checkbox__label {
+				color: $color__blue-text;
+			}
+
+			.checkbox__box {
+				border-color: $color__blue-text;
+				box-shadow: none;
+				background: transparent;
+			}
+
+			.checkbox__input:checked ~ .checkbox__tick {
+				stroke: $color__blue-text;
+			}
+		}
+	}
+}

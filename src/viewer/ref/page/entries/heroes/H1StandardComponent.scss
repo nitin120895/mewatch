@@ -1,0 +1,11 @@
+@import "shared/style/modules";
+
+.h1-header {
+	@include mq($from: tablet) {
+		position: absolute !important;
+	}
+}
+
+.h1-header-wrapper {
+	position: relative;
+}

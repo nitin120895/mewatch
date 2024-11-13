@@ -1,0 +1,100 @@
+@import "src/ref/tv/style/modules";
+
+.menu-item {
+	width: 360px;
+	height: 94px;
+	line-height: 94px;
+	margin: 6px 50px 6px 40px;
+	padding: 0 41.8px 0 36px;
+	border-radius: 5px;
+	color: $color__white;
+	font-size: 36px;
+	letter-spacing: -1.1px;
+	display: block;
+	border: 3px solid $transparent;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	&--selected {
+		background-color: rgba($color__white, 0.2);
+	}
+
+	&--tertiary {
+		padding-left: 70px;
+		text-transform: initial;
+	}
+
+	&--focused {
+		border-color: $color__white;
+	}
+
+	&--focused.menu-item--clickable {
+		color: $color__primary;
+		background-color: $color__white;
+		font-weight: bold;
+	}
+
+	&--lang {
+		text-transform: initial;
+		padding-top: 45px;
+		height: auto;
+	}
+
+	&--focused.menu-item--lang {
+		border-color: $transparent;
+	}
+
+	&__button {
+		width: 360px;
+		height: 90px;
+		border-radius: 45px;
+		border: solid 4px $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		line-height: 90px;
+		margin: 20px 0;
+		padding-left: 90px;
+		padding-right: 85px;
+		position: relative;
+
+		&--focused {
+			color: $color__primary;
+			background-color: $color__white;
+		}
+
+		span {
+			float: left;
+			display: inline-block;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			line-height: 82px;
+		}
+	}
+
+	&__icon {
+		font-size: 20px;
+		font-weight: bold !important;
+		position: absolute;
+		top: 50%;
+		right: 43px;
+		transform: translateY(-50%);
+	}
+
+	&__globe {
+		display: inline-block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url("../../../../../resource/ref/tv/image/icon-globe.png");
+		width: 40px;
+		height: 40px;
+		top: 50%;
+		transform: translateY(-50%);
+		position: absolute;
+		left: 40px;
+		&--focused {
+			background-image: url("../../../../../resource/ref/tv/image/icon-globe-focused.png");
+		}
+	}
+}

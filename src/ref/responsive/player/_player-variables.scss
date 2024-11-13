@@ -1,0 +1,27 @@
+@import "shared/style/modules/variables";
+
+$player-background-gradient: #0f0f0f;
+$player-button-color: $color__white;
+$player-button-hover-color: $color__primary;
+$player-button-height-mobile: $button-mobile-height;
+$player-button-height-uhd: $button-uhd-height;
+$player-button-mobile: 10px;
+$player-controls-animation: transform 0.5s ease-out;
+$player-icon-mobile: 18px;
+$player-icon-uhd: 36px;
+$player-transition-time: 0.3s;
+$player-icon-size: 13px;
+
+$metadata-top-position-mobile: 18px;
+$metadata-top-position-desktop: 30px;
+$metadata-top-position-uhd: 60px;
+
+$scrubber-color: rgba(216, 216, 216, 0.6);
+$scrubber-margin-mobile: 14px;
+$scrubber-margin: 24px;
+$scrubber-margin-uhd: 42px;
+$scrubber-height-mobile: 4px;
+$scrubber-height-desktop: 6px;
+$scrubber-mobile-thumb-size: 25px;
+$scrubber-thumb-size: 16px;
+$scrubber-thumb-hover-size: 22px;

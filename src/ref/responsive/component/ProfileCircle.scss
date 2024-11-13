@@ -1,0 +1,219 @@
+@import "shared/style/modules";
+
+$profile-circle-size: 88px;
+$profile-circle-size-large: 110px;
+$color__red--cross: #df0606;
+$color__orange--fallback: #ff7b3d;
+
+.profile-circle {
+	font-family: $font-family-heading;
+	color: $color__grey--dark;
+	align-items: initial;
+	display: block;
+	position: relative;
+	backface-visibility: hidden;
+	text-align: center;
+	background: transparent;
+	transition: color 0.2s;
+	&:hover {
+		color: $color__grey--dark;
+	}
+	&:focus {
+		color: $color__grey--dark;
+		.profile-circle__circle {
+			&:before {
+				background-color: $color__black;
+				opacity: 0.12;
+			}
+		}
+
+		.new-circle {
+			&:before {
+				background-color: $color__primary--darker;
+				opacity: 0.12;
+			}
+		}
+	}
+
+	&--new-profile {
+		.profile-circle__circle {
+			background: transparent;
+			border: 1px solid $color__primary--darker;
+			cursor: pointer;
+			font-weight: normal;
+		}
+	}
+
+	&__circle {
+		width: $profile-circle-size;
+		height: $profile-circle-size;
+		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 36px;
+		font-weight: bold;
+		color: $color__white;
+		position: relative;
+		background-color: $color__orange--fallback;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 100%;
+
+		&:hover:before {
+			opacity: 0.12;
+			background-color: $color__primary--darker;
+		}
+
+		&:before {
+			transition: background-color 0.3s, opacity 0.3s;
+			opacity: 0;
+			content: "";
+			height: 100%;
+			width: 100%;
+			border-radius: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			z-index: 1;
+		}
+
+		&:focus {
+			outline-color: $color__primary;
+		}
+
+		&--disabled {
+			pointer-events: none;
+		}
+
+		&--isPrimary:hover:before {
+			opacity: 0;
+		}
+	}
+
+	&__spinner {
+		width: 50%;
+		height: 50%;
+		color: $color__white;
+	}
+
+	&__letter {
+		width: 100%;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__plus {
+		font-size: 60px;
+		color: $color__primary--darker;
+		font-weight: 100;
+		width: 100%;
+		height: 100%;
+
+		// This is the plus symbol
+		&:after,
+		&:before {
+			content: "";
+			position: absolute;
+			background-color: $color__primary--darker;
+		}
+		// vertical stroke for plus symbol
+		&:after {
+			height: 1px;
+			top: 50%;
+			left: 28px;
+			right: 28px;
+		}
+		// Horizontal stroke for plus symbol
+		&:before {
+			width: 1px;
+			left: 50%;
+			top: 28px;
+			bottom: 28px;
+		}
+	}
+
+	&__label {
+		margin-bottom: 0;
+		min-height: 20px;
+		width: 100%;
+		cursor: default;
+		&--name {
+			font-weight: bold;
+		}
+		&--type {
+			color: $color__grey--warm;
+		}
+	}
+
+	&__lock {
+		bottom: 4px;
+		right: 4px;
+		position: absolute;
+		width: 16px;
+		height: 19px;
+
+		.lock-icon-inner {
+			stroke: $color__grey--dark;
+			stroke-width: 2;
+		}
+
+		.bottom {
+			fill: $color__grey--dark;
+		}
+	}
+
+	&__details {
+		width: 100%;
+	}
+
+	&--large {
+		width: 120px;
+		height: auto;
+
+		@include mq($from: tablet) {
+			width: 160px;
+		}
+
+		.profile-circle__overlay,
+		.profile-circle__circle {
+			@include mq(tablet) {
+				width: $profile-circle-size-large;
+				height: $profile-circle-size-large;
+			}
+		}
+
+		.profile-circle__circle {
+			font-size: 48px;
+			transform: scale(1);
+			transition: transform 200ms;
+			will-change: transform;
+
+			&:hover {
+				transform: scale(1.09);
+			}
+
+			&--loading {
+				transform: scale(1.09);
+			}
+
+			&--disabled {
+				transform: scale(0.9);
+				opacity: 0.4;
+			}
+		}
+
+		.profile-circle__label--name {
+			font-weight: normal;
+			font-size: 16px;
+
+			&--disabled {
+				opacity: 0.4;
+			}
+
+			@include mq($from: tablet) {
+				font-size: 20px;
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+@import "shared/style/modules";
+
+// -------------------------------------- //
+// Common Elements
+//
+// Styles used by several page entry rows.
+// -------------------------------------- //
+
+// Default account panel accordion transitions.
+// These sections typically toggle between a small section and a large section.
+// The transition duration is typically proportionate to the height of the container.
+// e.g. the collapsed container has a shorter duration than the expanded container to
+// reflect the distance travelled when toggling the accordion.
+.account-accordion {
+	&-large,
+	&-small {
+		transition-property: height, padding-top, padding-bottom, border-top-width, border-bottom-width, margin-top,
+			margin-bottom;
+	}
+
+	// Collapsed content container
+	&-small {
+		transition-duration: 0.2s;
+		transition-timing-function: $easeInOutQuad;
+	}
+
+	// Expanded content container
+	&-large {
+		transition-duration: 0.3s;
+		transition-timing-function: $easeInOutQuad;
+	}
+}
+
+// This panel is designed for use with an inline accordion within a scheduled
+// page entry row.
+// When collapsed (marked 'small' here) it simply applies a keyline border along
+// the top of the row to provide separation between content sections.
+// When expanded (marked 'large' here) we instead style it with an inset or
+// debossed aesthetic to make it appear as if it's revealing the expanded content
+// in a layer behind the original content.
+.account-panel-section {
+	// Collapsed content container
+	&__small {
+		border-top: 1px solid $color__grey--light;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	// Expanded content container
+	&__large {
+		background-color: $color__white2;
+		box-shadow: inset 0px 15px 10px -10px rgba($color__grey--light, 0.3),
+			inset 0px -15px 10px -10px rgba($color__grey--light, 0.3);
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+
+	// When there's a collapsed row after an expended row we hide the adjacent row's
+	// top border to avoid aesthetics clashes from the expanded row's styling.
+	&--expanded + &--collapsed {
+		.account-panel-section__small {
+			border-top: none;
+		}
+	}
+
+	// To maintain even margins around all edges of the page entry we don't
+	// apply a bottom padding to the last section and instead relying on the
+	// page entry's bottom margin.
+	&:last-child {
+		.account-panel-section__small {
+			padding-bottom: 0;
+		}
+	}
+}

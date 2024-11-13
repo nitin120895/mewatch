@@ -1,0 +1,161 @@
+@import "shared/style/modules";
+
+.packshot {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	color: $color__white;
+	&:hover,
+	&:focus {
+		.packshot-title--over {
+			color: $color__white;
+		}
+	}
+
+	transition: transform 0.2s ease-out, filter 0.2s ease-out, opacity 0.2s ease-out;
+
+	&.offline {
+		transform: scale(0.94);
+		.packshot__image {
+			filter: blur(1px) grayscale(100%);
+		}
+	}
+	&--selected &__image:after {
+		content: "";
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border: 2px solid $color__primary;
+	}
+
+	&__progress {
+		$gap: 2px;
+		bottom: $gap;
+		left: $gap;
+		position: absolute;
+		right: $gap;
+		z-index: $depth-packshot-progress;
+	}
+
+	// Fallback title when an image isn't availble
+	&-fb-title {
+		padding: 7px;
+	}
+
+	&__image {
+		&-shadow {
+			background: linear-gradient(
+				to bottom,
+				rgba($color__black, 0),
+				rgba($color__black, 0) 60%,
+				rgba($color__black, 0.6) 100%
+			);
+			bottom: -1px;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: -1px;
+			top: 50%;
+			pointer-events: none;
+		}
+
+		.img-r {
+			background-color: $color__black4;
+		}
+
+		> .packshot-fb-title,
+		> img[src="//:0"] {
+			background-color: $color__black4;
+			// When an image fails to load we want to make it fill the bounds to ensure
+			// the background color displays correctly within its parent bounds.
+			// Set this `src` attribute value to match the value of `src/shared/util/images.ts:fallbackURI`
+			width: 100%;
+			height: 100%;
+			// Ensure the alt tag description doesn't exceed the bounds
+			overflow: hidden;
+			text-align: center;
+			vertical-align: middle;
+
+			&:before {
+				// Triggers support for vertical alignment (above)
+				content: "";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+		}
+		// Enforce proportional heights to negate reflows before/after image loading.
+		&--poster {
+			@include fluid-aspect(2 3);
+		}
+		&--tile,
+		&--wallpaper {
+			@include fluid-aspect(16 9);
+		}
+		&--square {
+			@include fluid-aspect(1 1);
+		}
+		&--block,
+		&--hero4x3 {
+			@include fluid-aspect(4 3);
+		}
+		&--hero3x1 {
+			@include fluid-aspect(3 1);
+		}
+		&--hero7x1 {
+			@include fluid-aspect(7 1);
+		}
+		&--tall {
+			@include fluid-aspect(1 2);
+		}
+		&--custom {
+			// Because this is an unknown/dynamic shape we use inline-block to match the size of the image within.
+			display: inline-block;
+			.img-r {
+				height: auto;
+			}
+		}
+	}
+
+	&__play-icon {
+		opacity: 0;
+		animation: icon-animate-in 0.3s ease-in 0.3s;
+		animation-fill-mode: forwards;
+
+		&--top,
+		&--center {
+			left: 50%;
+			top: 50%;
+
+			// CSS transition moves an element 1px to the right, bug with WebKit
+			// https://stackoverflow.com/questions/15464055/css-transition-effect-makes-image-blurry-moves-image-1px-in-chrome
+			transform: translate3d(-50%, -50%, 0);
+		}
+
+		&--shown {
+			display: block;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.packshot {
+		&__play-icon {
+			&--center {
+				top: 30%;
+			}
+		}
+	}
+}
+
+@keyframes icon-animate-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

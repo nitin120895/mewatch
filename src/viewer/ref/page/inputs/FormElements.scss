@@ -1,0 +1,73 @@
+@import "shared/style/modules";
+@import "src/ref/responsive/style/forms/blue-theme";
+// This needs to be imported here as it doesn't get loaded through a route component in component viewer
+@import "src/ref/responsive/page/auth/AuthPage";
+
+.form,
+.form--full-width {
+	width: 96%;
+	float: left;
+	padding: 24px;
+	color: $color__white;
+
+	&-blue {
+		background: $color__primary;
+		border: 2px solid $color__black;
+
+		.txt-input__message {
+			color: $color__blue-text;
+		}
+
+		.txt-input__input:focus {
+			color: $color__white;
+		}
+
+		a {
+			color: white;
+
+			&:hover,
+			&:focus {
+				color: white;
+			}
+		}
+	}
+
+	&-white {
+		background: $color__white;
+
+		.txt-input__input {
+			color: $color__black;
+		}
+
+		.txt-input--disabled {
+			.txt-input__input {
+				color: $color__grey--light;
+			}
+		}
+
+		.account-btn__btn {
+			color: $color__white !important;
+		}
+	}
+
+	.checkbox {
+		margin-right: 16px;
+	}
+}
+
+.input-toggler {
+	label {
+		display: inline-block;
+		margin-right: 13px;
+	}
+}
+
+@include mq($from: tablet) {
+	.form {
+		width: 50%;
+	}
+}
+
+.bounding-box {
+	box-shadow: 0 0 0 1px $color__white inset;
+}

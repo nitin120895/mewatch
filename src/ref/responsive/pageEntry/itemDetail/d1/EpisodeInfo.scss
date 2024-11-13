@@ -1,0 +1,44 @@
+@import "shared/style/modules";
+
+.d1-ep-info {
+	&__show-title,
+	&__season-title {
+		font-size: 18px;
+		font-weight: normal;
+		margin: 0;
+		color: $color__off-white;
+	}
+
+	&__season-title {
+		margin-top: 4px;
+	}
+
+	&__name-group {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin: 18px 0;
+		white-space: nowrap;
+	}
+
+	&__name {
+		font-size: 24px;
+		font-weight: normal;
+		color: $color__grey--warm;
+		margin: 0;
+	}
+
+	&__duration {
+		font-size: 14px;
+		font-family: $font-family-heading;
+		color: $color__grey--warm;
+		margin-left: 24px;
+	}
+
+	&__description {
+		font-size: 14px;
+		font-family: $font-family-heading;
+		color: $color__grey--light;
+		margin: 0;
+	}
+}

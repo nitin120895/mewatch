@@ -1,0 +1,36 @@
+@import "shared/style/modules";
+
+.account-edit {
+	max-width: 430px;
+
+	&__title {
+		color: $color__grey--dark;
+		margin-bottom: 30px;
+	}
+
+	&__email {
+		position: relative;
+
+		.txt-input__input {
+			color: $color__grey--warm;
+		}
+	}
+
+	&__lock {
+		position: absolute;
+		right: 3px;
+		top: 15px;
+		color: $color__neutral;
+		height: 19px;
+	}
+
+	&__update-error {
+		margin-top: 20px;
+		background-color: $color__off-white;
+		text-align: center;
+		line-height: 24px;
+		position: relative;
+		margin-bottom: 20px;
+		padding: 8px 0;
+	}
+}

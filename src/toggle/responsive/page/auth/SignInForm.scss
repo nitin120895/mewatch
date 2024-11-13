@@ -1,0 +1,402 @@
+@import "shared/style/modules";
+
+.sign-in-form {
+	padding: 30px;
+	max-width: 500px;
+
+	&__logo {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__terms {
+		margin-bottom: 20px;
+		text-align: justify;
+		color: $color__black;
+		font-size: 10px;
+		line-height: 1.5;
+
+		.register-form__policy-link {
+			font-weight: inherit;
+			color: inherit;
+
+			&:hover {
+				color: $color__mepass-primary--hover;
+			}
+		}
+	}
+
+	&__header {
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 21px;
+		text-align: center;
+		color: $color__black3;
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&__signin-message {
+			width: 114px;
+			text-align: right;
+		}
+
+		&__vertical-line {
+			border-left: 1px solid $color__black;
+			height: 70px;
+			margin: 0 10px;
+		}
+	}
+
+	&__forgot-pwd {
+		text-decoration: underline;
+		font-size: 15px;
+		color: $color__black7;
+
+		&:hover {
+			text-decoration: underline;
+			color: $color__black7;
+		}
+	}
+
+	.grecaptcha-badge {
+		visibility: hidden;
+	}
+
+	&__register {
+		font-weight: bold;
+	}
+	&__recaptcha-sections {
+		margin-bottom: 16px;
+		text-align: center;
+	}
+
+	&__secondary-actions {
+		margin-bottom: 24px;
+		text-align: center;
+	}
+
+	&__pdpa-message {
+		font-size: 10px;
+		line-height: 1.6;
+		color: $color__grey;
+		margin: 4px 0 20px;
+		cursor: pointer;
+
+		&--link {
+			font-weight: bold;
+			text-decoration: underline;
+
+			&:hover {
+				color: $color__mepass-primary--hover;
+			}
+		}
+	}
+
+	&__primary-action {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+
+		a {
+			width: 100%;
+		}
+
+		.sign-in-form__text {
+			color: $color__black3;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 26px;
+			text-transform: none;
+		}
+
+		.facebook-icon {
+			background-color: #0288d1;
+			border-radius: 100%;
+			padding: 2px;
+		}
+
+		.google-icon {
+			width: 21px;
+			height: 22px;
+			background: transparent url("../../../../../resource/toggle/image/icon/desktop-social-sign-up-google.png") center
+				right no-repeat;
+			vertical-align: middle;
+		}
+
+		.facebook-icon,
+		.apple-icon,
+		.google-icon {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		.submit-button {
+			width: 270px;
+		}
+	}
+
+	&__tertiary-actions {
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 1.25;
+		color: $color__black3;
+		padding-top: 10px;
+		text-align: center;
+		margin-top: 30px;
+
+		.sign-in-form {
+			&__reset {
+				display: block;
+			}
+
+			&__register {
+				margin-top: 16px;
+			}
+		}
+	}
+
+	.divider {
+		font-size: 18px;
+		font-weight: bold;
+		text-align: center;
+		color: $color__black3;
+		position: relative;
+
+		&:before,
+		&:after {
+			content: "";
+			height: 1px;
+			background: $color__grey--light;
+			position: absolute;
+			width: 42%;
+			top: 10px;
+		}
+
+		&:before {
+			left: 0;
+		}
+
+		&:after {
+			right: 0;
+		}
+	}
+
+	.cta-btn--me-pass {
+		width: 100%;
+		text-transform: uppercase;
+	}
+
+	&__form {
+		margin-bottom: 0;
+
+		.me-pass-pwd-input__view-pwd {
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 2.17;
+			text-align: right;
+			color: $color__warm-me-pass;
+			top: 13px;
+		}
+
+		.me-pass-pwd-input--pwd-icon {
+			.me-pass-txt-input--active ~ .pwd-icon {
+				display: none;
+			}
+		}
+
+		.txt-input__label {
+			color: $color__grey--light;
+		}
+
+		.txt-input__input {
+			box-shadow: 0 -2px 0 -1px $color__grey--light inset;
+		}
+
+		.me-pass-txt-input {
+			margin-bottom: 30px;
+
+			&__input {
+				width: 100%;
+			}
+
+			&--active .me-pass-txt-input__label {
+				left: 16px;
+				color: $color__black;
+			}
+
+			&--active input {
+				color: $color__black;
+				border: 1px solid $color__black;
+			}
+
+			&--error input {
+				border: 1px solid $color__error-me-pass;
+				color: $color__error-me-pass;
+			}
+
+			&__icon {
+				top: 12px;
+				right: -20px;
+			}
+		}
+	}
+
+	&__mobile {
+		.meconnect-icon {
+			display: inline-block;
+			margin-right: 10px;
+		}
+	}
+
+	&__desktop {
+		display: none;
+	}
+
+	&__create {
+		text-decoration: underline;
+		text-align: center;
+		color: $color__grey;
+		margin: 1em 0;
+	}
+
+	&__mewatch-logo {
+		width: 99px;
+		height: 30px;
+		margin: auto;
+	}
+
+	&__mobile-cta {
+		margin-bottom: 1.45em;
+
+		.sign-in-form__header {
+			margin-bottom: 0.8em;
+		}
+
+		.me-connect__description {
+			margin-bottom: 1em;
+		}
+
+		.me-connect-watch {
+			margin: 0 auto;
+			min-width: 180px;
+		}
+	}
+
+	&__form-back {
+		color: #222;
+	}
+
+	&__form-back-icon {
+		display: inline-block;
+		width: 10px;
+		height: 20px;
+		margin: 0 7px 2px 0;
+		transform: rotate(90deg);
+	}
+
+	&__signin-container {
+		padding: 22px 12px 0px;
+		border: 1px dashed rgba($color__black, 0.25);
+		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&__signin-via {
+		font-size: 1rem;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		margin: 10px 0px;
+		color: $color__black;
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.sign-in-form {
+		padding: 60px 56px 50px 0;
+
+		&__form {
+			margin-bottom: 1.45em;
+		}
+
+		.divider {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+@include mq($from: tabletLandscape, $and: "(orientation: landscape)") {
+	.sign-in-form {
+		&__logo {
+			display: none;
+		}
+
+		&__header {
+			margin: 0 0 50px;
+		}
+
+		&__secondary-actions {
+			margin-bottom: 38px;
+		}
+
+		&__tertiary-actions {
+			display: block;
+			border-radius: 12px;
+			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+			border: solid 1px rgba(196, 196, 196, 0.5);
+			padding: 30px 32px;
+		}
+
+		&__mobile {
+			display: none;
+		}
+
+		&__desktop {
+			display: block;
+		}
+	}
+
+	.me-connect {
+		display: flex;
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: portrait)") {
+	.sign-in-form {
+		padding-top: 45px;
+	}
+}
+
+@include mq($from: desktop) {
+	.sign-in-form {
+		padding: 60px 0;
+
+		&__form,
+		&__header {
+			max-width: 500px;
+		}
+
+		&__tertiary-actions {
+			margin-top: 50px;
+		}
+	}
+}
+
+@media (hover: none) {
+	.sign-in-form {
+		&__pdpa-message--link {
+			&:hover {
+				color: $color__grey;
+			}
+
+			&:active {
+				color: $color__mepass-primary--hover;
+			}
+		}
+	}
+}

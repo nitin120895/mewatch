@@ -1,0 +1,28 @@
+@import "shared/style/modules";
+
+.subscriptions-entry {
+	padding: 20px 10px;
+	margin: 2px 0;
+
+	@include mq($from: tablet) {
+		margin: 4px 0;
+		padding: 30px;
+	}
+
+	.account-entry__title {
+		text-transform: none;
+	}
+
+	.active-subscription-item {
+		&:first-child {
+			padding-top: 30px;
+		}
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
+
+	.account-entry__header {
+		margin-bottom: 0;
+	}
+}

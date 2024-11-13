@@ -1,0 +1,85 @@
+@import "shared/style/modules";
+
+@mixin tablet-style() {
+	.collapsible-container__modal {
+		&.episode-selector {
+			background: unset;
+
+			&.dialog {
+				width: 70%;
+				max-width: 792px;
+				height: 463px;
+				margin: auto;
+				padding: 50px;
+				background: $color__black2;
+			}
+		}
+	}
+}
+
+@mixin mobile-style {
+	&.episode-selector {
+		height: 100vh;
+		height: var(--app-height);
+		width: 100%;
+		max-width: 100%;
+		padding: 30px 24px 40px;
+	}
+}
+
+.collapsible-container {
+	position: relative;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+
+	&--collapsed {
+		cursor: pointer;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 66%;
+			background-image: linear-gradient(to bottom, rgba($body-bg-color, 0), $body-bg-color);
+		}
+	}
+
+	&__modal {
+		background: $color__black2;
+
+		.dialog {
+			max-width: 750px;
+			background: $color__black2;
+			padding: 50px;
+			max-height: 100vh;
+			overflow: auto;
+
+			@include mobile-style();
+		}
+
+		&.dialog.episode-selector {
+			.dialog__close-btn {
+				color: $color__white;
+				top: 30px;
+				right: 24px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	@include tablet-style();
+}
+
+@media #{$untilIphoneXLandscape} {
+	.collapsible-container {
+		&__modal {
+			&.dialog {
+				@include mobile-style();
+			}
+		}
+	}
+}

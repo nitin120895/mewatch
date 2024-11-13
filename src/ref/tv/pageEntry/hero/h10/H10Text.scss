@@ -1,0 +1,26 @@
+@import "src/ref/tv/style/modules";
+
+.h10 {
+	font-family: $font-family-heading;
+	padding: $h10-padding-top 0 $h10-padding-bottom;
+
+	// We colour this component using dynamic colours from our API.
+	// We delay assigning them until after the component mounts to avoid CSP issues
+	// when server rendering. By default this would flicker when the new colours are
+	// assigned so we set a transition to make it smoother.
+	transition: background-color 0.3s ease-in, color 0.3s ease-in;
+
+	&__heading {
+		font-size: 64px;
+		font-weight: bold;
+		line-height: $h10-heading-height;
+		height: $h10-heading-height;
+	}
+
+	&__subHeading {
+		font-size: 36px;
+		margin-top: $h10-sub-heading-margin-top;
+		line-height: $h10-sub-heading-height;
+		height: $h10-sub-heading-height;
+	}
+}

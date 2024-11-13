@@ -1,0 +1,37 @@
+@import "src/ref/tv/style/modules";
+
+.drop-button {
+	font-family: $font-family-heading;
+	display: inline-block;
+	height: 90px;
+	margin: 20px 30px;
+	color: $color__white;
+	opacity: 0.5;
+	cursor: pointer;
+	font-size: 36px;
+	text-align: left;
+
+	&:focus,
+	&:hover,
+	&.focused {
+		opacity: 1;
+
+		.drop-button__bar {
+			background-color: $color__white;
+		}
+	}
+
+	&__title {
+		line-height: 90px;
+		margin-right: 40px;
+	}
+
+	&__icon {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	&__bar {
+		height: 10px;
+	}
+}

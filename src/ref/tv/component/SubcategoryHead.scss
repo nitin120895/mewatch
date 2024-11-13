@@ -1,0 +1,71 @@
+@import "src/ref/tv/style/modules";
+
+.subcategory-head {
+	height: 250px;
+	width: 100%;
+	position: relative;
+	background-color: $color__primary;
+
+	&__title {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		margin: $content__margin;
+		line-height: 72px;
+		font-size: 64px;
+		font-weight: bold;
+		text-align: left;
+		color: $color__white;
+		text-transform: uppercase;
+	}
+
+	&__jumpto {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 80px;
+		display: none;
+		background-color: rgba($color__white, 0.001);
+
+		.brand__btn {
+			border-color: rgba($color__white, 0.5);
+			text-transform: capitalize;
+
+			&.focused,
+			&:hover {
+				background-color: $color__white;
+				color: $color__primary;
+				border-color: $color__white;
+			}
+		}
+
+		&:hover {
+			.brand__btn {
+				border-color: $color__white;
+			}
+		}
+
+		&--showJumpTo {
+			display: inherit;
+		}
+	}
+
+	&--hasTitleRow {
+		background-color: inherit;
+		height: auto;
+		width: auto;
+		position: relative;
+		display: inherit;
+
+		.subcategory-head__title {
+			display: none;
+		}
+
+		.subcategory-head__jumpto {
+			z-index: 9;
+			position: absolute;
+			top: 140px;
+			right: 80px;
+		}
+	}
+}

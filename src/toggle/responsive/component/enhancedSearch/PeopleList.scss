@@ -1,0 +1,16 @@
+.people-list {
+	&__list {
+		overflow: hidden;
+		white-space: nowrap;
+
+		.arrow {
+			padding-bottom: 3.938rem;
+		}
+
+		&.row-peek {
+			.srp1 {
+				float: none;
+			}
+		}
+	}
+}

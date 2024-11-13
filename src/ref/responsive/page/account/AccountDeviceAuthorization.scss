@@ -1,0 +1,30 @@
+@import "shared/style/modules";
+
+.code-page {
+	// Increasing specificity
+	& &__title {
+		margin-top: 46px;
+		margin-bottom: 24px;
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: 6px;
+	}
+
+	&__input {
+		background: none;
+		padding: 4px;
+		border: 1px solid $color__grey--light;
+		color: $color__white;
+	}
+
+	&__error {
+		color: $color__error;
+	}
+
+	&__submit {
+		margin-top: 24px;
+		display: block;
+	}
+}

@@ -1,0 +1,71 @@
+@import "shared/style/modules/variables";
+
+$player-background-gradient: #0f0f0f;
+$player-button-height-uhd: $button-uhd-height;
+
+$player-button-width-mobile: 24px;
+$player-button-height-mobile: 20px;
+$player-button-width-desktop: 42px;
+$player-button-height-desktop: 34px;
+
+$player-logo-width-mobile: 51px;
+$player-logo-height-mobile: 16px;
+$player-logo-width-desktop: 89px;
+$player-logo-height-desktop: 28px;
+
+$player-button-mobile: 10px;
+$player-controls-y-offset: 250%;
+$player-controls-animation: transform 0.5s ease-out;
+$player-icon-mobile: 24px;
+$player-icon-uhd: 42px;
+$player-transition-time: 0.3s;
+$player-icon-size: 13px;
+
+$metadata-top-position-mobile: 18px;
+$metadata-top-position-tablet: 25px;
+$metadata-top-position-desktop: 58px;
+$metadata-top-position-uhd: 60px;
+
+$scrubber-color: rgba(216, 216, 216, 0.6);
+
+$scrubber-margin-mobile: 25px;
+$scrubber-margin-tablet: 30px;
+$scrubber-margin: 30px;
+
+$scrubber-height-mobile: 6px;
+$scrubber-height-desktop: 6px;
+$scrubber-mobile-thumb-size: 25px;
+$scrubber-thumb-size: 16px;
+$scrubber-thumb-hover-size: 22px;
+$scrubber-border-radius: 4px;
+
+$player-padding-mobile: 30px;
+$player-meta-padding-mobile: 16px;
+$player-padding-tablet: 30px;
+$player-padding-desktop: 50px;
+$player-padding-uhd: 60px;
+
+$linear-player-screen-icon-mobile: 79px;
+$linear-player-screen-icon-tablet: 99px;
+$linear-player-screen-icon-desktop-fullscreen: 198px;
+
+$linear-player-screen-icon-svg-mobile: 33px;
+$linear-player-screen-icon-svg-tablet: 43px;
+$linear-player-screen-icon-svg-desktop-fullscreen: 78px;
+
+$player-controls-height: 60px;
+$player-controls-top-padding: 49px;
+$player-controls-bottom-padding: 23px;
+
+$player-padding-height: percentage(9/16);
+
+$player-touch-area-height-percentage: 20%;
+$player-touch-area-tablet-fullscreen: 30%;
+$player-touch-area-mobile-fullscreen: 35%;
+$player-touch-fwd-rwd-ratio: 2;
+$player-touch-ctl-ratio: 1;
+$player-touch-btn-margin-mobile: 50px;
+$player-touch-btn-margin-tablet: 80px;
+$player-touch-btn-margin-desktop: 125px;
+
+$custom_wide_desktop: 1820px;

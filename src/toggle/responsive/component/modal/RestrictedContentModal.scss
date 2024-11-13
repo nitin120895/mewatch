@@ -1,0 +1,131 @@
+@import "shared/style/modules";
+
+@mixin restricted-modal-from-tablet() {
+	.restricted-content-modal,
+	.restricted-content-modal-anonymous {
+		&-underage.dialog {
+			padding: 40px 87px;
+			width: 70%;
+			max-width: 600px;
+
+			> .cta-btn {
+				margin-top: 40px;
+			}
+
+			&.confirmation-dialog .cta-btn--secondary {
+				margin-left: 20px;
+			}
+		}
+
+		&__buttons {
+			padding-top: 40px;
+		}
+
+		&__description {
+			padding-top: 20px;
+		}
+	}
+}
+
+.restricted-content-modal-underage.dialog,
+.restricted-content-modal-anonymous-underage.dialog {
+	width: 90%;
+	max-width: 534px;
+	max-height: 402px;
+	padding: 30px 20px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.confirmation-dialog__content {
+		margin-top: 0;
+	}
+
+	.dialog__close-btn {
+		color: $color__black;
+	}
+
+	.restricted-content-modal {
+		&__title {
+			font-size: 24px;
+			padding: 0;
+			line-height: 1.17;
+		}
+
+		&__description {
+			line-height: 1.5;
+		}
+	}
+
+	> .cta-btn {
+		margin-top: 20px;
+	}
+}
+
+.restricted-content-modal,
+.restricted-content-modal-anonymous {
+	&-underage {
+		.overlay {
+			width: 100%;
+		}
+
+		.restricted-content-modal__button {
+			width: 170px;
+			margin: 0 0 10px;
+			padding: 0 28px;
+		}
+
+		.confirmation-dialog .cta-btn--secondary {
+			margin-left: 0;
+		}
+	}
+
+	.confirmation-dialog__content {
+		margin-top: 0;
+	}
+
+	&__icon {
+		margin: 0 auto 12px;
+	}
+
+	&__description {
+		color: $color__grey;
+		text-align: center;
+		white-space: normal;
+		padding-top: 10px;
+	}
+
+	&__title {
+		margin-bottom: 0;
+	}
+
+	&__buttons {
+		padding-top: 30px;
+	}
+}
+
+.restricted-content-modal-anonymous-underage {
+	.confirmation-dialog__buttons {
+		display: none;
+	}
+}
+
+@include mq($from: phablet) {
+	.restricted-content-modal-underage,
+	.restricted-content-modal-anonymous-underage {
+		.confirmation-dialog .cta-btn--secondary {
+			margin-left: 20px;
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: portrait)") {
+	@include restricted-modal-from-tablet();
+}
+
+@include mq($from: laptop) {
+	@include restricted-modal-from-tablet();
+}

@@ -1,0 +1,47 @@
+@import "shared/style/modules";
+
+.resume-progress {
+	&--has-title &__info {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&--no-title {
+		display: flex;
+		align-items: center;
+	}
+
+	&--no-title &__info {
+		order: 1;
+	}
+
+	&__title {
+		font-size: 12px;
+		color: $color__white;
+	}
+
+	&__bar {
+		position: relative;
+		flex: 1 0 auto;
+		background-color: $color__grey--dark;
+		height: 3px;
+	}
+
+	&__value {
+		background-color: $color__primary;
+		height: 100%;
+	}
+
+	&__time {
+		margin-left: 10px;
+		color: $color__grey--warm;
+		font-size: 12px;
+		font-family: $font-family-heading;
+	}
+}
+
+@include mq($from: tablet) {
+	.resume-progress__title {
+		font-size: 14px;
+	}
+}

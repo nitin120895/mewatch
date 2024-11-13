@@ -1,0 +1,17 @@
+@import "shared/style/modules";
+
+.a2-subscription-plan {
+	word-wrap: break-word;
+	@include mq($until: phablet) {
+		margin-top: 0;
+	}
+
+	@include mq($from: tablet) {
+		max-width: percentage(1/3);
+	}
+
+	&__price,
+	&__period {
+		display: inline-block;
+	}
+}

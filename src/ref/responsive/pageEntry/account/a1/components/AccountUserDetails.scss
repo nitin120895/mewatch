@@ -1,0 +1,125 @@
+@import "shared/style/modules";
+
+.a1-user {
+	&__details {
+		flex-basis: 100%;
+		order: 2;
+		justify-content: flex-start;
+		padding-bottom: 25px;
+		color: $color__black;
+
+		@include mq($from: laptop) {
+			order: 3;
+			flex-basis: 66%;
+			min-width: 620px;
+			margin-bottom: 0;
+		}
+	}
+
+	&__name {
+		font-weight: bold;
+		font-size: 16px;
+		margin-bottom: -10px;
+		color: $color__grey--dark;
+	}
+
+	&__verification {
+		margin-bottom: 0;
+		display: flex;
+		align-items: center;
+		line-height: 1.45em;
+		flex-wrap: wrap;
+	}
+
+	&__email {
+		display: inline-block;
+		width: auto;
+		margin-right: 70px;
+		line-height: 1.45em;
+		margin-top: 10px;
+	}
+
+	&__message {
+		margin-right: 20px;
+		color: $color__grey--dark;
+		line-height: 1.45em;
+		display: flex;
+		margin-top: 10px;
+
+		&--failed {
+			color: $color__error;
+			margin-right: 20px;
+		}
+
+		&--link {
+			color: $color__primary;
+			font-weight: bold;
+			cursor: pointer;
+			display: inline-block;
+		}
+	}
+
+	&__sentBlock,
+	&__failedBlock {
+		display: flex;
+		flex-wrap: wrap;
+
+		> span {
+			margin-top: 10px;
+		}
+	}
+
+	&__icon-failed {
+		font-size: 18px;
+		font-weight: bold;
+		margin-right: 10px;
+	}
+
+	&__tick-positioner {
+		display: inline-block;
+		margin-right: 5px;
+		position: relative;
+		top: -3px;
+		height: 20px;
+	}
+
+	&__spinner {
+		display: inline-block;
+		position: relative;
+		margin-right: 8px;
+		width: 15px;
+		height: 15px;
+		top: 3px;
+
+		.spinner {
+			height: 15px;
+		}
+	}
+
+	&__send-tick {
+		color: $color__success;
+		margin-right: 4px;
+		display: inline-block;
+	}
+
+	&__link {
+		color: $color__primary;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	&__sent {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	&__verified {
+		display: inline-block;
+		color: $color__grey--dark;
+	}
+
+	&__sending {
+		display: inline-block;
+		color: $color__grey--dark;
+	}
+}

@@ -1,0 +1,32 @@
+@import "shared/style/modules";
+
+.payment-method-status {
+	display: flex;
+	margin-right: 10px;
+	font-style: italic;
+	color: rgba($color__black, 0.5);
+
+	// current design hides "Expiring soon" and "Expired" info on mobile
+	&__expired,
+	&__expiring-soon {
+		@include mq($until: phablet) {
+			display: none;
+		}
+	}
+	&__help {
+		margin-left: 20px;
+	}
+
+	.help-circle__content {
+		@include mq($until: tablet) {
+			left: auto;
+			right: -14px;
+			transform: translateX(0);
+
+			&:after {
+				left: auto;
+				right: 10px;
+			}
+		}
+	}
+}

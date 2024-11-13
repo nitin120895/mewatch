@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.chd2 {
+	.scrollable {
+		.arrow {
+			height: calc(100% - #{$channel-rails-metadata-height});
+		}
+
+		.arrow__icon {
+			top: 0;
+		}
+	}
+
+	&__title {
+		user-select: none;
+	}
+
+	&__item {
+		cursor: pointer;
+	}
+}

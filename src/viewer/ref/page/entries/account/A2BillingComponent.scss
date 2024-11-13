@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.a2-section-description {
+	margin: 50px 0 10px;
+	color: #999;
+
+	// fighting against generic styles to allow for the title to be close to the component
+	&:first-child {
+		margin-bottom: -30px;
+
+		@include mq(desktop) {
+			margin-bottom: -50px;
+		}
+	}
+}
+
+// giving some space to those components
+.a2-page-wrapper {
+	padding-top: 60px;
+	padding-bottom: 60px !important;
+}

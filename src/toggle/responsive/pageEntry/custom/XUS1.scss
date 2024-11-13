@@ -1,0 +1,187 @@
+@import "shared/style/modules";
+
+@mixin tablet {
+	& &__title {
+		font-size: 32px;
+	}
+
+	&__list-item {
+		margin: 14px 0;
+	}
+
+	.scrollable {
+		&__pagination {
+			padding: 20px 0 25px;
+		}
+
+		&__bullet {
+			$size: 10px;
+			width: $size;
+			height: $size;
+		}
+
+		&__bullet.margin-left {
+			margin-left: 24px;
+		}
+	}
+}
+
+@mixin no-image {
+	justify-content: center;
+
+	.xus1 {
+		&__caption {
+			margin-left: 0;
+		}
+	}
+}
+
+.xus1 {
+	&__item {
+		position: relative;
+		display: inline-flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		padding-bottom: 2em;
+		overflow-y: auto;
+		vertical-align: top;
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		&::-webkit-scrollbar {
+			/* WebKit */
+			width: 0;
+			height: 0;
+		}
+	}
+
+	& &__title {
+		margin: 16px 0;
+		font-size: 20px;
+		white-space: normal;
+		color: $color__white;
+	}
+
+	&__image {
+		width: 100%;
+		flex-shrink: 0;
+	}
+
+	&__list {
+		padding: 0;
+		list-style: none;
+		white-space: normal;
+		color: $color__white;
+	}
+
+	&__list-item {
+		position: relative;
+		margin: 12px 0;
+		padding-left: 16px;
+		font-size: 16px;
+		line-height: 1.25;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 5px;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: $color__white;
+		}
+		&:last-child {
+			padding-bottom: 20px;
+		}
+	}
+
+	&.scrollable {
+		height: 100%;
+	}
+
+	.scrollable {
+		&__container {
+			max-height: 100%;
+			height: 100%;
+		}
+
+		&__pagination,
+		&__no-pagination-spacer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			padding: 10px;
+			background: linear-gradient(to top, $color__black 60%, transparent);
+			text-align: center;
+		}
+
+		&__no-pagination-spacer {
+			min-height: 32px;
+		}
+
+		&__bullet {
+			$size: 6px;
+			border-radius: 50%;
+			display: inline-block;
+			width: $size;
+			height: $size;
+			background: $color__grey;
+
+			&.current-index {
+				background: $color__white;
+			}
+
+			&.margin-left {
+				margin-left: 12px;
+			}
+		}
+	}
+
+	@include mq($from: phoneLandscape, $and: "(orientation: landscape)") {
+		&__item {
+			flex-direction: row;
+			align-items: flex-start;
+			&--no-image {
+				@include no-image();
+			}
+		}
+
+		&__image {
+			width: 40%;
+		}
+
+		& &__title {
+			margin-top: 0;
+		}
+
+		&__caption {
+			width: 48%;
+			margin-left: 20px;
+		}
+	}
+
+	@include mq($from: tablet, $and: "(orientation: portrait)") {
+		@include tablet();
+
+		&__item {
+			padding: 0 12px;
+		}
+
+		& &__title {
+			margin: 20px 0;
+		}
+	}
+
+	@include mq($from: tabletLandscape, $and: "(orientation: landscape)") {
+		@include tablet();
+
+		& &__title {
+			margin-bottom: 20px;
+		}
+
+		&__item--no-image {
+			@include no-image();
+		}
+	}
+}

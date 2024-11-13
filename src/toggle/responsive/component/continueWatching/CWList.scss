@@ -1,0 +1,58 @@
+@import "shared/style/modules";
+
+$single-line-metadata-height: 25px;
+$double-line-metadata-height: 45px;
+$single-line-continue-metadata-height: 40px;
+$double-line-continue-metadata-height: 84px;
+
+@mixin arrows-style($height, $secondaryHeight) {
+	&.has-secondary {
+		.arrow {
+			height: calc(100% - #{$secondaryHeight});
+		}
+	}
+}
+
+.cw-list {
+	position: relative;
+	overflow: visible;
+	z-index: 9;
+	@include arrows-style($single-line-continue-metadata-height, $double-line-continue-metadata-height);
+
+	// When wrapping we want to add the gutter spacing between rows
+	&.row {
+		.cw-list__item {
+			margin-bottom: get-gutter();
+		}
+	}
+
+	// When peeking we want to overflow horizontally and prevent wrapping
+	&.row-peek {
+		// All the continue-watching-item inside is inline-block and has a default line-height, need to clear it
+		line-height: 0.9;
+
+		.cw-list__item {
+			float: none;
+		}
+	}
+
+	&.title-below {
+		@include arrows-style($single-line-metadata-height, $double-line-metadata-height);
+	}
+
+	.arrow {
+		height: 79%;
+	}
+}
+
+// Shift continue-watching-item list slightly more to the right on tablet portrait view
+@include mq($from: tablet, $until: laptop) {
+	.branded-image {
+		.cw-list__item.col-tablet-offset-12 {
+			margin-left: 55%;
+		}
+	}
+}
+
+// When wrapping we want to add the gutter spacing between rows
+@include generate-breakpoint-gutters(".cw-list.row .cw-item", ("margin-bottom"), (1));

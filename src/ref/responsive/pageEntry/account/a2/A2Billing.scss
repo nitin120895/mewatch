@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.a2 {
+	@include mq($from: tablet) {
+		display: flex;
+		flex: 0 1 100%;
+		justify-content: left;
+	}
+
+	&__no-plan {
+		margin-bottom: 0;
+	}
+}

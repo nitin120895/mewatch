@@ -1,0 +1,59 @@
+@import "shared/style/modules";
+@import "~baseguide/scss/baseguide/components/buttons";
+
+.accordion-components {
+	&__title {
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+	&__accordion-example {
+		padding-top: 20px;
+	}
+	&__accordion-example:not(:last-child) {
+		padding-bottom: 20px;
+		border-bottom: 1px solid grey;
+	}
+	&__buttons {
+		margin: 20px 0;
+		> :not(:last-child) {
+			margin-right: 20px;
+		}
+	}
+
+	&__accordion-item-example {
+		padding: 20px;
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+		&:first-child {
+			background-color: red;
+			color: white;
+		}
+		&:nth-child(2) {
+			background-color: yellow;
+			color: black;
+		}
+		&:nth-child(3) {
+			background-color: green;
+			color: white;
+		}
+	}
+
+	&__big-block {
+		padding: 50px;
+	}
+
+	&__custom-open {
+		transition-duration: 0.5s;
+		transition-timing-function: $easeOutBack;
+		transition-property: height, padding-top, padding-bottom, border-top-width, border-bottom-width, margin-top,
+			margin-bottom;
+	}
+
+	&__custom-close {
+		transition-duration: 0.5s;
+		transition-timing-function: $easeInBack;
+		transition-property: height, padding-top, padding-bottom, border-top-width, border-bottom-width, margin-top,
+			margin-bottom;
+	}
+}

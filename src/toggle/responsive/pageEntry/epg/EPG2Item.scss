@@ -1,0 +1,373 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+
+.epg2-item {
+	padding: 10px;
+	width: 100vw;
+	height: 140px;
+	cursor: pointer;
+	background-color: #0d0d0d;
+	border-bottom: 1px solid $color__grey--dark;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+	}
+
+	&--on-now {
+		background-color: $color__grey--dark;
+		border-left: 5px solid $color__primary;
+
+		.epg2-item__time {
+			width: 143px;
+			flex: 0 0 143px;
+			font-weight: bold;
+		}
+	}
+
+	&--past,
+	&--future {
+		&:hover {
+			background-color: $color__black2;
+		}
+
+		&.disabled {
+			&:hover {
+				cursor: default;
+			}
+		}
+	}
+
+	&__time {
+		font-size: 16px;
+		margin-bottom: 14px;
+	}
+
+	&__metadata {
+		display: flex;
+		flex: 1 1;
+		flex-direction: row;
+
+		&__details {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+			min-width: 0;
+			width: 100%;
+		}
+
+		.add-to-calendar {
+			display: none;
+		}
+
+		&__title {
+			font-size: 18px;
+
+			div {
+				line-height: 1.45;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.text-clip {
+				@include block-with-cut-rows(18, 1.45, 2, 0);
+			}
+		}
+
+		&__channel-title {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		&__additional-information {
+			opacity: 0.6;
+		}
+
+		&__delimiter {
+			margin: 0 5px;
+		}
+
+		&__classification {
+			padding: 1px 4px;
+			border: 1px solid $color__grey;
+			font-size: 11px;
+		}
+
+		&__description {
+			margin-top: 10px;
+			max-width: 90%;
+			height: 60px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		&__button {
+			width: 160px;
+			height: 28px;
+			position: absolute;
+			right: 0;
+			top: 10px;
+			cursor: pointer;
+			border: none;
+
+			.svg-icon {
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+			}
+		}
+
+		&__on-demand,
+		&__start-over {
+			display: inline-flex;
+			align-items: center;
+		}
+
+		&__on-demand {
+			margin-bottom: 20px;
+		}
+
+		&__on-demand:hover {
+			color: $color__primary--hover;
+		}
+
+		&__on-demand-label,
+		&__start-over-label {
+			display: none;
+		}
+
+		&__image {
+			display: none;
+		}
+	}
+
+	.progress-bar {
+		position: absolute;
+		bottom: 13px;
+		left: 10px;
+		height: 3px;
+		right: 30px;
+		background-color: #3f3f3f;
+
+		&__bar {
+			background-color: $color__link--hover;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.epg2-item {
+		.add-to-calendar {
+			.calendar-icon {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		.error {
+			padding-right: 95px;
+		}
+
+		&__time {
+			margin-right: 5px;
+			margin-bottom: 0px;
+		}
+
+		&--on-now {
+			position: relative;
+		}
+		&__metadata {
+			&__title {
+				padding-right: 30px;
+			}
+			&__button {
+				position: relative;
+				display: inline-flex;
+				top: 0;
+				width: 50px;
+				align-self: center;
+				flex-direction: column;
+			}
+
+			&__start-over {
+				margin: 0 auto;
+			}
+			&__on-demand {
+				margin: 0 auto 20px;
+			}
+			&__description {
+				display: none;
+			}
+
+			.reminder {
+				display: none;
+			}
+		}
+
+		&__partner-logo {
+			display: none;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.epg2-item {
+		display: flex;
+		height: 160px;
+		padding: 0;
+		opacity: 1;
+
+		&:first-child {
+			margin-top: $header-height-small;
+		}
+
+		&__time {
+			width: 135px;
+			text-align: center;
+			line-height: 160px;
+			flex: 0 0 148px;
+		}
+
+		&__container {
+			.reminder {
+				display: none;
+			}
+
+			.add-to-calendar {
+				display: none;
+			}
+		}
+
+		&__metadata {
+			padding: 20px 10px;
+
+			.add-to-calendar {
+				display: block;
+			}
+
+			&__title {
+				max-width: 90%;
+				margin-bottom: 13px;
+			}
+
+			&__on-demand,
+			&__start-over {
+				margin-bottom: 28px;
+			}
+
+			&__image-placeholder {
+				display: inline-flex;
+				width: 215px;
+				height: 100%;
+				margin-right: 20px;
+				position: relative;
+				flex: 0 0 215px;
+				background-color: $color__black5;
+				cursor: pointer;
+
+				.progress-bar {
+					bottom: 3px;
+					right: 3px;
+					left: 3px;
+					height: $progress-bar-desktop-height;
+				}
+
+				.progress-bar__bar {
+					height: $progress-bar-desktop-height;
+				}
+			}
+
+			&__image {
+				display: block;
+				width: 100%;
+
+				&--logo {
+					margin: auto;
+					width: auto;
+					height: 90px;
+				}
+			}
+
+			&__description {
+				display: block;
+			}
+
+			&__button {
+				position: relative;
+				right: 18px;
+				display: inline-flex;
+				align-self: center;
+				margin-left: auto;
+				height: 100%;
+				top: 0;
+				flex-direction: column;
+
+				.svg-icon {
+					width: 30px;
+					height: 30px;
+				}
+			}
+
+			&__start-over {
+				.svg-icon {
+					width: 24px;
+					height: 24px;
+				}
+			}
+
+			&__channel-title {
+				margin: auto;
+				font-size: 18px;
+				text-align: center;
+				opacity: 0.7;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.epg2-item {
+		&:first-child {
+			margin-top: $header-height-large;
+		}
+
+		&__container {
+			.add-to-calendar {
+				display: none;
+			}
+
+			.reminder {
+				display: none;
+			}
+		}
+
+		&__metadata {
+			&__button {
+				width: auto;
+				min-width: 160px;
+				right: 50px;
+			}
+
+			&__on-demand-label,
+			&__start-over-label {
+				display: inline-block;
+				white-space: nowrap;
+				margin-left: 6px;
+			}
+
+			&__start-over {
+				.svg-icon {
+					width: 26px;
+					height: 26px;
+				}
+			}
+		}
+	}
+}

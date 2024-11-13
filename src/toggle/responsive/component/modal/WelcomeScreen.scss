@@ -1,0 +1,219 @@
+@import "shared/style/modules";
+
+.GUIDING_TIP_MODAL {
+	.welcome-screen {
+		position: relative;
+		display: flex;
+		height: 100vh;
+		width: 100vw;
+		padding: 0;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		flex-direction: column;
+		justify-content: center;
+		overflow: auto;
+
+		&__button {
+			z-index: $depth-header;
+			cursor: pointer;
+			margin-top: 30px;
+
+			button {
+				width: 200px;
+				height: 40px;
+				font-size: 16px;
+			}
+		}
+
+		&__content {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&__description {
+			white-space: normal;
+			width: 320px;
+			font-size: 14px;
+			line-height: 1.43;
+			z-index: $depth-header;
+		}
+
+		&__images {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			&--glow {
+				width: 250px;
+				height: 14px;
+			}
+
+			&--logo {
+				width: 191px;
+				height: 38px;
+				margin: 16px 0 27px;
+			}
+		}
+
+		&__title {
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		&__background-images {
+			img {
+				width: 150px;
+				height: 276px;
+				position: absolute;
+			}
+
+			&--rect1 {
+				top: 0;
+				right: 0;
+			}
+
+			&--rect2 {
+				bottom: 0;
+				left: 0;
+			}
+		}
+	}
+}
+
+@include mq($until: laptop, $and: "(orientation: landscape)") {
+	.GUIDING_TIP_MODAL {
+		.welcome-screen {
+			&__button {
+				margin-top: 30px;
+			}
+
+			&__background-images {
+				.welcome-screen__background-images--rect1 {
+					width: 132px;
+					height: 243px;
+				}
+
+				.welcome-screen__background-images--rect2 {
+					width: 140px;
+					height: 243px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 720px) and (min-height: 720px) {
+	.GUIDING_TIP_MODAL {
+		.welcome-screen {
+			&__images {
+				&--logo {
+					width: 326px;
+					height: 62px;
+					margin-bottom: 58px;
+				}
+
+				&--glow {
+					width: 357px;
+					height: 18px;
+				}
+			}
+
+			&__description {
+				font-size: 16px;
+				width: 347px;
+				line-height: 1.75;
+			}
+
+			&__title {
+				font-size: 36px;
+			}
+
+			&__background-images {
+				.welcome-screen__background-images--rect1 {
+					width: 307px;
+					height: 565px;
+				}
+
+				.welcome-screen__background-images--rect2 {
+					width: 307px;
+					height: 535px;
+				}
+			}
+
+			&__button {
+				margin-top: 60px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 720px) and (min-height: 720px) and (orientation: landscape) {
+	.GUIDING_TIP_MODAL {
+		.welcome-screen {
+			&__background-images {
+				.welcome-screen__background-images--rect1 {
+					width: 271px;
+					height: 499px;
+				}
+
+				.welcome-screen__background-images--rect2 {
+					width: 286px;
+					height: 499px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.GUIDING_TIP_MODAL {
+		.welcome-screen {
+			&__title {
+				font-size: 48px;
+			}
+
+			&__images {
+				&--logo {
+					width: 592px;
+					height: 110px;
+					margin: 39px 0 79px;
+				}
+
+				&--glow {
+					width: 525px;
+					height: 36px;
+				}
+			}
+
+			&__description {
+				font-size: 24px;
+				line-height: 1.33;
+				width: 540px;
+			}
+
+			&__button {
+				margin-top: 80px;
+				button {
+					width: 170px;
+					height: 50px;
+					font-size: 18px;
+				}
+			}
+
+			&__background-images {
+				.welcome-screen__background-images--rect1 {
+					width: 362px;
+					height: 665px;
+				}
+
+				.welcome-screen__background-images--rect2 {
+					width: 381px;
+					height: 664px;
+				}
+			}
+		}
+	}
+}

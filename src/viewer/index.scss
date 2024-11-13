@@ -1,0 +1,447 @@
+/**
+	Styles related to component viewer UI.
+	Component page styles are declared within index-iframe.scss instead.
+**/
+
+// Colours
+$white: #fff;
+$grey-light-2: #ccc;
+$grey-light-1: #999;
+$grey-mid-2: #666;
+$grey-mid-1: #444;
+$grey-dark-2: #333;
+$grey-dark-1: #222;
+$cta-color-hover: #d81262;
+$cta-color-active: #eee;
+$cta-color-default: $grey-light-1;
+$depth-panel-overlays: 1;
+
+// Layout
+$header-height: 50px;
+
+// Use box sizing globally
+/* stylelint-disable selector-max-universal */
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+/* stylelint-enable */
+html {
+	box-sizing: border-box;
+	// Allow horizontal overflow scrolling
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+html,
+body,
+#root,
+.app {
+	// Fill the viewport height
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $grey-light-2;
+	color: $white;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	// Allow the width to exceed to the viewport.
+	// Necessary to allow selecting a breakpoint greater than the viewport (e.g. on small screens).
+	display: inline-block;
+	min-width: 100%;
+}
+
+img,
+svg {
+	// Ensure we don't render white space below the image
+	display: block;
+	height: auto;
+}
+
+button {
+	appearance: none;
+	background-color: inherit;
+	color: inherit;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	&:disabled {
+		cursor: default;
+	}
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+li {
+	margin: 5px 0;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.header {
+	height: $header-height;
+	background-color: $grey-mid-1;
+	border-bottom: 1px solid $grey-dark-1;
+	padding: 0 30px;
+	flex: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// Navigation Button
+.menu {
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
+	background-color: $grey-dark-2;
+	color: $white;
+	border-radius: 5px;
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		color: $cta-color-hover;
+	}
+
+	&-button {
+		flex: none;
+		align-self: center;
+	}
+}
+
+// Viewport Controls
+.controls {
+	display: none;
+	height: 34px;
+	flex: 1 1 auto;
+	margin: 0 20px;
+	font-size: 12px;
+	flex-direction: column;
+	justify-content: center;
+}
+
+// Breakpoint Range Slider
+.bp-slider {
+	display: inline-block;
+	&__title {
+		color: $grey-light-1;
+	}
+	&__control {
+		color: $grey-light-2;
+		> input {
+			margin: 0 10px;
+		}
+	}
+}
+
+// Breakpoint Buttons
+.breakpoints {
+	display: none;
+	flex: none;
+	align-items: flex-end;
+	height: 34px;
+
+	.device {
+		cursor: pointer;
+		fill: $cta-color-default;
+		path {
+			fill: inherit;
+		}
+		&:hover {
+			fill: $cta-color-hover;
+		}
+		&--active {
+			fill: $cta-color-active;
+		}
+		// Adjust iconography spacing
+		&--unconstrained {
+			margin-right: 4px;
+		}
+		&--laptop {
+			margin-left: 1px;
+			margin-right: 4px;
+		}
+		&--uhd {
+			margin-left: 7px;
+		}
+	}
+}
+
+// The sandbox area fills the browser window and constrains the page/iframe viewport
+.sandbox {
+	background-color: $grey-dark-1;
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	position: relative;
+}
+
+.nav {
+	$sidePanelMaxWidth: 270px;
+	z-index: -1;
+	position: fixed;
+	top: $header-height;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	pointer-events: none;
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 0.2s cubic-bezier(0, 0, 0.3, 1);
+	}
+
+	&--animatable {
+		z-index: -1;
+		.nav__panel {
+			transition: transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+		}
+	}
+
+	&--visible {
+		pointer-events: auto;
+		z-index: $depth-panel-overlays;
+		&::before {
+			opacity: 1;
+		}
+		&.nav--animatable {
+			.nav__panel {
+				transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+			}
+		}
+		.nav__panel {
+			transform: none;
+		}
+	}
+
+	&__close-btn {
+		// The close button is ordered first but needs to be positioned
+		// on top so that it isn't blocked from being clicked
+		z-index: $depth-panel-overlays + 1;
+		position: absolute;
+		pointer-events: auto;
+		cursor: default;
+		right: 0;
+		min-width: calc(100vw - #{$sidePanelMaxWidth});
+		height: 100%;
+		background: transparent;
+	}
+
+	&__panel--left + .nav__close-btn {
+		right: 0;
+	}
+
+	&__panel {
+		position: fixed;
+		width: 70%;
+		max-width: $sidePanelMaxWidth;
+		top: $header-height;
+		bottom: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: $grey-mid-2;
+		border-right: 1px solid $grey-dark-1;
+		box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
+		backface-visibility: hidden;
+		transform: translateX(-102%);
+		will-change: transform;
+	}
+
+	&__link {
+		color: $grey-light-2;
+		text-decoration: none;
+		user-select: none;
+		&--app {
+			margin: 5px 0;
+		}
+		&:hover {
+			color: $cta-color-active;
+			text-decoration: underline;
+		}
+		&--active {
+			color: $white;
+			pointer-events: none;
+		}
+	}
+}
+
+.toc {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+
+	&__heading {
+		&:first-child {
+			margin-top: 0;
+		}
+		margin-top: 7px;
+		margin-bottom: 7px;
+		display: inline-block;
+		font-size: 15px;
+		color: $grey-dark-2;
+	}
+
+	&__links {
+		color: $cta-color-default;
+		overflow-y: auto;
+	}
+
+	&__link {
+		color: $grey-light-2 !important;
+		text-decoration: none !important;
+	}
+}
+
+/*
+ * Navigation Item in Sidenav
+ */
+.nav-item {
+	position: relative;
+
+	&__link {
+		display: inline-block;
+		margin: 5px 0 5px 30px;
+		color: $grey-light-2;
+		text-decoration: none;
+
+		&:hover {
+			color: $cta-color-active;
+			text-decoration: underline;
+		}
+		&--active {
+			color: $white;
+			pointer-events: none;
+		}
+	}
+}
+
+/*
+ * Sub-navigation section in Sidenav
+ */
+.subnav {
+	&__expand {
+		display: block;
+		position: absolute;
+		top: 5px;
+		left: -20px;
+		margin: 0;
+		width: 15px;
+		height: 16px;
+		line-height: 0;
+		border: 1px solid $grey-light-1;
+		cursor: pointer;
+
+		&:hover {
+			color: $white;
+			border-color: $white;
+		}
+	}
+
+	&__list {
+		display: none;
+	}
+
+	&--expanded {
+		> .subnav__list {
+			display: block;
+		}
+	}
+}
+
+// Resizable viewport for testing responsive layouts
+.viewport {
+	will-change: width;
+	transition: width 0.4s ease-out;
+	width: 100%;
+	margin: 0 auto;
+
+	// Viewport metadata
+	&__header {
+		padding: 0 15px;
+		margin-top: 20px;
+		height: 2em;
+		line-height: 2em;
+		flex: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+
+		.meta {
+			font-size: 12px;
+			&__label {
+				color: $grey-light-1;
+			}
+			&__value {
+				color: $grey-light-2;
+			}
+			&--capitalize {
+				text-transform: capitalize;
+			}
+		}
+	}
+
+	// Viewport area
+	&__window {
+		margin-bottom: 20px;
+		background-color: $grey-light-2;
+		// We rely on flex-grow to ensure it fills the available space
+		// however we override the dimensions at runtime to supply an explicit
+		// pixel value.
+		// These inline dimenions have a higher specificity which negates the
+		// flex-grow once applied.
+		// This is necessary to allow our iframe to fill the available height
+		// since HTML5 no longer supports percentage dimensions for iframes.
+		flex: 1 1 auto;
+
+		> iframe {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+// If the screen is large enough we show the full breakpoint user interface.
+@media (min-width: 510px) {
+	.controls,
+	.breakpoints {
+		display: flex;
+	}
+	.viewport {
+		width: 90%;
+		&__header {
+			padding: 0;
+		}
+	}
+}

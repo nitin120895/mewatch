@@ -1,0 +1,52 @@
+@media (min-width: 0em) {
+	div.hero-title-reset {
+		position: relative;
+		height: auto;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	h1.carousel-text__title-reset {
+		width: 100%;
+	}
+
+	p.carousel-text__tagline-reset {
+		margin-bottom: 5px;
+	}
+
+	p.carousel-text__badge-reset {
+		position: relative;
+		top: 0px;
+		margin-bottom: 5px;
+	}
+
+	h1.dh1-hero__title-reset {
+		position: relative;
+		bottom: auto;
+		padding-bottom: 0px;
+	}
+
+	div.d1-season-list__item-reset {
+		text-align: left;
+		margin-bottom: 5px;
+		width: 100%;
+	}
+
+	a.primary-nav__entry-link-reset {
+		justify-content: left;
+	}
+
+	div.dh1-hero__meta-block-reset {
+		width: 70px;
+	}
+
+	div.player-metadata__description-reset {
+		padding-left: 0px;
+	}
+
+	h4.player-metadata__title-reset {
+		text-indent: 0px;
+	}
+}

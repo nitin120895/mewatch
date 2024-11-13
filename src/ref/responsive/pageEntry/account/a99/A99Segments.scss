@@ -1,0 +1,26 @@
+@import "shared/style/modules";
+
+.a99 {
+	&__tag {
+		display: inline-block;
+		padding: 8px;
+		background-color: rgba($color__primary, 0.3);
+		border-radius: 8px;
+		margin: 0 8px 8px 0;
+		color: $color__black5;
+		max-width: 100%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	&__buttons {
+		margin-top: 10px;
+		display: flex;
+	}
+
+	&__instructions {
+		color: $color__black;
+		margin-bottom: 0;
+	}
+}

@@ -1,0 +1,114 @@
+@import "shared/style/modules";
+
+.toast-notifications {
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	opacity: 1;
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-right: 10px;
+
+	& + .passive-notification-manager {
+		top: unset;
+		margin-top: 10px;
+	}
+
+	@include mq($from: laptop) {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.notification {
+	border-radius: 4px;
+	box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.25);
+	background-color: $color__white;
+	color: $color__black;
+	font-size: 10px;
+	width: 100%;
+	max-width: 700px;
+	pointer-events: all;
+	position: relative;
+	padding: 9px 32px;
+	pointer-events: all;
+
+	a {
+		color: $color__notification-purple;
+		text-decoration: underline;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	p & p {
+		margin-top: 1.45em;
+	}
+
+	&__hint-icon {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		&:before {
+			content: "i";
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			border: 1px solid $color__notification-info-icon;
+			background-color: $color__notification-info-icon;
+			border-radius: 10px;
+			font-size: 16px;
+			line-height: 18px;
+			text-align: center;
+			color: $color__white;
+		}
+	}
+
+	&__close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 12px;
+
+		svg {
+			height: 10px;
+			width: 10px;
+		}
+
+		path {
+			stroke: $color__notification-purple;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.notification {
+		font-size: 16px;
+		padding: 16px 54px;
+
+		&__close-btn {
+			top: 8px;
+
+			svg {
+				height: 14px;
+				width: 14px;
+			}
+		}
+
+		&__hint-icon {
+			top: 16px;
+			left: 16px;
+
+			&:before {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+}
+
+.hide-toast-notifications .toast-notifications {
+	display: none;
+}

@@ -1,0 +1,25 @@
+@import "src/ref/tv/style/modules";
+
+.count-down-timer {
+	position: relative;
+	margin-left: 20px;
+	border-radius: 50px;
+	width: 100px;
+	height: 100px;
+	border: solid 4px $color__grey;
+
+	&__number {
+		font-size: 48px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	.timer-canvas {
+		overflow: visible;
+		max-width: initial;
+		height: auto;
+		margin: -5px 5px 5px -5px;
+	}
+}

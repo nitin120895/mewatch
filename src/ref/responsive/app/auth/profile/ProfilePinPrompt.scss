@@ -1,0 +1,27 @@
+.profile-pin-input {
+	text-align: center;
+
+	&__title {
+		font-size: 24px;
+		max-width: 405px;
+		font-weight: normal;
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+	}
+
+	&__pin {
+		margin-top: 48px;
+		display: inline-block;
+		width: 225px;
+		text-align: left;
+	}
+
+	&__pin-input {
+		text-align: center;
+	}
+
+	&__submit {
+		margin-right: 24px;
+	}
+}

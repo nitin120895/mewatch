@@ -1,0 +1,61 @@
+@import "shared/style/modules";
+
+.alert-modal {
+	background: transparent;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: $color__black3;
+
+	.dialog {
+		background: transparent;
+		box-shadow: none;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	& > :not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	.dialog-title {
+		color: $color__link--hover;
+		font-size: 28px;
+		font-weight: normal;
+		margin-bottom: 10px;
+	}
+
+	&__content {
+		font-size: 14px;
+		color: $color__white;
+		word-wrap: break-word;
+	}
+
+	&__button {
+		overflow: hidden;
+		margin-top: 40px;
+	}
+
+	&__primary-btn {
+		max-width: 100%;
+	}
+
+	@include mq($from: tablet) {
+		& > :not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include mq($from: laptop) {
+		.dialog-title {
+			font-size: 48px;
+		}
+
+		&__content {
+			font-size: 18px;
+		}
+	}
+}

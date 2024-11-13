@@ -1,0 +1,144 @@
+@import "shared/style/modules";
+@import "../_player-variables";
+
+$cast-button-hover-color: $player-button-hover-color;
+$cast-button-height: 44px;
+$cast-button-width: 47px;
+$cast-button-height-desktop: 44px - $player-button-mobile * 2;
+$cast-button-width-desktop: 47px - $player-button-mobile * 2;
+$cast-button-height-uhd: $player-icon-uhd + 11px;
+$cast-button-width-uhd: 44px;
+
+.cast-control {
+	display: flex;
+	position: absolute;
+	right: 48px;
+	top: -3px;
+
+	&.active {
+		right: 0;
+	}
+
+	&:hover .svg-icon {
+		fill: $cast-button-hover-color;
+		color: $cast-button-hover-color;
+	}
+
+	@include mq($from: phablet, $and: "(orientation: landscape)") {
+		right: 54px;
+	}
+
+	@include mq($from: uhd) {
+		right: 78px;
+		top: -5px;
+	}
+
+	&__connecting {
+		@for $i from 1 through 3 {
+			.arch-#{$i} {
+				animation: animation-#{$i} 1s infinite;
+			}
+		}
+
+		#boxfill {
+			opacity: 0;
+		}
+	}
+
+	&__disconnected {
+		#boxfill {
+			opacity: 0;
+		}
+	}
+
+	&__connected {
+		#boxfill {
+			opacity: 1;
+		}
+	}
+
+	&__noDevices {
+		display: none;
+	}
+
+	@keyframes animation-1 {
+		0% {
+			opacity: 1;
+		}
+		50%,
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	@keyframes animation-2 {
+		0%,
+		100% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes animation-3 {
+		0%,
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+.player-button--cast {
+	display: flex;
+	height: $cast-button-height;
+	width: $cast-button-width;
+}
+
+.player-button--cast.cast-button {
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+
+#google-cast-button {
+	--connected-color: $player-button-color;
+	--disconnected-color: $player-button-color;
+	border: none;
+	height: $cast-button-height;
+	opacity: 0;
+	padding: $player-button-mobile;
+	width: $cast-button-width;
+	position: absolute;
+
+	&:hover {
+		--disconnected-color: $cast-button-hover-color;
+		--connected-color: $cast-button-hover-color;
+	}
+
+	@include mq($from: desktop) {
+		padding: 0;
+	}
+}
+
+@include mq($from: desktop) {
+	.player-button--cast,
+	#google-cast-button {
+		height: $cast-button-height-desktop;
+		padding: 0;
+		width: $cast-button-width-desktop;
+	}
+}
+
+@include mq($from: uhd) {
+	.player-button--cast,
+	.player-button--cast .svg-icon,
+	#google-cast-button {
+		height: $cast-button-height-uhd;
+		width: $cast-button-width-uhd;
+	}
+}

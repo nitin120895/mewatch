@@ -1,0 +1,63 @@
+@import "shared/style/modules";
+
+.cta-toggle-btn {
+	background: transparent;
+	min-width: 40px;
+
+	&__icon {
+		transition: stroke 0.2s;
+		color: transparent;
+		stroke-linecap: round;
+		stroke-width: 2px;
+		stroke: $color__grey--light;
+		margin: 0 auto;
+		height: 26px;
+		width: 26px;
+		margin-bottom: 5px;
+	}
+
+	&__label {
+		$cta-button-line-height: 1.25em;
+
+		color: $color__grey--light;
+		cursor: inherit;
+		display: block;
+		font-size: 12px;
+		line-height: $cta-button-line-height;
+		margin-top: -($cta-button-line-height);
+		transition: color 0.2s;
+		visibility: hidden;
+		white-space: nowrap;
+		word-wrap: break-word;
+
+		&--static {
+			visibility: visible;
+		}
+	}
+
+	.svg-icon + &__label {
+		margin-top: 0;
+	}
+
+	&.active &__label {
+		visibility: hidden;
+		&--active {
+			visibility: visible;
+		}
+	}
+
+	&--hovered &__icon {
+		stroke: $color__white;
+	}
+
+	&--hovered &__label {
+		color: $color__white;
+	}
+
+	&--hovered.active &__label {
+		visibility: hidden;
+		&--active-hover {
+			visibility: visible;
+		}
+	}
+}

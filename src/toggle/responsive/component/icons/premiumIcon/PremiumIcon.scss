@@ -1,0 +1,67 @@
+@import "shared/style/modules";
+
+.premium-icon {
+	$widthDesktop: 45px;
+	$heightDesktop: 45px;
+	$width: 28px;
+	$height: 28px;
+
+	$offset: 0;
+
+	$offsetDesktop: -7px;
+	$offsetTablet: -5px;
+	$offsetMobile: -7px;
+
+	display: inline-block;
+	box-sizing: content-box;
+
+	fill: $color__white;
+	opacity: 0.698;
+
+	width: $width;
+	height: $height;
+
+	&--hero,
+	&--xh2,
+	&--dh1 {
+		margin-left: -11px;
+	}
+
+	&--dh1 {
+		display: block;
+	}
+
+	&--epg,
+	&--packshot {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: $offsetMobile;
+		margin-left: $offsetMobile;
+	}
+
+	@include mq($from: tablet) {
+		&--packshot {
+			margin-top: $offsetTablet;
+			margin-left: $offsetTablet;
+		}
+	}
+	@include mq($from: laptop) {
+		width: $widthDesktop;
+		height: $heightDesktop;
+
+		&--hero,
+		&--xh2,
+		&--dh1 {
+			margin-left: -15px;
+		}
+	}
+
+	@include mq($from: desktop) {
+		&--packshot,
+		&--epg {
+			margin-top: $offsetDesktop;
+			margin-left: $offsetDesktop;
+		}
+	}
+}

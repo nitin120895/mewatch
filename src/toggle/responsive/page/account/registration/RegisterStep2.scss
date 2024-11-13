@@ -1,0 +1,149 @@
+@import "shared/style/modules";
+
+.register-step2 {
+	min-height: 100vh;
+	font-family: $font-family-heading;
+	display: flex;
+	flex-direction: column;
+
+	&__header {
+		height: 97px;
+		background: $color__black3;
+		text-align: center;
+		background-color: $color__black3;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__logo {
+		height: 30px;
+		color: $color__white;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		flex-grow: 1;
+		width: 90%;
+		max-width: 331px;
+		margin: 20px auto;
+	}
+
+	&__form-title {
+		color: $color__black;
+		margin: 30px 0 20px;
+		font-size: 24px;
+		font-weight: bold;
+		line-height: 1.33;
+	}
+
+	&__form-text {
+		margin: 0;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	&__email {
+		margin: 0 0 20px;
+		overflow: hidden;
+		font-size: 16px;
+		line-height: 1.5;
+		text-overflow: ellipsis;
+	}
+
+	&__download-app-action {
+		margin-top: 40px;
+		padding-top: 26px;
+		border-radius: 8px;
+		background-color: $color__off-white;
+
+		a {
+			display: inline-block;
+		}
+
+		.download-title {
+			display: block;
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.download-button {
+			margin: 10px 10px 30px;
+			border-radius: 8px;
+
+			&.google-play-button {
+				width: 135px;
+				height: 40px;
+			}
+
+			&.apple-app-store-button {
+				width: 120px;
+				height: 40px;
+			}
+		}
+	}
+
+	&__success-tick {
+		$tick_color: rgba($color__black, 0.6);
+		width: 88px;
+		height: 88px;
+		margin: 0 auto;
+		border: solid 2px $tick_color;
+		border-radius: 50%;
+		position: relative;
+		&::after {
+			content: "";
+			position: absolute;
+			top: 31px;
+			left: 27px;
+			display: block;
+			height: 16px;
+			width: 32px;
+			border-left: solid 2px $tick_color;
+			border-bottom: solid 2px $tick_color;
+			transform: rotate(-49deg);
+		}
+	}
+
+	&__button {
+		margin-top: 10px;
+		height: 50px;
+		width: 100%;
+
+		.spinner {
+			margin: auto;
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.register-step2 {
+		&__header {
+			height: 150px;
+		}
+		&__logo {
+			height: 36px;
+		}
+		&__primary-action {
+			margin-top: 90px;
+		}
+		&__content {
+			justify-content: center;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.register-step2 {
+		&__header {
+			height: 210px;
+		}
+		&__logo {
+			height: 50px;
+		}
+	}
+}

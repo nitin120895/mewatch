@@ -1,0 +1,175 @@
+@import "shared/style/modules";
+@import "./Profile.scss";
+
+.personalization {
+	.profile-language-selection {
+		height: 100%;
+		&__choices {
+			.radio-button {
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+		}
+
+		&__container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.change-button {
+			margin-left: 40px;
+			font-size: 14px;
+			font-weight: bold;
+			color: $color__primary;
+			cursor: pointer;
+		}
+
+		.label-primary {
+			line-height: 1.29;
+		}
+	}
+
+	.profile-playback-settings {
+		&__content {
+			margin-bottom: 0;
+
+			&.flex-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+
+		&__description {
+			margin: 10px 0 20px;
+			color: $color__grey--warm;
+		}
+
+		&__choices {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 20px 0 0;
+
+			label {
+				position: relative;
+				width: 150px;
+			}
+
+			input {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+
+		&__subtitle,
+		&__preferred {
+			margin-top: 10px;
+			font-weight: bold;
+			font-size: 16px;
+			color: $color__grey--dark;
+		}
+
+		.font-weight-normal {
+			font-weight: normal;
+		}
+
+		.settings-button {
+			margin-left: 40px;
+			font-size: 14px;
+			font-weight: bold;
+			color: $color__primary;
+			cursor: pointer;
+		}
+	}
+
+	.profile-personalisation {
+		position: relative;
+		.account-entry__title {
+			font-size: 20px;
+			max-width: 200px;
+		}
+		&__label {
+			color: $color__grey--dark;
+			font-size: 14px;
+			margin: 20px 0;
+		}
+
+		&__preferred {
+			padding: 25px 0 14px;
+			font-size: 16px;
+			color: $color__black3;
+			& + .profile-personalisation__categories .personalisation-step1__categories {
+				padding-top: 0;
+			}
+		}
+
+		&__container {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: space-between;
+			margin-top: 10px;
+
+			.edit-button {
+				position: absolute;
+				top: 0;
+				right: 0;
+				min-width: 100px;
+				font-size: 14px;
+				font-weight: bold;
+			}
+		}
+
+		.personalisation-step1 {
+			padding: 0;
+			margin-left: 0;
+		}
+
+		.profile-personalisation__categories {
+			margin-left: -6px;
+		}
+
+		&.disabled {
+			.cta-btn--primary {
+				background: $color__primary;
+				color: $color__white;
+			}
+		}
+	}
+
+	@include mq($until: phablet) {
+		.profile-language-selection {
+			.account-entry__title {
+				max-width: 283px;
+			}
+		}
+	}
+
+	@include mq($from: phablet) {
+		.profile-language-selection {
+			.account-entry__header {
+				margin-bottom: 14px;
+			}
+		}
+	}
+
+	@include mq($from: tablet) {
+		.profile-personalisation {
+			.account-entry__title {
+				max-width: none;
+			}
+
+			&__container .edit-button {
+				top: -10px;
+				min-width: 140px;
+			}
+		}
+
+		.profile-playback-settings {
+			label.radio-button {
+				margin-right: 10px;
+			}
+		}
+	}
+}

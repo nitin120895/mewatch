@@ -1,0 +1,48 @@
+@import "shared/style/modules";
+
+.unsupported-browser {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: #000;
+	background: linear-gradient(to bottom, #000 0%, #1e0638 100%);
+	height: 100vh;
+	padding: 0 30px;
+
+	&__contents {
+		max-width: 550px;
+	}
+
+	&__title {
+		font-size: 1.2rem;
+		color: $color__link--hover;
+		margin: 30px 0 15px;
+	}
+	&__message {
+		margin-bottom: 0;
+	}
+
+	&__logo {
+		max-width: 200px;
+		margin: 0 auto;
+	}
+
+	&__cta {
+		text-transform: none;
+		margin-top: 30px;
+	}
+
+	@include mq(desktop) {
+		&__title {
+			font-size: 32px;
+			margin: 40px 0 20px;
+		}
+		&__message {
+			font-size: 1.2rem;
+		}
+		&__logo {
+			max-width: 300px;
+		}
+	}
+}

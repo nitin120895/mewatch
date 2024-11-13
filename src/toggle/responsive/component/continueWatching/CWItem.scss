@@ -1,0 +1,246 @@
+@import "shared/style/modules";
+
+.cw-item {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+
+	a {
+		color: $color__white;
+		display: inline-block;
+	}
+
+	&:hover,
+	&:focus {
+		.title--over {
+			color: $color__white;
+		}
+	}
+
+	&:focus {
+		color: $color__white;
+	}
+
+	&:hover {
+		.packshot-title {
+			color: $color__primary;
+		}
+	}
+
+	transition: transform 0.2s ease-out, filter 0.2s ease-out, opacity 0.2s ease-out;
+
+	&__edit-screen {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: $depth-packshot-hover;
+		cursor: pointer;
+	}
+
+	&__checkbox {
+		position: absolute;
+		top: 50%;
+		right: 4px;
+		transform: translateY(-50%);
+	}
+
+	&__image-wrapper {
+		position: relative;
+	}
+
+	&__progress {
+		$gap: 0;
+		bottom: $gap;
+		left: $gap;
+		position: absolute;
+		right: $gap;
+		z-index: $depth-packshot-progress;
+	}
+
+	&-fb-title {
+		padding: 7px;
+	}
+
+	&__badge {
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0;
+		padding: 0 8px;
+		width: auto;
+		font-size: 12px;
+		line-height: 1.4;
+		color: $color__white;
+		text-transform: uppercase;
+		font-weight: bold;
+		background: $color__secondary;
+		transition: all 0.2s ease-in-out;
+		z-index: 9;
+	}
+
+	&__series {
+		font-size: 11px;
+		opacity: 0.5;
+		color: $color__white;
+		margin-top: 7px;
+	}
+
+	&__image {
+		overflow: hidden;
+
+		&-shadow {
+			background: linear-gradient(
+				to bottom,
+				rgba($color__black, 0),
+				rgba($color__black, 0) 60%,
+				rgba($color__black, 0.6) 100%
+			);
+			bottom: -1px;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: -1px;
+			top: 50%;
+			pointer-events: none;
+		}
+
+		> .fb-title,
+		> img[src="//:0"] {
+			background-color: $color__black4;
+			// When an image fails to load we want to make it fill the bounds to ensure
+			// the background color displays correctly within its parent bounds.
+			// Set this `src` attribute value to match the value of `src/shared/util/images.ts:fallbackURI`
+			width: 100%;
+			height: 100%;
+			// Ensure the alt tag description doesn't exceed the bounds
+			overflow: hidden;
+			text-align: center;
+			vertical-align: middle;
+
+			&:before {
+				// Triggers support for vertical alignment (above)
+				content: "";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+		}
+
+		span.fb-title {
+			background-color: $color__black5;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&.noimage {
+				background-image: none;
+			}
+		}
+
+		&--tile {
+			@include fluid-aspect(16 9);
+		}
+	}
+
+	&__metadata {
+		position: relative;
+	}
+
+	&__details {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	&__details &__link,
+	&__details > &__metadata {
+		width: calc(100% - 2rem);
+		cursor: pointer;
+	}
+
+	&__details &__link &__metadata {
+		width: 100%;
+	}
+
+	&__menu {
+		position: relative;
+	}
+
+	.progress-bar__bar {
+		border-radius: 0;
+		height: $progress-bar-desktop-height;
+	}
+}
+
+@mixin noHover() {
+	.cw-item {
+		&:hover {
+			color: $color__white;
+		}
+
+		&:active {
+			color: $color__primary;
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}
+
+@include mq($until: tablet) {
+	.cw-item {
+		&--vertical {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+
+			&.col-phone-12 {
+				width: 100%;
+
+				&:not(:first-child) {
+					margin-top: 8px;
+				}
+			}
+
+			.cw-item {
+				&__image {
+					width: 35%;
+					height: 18vw;
+					padding: 0;
+				}
+
+				&__metadata {
+					line-height: 1.42em;
+				}
+
+				&__details {
+					width: 65%;
+					padding-left: 1rem;
+				}
+
+				&__series {
+					font-size: 0.75rem;
+					margin: 0px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.cw-item {
+		&__checkbox {
+			top: 0.5rem;
+			right: 0.5rem;
+			transform: none;
+		}
+	}
+}

@@ -1,0 +1,123 @@
+@import "shared/style/modules";
+
+$content-margin: 20px;
+
+.d10 {
+	.packshot {
+		// We don't want the packshot interactive on this page
+		pointer-events: none;
+		user-select: none;
+		// Hidden by default on smaller devices
+		display: none;
+		flex: 0 0 auto;
+	}
+
+	&__info {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		text-align: left;
+		justify-content: space-between;
+		flex-direction: column;
+
+		@include mq($from: phablet) {
+			flex-direction: row;
+		}
+
+		@include mq($from: tablet) {
+			flex-wrap: nowrap;
+		}
+	}
+
+	&__copyright {
+		font-size: 11px;
+		font-style: italic;
+		color: $color__grey--warm;
+		margin-top: 15px;
+	}
+
+	&-rating {
+		display: flex;
+		align-items: center;
+		flex: 0 0 auto;
+		margin-top: $content-margin;
+		padding-left: get-gutter() / 2;
+		padding-left: to-rem(get-gutter() / 2);
+
+		@include mq($from: tablet) {
+			flex-direction: row-reverse;
+			max-width: 30%;
+			margin-top: 0;
+			padding-left: 0;
+			padding-right: get-gutter(tablet) / 2;
+			padding-right: to-rem(get-gutter(tablet) / 2);
+		}
+
+		@include mq($from: desktop) {
+			padding-right: get-gutter(desktop) / 2;
+			padding-right: to-rem(get-gutter(desktop) / 2);
+		}
+
+		@include mq($from: desktopWide) {
+			padding-right: get-gutter(desktopWide) / 2;
+			padding-right: to-rem(get-gutter(desktopWide) / 2);
+		}
+
+		&__image {
+			width: 58px;
+			display: inline-flex;
+			align-self: flex-start;
+		}
+
+		&__text {
+			color: $color__grey--warm;
+			padding-left: $content-margin;
+
+			@include mq($from: tablet) {
+				padding-left: 0;
+				padding-right: $content-margin;
+				text-align: right;
+			}
+		}
+	}
+
+	&-table {
+		display: inline-block;
+		margin-bottom: 0;
+		flex: 1 0 auto;
+		text-align: left;
+		text-transform: capitalize;
+
+		&__cell {
+			padding-left: $content-margin;
+			color: $color__grey--light;
+
+			&--duration {
+				text-transform: none;
+			}
+		}
+
+		&__header {
+			vertical-align: baseline;
+			color: $color__grey--light;
+			font-weight: normal;
+		}
+
+		&__genre:hover {
+			color: $color__primary--darker;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.d10 {
+		.packshot {
+			display: block;
+			margin-right: $content-margin;
+		}
+
+		&__info {
+			flex-direction: row;
+		}
+	}
+}

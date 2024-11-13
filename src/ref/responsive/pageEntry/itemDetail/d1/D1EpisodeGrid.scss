@@ -1,0 +1,22 @@
+@import "shared/style/modules";
+
+.d1 {
+	&__title {
+		margin: 0;
+	}
+
+	&__title_container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: -25px;
+	}
+}
+
+@include mq(tablet) {
+	.d1 {
+		&__title_container {
+			display: block;
+		}
+	}
+}

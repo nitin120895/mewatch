@@ -1,0 +1,291 @@
+@import "shared/style/modules";
+.packshot {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	color: $color__white;
+
+	&:hover,
+	&:focus {
+		.packshot-title--over {
+			color: $color__white;
+		}
+	}
+
+	&:focus {
+		color: $color__white;
+	}
+
+	&:hover {
+		color: $color__primary;
+	}
+
+	transition: transform 0.2s ease-out, filter 0.2s ease-out, opacity 0.2s ease-out;
+
+	&.offline {
+		transform: scale(0.94);
+
+		.packshot__image {
+			filter: blur(1px) grayscale(100%);
+		}
+	}
+
+	&--selected &__image:after {
+		content: "";
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border: 2px solid $color__primary;
+	}
+
+	&__progress {
+		$gap: 0;
+		bottom: $gap;
+		left: $gap;
+		position: absolute;
+		right: $gap;
+		z-index: $depth-packshot-progress;
+	}
+
+	// Fallback title when an image isn't availble
+	&-fb-title {
+		padding: 7px;
+	}
+
+	&__badge {
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0;
+		padding: 0 8px;
+		width: auto;
+		font-size: 12px;
+		line-height: 1.4;
+		color: $color__white;
+		text-transform: uppercase;
+		font-weight: bold;
+		background: $color__secondary;
+		transition: all 0.2s ease-in-out;
+		z-index: 9;
+	}
+
+	&__series {
+		font-size: 11px;
+		opacity: 0.5;
+		color: $color__white;
+		margin-top: 7px;
+	}
+
+	&__remove-icon {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		cursor: pointer;
+		width: 100%;
+
+		&__block {
+			display: flex;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	&__image {
+		&-shadow {
+			background: linear-gradient(
+				to bottom,
+				rgba($color__black, 0),
+				rgba($color__black, 0) 60%,
+				rgba($color__black, 0.6) 100%
+			);
+			bottom: -1px;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: -1px;
+			top: 50%;
+			pointer-events: none;
+		}
+
+		&-shadow.large {
+			background: linear-gradient(
+				to bottom,
+				rgba($color__black, 0),
+				rgba($color__black, 0.6) 50%,
+				rgba($color__black, 1) 100%
+			);
+			@include mq($from: desktop) {
+				background: linear-gradient(
+					to bottom,
+					rgba($color__black, 0),
+					rgba($color__black, 0.8) 35%,
+					rgba($color__black, 0.85) 100%
+				);
+			}
+		}
+
+		> .packshot-fb-title,
+		> img[src="//:0"] {
+			background-color: $color__black4;
+			// When an image fails to load we want to make it fill the bounds to ensure
+			// the background color displays correctly within its parent bounds.
+			// Set this `src` attribute value to match the value of `src/shared/util/images.ts:fallbackURI`
+			width: 100%;
+			height: 100%;
+			// Ensure the alt tag description doesn't exceed the bounds
+			overflow: hidden;
+			text-align: center;
+			vertical-align: middle;
+
+			&:before {
+				// Triggers support for vertical alignment (above)
+				content: "";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+		}
+
+		span.packshot-fb-title {
+			background-color: $color__black5;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&.noimage {
+				background-image: none;
+			}
+		}
+
+		// Enforce proportional heights to negate reflows before/after image loading.
+		&--poster {
+			@include fluid-aspect(2 3);
+			span.packshot-fb-title {
+				background-size: 140%;
+			}
+
+			.partner-logo {
+				height: $thumbnail-portrait-logo-overlay-height;
+			}
+		}
+
+		&--tile,
+		&--wallpaper {
+			@include fluid-aspect(16 9);
+		}
+
+		&--square {
+			@include fluid-aspect(1 1);
+		}
+
+		&--block,
+		&--hero4x3 {
+			@include fluid-aspect(4 3);
+		}
+
+		&--hero3x1 {
+			@include fluid-aspect(3 1);
+		}
+
+		&--hero7x1 {
+			@include fluid-aspect(7 1);
+		}
+
+		&--tall {
+			@include fluid-aspect(1 2);
+		}
+
+		&--custom {
+			// Because this is an unknown/dynamic shape we use inline-block to match the size of the image within.
+			display: inline-block;
+
+			.img-r {
+				height: auto;
+			}
+		}
+	}
+
+	&__metadata {
+		position: relative;
+		&--with-info-icon {
+			padding-right: 13px;
+		}
+	}
+
+	.progress-bar__bar {
+		border-radius: 0;
+		height: $progress-bar-desktop-height;
+	}
+}
+.channel-item {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 1.25;
+
+	.packshot-fb-title {
+		background-color: $color__black2;
+	}
+
+	.noimage {
+		text-transform: capitalize;
+	}
+	@include mq($until: tablet) {
+		font-size: 14px;
+	}
+}
+
+@include mq($from: desktop) {
+	.packshot {
+		&__play-icon-center {
+			top: 30%;
+		}
+	}
+}
+
+.s1 .packshot {
+	&__image {
+		> .packshot-fb-title.noimage {
+			&:before {
+				position: absolute;
+			}
+		}
+
+		.packshot-fb-title__text {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			line-height: 1.25;
+			font-size: 16px;
+			@include block-with-cut-rows(16, 1.25, 2, 2);
+		}
+	}
+}
+
+@mixin noHover() {
+	.packshot {
+		&:hover {
+			color: $color__white;
+		}
+
+		&:active {
+			color: $color__primary;
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}

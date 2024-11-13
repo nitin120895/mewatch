@@ -1,0 +1,123 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+
+.h5-carousel {
+	height: 0;
+	padding-top: 56.25%;
+	text-align: center;
+
+	&--crop {
+		.carousel__frame,
+		.carousel__belt,
+		.carousel-item {
+			height: 100%;
+		}
+	}
+
+	&--height {
+		padding-top: 0;
+	}
+
+	@include mq($from: tablet) {
+		& > .arrow {
+			display: none;
+		}
+	}
+
+	.carousel__frame {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.carousel-frame {
+		@include fluid-aspect(16 9);
+	}
+
+	.carousel-text {
+		@include mq($from: tablet) {
+			@include vw(padding-bottom, 248px, desktopWide);
+		}
+
+		flex-direction: column-reverse;
+		flex-wrap: nowrap;
+		top: 0;
+		background-image: none;
+
+		&__badge-image {
+			@include mq($from: tablet) {
+				bottom: 14.1vw;
+			}
+		}
+	}
+}
+
+.h5-navigation {
+	position: absolute;
+	text-align: left;
+	bottom: 0;
+	width: 100%;
+	display: none;
+
+	@include mq($from: tablet) {
+		display: block;
+	}
+
+	&__image {
+		font-size: 0;
+	}
+
+	&__item-list {
+		position: absolute;
+		bottom: 0;
+		line-height: 0;
+		min-width: 100%;
+	}
+
+	&__link {
+		display: inline-block;
+		margin-right: 1%;
+		width: 15.8%;
+		position: relative;
+
+		&--focused {
+			&:after {
+				position: absolute;
+				top: 0;
+				left: 0;
+				content: "";
+				border: 2px solid $color__primary;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	&__image-wrapper {
+		@include fluid-aspect(16 9);
+		background-color: $color__grey--light;
+	}
+
+	&__icon-wrapper {
+		text-align: center;
+	}
+
+	&__icon {
+		display: inline-block;
+		stroke-width: 3px;
+		transform: scale(1.3);
+		position: relative;
+		@include vw(left, -4px, tablet);
+		@include vw(width, 14px, tablet);
+		@include vw(margin-top, 12px, tablet);
+		@include vw(margin-bottom, 12px, tablet);
+		width: 27px;
+		height: 18px;
+	}
+
+	&__button {
+		background: transparent;
+	}
+}

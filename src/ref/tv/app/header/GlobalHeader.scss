@@ -1,0 +1,154 @@
+@import "src/ref/tv/style/modules";
+
+.globalHeader {
+	$height: $global-header-height;
+	$background: $color__primary;
+	$box-shadow: 0 8px 8px 0 rgba($color__black, 0.4);
+
+	width: 100%;
+	height: $height;
+	background-color: $background;
+	color: $color__white;
+	left: 0;
+	top: 0;
+	z-index: $depth-header;
+	box-shadow: $box-shadow;
+	position: relative;
+	transition: height $transition-duration;
+
+	&.display-hide {
+		height: 0;
+		box-shadow: none;
+	}
+
+	&__bar {
+		position: absolute;
+		width: 100%;
+		height: $height;
+		bottom: 0;
+	}
+
+	&__left {
+		position: absolute;
+		height: 100%;
+		width: 121px;
+		left: 80px;
+	}
+
+	&__center {
+		position: absolute;
+		height: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&__nav-top {
+		height: 100%;
+		position: relative;
+		white-space: nowrap;
+		max-width: 1100px;
+	}
+
+	&__right {
+		position: absolute;
+		right: 80px;
+		height: 100%;
+	}
+
+	&__icon-btn {
+		margin-top: auto;
+		margin-bottom: auto;
+		min-width: 32px;
+		min-height: 32px;
+		color: $color__white;
+		opacity: 0.5;
+
+		&:hover,
+		&.focused {
+			opacity: 1;
+		}
+
+		&--menu {
+			background: transparent;
+			width: 121px;
+			height: 100%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+
+			&:hover {
+				background-color: rgba($color__white, 0.3);
+			}
+
+			> .icon {
+				// Ensure the button size provides a reasonable hit area around the icon (>= 32px).
+				// This usually means the button's dimensions will be larger than the icon's dimensions.
+				font-size: 50px;
+			}
+		}
+
+		&--search {
+			height: 100%;
+			padding: 48px 30px;
+			margin-right: 10px;
+			float: left;
+
+			&:hover {
+				color: $color__white;
+				background-color: rgba($color__white, 0.3);
+			}
+
+			&:focus {
+				color: $color__white;
+			}
+
+			.icon-search-icon {
+				height: 50px;
+				width: 50px;
+			}
+		}
+	}
+
+	&__right-center {
+		height: 100%;
+	}
+
+	&__sign-in {
+		height: 100%;
+		padding: 38px 15px;
+		cursor: pointer;
+		float: right;
+
+		&:hover {
+			background-color: rgba($color__white, 0.3);
+
+			.globalHeader__sign-in-button {
+				background-color: $color__white;
+				color: $color__primary;
+			}
+
+			.account-button {
+				background: $color__white !important;
+				color: $color__primary;
+			}
+		}
+	}
+
+	&__sign-in-button {
+		width: 170px !important;
+		height: 70px !important;
+		border: none !important;
+		background-color: rgba($color__white, 0.2);
+
+		&:focus,
+		&:hover,
+		&.focused {
+			background-color: $color__white;
+			color: $color__primary;
+		}
+	}
+
+	.globalHeader__icon-btn--search.focused {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,226 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+@import "ref/responsive/style/app/app-background.scss";
+
+@mixin font-style($font-size, $line-height) {
+	font-size: $font-size;
+	line-height: $line-height;
+}
+
+.lh {
+	// This is required for correct layout of the badge image
+	position: relative;
+
+	&__push {
+		margin-top: 10px;
+	}
+
+	&--bg {
+		.lh__push {
+			@include vw(margin-top, -50px);
+			@include fluid-aspect(16 9);
+
+			@include mq($from: tablet) {
+				@include vw(margin-top, -60px);
+			}
+
+			@include mq($from: desktop) {
+				@include vw(margin-top, -260px, desktop);
+			}
+		}
+
+		.lh__title-wrap {
+			height: 0;
+		}
+
+		.lh__title,
+		.lh__brand-img {
+			position: absolute;
+			bottom: 0;
+		}
+
+		.lh__brand-img {
+			bottom: 8px;
+			margin-bottom: 0;
+		}
+	}
+
+	&__badge {
+		text-align: right;
+		height: 0;
+		padding-top: 60px;
+
+		@include mq($from: desktop) {
+			padding-top: 88px;
+		}
+	}
+
+	&__badge-img {
+		display: inline-block;
+		max-width: 10.125vw; // 18% of 56.25%;
+		max-height: 10.125vw; // 18% of 56.25%;
+
+		@include mq($from: tablet) {
+			max-width: 7.3125vw; // 18% of 56.25%;
+			max-height: 7.3125vw; // 18% of 56.25%;
+		}
+	}
+
+	&__title-wrap {
+		order: 3;
+		position: relative;
+		margin-bottom: 0;
+		display: block;
+
+		@include mq($from: tablet) {
+			margin-bottom: 4px;
+		}
+
+		@include mq($from: laptop) {
+			margin-bottom: 6px;
+		}
+
+		@include mq($from: desktopWide) {
+			@include font-style(64px, 72px);
+			margin: 0 0 6px;
+		}
+	}
+
+	&__title {
+		order: 3;
+		@include font-style(28px, 34px);
+		margin: 0 0 6px;
+		font-weight: bold;
+		max-width: 86%;
+
+		&--full-width {
+			max-width: 100%;
+		}
+
+		@include mq($from: phablet) {
+			@include font-style(34px, 40px);
+		}
+
+		@include mq($from: tablet) {
+			@include font-style(40px, 46px);
+			margin: 0;
+			max-width: 80%;
+			max-height: none;
+
+			&--full-width {
+				max-width: 100%;
+			}
+		}
+
+		@include mq($from: laptop) {
+			@include font-style(54px, 60px);
+		}
+
+		@include mq($from: desktopWide) {
+			@include font-style(88px, 96px);
+		}
+
+		&--long-title {
+			@include mq($from: desktop) {
+				@include font-style(64px, 72px);
+			}
+		}
+	}
+
+	&__brand-img {
+		margin-top: 26px;
+		max-width: 50%;
+		max-height: 16.875vw; // 30% of 56.25%;
+		margin-bottom: 8px;
+
+		@include mq($from: tablet) {
+			margin-top: 52px;
+			max-width: 45%;
+			max-height: 14.0625vw; // 25% of 56.25%;
+		}
+	}
+
+	&__tagline {
+		order: 2;
+		@include font-style(16px, 16px);
+		margin: 0;
+		font-family: $font-family-heading;
+		font-weight: bold;
+		color: $color__white;
+
+		@include mq($from: phablet) {
+			@include font-style(16px, 24px);
+		}
+
+		@include mq($from: tablet) {
+			max-width: 80%;
+		}
+
+		@include mq($from: laptop) {
+			@include font-style(18px, 24px);
+		}
+	}
+
+	&__desc {
+		order: 1;
+		font-size: 14px;
+		line-height: 20px;
+		overflow: hidden;
+		position: relative;
+		margin-top: 12px;
+		color: $color__white;
+
+		&--grad {
+			@include mq($until: tablet) {
+				max-height: 96px;
+			}
+		}
+
+		&--grad:before {
+			@include mq($until: tablet) {
+				position: absolute;
+				content: "";
+				height: 100%;
+				width: 100%;
+				background-image: linear-gradient(to bottom, transparent, $color__black);
+			}
+		}
+
+		@include mq($from: phablet) {
+			@include font-style(16px, 24px);
+			margin: 12px 0 16px;
+		}
+
+		@include mq($from: tablet) {
+			max-height: none;
+			max-width: 80%;
+		}
+
+		@include mq($from: laptop) {
+			max-height: none;
+			max-width: 750px;
+			margin-top: 20px;
+		}
+	}
+}
+
+.app-background--lh:before {
+	background-image: linear-gradient(
+		to bottom,
+		rgba($app-bg-gradient-color, 0) 30%,
+		rgba($app-bg-gradient-color, 1) 96%
+	);
+	position: absolute;
+	content: "";
+	height: 100%;
+	width: 100%;
+
+	@include mq($from: desktop) {
+		background-image: linear-gradient(
+			to bottom,
+			rgba($app-bg-gradient-color, 0) 30%,
+			rgba($app-bg-gradient-color, 0.8) 65%,
+			rgba($app-bg-gradient-color, 1) 96%
+		);
+	}
+}

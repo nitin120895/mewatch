@@ -1,0 +1,76 @@
+@import "src/ref/tv/style/modules";
+
+.KeyboardKey {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin-top: 25px;
+	margin-right: 60px;
+	font-size: 28px;
+	font-weight: bold;
+	font-family: $font-family-heading;
+	line-height: 60px;
+	text-align: center;
+	color: $color__white;
+	display: inline-block;
+	opacity: 0.9;
+
+	&:hover,
+	&.focused {
+		color: $color__primary;
+		background-color: $color__white;
+		border-radius: 8px;
+		background-color: $color__white;
+		opacity: 1;
+	}
+
+	&--KEY_NUMERIC,
+	&--KEY_ABC,
+	&--KEY_ALPHA,
+	&--KEY_PUNC,
+	&--KEY_DEL {
+		width: 60px;
+		margin-right: 60px;
+	}
+
+	&--KEY_DEL {
+		.icon {
+			color: $color__white;
+		}
+		span {
+			color: $color__white;
+		}
+
+		&:hover,
+		&.focused {
+			span {
+				color: $color__primary;
+			}
+			.icon {
+				color: $color__primary;
+			}
+		}
+	}
+
+	&--uppercased {
+		text-transform: uppercase;
+	}
+}
+
+.VirtualKeyboard {
+	width: 100%;
+	height: 180px;
+
+	&--isNumeric {
+		height: 113px;
+
+		.KeyboardKey {
+			width: 62px;
+			margin-right: 72px;
+		}
+	}
+
+	&--isPunctuation .KeyboardKey {
+		margin-right: 69px;
+	}
+}

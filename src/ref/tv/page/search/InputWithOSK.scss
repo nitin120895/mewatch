@@ -1,0 +1,23 @@
+@import "src/ref/tv/style/modules";
+
+.input-with-osk {
+	position: relative;
+	height: 178.7px;
+	background-color: rgba($color__primary, 0.9);
+
+	&--focused {
+		background-color: $color__primary;
+	}
+
+	&__search-osk {
+		width: 1010px;
+		height: 110px;
+		margin: 33.6px 0;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		color: $color__white;
+		font-size: 65px;
+		line-height: 110px;
+	}
+}

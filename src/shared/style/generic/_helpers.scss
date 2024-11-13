@@ -1,0 +1,29 @@
+// -------------------------------------- //
+// Accessibility
+// -------------------------------------- //
+
+.sr-only {
+	@include sr-only;
+}
+
+.sr-only-focusable {
+	@include sr-only-focusable;
+}
+
+.key-mode-only {
+	@include not-key-mode() {
+		display: none;
+	}
+}
+
+// -------------------------------------- //
+// Visibility
+// -------------------------------------- //
+
+.hidden {
+	display: none !important;
+}
+
+.invisible {
+	visibility: hidden !important;
+}

@@ -1,0 +1,10 @@
+// Available Fonts - web fonts should be declared within _fonts.scss first.
+$font-ubuntu: "Ubuntu";
+$font-arial: "Arial";
+
+// Set body & heading fonts
+$font-family-body: $font-arial, sans-serif !default;
+$font-family-heading: $font-ubuntu, sans-serif !default;
+
+// Sizing
+$font-size-base: 0.875em;

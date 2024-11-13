@@ -1,0 +1,10 @@
+.ad-banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__container {
+		text-align: center;
+		flex-basis: 100%;
+	}
+}

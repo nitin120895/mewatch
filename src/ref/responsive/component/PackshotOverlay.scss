@@ -1,0 +1,41 @@
+@import "shared/style/modules";
+
+@keyframes overlay-animate-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.2;
+	}
+}
+
+@keyframes dark-overlay-animate-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.4;
+	}
+}
+
+.packshot-overlay {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background-color: black;
+	z-index: 1;
+	cursor: pointer;
+
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: overlay-animate-in;
+	animation-timing-function: ease-in-out;
+
+	&--dark {
+		animation-name: dark-overlay-animate-in;
+	}
+}

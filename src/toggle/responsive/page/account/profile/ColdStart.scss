@@ -1,0 +1,42 @@
+@import "shared/style/modules";
+
+.cold-start {
+	&__logo-wrapper {
+		text-align: center;
+		background-color: $color__black3;
+
+		.axis-logo {
+			height: 28px;
+		}
+	}
+
+	&__logo-link {
+		display: inline-block;
+		margin: 0 auto;
+		padding: 35px 0 30px;
+		color: $color__white;
+		&:hover {
+			color: $color__white;
+		}
+	}
+
+	@include mq($from: tablet) {
+		&__logo-wrapper {
+			display: block;
+
+			.axis-logo {
+				height: 36px;
+			}
+		}
+
+		&__logo-link {
+			padding: 45px 0;
+		}
+	}
+
+	@media #{$untilIphoneXLandscape} {
+		&__logo-wrapper {
+			display: none;
+		}
+	}
+}

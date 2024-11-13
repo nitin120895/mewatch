@@ -1,0 +1,418 @@
+@import "shared/style/modules";
+
+.schedule-detail-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+
+	&-opened {
+		height: 999999px; // Exact number doesn't really matter, as long as greater than top offset
+		overflow-y: hidden;
+		position: fixed;
+	}
+
+	&__container {
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	&__close {
+		position: absolute;
+		right: 15px;
+		top: 20px;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		.svg-icon {
+			stroke: $color__black;
+		}
+	}
+
+	&__modal {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 50px 15px 30px;
+		width: 100%;
+		height: 100%;
+		color: $color__black;
+		background-color: $color__white;
+		z-index: $depth-prompts;
+	}
+
+	&__schedule-item {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0;
+	}
+
+	&__image {
+		position: relative;
+		display: inline-flex;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	&__placeholder {
+		background: 0 0 no-repeat url(../../../../../resource/toggle/image/defaultBackground/generic-wallpaper.jpg);
+		padding-top: 56.25%;
+		width: 100%;
+		height: auto;
+	}
+
+	&__metadata {
+		display: inline-block;
+		overflow: hidden;
+	}
+
+	&__details {
+		color: $color__grey;
+	}
+
+	&__title {
+		font-size: 28px;
+		margin-bottom: 0;
+	}
+
+	&__secondary-title {
+		margin: 10px 0 12px;
+		font-size: 18px;
+	}
+
+	&__time {
+		margin-bottom: 10px;
+	}
+
+	&__classification {
+		display: inline-block;
+		padding: 0 5px;
+		border: 1px solid $color__grey;
+		font-size: 11px;
+	}
+
+	&__dash {
+		padding: 0 5px;
+	}
+
+	&__description {
+		display: inline-block;
+		margin-top: 10px;
+		color: $color__grey;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	&__buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: flex-start;
+		margin-top: 10px;
+	}
+
+	&__button {
+		display: inline-block;
+		margin-right: 10px;
+		padding: 5px 20px;
+		max-width: 175px;
+		border: 1px solid $color__primary;
+		border-radius: 20px;
+		font-size: 14px;
+		color: $color__primary;
+		font-weight: bold;
+		cursor: pointer;
+
+		&--selected,
+		&--selected:hover:not(:disabled) {
+			color: $color__white;
+			background-color: $color__primary;
+		}
+
+		&.reminder-btn {
+			max-width: 40px;
+			padding: 0 10px;
+
+			span {
+				display: none;
+			}
+		}
+
+		&--reminder {
+			padding: 5px 8px;
+			width: 35px;
+		}
+
+		.svg-icon {
+			margin-right: 5px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+		}
+	}
+
+	&__information-label {
+		padding-top: 5px;
+		margin-left: 5px;
+		height: 40px;
+		color: $color__grey--warm;
+	}
+
+	.cessation-disclaimer {
+		color: $color__grey;
+		font-weight: bold;
+		display: flex;
+		margin-bottom: 1.313rem;
+		line-height: 1.026rem;
+	}
+	.overlay__reminder .reminder {
+		&__reminder-btn {
+			margin-left: 0px;
+			min-width: 135px;
+		}
+
+		&__texting {
+			display: inline;
+			font-weight: bold;
+		}
+	}
+
+	&__partner-logo {
+		top: $thumbnail-logo-offset-tablet;
+		right: $thumbnail-logo-offset-tablet;
+	}
+}
+
+@include mq(phone, $and: "(orientation: landscape)") {
+	.schedule-detail-overlay {
+		&__modal {
+			padding-bottom: 15px;
+		}
+
+		&__schedule-item {
+			display: flex;
+			flex-direction: row;
+			justify-content: start;
+		}
+
+		&__image {
+			margin: 0 10px 0 0;
+			width: 240px;
+			height: 136px;
+			flex: 0 0 240px;
+		}
+
+		&__placeholder {
+			padding-top: 0;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.schedule-detail-overlay {
+		.overlay__reminder .reminder {
+			&__reminder-btn {
+				min-width: 150px;
+			}
+
+			&__button {
+				padding: 5px 26px;
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.schedule-detail-overlay {
+		&__description {
+			max-height: 180px;
+			margin-top: 23px;
+		}
+
+		&__container {
+			overflow-y: hidden;
+		}
+
+		&__title,
+		&__secondary-title {
+			font-size: 24px;
+			line-height: 28px;
+		}
+
+		&__time {
+			margin-bottom: 5px;
+		}
+
+		.reminder__reminder-btn {
+			.svg-icon {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		&__secondary-title {
+			padding-top: 4px;
+			margin: 10px 0 8px;
+		}
+
+		&__button {
+			margin-right: 20px;
+
+			&.reminder-btn {
+				padding: 5px 20px;
+				max-width: 175px;
+
+				span {
+					display: inline;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: portrait)") {
+	.schedule-detail-overlay {
+		&__modal {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: calc(100vw - 80px);
+			height: 512px;
+			padding: 40px 20px;
+		}
+
+		&__schedule-item {
+			display: flex;
+			flex-direction: row;
+			justify-content: start;
+		}
+
+		&__image {
+			margin: 0 20px 0 0;
+			width: 204px;
+			height: 114px;
+			flex: 0 0 204px;
+		}
+
+		&__description {
+			max-height: 192px;
+			font-size: 16px;
+		}
+
+		&__button {
+			&--reminder {
+				padding: 5px 20px;
+				width: unset;
+			}
+		}
+
+		&__reminder-set-text {
+			display: inline;
+		}
+
+		&__classification + div {
+			padding-top: 10px;
+		}
+
+		&__metadata {
+			h3 {
+				margin: 0 0 10px;
+			}
+
+			h2 {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.schedule-detail-overlay {
+		&__modal {
+			top: 50%;
+			left: 50%;
+			margin: -255px 0 0 -400px;
+			padding: 40px;
+			width: 800px;
+			height: 510px;
+		}
+
+		&__description {
+			max-height: 180px;
+			font-size: 16px;
+			line-height: 24px;
+		}
+
+		&__secondary-title {
+			margin-top: 0;
+		}
+
+		&__title {
+			padding-top: 4px;
+		}
+
+		&__image {
+			margin: 0 20px 0 0;
+		}
+
+		&__button {
+			&:hover {
+				color: $color__primary;
+				background-color: rgba($color__primary, 0.2);
+			}
+
+			&--selected {
+				&:hover {
+					color: $color__white;
+					background-color: $color__primary;
+				}
+			}
+		}
+
+		&--landscape {
+			.schedule-detail-overlay {
+				&__modal {
+					top: 50%;
+					left: 50%;
+					margin: -262px 0 0 -300px;
+					width: 600px;
+					height: 512px;
+				}
+
+				&__title {
+					font-size: 24px;
+				}
+
+				&__description {
+					height: 192px;
+				}
+
+				&__toast-container {
+					width: 550px;
+				}
+			}
+		}
+	}
+}
+
+@mixin noHover() {
+	.schedule-detail-overlay {
+		&__button {
+			&--selected:hover:not(:disabled) {
+				color: $color__white;
+				background-color: $color__primary;
+			}
+		}
+	}
+}
+
+.is-touch-device {
+	@include noHover();
+}

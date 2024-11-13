@@ -1,0 +1,52 @@
+@import "src/ref/tv/style/modules";
+
+.player-controls {
+	height: 57px;
+	width: 100%;
+	margin-top: 44px;
+	font-size: 45px;
+	text-align: center;
+
+	> button {
+		display: inline-block;
+		margin: 0 66px;
+		opacity: 0.6;
+
+		&.focused {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+
+		&.selected {
+			opacity: 1;
+		}
+	}
+
+	&__closed-captions {
+		display: none !important;
+		&--showCC {
+			display: inline-block !important;
+		}
+	}
+
+	&__sound {
+		display: none !important;
+		&--showSound {
+			display: inline-block !important;
+		}
+	}
+
+	&__play {
+		display: none !important;
+		&--show {
+			display: inline-block !important;
+		}
+	}
+
+	&__pause {
+		display: none !important;
+		&--show {
+			display: inline-block !important;
+		}
+	}
+}

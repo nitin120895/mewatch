@@ -1,0 +1,23 @@
+@import "shared/style/modules";
+
+.pop-over-overlay {
+	$bgColor: $color__black6;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: $depth-dropdown-overlays;
+
+	&__wrapper {
+		position: absolute;
+		bottom: -1em;
+		left: calc(50% - 12px);
+		transform: translate(-50%, 100%);
+		z-index: $depth-dropdown-overlays;
+
+		&--bottom {
+			top: -1em;
+			bottom: auto;
+			transform: translate(-50%, -100%);
+		}
+	}
+}

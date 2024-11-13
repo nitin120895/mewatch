@@ -1,0 +1,22 @@
+.scroll-loader {
+	&__spinner-container {
+		text-align: center;
+		box-sizing: border-box;
+		opacity: 0;
+		height: 0;
+
+		&--reveal {
+			opacity: 1;
+		}
+
+		&--enabled {
+			height: 180px;
+			padding: 50px 0;
+		}
+	}
+
+	&__spinner {
+		display: inline-block;
+		width: 80px;
+	}
+}

@@ -1,0 +1,99 @@
+@import "shared/style/modules";
+
+.account-entry {
+	font-family: $font-family-heading;
+	position: relative;
+
+	&__header {
+		display: flex;
+		width: 100%;
+		min-height: 40px;
+		margin-bottom: 15px;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-size: 16px;
+		line-height: 1.3;
+		color: $color__black3;
+		align-self: center;
+		margin-bottom: 0;
+
+		@include mq($from: tablet) {
+			font-size: 20px;
+		}
+
+		@include mq($from: desktop) {
+			font-size: 24px;
+		}
+	}
+
+	&__right {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-align: right;
+
+		& > a {
+			display: inline-block;
+		}
+	}
+
+	&__action-btn {
+		flex: 0 0 auto;
+		border: 1px solid $color__primary;
+		color: $color__primary;
+		padding: 7px 25px;
+		text-transform: none;
+	}
+
+	&__btn-tip {
+		display: block;
+		margin-top: 5px;
+	}
+
+	.acct-setting-switch {
+		margin-bottom: 20px;
+		&__label {
+			color: $color__grey--dark;
+		}
+	}
+
+	.a5__tryagain-btn {
+		color: $color__primary;
+	}
+
+	.a5__tryagain-btn:hover,
+	.a5__tryagain-btn:focus {
+		color: $color__secondary;
+	}
+
+	.a5__classifications-info {
+		font-size: 14px;
+		font-weight: bold;
+	}
+}
+
+@include mq($until: phablet) {
+	.account-entry {
+		&__header {
+			margin-bottom: 20px;
+		}
+
+		&__title {
+			font-size: 20px;
+		}
+
+		.cta-btn {
+			line-height: 16px;
+			font-size: 16px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.account-entry__right {
+		display: block;
+	}
+}

@@ -1,0 +1,20 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+.a1 {
+	font-family: $font-family-heading;
+	font-size: 42px;
+	font-weight: bold;
+	padding: $a1-detail-padding-top 80px;
+	margin: -35px -80px 0;
+
+	&--focused {
+		background-color: $ed1_bg_color;
+	}
+
+	&__content {
+		height: $a1-detail-content-height;
+		margin-top: $a1-detail-content-margin-top;
+		font-size: 36px;
+		font-weight: initial;
+	}
+}

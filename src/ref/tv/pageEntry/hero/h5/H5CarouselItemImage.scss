@@ -1,0 +1,8 @@
+@import "src/ref/tv/style/modules";
+
+.h5-item-image {
+	height: $viewport-height;
+	min-width: 100%;
+	position: relative;
+	transition: top $transition-duration;
+}

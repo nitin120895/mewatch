@@ -1,0 +1,118 @@
+@import "shared/style/modules";
+
+$iconSizePhone: 32px;
+$iconSizeTablet: 47px;
+$iconPaddingPhone: $iconSizePhone + 6px;
+$iconPaddingTablet: $iconSizeTablet + 20px;
+
+// stylelint-disable value-keyword-case
+$icon-padding: (
+	phone: $iconPaddingPhone,
+	tablet: $iconPaddingTablet,
+	laptop: $iconPaddingTablet,
+	desktop: $iconPaddingTablet,
+	desktopWide: $iconPaddingTablet,
+	uhd: $iconPaddingTablet
+);
+// stylelint-enable
+@mixin pad-search-input($breakpoint) {
+	.search-input {
+		$gutter: get-grid-margin($breakpoint);
+		$icon: get-grid-property($icon-padding, $breakpoint);
+		$combined: $icon + $gutter;
+		font-family: $font-family-heading; // increasing specificity
+		.search-input__input {
+			padding: 0 $gutter 0 $combined;
+		}
+		&--has-value {
+			.search-input__input {
+				padding: 0 $combined;
+			}
+		}
+	}
+}
+.search-input {
+	position: relative;
+	margin-bottom: 0;
+	height: 76px;
+	&__background {
+		background-color: $color__primary--darker;
+		height: 100%;
+	}
+	&__form {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		margin: 0;
+	}
+	&__icons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		pointer-events: none;
+	}
+	&__icon {
+		color: $color__white;
+		opacity: 0.3;
+		flex: 0 0 auto;
+		padding: 6px;
+		width: $iconSizePhone;
+		height: $iconSizePhone;
+		background: transparent;
+		&--spinner,
+		&--search {
+			pointer-events: none;
+		}
+		&--clear {
+			margin-left: 10px;
+			width: $iconSizePhone + 3px;
+			cursor: pointer;
+			pointer-events: auto;
+		}
+	}
+	// increasing specificity
+	.search-input__input {
+		position: absolute;
+		width: 100vw;
+		height: 100%;
+		font-size: 20px;
+		background: transparent;
+		border: none;
+		color: $color__white;
+		&::placeholder {
+			color: $color__white;
+			opacity: 0.3; // Need to set important to override placeholder element style
+			text-overflow: ellipsis !important;
+		}
+	}
+}
+// Hide ie's clear input button.
+.search-input__input::-ms-clear {
+	display: none;
+}
+@include mq(tablet) {
+	.search-input {
+		height: 120px;
+		&__icon {
+			width: $iconSizeTablet;
+			height: $iconSizeTablet;
+			padding: 0;
+		} // increasing specificity
+		.search-input__input {
+			font-size: 42px;
+		}
+	}
+}
+@include pad-search-input(phone);
+@each $breakpoint in $display-margins {
+	@include mq($breakpoint) {
+		@include pad-search-input($breakpoint);
+	}
+}

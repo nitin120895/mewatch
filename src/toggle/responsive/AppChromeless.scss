@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.chromeless {
+	// Full page blue theme
+	.content.showHeader {
+		height: 100vh;
+	}
+
+	.main.showHeader {
+		height: calc(100% - 60px);
+	}
+
+	&--auth,
+	&--registration {
+		background: $color__white;
+
+		.content.showHeader {
+			height: auto;
+		}
+	}
+}

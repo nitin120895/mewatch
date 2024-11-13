@@ -1,0 +1,76 @@
+@import "shared/style/modules";
+
+.tx1 {
+	&__link {
+		display: flex;
+		flex-direction: row;
+
+		@include mq($from: tablet) {
+			display: inline-flex;
+			flex-direction: column;
+		}
+	}
+
+	&__link:not(:last-child) {
+		margin-right: 0;
+		margin-bottom: 0.75rem;
+
+		@include mq($from: tablet) {
+			margin-right: 1.5rem;
+			margin-bottom: 0;
+		}
+	}
+
+	&__btn.cta-btn {
+		min-height: 3.625rem;
+		min-width: 100%;
+		font-size: 1rem;
+		color: $color--white;
+		border-color: $color--white;
+
+		&:hover:not(:disabled) {
+			background-color: rgba($color--white, 0.25);
+		}
+
+		@include mq($from: phablet) {
+			min-width: 17.5rem;
+		}
+
+		@include mq($from: desktop) {
+			min-height: 5rem;
+			min-width: 30rem;
+			font-size: 1.75rem;
+		}
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__arrow-span {
+		margin-top: -0.125rem;
+		margin-left: 0.5rem;
+		font-size: 1.5rem;
+
+		@include mq($from: desktop) {
+			font-size: 2.25rem;
+		}
+	}
+
+	&__render-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__picture {
+		max-width: 2rem;
+		margin-right: 1rem;
+
+		@include mq($from: desktop) {
+			max-width: 3.125rem;
+		}
+	}
+}

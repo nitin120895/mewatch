@@ -1,0 +1,98 @@
+@import "shared/style/modules";
+
+.entitled-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $color__black2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	outline: 2px solid $color__black3;
+	padding: 10px;
+
+	img {
+		width: 70px;
+		margin: 0 auto;
+	}
+
+	&__subscribe-section {
+		&--cta {
+			padding: 0 40px;
+		}
+	}
+
+	&__subscription {
+		text-align: center;
+		width: 28.125rem;
+
+		&--title {
+			font-size: 24px;
+			margin: 40px 0 0;
+		}
+
+		&--text {
+			font-size: 16px;
+			margin: 30px 0;
+			color: $color__grey--light;
+		}
+	}
+
+	&--upsell #{&} {
+		&__subscription {
+			&--title {
+				font-size: 24px;
+				line-height: 1.3;
+				max-width: 450px;
+				font-weight: bold;
+				margin-top: 0;
+			}
+			&--text {
+				margin: 1.25rem 0 2.5rem;
+				max-width: 28.125rem;
+			}
+		}
+		&__subscribe-section--cta {
+			padding: 0 30px;
+			font-size: 16px;
+			&:first-child {
+				margin-right: 20px;
+			}
+		}
+	}
+}
+@include mq($from: tablet) {
+	.entitled-overlay {
+		&__subscription {
+			&--cessation-text {
+				padding: 0 2.5rem;
+			}
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.entitled-overlay {
+		&__subscription {
+			width: 100%;
+			&--title {
+				display: none;
+			}
+		}
+		&--upsell #{&}__subscription {
+			&--title {
+				display: block;
+				font-size: 20px;
+				line-height: 1.3;
+			}
+
+			&--text {
+				font-size: 14px;
+				margin: 10px 0 20px;
+			}
+		}
+	}
+}

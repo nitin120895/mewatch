@@ -1,0 +1,16 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"module": "esnext"
+	},
+	"include": [
+		"../../src/ref/tv/**/*.ts",
+		"../../src/ref/tv/**/*.tsx",
+		"../../src/shared/**/*.ts",
+		"../../src/shared/**/*.tsx",
+		"../../src/viewer/tv/**/*.ts",
+		"../../src/viewer/tv**/*.tsx",
+		"../../src/viewer/*.ts",
+		"../../src/viewer/*.tsx"
+	]
+}

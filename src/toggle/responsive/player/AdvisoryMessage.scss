@@ -1,0 +1,88 @@
+@import "shared/style/modules";
+
+@mixin mobile-landscape-styles() {
+	.advisory-message {
+		padding: 2rem 2rem 0;
+
+		&__rating {
+			max-width: 2rem;
+
+			&--nc-16,
+			&--m18,
+			&--r21 {
+				max-width: 3.125rem;
+			}
+
+			&__text {
+				font-size: 0.813rem;
+			}
+		}
+	}
+}
+
+@include mobile-landscape-styles();
+
+.advisory-message {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: $depth-player-wrapper;
+	transition: opacity 0.5s ease-in-out;
+	opacity: 1;
+
+	&--hidden {
+		opacity: 0;
+	}
+
+	&__text {
+		margin-top: 6px;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+		font-weight: bold;
+	}
+}
+
+@include mq($from: tablet) {
+	.advisory-message {
+		padding: 3.5rem 3.5rem 0;
+
+		&__rating {
+			max-width: 3rem;
+
+			&--nc-16,
+			&--m18,
+			&--r21 {
+				max-width: 4.8125rem;
+			}
+		}
+
+		&__text {
+			font-size: 1.15rem;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.advisory-message {
+		padding: 4rem 4rem 0;
+
+		&__rating {
+			max-width: 100%;
+		}
+	}
+}
+
+@include mq($until: desktop, $and: "(orientation: portrait)") {
+	.advisory-message {
+		padding: 2.5rem 3.5rem 0;
+	}
+}
+
+@include mq($until: tablet, $and: "(orientation: portrait)") {
+	.advisory-message {
+		padding: 1rem 2.5rem 0;
+	}
+}
+
+@include mq($until: laptop, $and: "(orientation: landscape)") {
+	@include mobile-landscape-styles();
+}

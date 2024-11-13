@@ -1,0 +1,22 @@
+// -------------------------------------- //
+// Header Variables
+// -------------------------------------- //
+
+// There shouldn't be any output code this partial file.
+// Import this within your component stylesheets to access the variables.
+
+// The header height affects other adjacent components to accomodate our UX&D.
+// Here we define the values per breakpoint.
+
+// Height of the header bar
+$header-height-small: 46px; // Applicable until the desktop breakpoint.
+$header-height-large: 60px; // Applicable from the desktop breakpoint onwards.
+
+// Height of the sub-header bar
+$header-primary-nav-height: 44px; // Applicable until the tablet breakpoint.
+
+// Space between the header and the page content beneath it.
+$header-content-gap-phone: 35px;
+$header-content-gap-tablet: $header-height-small;
+$header-content-gap-desktop: $header-height-large;
+$header-content-gap-uhd: 70px;

@@ -1,0 +1,99 @@
+@import "shared/style/modules";
+
+$color-gray-season: #cecece;
+
+.overlay-upcoming-schedule-item {
+	min-height: 149px;
+	padding: 20px 14px;
+
+	&--selected {
+		background-color: $color__channel-item--hover;
+	}
+
+	&__classification {
+		padding: 0 5px;
+		border: 1px solid $color__grey;
+		font-size: 11px;
+		line-height: 22px;
+	}
+
+	&__season-info {
+		color: $color-gray-season;
+		padding: 8px 0 13px;
+		font-size: 14px;
+		overflow: hidden;
+	}
+
+	&__title {
+		font-size: 16px;
+		line-height: 28px;
+	}
+
+	&__time {
+		font-size: 11px;
+		margin-bottom: 14px;
+		.on-now {
+			color: $color__link--hover;
+		}
+	}
+
+	.divider {
+		padding: 0 6px;
+	}
+
+	.progress-bar,
+	.progress-bar__bar {
+		height: 3px;
+		position: relative;
+		border-radius: 0;
+	}
+}
+
+@include mq(phablet, $and: "(orientation: landscape)") {
+	.overlay-upcoming-schedule-item {
+		&--landscape {
+			display: inline-block;
+			flex-direction: column;
+			margin-right: 14px;
+			width: 180px;
+			min-height: 124px;
+			padding: 12px 10px;
+
+			.overlay-upcoming-schedule-item {
+				&__title {
+					font-size: 14px;
+				}
+
+				&__season-info {
+					font-size: 11px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.overlay-upcoming-schedule-item {
+		min-height: 176px;
+		padding: 20px 30px;
+
+		.divider {
+			padding: 0 8px;
+		}
+
+		&__time {
+			font-size: 14px;
+		}
+
+		&__title {
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		&__season-info {
+			font-size: 16px;
+			line-height: 28px;
+			padding: 13px 0 16px;
+		}
+	}
+}

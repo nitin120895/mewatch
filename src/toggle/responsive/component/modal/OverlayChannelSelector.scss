@@ -1,0 +1,137 @@
+@import "shared/style/modules";
+
+.overlay-channel-selector {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 35%;
+	height: 100%;
+	font-size: 16px;
+	background-color: $color__black3;
+	z-index: 9999;
+
+	&__title {
+		flex: 0;
+		position: relative;
+		padding: 18px 25px;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	&__schedule {
+		overflow: auto;
+	}
+
+	&__channels {
+		overflow: hidden;
+
+		&.touchable {
+			overflow: auto;
+		}
+	}
+
+	&__channels,
+	&__schedule {
+		flex: 1 auto;
+		padding: 0;
+		white-space: normal;
+
+		&.error {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.schedule-error {
+			height: auto;
+			background: $color__black3;
+		}
+	}
+
+	&__cancel {
+		position: absolute;
+		flex: 0;
+		top: 18px;
+		right: 20px;
+		padding: 0;
+		width: auto;
+		cursor: pointer;
+
+		.svg-icon {
+			display: inline-block;
+			width: 15px;
+			margin-right: 10px;
+			stroke: white;
+		}
+	}
+
+	&--landscape {
+		width: 100%;
+		height: 60%;
+		bottom: 0;
+		top: auto;
+
+		&.upcoming-schedule {
+			height: 56%;
+		}
+
+		.overlay-channel-selector__title {
+			padding: 20px 25px 10px;
+		}
+
+		.overlay-channel-selector__cancel {
+			top: 20px;
+		}
+
+		.overlay-channel-selector__channels,
+		.overlay-channel-selector__schedule {
+			position: relative;
+			padding: 0 20px;
+			white-space: nowrap;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			flex: 1 1 50%;
+		}
+
+		.overlay-channel-selector__schedule {
+			display: flex;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.overlay-channel-selector {
+		width: 100%;
+
+		&__cancel {
+			display: block;
+			top: 18px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.overlay-channel-selector {
+		&:not(.overlay-channel-selector--landscape) {
+			width: 50%;
+
+			&.upcoming-schedule {
+				width: 375px;
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.overlay-channel-selector {
+		&:not(.overlay-channel-selector--landscape) {
+			width: 35%;
+
+			&.upcoming-schedule {
+				width: 680px;
+			}
+		}
+	}
+}

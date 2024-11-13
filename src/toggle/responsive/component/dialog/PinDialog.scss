@@ -1,0 +1,40 @@
+@import "shared/style/modules";
+
+.pin-dialog {
+	&__buttons {
+		display: flex;
+		justify-content: center;
+
+		.cta-btn--secondary {
+			margin-left: 10px;
+		}
+
+		.cta-btn--primary:disabled {
+			color: $color__white;
+			background: $color__neutral;
+		}
+	}
+	.pin__pin-input {
+		width: 340px;
+	}
+
+	&__icon {
+		margin: 0 auto 12px;
+	}
+
+	&__description {
+		margin: 0 auto 12px;
+		max-width: 285px;
+		color: $color__grey;
+		text-align: center;
+	}
+
+	&__restricted-title {
+		margin-bottom: 20px;
+	}
+
+	&__forgot-pin {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+}

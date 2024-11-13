@@ -1,0 +1,33 @@
+@import "src/ref/tv/style/modules";
+
+.favourite-list {
+	&__body {
+		&-wrapper {
+			padding: 35px 0 0;
+
+			.empty-message-wrapper {
+				color: $color__white;
+				font-family: $font-family-heading;
+				font-size: 36px;
+				margin: 235px auto 0;
+				text-align: center;
+				width: 634px;
+			}
+		}
+	}
+}
+
+.profile-watched {
+	&__list {
+		padding: 35px 0 0;
+	}
+
+	&__empty {
+		color: $color__white;
+		font-family: $font-family-heading;
+		font-size: 36px;
+		margin: 270px auto 0;
+		text-align: center;
+		width: 634px;
+	}
+}

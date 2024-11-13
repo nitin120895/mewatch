@@ -1,0 +1,54 @@
+@import "shared/style/modules";
+
+.register-form {
+	margin: 0 auto;
+	font-family: $font-family-heading;
+	width: 90%;
+	padding: 25px 8px !important;
+
+	@include mq($from: tablet) {
+		padding-top: 96px;
+	}
+
+	&__register {
+		font-weight: bold;
+	}
+
+	&__primary-action {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 40px;
+	}
+
+	&__error {
+		background-color: $color__primary;
+		color: $color__white;
+		text-align: center;
+		line-height: 24px;
+		position: relative;
+		margin-bottom: 20px;
+		padding: 8px 0;
+	}
+
+	.form-title {
+		color: $color__black4;
+		text-align: center;
+		font-weight: normal;
+		margin-bottom: 30px;
+	}
+
+	&__name-container {
+		display: flex;
+		.txt-input:first-child {
+			margin-right: 20px;
+		}
+	}
+
+	&__marketing {
+		text-align: center;
+	}
+
+	.account-btn {
+		margin-top: 30px;
+	}
+}

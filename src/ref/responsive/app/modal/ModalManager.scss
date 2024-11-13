@@ -1,0 +1,38 @@
+@import "shared/style/modules";
+
+.modal-manager {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: block;
+	z-index: $depth-modal-overlays;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__system-error {
+		padding: 20px;
+		background: $color__error;
+		color: $color__white;
+	}
+
+	&--hidden {
+		pointer-events: none;
+		opacity: 0;
+	}
+
+	&__modal-container {
+		transition: 0.3s opacity $easeOutCubic, 0.3s transform $easeOutCubic;
+		z-index: 1;
+		opacity: 1;
+		max-width: 100%;
+
+		&--hidden {
+			transition: 0.3s opacity $easeOutCubic, 0.3s transform $easeOutCubic;
+			pointer-events: none;
+			opacity: 0;
+		}
+	}
+}

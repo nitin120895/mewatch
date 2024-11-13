@@ -1,0 +1,86 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.profile {
+	float: left;
+	text-align: center;
+	margin: $a4-profiles-margin-top 50px 0 0;
+	height: $a4-profiles-height;
+	cursor: pointer;
+
+	&__initial {
+		position: relative;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		border: solid 10px $transparent;
+		font-size: 42px;
+		font-weight: bold;
+		line-height: 130px;
+		text-transform: uppercase;
+
+		&--focused {
+			border-color: $color__white;
+		}
+
+		&--new {
+			background-color: rgba($color__white, 0.3);
+		}
+	}
+
+	&__name {
+		margin-top: 20px;
+		font-size: 28px;
+		color: $color__white;
+		opacity: 0.5;
+		height: 36px;
+		width: 150px;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&--focused {
+			opacity: 1;
+		}
+	}
+
+	&__lock {
+		display: none;
+		position: absolute;
+		right: -6px;
+		bottom: -9px;
+
+		&--show {
+			display: block;
+			width: 48px;
+		}
+	}
+
+	&__new-mark {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		&:before,
+		&:after {
+			content: "";
+			background-color: $color__white;
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&:before {
+			width: 40px;
+			height: 4px;
+		}
+
+		&:after {
+			width: 4px;
+			height: 40px;
+		}
+	}
+}

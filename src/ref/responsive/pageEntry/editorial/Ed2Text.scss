@@ -1,0 +1,192 @@
+@import "shared/style/modules";
+
+$open-svg-path: "data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27116%27%20height%3D%2782%27%20fill%3D%27%231a1a1a%27%3E%0A%09%3Cpath%20d%3D%27M49%2010c-6.082%201.892-11.855%205.234-17%209-5.248%204.64-8.787%2010.618-10%2017%207.765.245%2014.377%202.077%2020%206%205.354%203.405%208.065%209.396%208%2018-.001%206.654-2.48%2012.1-7%2016-5.318%203.992-11.426%206.095-18%206-8.426-.003-14.824-2.925-19-9-4.03-5.846-6.163-13.066-6-20-.114-7.008%201.366-13.533%204-19%203.192-5.965%206.963-10.985%2011-15%205.178-4.732%2010.489-8.484%2016-11%206-3.406%2011.968-5.939%2018-8v10zm66%200c-6.081%201.892-11.855%205.234-17%209-5.247%204.64-8.786%2010.618-10%2017%207.766.245%2014.378%202.077%2020%206%205.354%203.405%208.065%209.396%208%2018-.001%206.654-2.48%2012.1-7%2016-5.318%203.992-11.425%206.095-18%206-8.425-.003-14.839-2.925-19-9-4.061-5.852-6.176-13.071-6-20-.113-7.008%201.367-13.533%204-19%203.193-5.965%206.964-10.985%2011-15%205.179-4.732%2010.49-8.484%2016-11%206-3.406%2011.968-5.939%2018-8v10z%27%3E%3C/path%3E%0A%3C/svg%3E";
+$close-svg-path: "data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27116%27%20height%3D%2782%27%20fill%3D%27%231a1a1a%27%3E%0A%09%3Cpath%20d%3D%27M67%2072c6.082-1.892%2011.855-5.234%2017-9%205.248-4.64%208.787-10.618%2010-17-7.765-.245-14.377-2.077-20-6-5.354-3.405-8.065-9.396-8-18%20.001-6.654%202.48-12.1%207-16%205.318-3.992%2011.426-6.095%2018-6%208.426.003%2014.824%202.925%2019%209%204.03%205.846%206.163%2013.066%206%2020%20.114%207.008-1.366%2013.533-4%2019-3.192%205.965-6.963%2010.985-11%2015-5.178%204.732-10.489%208.484-16%2011-6%203.406-11.968%205.939-18%208V72zM1%2072c6.081-1.892%2011.855-5.234%2017-9%205.247-4.64%208.786-10.618%2010-17-7.766-.245-14.378-2.077-20-6-5.354-3.405-8.065-9.396-8-18C.001%2015.346%202.48%209.9%207%206c5.318-3.992%2011.425-6.095%2018-6%208.425.003%2014.839%202.925%2019%209%204.061%205.852%206.176%2013.071%206%2020%20.113%207.008-1.367%2013.533-4%2019-3.193%205.965-6.964%2010.985-11%2015-5.179%204.732-10.49%208.484-16%2011-6%203.406-11.968%205.939-18%208V72z%27%3E%3C/path%3E%0A%3C/svg%3E";
+
+.ed2 {
+	max-width: 650px;
+
+	&--app-txt-color {
+		p,
+		ul,
+		li {
+			color: $color__grey--warm;
+		}
+	}
+
+	h1 {
+		font-size: 28px;
+	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	h3 {
+		font-size: 18px;
+	}
+
+	h4 {
+		font-size: 14px;
+	}
+
+	blockquote {
+		// Note: the fill needs to be RGB instead of a hex colour to ensure it works cross-browser (particularly Firefox)
+		$quote-color: $color__black2;
+
+		font-size: 28px;
+		font-style: italic;
+		position: relative;
+		margin: 60px 35px;
+
+		&::before {
+			top: -24px;
+			left: 6px;
+			content: "";
+			position: absolute;
+			background: 0 0 no-repeat url("#{$open-svg-path}");
+			background-size: contain;
+			height: 82px;
+			width: 116px;
+			margin-left: -30px;
+			z-index: -1;
+		}
+
+		&::after {
+			bottom: -20px;
+			right: -20px;
+			content: "";
+			position: absolute;
+			background: 0 0 no-repeat url("#{$close-svg-path}");
+			background-size: contain;
+			height: 82px;
+			width: 116px;
+			z-index: -1;
+		}
+	}
+
+	blockquote p {
+		font-style: italic;
+	}
+
+	ul,
+	ol {
+		position: relative;
+		display: table;
+		padding-left: 1.5em;
+	}
+}
+
+.ed2.txt-center {
+	text-align: center;
+	margin: 0 auto;
+
+	ul,
+	ol {
+		margin: 1.45em auto;
+	}
+}
+
+.ed2.txt-right {
+	margin-left: auto;
+
+	ul,
+	ol {
+		margin: 0 0 1.45em auto;
+	}
+}
+
+.app--account {
+	.ed2 {
+		&--app-txt-color {
+			h1,
+			h2,
+			h3,
+			h4 {
+				color: $color__black;
+			}
+
+			p,
+			ul,
+			li {
+				color: $color__grey--dark;
+			}
+		}
+		blockquote {
+			p {
+				z-index: 2;
+				position: relative;
+			}
+
+			&::before {
+				background: 0 0 no-repeat url("#{$open-svg-path}");
+				z-index: 1;
+			}
+
+			&::after {
+				background: 0 0 no-repeat url("#{$close-svg-path}");
+				z-index: 1;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.ed2 {
+		h1 {
+			font-size: 34px;
+		}
+
+		h2 {
+			font-size: 28px;
+		}
+
+		h3 {
+			font-size: 20px;
+		}
+
+		h4 {
+			font-size: 16px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.ed2 {
+		h1 {
+			font-size: 42px;
+		}
+
+		h2 {
+			font-size: 32px;
+		}
+
+		h3 {
+			font-size: 24px;
+		}
+
+		h4 {
+			font-size: 18 px;
+		}
+	}
+}
+
+@include mq($from: desktopWide) {
+	.ed2 {
+		h1 {
+			font-size: 48px;
+		}
+
+		h2 {
+			font-size: 38px;
+		}
+
+		h3 {
+			font-size: 24px;
+		}
+
+		h4 {
+			font-size: 18 px;
+		}
+	}
+}

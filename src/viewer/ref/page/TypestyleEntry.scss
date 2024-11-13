@@ -1,0 +1,35 @@
+@media (min-width: 0em) {
+	.type-style-entry {
+		border-bottom-color: lightgray;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+	}
+	.type-node {
+		float: left;
+		width: 500px;
+	}
+
+	.type-spec {
+		display: inline-block;
+		width: 250px;
+	}
+
+	div.type-spec > p {
+		display: block;
+		font-size: 12px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.text-node {
+		margin-bottom: 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.type-node {
+		width: 850px;
+	}
+}

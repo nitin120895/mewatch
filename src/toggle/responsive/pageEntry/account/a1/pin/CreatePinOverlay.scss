@@ -1,0 +1,272 @@
+@import "shared/style/modules";
+
+.create-pin-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-family: $font-family-body;
+	top: 0;
+	left: 0;
+
+	&__close {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		.svg-icon {
+			stroke: $color__black;
+		}
+	}
+
+	&__button-label {
+		font-weight: 700;
+		text-transform: none;
+	}
+
+	&__modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 30px 20px;
+		width: 90%;
+		color: $color__black3;
+		background-color: $color__white;
+		z-index: $depth-prompts;
+	}
+
+	&__spinner {
+		margin: 20% auto;
+		width: 50px;
+		height: 50px;
+	}
+
+	&__step {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+		margin-bottom: 0;
+	}
+
+	&__step-title {
+		position: absolute;
+		color: $color__grey--warm;
+	}
+
+	&__title {
+		margin: 10px 20px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	&__description {
+		font-size: 1rem;
+		text-align: center;
+		white-space: normal;
+		line-height: 1.5;
+		color: $color__grey;
+	}
+
+	&__fields {
+		text-align: center;
+		margin-top: 20px;
+		.txt-input {
+			margin: 0 auto;
+			width: 220px;
+
+			&__icon--error {
+				right: 0;
+				text-align: right;
+			}
+		}
+	}
+
+	.txt-input {
+		&__input {
+			width: 100%;
+		}
+
+		&:hover .txt-input__label {
+			color: $color__primary;
+		}
+
+		&:hover .txt-input__input {
+			@include input-focused($color__primary);
+		}
+
+		&--active:hover {
+			.txt-input__label {
+				color: $color__primary;
+			}
+		}
+
+		&--focused {
+			@include input-state($color__primary);
+			.txt-input__input {
+				@include input-focused($color__primary);
+			}
+		}
+	}
+
+	.checkbox {
+		display: flex;
+		flex-wrap: wrap;
+
+		.checkbox__label {
+			flex-basis: calc(100% - 30px);
+			text-align: left;
+		}
+
+		&__message {
+			margin-bottom: 0;
+			height: 20px;
+		}
+
+		&:hover .checkbox__label {
+			color: $color__primary;
+		}
+
+		&:hover .checkbox__box {
+			border-color: $color__primary;
+		}
+
+		&--disabled:hover {
+			.checkbox__label {
+				color: $color__grey--light;
+			}
+
+			.checkbox__box {
+				border-color: $color__grey--light;
+			}
+		}
+	}
+
+	&__pin-title {
+		font-size: 12px;
+		color: $color__grey--warm;
+	}
+
+	.pin__input {
+		font-size: 26px;
+	}
+
+	&__pin-code {
+		margin: auto;
+		width: 60%;
+	}
+
+	.pin {
+		margin: 0;
+		font-size: 30px;
+
+		&__error-message {
+			margin-bottom: 0;
+			height: 20px;
+		}
+	}
+
+	&__forgot-password {
+		font-weight: bold;
+	}
+
+	&__buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin-top: 20px;
+	}
+
+	&__button {
+		display: inline-block;
+		padding: 0 30px;
+		width: max-content;
+		border: 1px solid $color__primary;
+		border-radius: 20px;
+		font-size: 16px;
+		line-height: 40px;
+		text-align: center;
+		text-transform: capitalize;
+		transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+		cursor: pointer;
+
+		& + & {
+			margin-left: 25px;
+		}
+
+		&--primary {
+			color: $color__white;
+			background-color: $color__primary;
+		}
+
+		.svg-icon {
+			margin-right: 5px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+		}
+	}
+	&__open-browser-icon {
+		width: 16px;
+		height: 16px;
+		margin-right: 8px;
+		display: inline;
+	}
+
+	.date-of-birth-input {
+		width: 100%;
+		max-width: 284px;
+		margin: 10px auto 28px;
+		&__placeholder {
+			text-align: center;
+		}
+
+		&:after {
+			right: -14px;
+		}
+	}
+
+	.otp__content {
+		margin-bottom: 0;
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.create-pin-overlay {
+		&__modal {
+			width: 70%;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.create-pin-overlay {
+		&__modal {
+			padding: 40px;
+			width: 600px;
+		}
+
+		&__title {
+			margin-bottom: 20px;
+			font-size: 1.5rem;
+		}
+
+		&__buttons {
+			margin-top: 40px;
+		}
+
+		&__button {
+			&--primary {
+				&:hover {
+					background-color: $color__primary;
+					color: $color__white;
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+}

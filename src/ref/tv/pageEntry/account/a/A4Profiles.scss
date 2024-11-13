@@ -1,0 +1,20 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.a4 {
+	font-family: $font-family-heading;
+
+	&__profiles:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+	}
+
+	&__title {
+		font-size: 42px;
+		font-weight: bold;
+		margin: 70px 0 20px;
+		text-transform: uppercase;
+	}
+}

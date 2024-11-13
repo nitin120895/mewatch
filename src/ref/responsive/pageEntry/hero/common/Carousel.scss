@@ -1,0 +1,514 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+@import "innerGrid";
+
+.carousel {
+	position: relative;
+	overflow: hidden;
+
+	.swipe {
+		position: relative;
+	}
+
+	.swipe__container {
+		line-height: 0;
+	}
+
+	&--scroll-disabled {
+		.arrow {
+			display: none;
+		}
+	}
+
+	&__belt {
+		will-change: transform;
+	}
+
+	&__frame,
+	&__belt {
+		height: 100%;
+	}
+}
+
+.carousel-item {
+	flex-direction: column;
+	flex-flow: column;
+	min-width: 100%;
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	top: 0;
+	left: 0;
+	will-change: transform;
+	height: 100%;
+	background-size: 100%;
+	cursor: pointer;
+
+	&:not(&--link):before {
+		// Apply a gradient over the carousel's image to improve the legibility of text above the image.
+		background-image: linear-gradient(to top, rgba($color__black, 0.5) 0%, rgba($color__black, 0) 65%);
+		content: "";
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+
+	&__banner {
+		min-width: 100%;
+	}
+
+	&:first-of-type {
+		position: relative;
+	}
+
+	// IE10 fix for picture element to make it show the right image onload.
+	// https://github.com/scottjehl/picturefill/issues/272#issuecomment-48936704
+	&__image {
+		width: 100%;
+		max-width: 99999px;
+	}
+
+	&.offline {
+		.carousel-item__image {
+			filter: grayscale(100%);
+		}
+	}
+}
+
+.carousel-text {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	-webkit-font-smoothing: antialiased;
+	flex-direction: column-reverse;
+	flex-wrap: nowrap;
+	@include innerGrid(14px);
+
+	@include mq(tablet) {
+		@include innerGrid(24px);
+	}
+
+	@include mq(laptop) {
+		@include innerGrid(32px);
+	}
+
+	@include mq(desktop) {
+		@include innerGrid(40px);
+	}
+
+	@include mq(desktopWide) {
+		@include innerGrid(65px);
+	}
+
+	&__badge {
+		background: $color__complimentary;
+		color: $color__black;
+		padding: 2px 6px 0;
+		position: absolute;
+		right: 0;
+		line-height: 1.5;
+
+		@include vw(top, 30);
+		text-transform: uppercase;
+		font-weight: bold;
+		margin: 0;
+		font-size: 12px;
+		transition: all 0.2s ease-in-out;
+
+		@include mq(tablet) {
+			position: relative;
+			top: 0;
+			display: inline-block;
+			width: auto;
+		}
+
+		@include mq(laptop) {
+			font-size: 13px;
+		}
+
+		@include mq(desktop) {
+			font-size: 16px;
+		}
+	}
+
+	&__badge-image {
+		max-height: 13%;
+		max-width: 13%;
+		align-self: flex-end;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		box-sizing: content-box;
+		@include innerGrid(14px);
+
+		@include mq(tablet) {
+			@include innerGrid(24px);
+		}
+
+		@include mq(laptop) {
+			@include innerGrid(32px);
+		}
+
+		@include mq(desktop) {
+			@include innerGrid(40px);
+		}
+
+		@include mq(desktopWide) {
+			@include innerGrid(65px);
+		}
+	}
+
+	&__picture {
+		max-height: 50%;
+		max-width: 60%;
+		width: auto;
+		height: auto;
+		@include vw(margin, 4px 0 0);
+
+		@include mq(tablet) {
+			@include vw(margin, 8px 0 0, tablet);
+			max-width: 40%;
+		}
+
+		@include mq(laptop) {
+			@include vw(margin, 12px 0 0, laptop);
+		}
+
+		@include mq(desktopWide) {
+			max-height: 40%;
+		}
+	}
+
+	&__title {
+		color: $color__white;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-transform: uppercase;
+		position: relative;
+		white-space: normal;
+		@include vw(margin, 4px 0 0);
+		@include vw(font-size, 36px);
+		@include vw(line-height, 32px);
+
+		@include mq(tablet) {
+			@include vw(font-size, 38px, tablet);
+			@include vw(line-height, 40px, tablet);
+			@include vw(margin, 4px 0 0, tablet);
+			width: 66%;
+		}
+
+		@include mq(laptop) {
+			@include vw(margin, 6px 0 -4px, laptop);
+			@include vw(font-size, 54px, laptop);
+			@include vw(line-height, 56px, laptop);
+		}
+
+		@include mq(desktop) {
+			@include vw(margin, 4px 0 -4px, laptop);
+			@include vw(font-size, 60px, desktop);
+			@include vw(line-height, 60px, desktop);
+		}
+
+		@include mq(desktopWide) {
+			@include vw(margin, 0 0 -4px, desktopWide);
+			@include vw(font-size, 72px, desktopWide);
+			@include vw(line-height, 72px, desktopWide);
+		}
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&--large-title {
+		.carousel-text__title {
+			top: 0;
+			@include vw(font-size, 22px);
+			@include vw(line-height, 24px);
+
+			@include mq(tablet) {
+				@include vw(font-size, 28px, tablet);
+				@include vw(line-height, 32px, tablet);
+			}
+
+			@include mq(laptop) {
+				@include vw(font-size, 42px, laptop);
+				@include vw(line-height, 48px, laptop);
+			}
+
+			@include mq(desktop) {
+				@include vw(font-size, 48px, desktop);
+				@include vw(line-height, 56px, desktop);
+			}
+		}
+	}
+
+	&__tagline {
+		font-family: $font-family-heading;
+		white-space: nowrap;
+		overflow: hidden;
+		color: $color__white;
+		width: 80%;
+		padding: 0;
+		text-overflow: ellipsis;
+		@include vw(margin, 4px 0 0);
+		@include vw(font-size, 12px);
+		@include vw(line-height, 14px);
+
+		@include mq(tablet) {
+			width: 66%;
+			@include vw(margin, 4px 0 0, tablet);
+			font-size: 16px;
+			line-height: 18px;
+		}
+
+		@include mq(laptop) {
+			@include vw(margin, 12px 0 0, laptop);
+		}
+
+		@include mq(desktop) {
+			@include vw(margin, 12px 0 0, desktop);
+			font-size: 18px;
+			line-height: 20px;
+		}
+
+		@include mq(desktopWide) {
+			@include vw(margin, 12px 0 0, desktopWide);
+			font-size: 20px;
+			line-height: 22px;
+		}
+	}
+
+	&--badge-image {
+		.carousel-text {
+			&__title,
+			&__tagline {
+				width: 66%;
+			}
+		}
+	}
+}
+
+@include mq(desktop) {
+	.carousel-item {
+		&__text {
+			background: none;
+		}
+	}
+}
+
+// ----------------------
+// Carousel Alignments
+// ----------------------
+
+/**
+ * The Left Alignments
+ */
+
+.carousel--left-bottom,
+.carousel--left-middle,
+.carousel--left-top {
+	.carousel-text {
+		text-align: left;
+		align-items: flex-start;
+		&__picture {
+			align-self: flex-start;
+		}
+	}
+}
+
+.carousel--left-middle,
+.carousel--left-top {
+	.carousel-text {
+		justify-content: center;
+	}
+
+	.carousel-item:not(.carousel-item--link):before {
+		background-image: linear-gradient(to right, rgba($color__black, 0.5) 0%, rgba($color__black, 0) 65%);
+	}
+}
+
+.carousel--left-top {
+	.carousel-text {
+		justify-content: flex-end;
+
+		&__picture {
+			align-self: flex-start;
+		}
+	}
+}
+
+/**
+ * The Center Alignments
+ */
+
+.carousel--center-bottom,
+.carousel--center-middle,
+.carousel--center-top {
+	.carousel-text {
+		text-align: center;
+		align-items: center;
+
+		&__picture {
+			align-self: center;
+		}
+	}
+}
+
+.carousel--center-middle {
+	.carousel-text {
+		justify-content: center;
+	}
+}
+
+.carousel--center-top {
+	.carousel-text {
+		justify-content: flex-end;
+	}
+
+	.carousel-item:not(.carousel-item--link):before {
+		background-image: linear-gradient(to bottom, rgba($color__black, 0.5) 0%, rgba($color__black, 0) 65%);
+	}
+}
+
+/**
+ * The Right Alignments
+ */
+
+.carousel--right-bottom,
+.carousel--right-middle,
+.carousel--right-top {
+	.carousel-text {
+		text-align: right;
+		align-items: flex-end;
+
+		&__picture {
+			align-self: flex-end;
+		}
+
+		&__badge-image {
+			max-height: 13%;
+			max-width: 13%;
+			align-self: flex-end;
+			position: absolute;
+			left: 0;
+		}
+
+		&__badge {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+
+.carousel--right-middle,
+.carousel--right-top {
+	.carousel-text {
+		justify-content: center;
+	}
+
+	.carousel-item:not(.carousel-item--link):before {
+		background-image: linear-gradient(to left, rgba($color__black, 0.5) 0%, rgba($color__black, 0) 65%);
+	}
+}
+
+.carousel--right-top {
+	.carousel-text {
+		justify-content: flex-end;
+	}
+}
+
+// ----------------------
+// Carousel Transitions
+// ----------------------
+
+@mixin transitionPositions($pos) {
+	.carousel-item--transitions-enabled {
+		@include mq($from: desktop) {
+			.carousel-text__badge,
+			.carousel-text__title,
+			.carousel-text__picture,
+			.carousel-text__tagline {
+				transform: translateX($pos);
+			}
+		}
+	}
+	.carousel-item--in-view {
+		@extend %carousel-item--in-view;
+	}
+}
+
+@mixin transition($speed) {
+	transition: transform $speed $iron-man 0.1s, opacity $speed $iron-man 0.1s;
+}
+
+/**
+ * Left and Center aligned transitions
+ */
+
+.carousel--left-bottom,
+.carousel--left-middle,
+.carousel--left-top,
+.carousel--center-bottom,
+.carousel--center-middle,
+.carousel--center-top {
+	@include transitionPositions(300px);
+}
+
+/**
+ * Right aligned transitions
+ */
+
+/* stylelint-disable no-duplicate-selectors*/
+// Disabling this rule here so I can group css by purpose
+.carousel--right-bottom,
+.carousel--right-middle,
+.carousel--right-top {
+	@include transitionPositions(-300px);
+}
+
+/* stylelint-enable no-duplicate-selectors*/
+
+/**
+ * Common rules
+ */
+
+@include mq($from: desktop) {
+	.carousel-item--transitions-enabled {
+		.carousel-text__badge {
+			@include transition(900ms);
+		}
+
+		.carousel-text__title,
+		.carousel-text__picture {
+			@include transition(1200ms);
+		}
+
+		.carousel-text__tagline {
+			@include transition(1400ms);
+		}
+
+		.carousel-text__title,
+		.carousel-text__tagline,
+		.carousel-text__badge,
+		.carousel-text__picture {
+			opacity: 0;
+			will-change: transform, opacity;
+		}
+	}
+}
+
+%carousel-item--in-view {
+	.carousel-text__title,
+	.carousel-text__tagline,
+	.carousel-text__badge,
+	.carousel-text__picture {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}

@@ -1,0 +1,122 @@
+@import "src/ref/tv/style/modules";
+
+.a5 {
+	position: relative;
+	max-height: $a5-parental-lock-height;
+
+	&__title {
+		font-size: 42px;
+		font-weight: bold;
+		margin-bottom: $a5-parental-lock-title-margin-bottom;
+		text-transform: uppercase;
+		height: $a5-parental-lock-title-height;
+	}
+
+	&__lock {
+		position: relative;
+		width: 240px;
+		height: $a5-parental-lock-less-height;
+		border-radius: 45px;
+		border: solid 4px $color__white;
+		font-size: 36px;
+		font-weight: bold;
+		display: inline-block;
+		cursor: pointer;
+		vertical-align: bottom;
+		margin-right: 90px;
+
+		&--focused {
+			background-color: $color__white;
+			color: $color__button_active;
+		}
+	}
+
+	&__on {
+		margin-left: 36px;
+		margin-right: 39px;
+		position: absolute;
+		left: 0;
+		height: 100%;
+		line-height: 82px;
+		max-width: 115px;
+		overflow: hidden;
+	}
+
+	&__off {
+		position: absolute;
+		right: 30px;
+		height: 100%;
+		line-height: 82px;
+	}
+
+	&__mask {
+		position: absolute;
+		top: 0;
+		width: 120px;
+		height: $a5-parental-lock-less-height;
+		margin: -4px;
+		border-radius: 45px;
+		background-color: $color__grey--warm;
+		border: solid 4px $color__white;
+
+		&--on {
+			background-color: $color__button_active;
+			right: 0;
+		}
+
+		&--focused {
+			background-color: $color__button_active;
+		}
+	}
+
+	&__pg {
+		margin-left: 36px;
+		margin-right: 39px;
+		display: inline-block;
+		height: 100%;
+		line-height: 82px;
+		width: 120px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&__selector {
+		display: inline-block;
+	}
+
+	&__text {
+		color: $color__white;
+		display: inline-block;
+		font-size: 36px;
+		line-height: $a5-parental-lock-less-height;
+		margin-right: 30px;
+	}
+
+	&__dropBtn {
+		position: relative;
+		width: 240px;
+		height: $a5-parental-lock-less-height;
+		border-radius: 45px;
+		border: solid 4px $color__white;
+		font-size: 36px;
+		font-weight: bold;
+		cursor: pointer;
+		display: inline-block;
+		vertical-align: bottom;
+
+		&--focused {
+			background-color: $color__white;
+			color: $color__button_active;
+		}
+	}
+
+	&__icon {
+		font-size: 20px;
+		font-weight: bold !important;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 36px;
+	}
+}

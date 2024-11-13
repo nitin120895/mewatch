@@ -1,0 +1,161 @@
+@import "shared/style/modules";
+
+$titles_spacing: 30px;
+
+.personalisation-step2 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	padding: 20px 15px 28px;
+	background: $color__white;
+	color: $color__black;
+
+	&__genre {
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__black3;
+		text-transform: uppercase;
+		width: 100%;
+		text-align: center;
+		padding-bottom: 20px;
+	}
+
+	&__title {
+		align-self: baseline;
+		font-size: 14px;
+		color: $color__grey;
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin-top: 5px;
+	}
+
+	&__items {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: -15px;
+
+		&--scrollable {
+			max-height: calc(100vh - 420px);
+			overflow: auto;
+		}
+	}
+
+	&__item {
+		margin: 8px 0;
+		padding: 0 3px;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		width: 160px;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&__image {
+			img {
+				height: stretch;
+				width: 100%;
+			}
+		}
+
+		.no-image {
+			border: 1px solid black;
+			width: 100%;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+
+		button {
+			margin-right: 20px;
+			width: 146px;
+			height: 40px;
+			font-size: 16px;
+			font-weight: bold;
+
+			&:disabled {
+				color: $color__white;
+				background: $color__neutral;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.personalisation-step2 {
+		&__items {
+			&--scrollable {
+				max-height: 200px;
+			}
+		}
+
+		&__image {
+			img {
+				height: auto;
+				width: 100%;
+			}
+		}
+
+		.no-image {
+			height: 90px;
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: portrait)") {
+	.personalisation-step2 {
+		&__item {
+			padding: 0 5px;
+			margin: 24px 0;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.personalisation-step2 {
+		&__items {
+			&--scrollable {
+				max-height: calc(100vh - 420px);
+			}
+		}
+	}
+}
+
+@media #{$fromIphoneXLandscape} {
+	.personalisation-step2 {
+		&__items {
+			&--scrollable {
+				max-height: 200px;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.personalisation-step2 {
+		&__item {
+			width: 227px;
+		}
+
+		&__genre {
+			font-size: 24px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.personalisation-step2 {
+		&__items {
+			max-width: 1000px;
+		}
+	}
+}

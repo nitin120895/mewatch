@@ -1,0 +1,161 @@
+@import "shared/style/modules";
+
+.play-next-episode {
+	display: flex;
+	color: $color__white;
+	font-size: 0.875rem;
+	flex-wrap: wrap;
+
+	&__thumbnail {
+		position: relative;
+		width: 100%;
+
+		&-img {
+			cursor: pointer;
+			max-width: 160px;
+		}
+	}
+
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+
+	h1 {
+		font-size: 1.125rem;
+		margin: 24px 0 10px;
+		text-transform: uppercase;
+		width: 100%;
+	}
+
+	&__meta-title {
+		width: 50%;
+	}
+
+	h2 {
+		font-size: 0.875rem;
+		font-weight: normal;
+		line-height: 1.43;
+		margin: 0;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+	}
+
+	&__countdown {
+		align-items: flex-end;
+		display: flex;
+		font-family: $font-family-heading;
+		position: relative;
+		width: 50%;
+		justify-content: flex-end;
+
+		&-block {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+
+		&-text {
+			display: none;
+		}
+	}
+}
+
+@mixin xs-height-landscape() {
+	.play-next-episode {
+		&__thumbnail-img {
+			max-width: 140px;
+		}
+		&__meta {
+			overflow: hidden;
+			h2 {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}
+
+@mixin phablet-landscape() {
+	.play-next-episode {
+		align-items: stretch;
+		flex-wrap: nowrap;
+
+		&__thumbnail {
+			width: auto;
+		}
+		&__meta {
+			align-items: stretch;
+			margin: 0 0 0 24px;
+		}
+
+		h1 {
+			margin: 0 0 10px;
+		}
+	}
+}
+
+@include mq($from: phone) {
+	.play-next-episode {
+		&__countdown-text {
+			display: inline-flex;
+			margin: 0 12px 0 0;
+		}
+	}
+}
+
+@media (max-height: 23em) and (orientation: landscape) {
+	@include xs-height-landscape();
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	@include phablet-landscape();
+}
+
+@include mq($from: desktop) {
+	@include phablet-landscape();
+
+	.play-next-episode {
+		font-size: 1.5rem;
+
+		&__thumbnail {
+			&-img {
+				max-width: 290px;
+			}
+		}
+		&__meta {
+			margin-left: 58px;
+		}
+
+		h1,
+		h2 {
+			font-size: 1.5rem;
+		}
+
+		&__countdown-text {
+			margin: 0 30px 0 0;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.play-next-episode {
+		font-size: 1.875rem;
+
+		h1,
+		h2 {
+			font-size: 1.875rem;
+		}
+	}
+}
+
+.is-fullscreen {
+	@media (max-height: 23em) {
+		@include xs-height-landscape();
+	}
+
+	@include mq($from: phablet, $until: desktop) {
+		@include phablet-landscape();
+	}
+}

@@ -1,0 +1,16 @@
+@import "src/ref/tv/style/modules";
+
+.kb-del-icon {
+	display: inherit;
+	font-size: 31px;
+	font-weight: bold;
+	position: relative;
+	> span {
+		color: $color__white;
+		font-size: 24px;
+		left: 17px;
+		line-height: 60px;
+		position: absolute;
+		top: 0;
+	}
+}

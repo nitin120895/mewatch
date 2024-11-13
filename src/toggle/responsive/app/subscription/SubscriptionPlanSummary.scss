@@ -1,0 +1,137 @@
+@import "shared/style/modules";
+
+$border-payment-white: 4px solid $color__off-white;
+
+.pg-subscriptions__summary {
+	font-family: $font-family-heading;
+
+	.proceed:disabled {
+		color: $color__white;
+		background-color: $color__neutral;
+	}
+
+	.subscription-plan-summary {
+		background: $color__white;
+		color: $color__grey;
+		display: flex;
+		flex-direction: column;
+
+		&__package-summary,
+		.account-otp {
+			display: flex;
+			flex-direction: column;
+			padding: 40px 40px 30px;
+		}
+
+		.account-otp {
+			border-top: $border-payment-white;
+		}
+
+		&__image {
+			width: 100%;
+		}
+
+		&__container {
+			padding: 20px 10px;
+		}
+
+		&__text {
+			.title {
+				font-size: 20px;
+				color: $color__grey--dark;
+				font-weight: bold;
+				line-height: 1.67;
+			}
+			.description {
+				line-height: 1.57;
+				font-size: 14px;
+			}
+		}
+		&__terms {
+			padding-top: 20px;
+			.title {
+				padding-bottom: 10px;
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 1.57;
+				color: $color__grey;
+			}
+			&-item {
+				line-height: 22px;
+			}
+		}
+
+		&__termsAndConditions {
+			-webkit-tap-highlight-color: transparent;
+
+			.checkbox__label {
+				color: $color__grey;
+				margin-left: 7px;
+				font-size: 16px;
+			}
+			.checkbox__message {
+				color: $color__error;
+				font-size: 16px;
+				text-align: center;
+			}
+		}
+	}
+
+	.payment-info {
+		text-align: center;
+		color: $color__grey--warm;
+		font-size: 12px;
+		line-height: 1.5;
+		padding-top: 20px;
+	}
+
+	.agree-terms {
+		color: $color__grey;
+		font-size: 16px;
+		line-height: 1.25;
+		text-align: center;
+		padding: 20px 0 30px;
+	}
+
+	.buttons {
+		text-align: center;
+		button {
+			min-width: 216px;
+			margin: 0 10px 10px 0;
+			text-transform: none;
+		}
+	}
+
+	.form-white {
+		stroke: transparent;
+		margin-bottom: 0;
+	}
+}
+
+@include mq($from: tablet) {
+	.pg-subscriptions {
+		&__summary {
+			.subscription-plan-summary {
+				&__package-summary,
+				.account-otp {
+					flex-direction: row;
+				}
+
+				&__image {
+					width: 191px;
+					height: 107px;
+				}
+
+				&__container {
+					padding: 0 0 0 15px;
+				}
+			}
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: center;
+			flex-direction: row-reverse;
+		}
+	}
+}

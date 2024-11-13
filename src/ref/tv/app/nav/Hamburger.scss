@@ -1,0 +1,62 @@
+@import "src/ref/tv/style/modules";
+
+$primary-color: #00a8f7;
+.hamburger {
+	height: 100%;
+	font-size: 28px;
+	font-family: $font-family-heading;
+	text-transform: uppercase;
+
+	&__close {
+		display: block;
+		padding: 20px;
+		border-radius: 5px;
+		margin: 0 60px 57px;
+		&.focused {
+			background-color: $color__white;
+		}
+	}
+
+	&__stroke {
+		color: $color__white;
+		display: block;
+		font-size: 43px;
+		&.focused {
+			color: $primary-color;
+		}
+	}
+
+	&__primary-panel {
+		height: 100%;
+		width: 450px;
+		background: $color__bg-blue;
+		position: fixed;
+		left: 0;
+		top: 0;
+	}
+
+	&__primary-items {
+		padding-top: 26px;
+		height: 100%;
+	}
+
+	&__secondary-panel {
+		position: fixed;
+		top: 0;
+		left: 450px;
+		padding-top: 176px;
+		height: 100%;
+
+		.menu-item {
+			width: auto;
+		}
+	}
+
+	&__empty {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: $viewport-width;
+		height: $viewport-height;
+	}
+}

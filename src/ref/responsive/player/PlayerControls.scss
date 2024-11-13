@@ -1,0 +1,207 @@
+@import "shared/style/modules";
+@import "./_player-variables";
+
+.player {
+	&-buttons {
+		align-items: center;
+		color: $player-button-color;
+		display: flex;
+		margin-left: -($player-button-mobile);
+		margin-right: -($player-button-mobile);
+		margin-bottom: 20px;
+		position: relative;
+	}
+
+	&-button {
+		cursor: pointer;
+		padding: $player-button-mobile;
+
+		&.disabled {
+			cursor: default;
+			opacity: 0.3;
+		}
+
+		.svg-icon {
+			fill: $player-button-color;
+		}
+
+		&:not(.disabled):hover .svg-icon:not(.spinner__circle) {
+			color: $player-button-hover-color;
+			fill: $player-button-hover-color;
+		}
+
+		&--play {
+			$play-size: $player-icon-mobile + $player-button-mobile * 2;
+			margin: 0 4px 0 0;
+			min-height: $play-size;
+			position: relative;
+			min-width: $play-size;
+
+			.svg-icon {
+				height: $player-icon-mobile;
+				width: $player-icon-size;
+			}
+
+			.spinner__circle {
+				$size: 22px;
+				height: $player-icon-mobile;
+				left: $player-button-mobile;
+				position: absolute;
+				top: $player-button-mobile;
+				width: $size;
+			}
+		}
+
+		&--fullscreen {
+			right: 0;
+			position: absolute;
+			top: 0;
+
+			.svg-icon {
+				height: $player-icon-mobile;
+				width: 21px;
+			}
+		}
+
+		&--selector {
+			display: none;
+			right: 90px;
+			position: absolute;
+			top: 0;
+
+			.svg-icon {
+				height: $player-icon-mobile;
+				width: 26px;
+			}
+		}
+	}
+
+	&-controls.volume-active {
+		.player-button--fullscreen,
+		.cast-control,
+		.player-button--selector {
+			display: none;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.player-controls.volume-active {
+		.player-button--fullscreen,
+		.cast-control {
+			display: block;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.player {
+		&-controls {
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba($player-background-gradient, 0.75));
+			bottom: 0;
+			left: 0;
+			padding: 49px $player-padding-mobile 9px;
+			position: absolute;
+			right: 0;
+			transform: translateY(100%);
+			transition: $player-controls-animation;
+			z-index: $depth-player-bar;
+
+			&.volume-active {
+				.player-button--fullscreen,
+				.cast-control {
+					display: block;
+				}
+
+				.player-button--selector {
+					display: none;
+				}
+			}
+		}
+
+		&-buttons {
+			margin: 0;
+		}
+
+		&-button {
+			&--selector {
+				display: none;
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player {
+		&-controls {
+			padding: 49px $player-padding-desktop 19px;
+		}
+
+		&-button {
+			padding: 0;
+
+			&--play {
+				min-height: $player-icon-mobile;
+				min-width: $player-icon-size;
+				margin: 0 30px 0 0;
+
+				.spinner__circle {
+					left: 0;
+					top: 0;
+				}
+			}
+
+			&--selector {
+				display: none;
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		&-controls {
+			padding: 261px $player-padding-desktop 52px;
+		}
+
+		&-button {
+			&--play {
+				$icon-size: 26px;
+				min-height: $player-icon-uhd;
+				margin: 0 54px 0 0;
+				min-width: $icon-size;
+
+				.svg-icon {
+					height: $player-icon-uhd;
+					width: $icon-size;
+				}
+
+				.spinner__circle {
+					height: $player-icon-uhd;
+					width: $player-icon-uhd;
+				}
+			}
+
+			&--fullscreen {
+				.svg-icon {
+					height: $player-icon-uhd;
+					width: 42px;
+				}
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	.player-button:not(.disabled):hover .svg-icon {
+		color: $player-button-color;
+		fill: $player-button-color;
+	}
+}
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+	.player-button:not(.disabled):hover .svg-icon {
+		color: $player-button-color;
+		fill: $player-button-color;
+	}
+}

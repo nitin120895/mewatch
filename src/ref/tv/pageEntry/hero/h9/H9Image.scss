@@ -1,0 +1,87 @@
+@import "src/ref/tv/style/modules";
+
+.h9 {
+	position: relative;
+
+	// Prevent title text from exceeding the image bounds.
+	// This may result in clipping the title but it's preferred over pushing the content down.
+	overflow: hidden;
+
+	&__focus-underline {
+		background-color: $color__white;
+		width: calc(100% - 160px);
+		height: 11px;
+		position: absolute;
+		left: 80px;
+		bottom: 0;
+
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-left: 14px solid transparent;
+			border-bottom: 14px solid $color__white;
+			border-right: 14px solid transparent;
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	&--custom {
+		min-height: 100px;
+	}
+
+	&__ap {
+		margin: auto;
+
+		&--left {
+			margin: 0;
+		}
+	}
+
+	// As a fallback for when a custom/unknown size is used we set this.
+	// When a hero modifier is assigned it supersedes these settings.
+	&__picture {
+		display: block;
+		width: 100%;
+	}
+
+	&__text {
+		position: absolute;
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 72px;
+
+		// We colour this component using dynamic colours from our API.
+		// We delay assigning them until after the component mounts to avoid CSP issues
+		// when server rendering. By default this would flicker when the new colours are
+		// assigned so we set a transition to make it smoother.
+		transition: color 0.3s ease-in, opacity 0.3s ease-in;
+
+		// Horizontal alignment
+		&--left {
+			left: 80px;
+		}
+		&--right {
+			right: 80px;
+		}
+		&--center {
+			width: 100%;
+		}
+
+		// Vertical alignment
+		&--top {
+			top: 0;
+		}
+		&--bottom {
+			bottom: 40px;
+		}
+		&--middle {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+}

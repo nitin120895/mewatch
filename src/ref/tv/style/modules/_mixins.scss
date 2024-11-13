@@ -1,0 +1,58 @@
+@import "./variables";
+
+// Fill the viewport width (break out of the grid)
+@mixin full-bleed() {
+	width: $viewport-width;
+	left: 50%;
+	right: 50%;
+	margin-left: -$half-viewport-width;
+	margin-right: -$half-viewport-width;
+}
+
+// Maintain aspect ratio
+@mixin fluid-aspect($content-width: 1920px, $ratio: 1 1, $selector: "> :first-child") {
+	$selector: unquote($selector);
+
+	padding-bottom: nth($ratio, 2) / nth($ratio, 1) * $content-width;
+	position: relative;
+
+	#{$selector} {
+		left: 0;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+@mixin abs-fullscreen() {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+@mixin input-mode($mode) {
+	html[data-inputmode="#{$mode}"] & {
+		@content;
+	}
+}
+
+@mixin not-input-mode($mode) {
+	html:not([data-inputmode="#{$mode}"]) & {
+		@content;
+	}
+}
+
+@mixin key-mode() {
+	@include input-mode("k") {
+		@content;
+	}
+}
+
+@mixin not-key-mode() {
+	@include not-input-mode("k") {
+		@content;
+	}
+}

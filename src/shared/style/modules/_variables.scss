@@ -1,0 +1,71 @@
+@import "./colors";
+@import "./typography";
+
+// -------------------------------------- //
+// Page
+// -------------------------------------- //
+
+// `body` element styling
+$body-bg-image-path: null !default;
+$body-bg-color: $color__black !default;
+
+// Optional top level app element styling (e.g. the child inside #root)
+$app-bg-color: $body-bg-color !default;
+
+$body-text-color: $color__white !default;
+$body-link-color: $color__primary !default;
+$body-link-color--hover: $color__primary !default;
+
+// -------------------------------------- //
+// Buttons
+// -------------------------------------- //
+
+$button-bg: $color__primary;
+$button-hover-bg: $color__primary--hover;
+$button-disabled-opacity: 1;
+$button-mobile-height: 40px;
+$button-uhd-height: 50px;
+
+// -------------------------------------- //
+// Player
+// -------------------------------------- //
+
+$progress-bar-height: 3px;
+$player-padding-mobile: 30px;
+$player-padding-desktop: 60px;
+
+// -------------------------------------- //
+// Layer Depth (z-index)
+// -------------------------------------- //
+
+$depth-header: 10;
+$depth-panel-overlays: 20;
+$depth-notifications: 30;
+$depth-prompts: 40;
+$depth-modal-overlays: 50;
+$depth-debug: 999;
+
+$depth-player: 1;
+$depth-player-end-of-picture: 3;
+$depth-player-end-of-background: 4;
+$depth-player-end-of-video: 5;
+$depth-player-suggested-content: 6;
+$depth-player-title: 13;
+$depth-player-bar: 8;
+$depth-player-live-mode: 9;
+$depth-player-preview: 10;
+$depth-player-wrapper: 11;
+$depth-player-pause: 12;
+$depth-player-spinner: 13;
+$depth-player-back: 15;
+$depth-player-end-of-playback: 13;
+$depth-player-help-layer: 14;
+$depth-player-chromecast: 33;
+$depth-player-chromecast-text: 34;
+$depth-player-chromecast-icons: 35;
+
+$depth-packshot-progress: 2;
+$depth-packshot-title: 5;
+$depth-packshot-hover: 10;
+
+$progress-bar-desktop-height: 5px;

@@ -1,0 +1,50 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+.ed-html {
+	font-family: $font-family-heading;
+	font-size: 28px;
+	white-space: normal;
+	ul,
+	ol {
+		display: inline-block;
+	}
+	h1 {
+		font-size: 100px;
+	}
+	h2 {
+		font-size: 80px;
+	}
+	h3 {
+		font-size: 64px;
+	}
+	h4 {
+		font-size: 42px;
+	}
+	h5 {
+		font-size: 36px;
+	}
+	blockquote {
+		position: relative;
+		font-size: 64px;
+	}
+	blockquote:after,
+	blockquote:before {
+		content: "";
+		position: absolute;
+		height: 141px;
+		width: 200px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		z-index: -1;
+	}
+	blockquote:before {
+		top: -48px;
+		left: 0;
+		background-image: url("../../../../../resource/ref/tv/image/quote-mark1.png");
+	}
+	blockquote:after {
+		bottom: -48px;
+		right: 0;
+		background-image: url("../../../../../resource/ref/tv/image/quote-mark2.png");
+	}
+}

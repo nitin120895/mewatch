@@ -1,0 +1,160 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+@import "ref/responsive/style/app/header";
+
+$scroll-button-width: 27px;
+
+.xh2-autoplay {
+	position: relative;
+	min-height: 50vw;
+
+	&__overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding-bottom: 40px;
+		z-index: $depth-header - 1;
+		pointer-events: none;
+
+		@function get-margin-right($margin) {
+			@return $margin * 2 + to-rem(60px);
+		}
+
+		@mixin responsive-margin($viewport) {
+			$margin: to-rem(get-grid-margin($viewport));
+			margin-left: $margin;
+			margin-right: get-margin-right($margin);
+		}
+
+		@include mq($until: tablet) {
+			@include responsive-margin(phone);
+			padding-bottom: 20px;
+		}
+
+		@include mq(tablet) {
+			@include responsive-margin(tablet);
+		}
+
+		@include mq(laptop) {
+			@include responsive-margin(laptop);
+		}
+
+		@include mq($from: desktop) {
+			padding-bottom: 80px;
+		}
+
+		@include mq(desktop) {
+			@include responsive-margin(desktop);
+		}
+
+		@include mq(desktopWide) {
+			@include responsive-margin(uhd);
+		}
+	}
+
+	&__title {
+		color: $color__white;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-transform: uppercase;
+		position: relative;
+		white-space: normal;
+		@include vw(margin, 4px 0 0);
+		@include vw(font-size, 36px);
+		@include vw(line-height, 32px);
+
+		@include mq($until: tablet) {
+			@include vw(font-size, 20px, phone);
+			@include vw(line-height, 20px, phone);
+			@include vw(margin, 4px 0 0, phone);
+			width: 66%;
+		}
+
+		@include mq(tablet) {
+			@include vw(font-size, 38px, tablet);
+			@include vw(line-height, 40px, tablet);
+			@include vw(margin, 4px 0 0, tablet);
+			width: 66%;
+		}
+
+		@include mq(laptop) {
+			@include vw(margin, 6px 0 -4px, laptop);
+			@include vw(font-size, 54px, laptop);
+			@include vw(line-height, 56px, laptop);
+		}
+
+		@include mq(desktop) {
+			@include vw(margin, 4px 0 -4px, laptop);
+			@include vw(font-size, 60px, desktop);
+			@include vw(line-height, 60px, desktop);
+		}
+
+		@include mq(desktopWide) {
+			@include vw(margin, 0 0 -4px, desktopWide);
+			@include vw(font-size, 72px, desktopWide);
+			@include vw(line-height, 72px, desktopWide);
+		}
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&__badge {
+		display: inline-block;
+		position: relative;
+		right: 0;
+		top: 0;
+		margin: 0;
+		padding: 2px 10px 0;
+		width: auto;
+		font-size: 12px;
+		line-height: 1.5;
+		color: $color__white;
+		text-transform: uppercase;
+		font-weight: bold;
+		background-image: linear-gradient(to right, rgba(210, 0, 115, 1) 0%, rgba(248, 26, 117, 1) 100%);
+		transition: all 0.2s ease-in-out;
+
+		@include mq(laptop) {
+			font-size: 13px;
+		}
+
+		@include mq(desktop) {
+			font-size: 16px;
+		}
+	}
+
+	&__icon-wrapper {
+		display: none;
+	}
+
+	@media (min-aspect-ratio: 8/5) {
+		&__icon-wrapper {
+			position: absolute;
+			bottom: 5px;
+			left: calc(50% - #{$scroll-button-width} / 2);
+			z-index: $depth-header;
+			display: block;
+		}
+
+		&__icon {
+			display: inline-block;
+			stroke-width: 3px;
+			position: relative;
+			width: $scroll-button-width;
+			height: 18px;
+		}
+	}
+
+	@media (min-aspect-ratio: 16/9) {
+		&__icon-wrapper {
+			bottom: calc(100% - 100vh + 5px);
+
+			@include mq($until: tablet) {
+				bottom: calc(100% - 100vh + 5px + #{$header-height-small});
+			}
+		}
+	}
+}

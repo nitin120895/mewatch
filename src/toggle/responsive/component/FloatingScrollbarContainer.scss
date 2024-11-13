@@ -1,0 +1,28 @@
+.floating-scrollable {
+	max-width: 100%;
+	overflow: hidden;
+	overflow-x: auto;
+
+	&__scrollbar {
+		bottom: 0;
+		min-height: 17px;
+		overflow: auto;
+		position: fixed;
+	}
+
+	&__scrollbar-dummy {
+		font-size: 1px;
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+		min-height: 17px;
+
+		&:before {
+			content: "\A0";
+		}
+
+		&.invisible {
+			visibility: hidden;
+		}
+	}
+}

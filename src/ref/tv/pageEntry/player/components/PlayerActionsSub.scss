@@ -1,0 +1,16 @@
+@import "src/ref/tv/style/modules";
+
+.player-actions-sub {
+	text-align: center;
+	&__act {
+		&.action {
+			display: inline-block !important;
+		}
+
+		&.selected {
+			color: $color__button_active;
+			background: rgba($color__white, 0.3);
+			border-color: rgba($color__white, 0) !important;
+		}
+	}
+}

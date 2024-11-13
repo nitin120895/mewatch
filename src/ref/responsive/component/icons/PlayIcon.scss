@@ -1,0 +1,109 @@
+@import "shared/style/modules";
+
+// Maintain play icon size
+@mixin play-icon-size($size) {
+	.play-icon {
+		svg {
+			width: $size;
+			height: $size;
+		}
+	}
+}
+
+.play-icon {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	cursor: pointer;
+
+	&__circle {
+		color: white;
+		stroke: white;
+	}
+
+	&__arrow {
+		color: white;
+		fill: white;
+	}
+
+	&__container {
+		&:hover {
+			// CSS transition moves an element 1px in random direction, bug with WebKit
+			// This fix can lead to blur effect on some screens
+			// https://stackoverflow.com/questions/15464055/css-transition-effect-makes-image-blurry-moves-image-1px-in-chrome
+			transform: translateZ(0) scale(1.1);
+		}
+
+		transition: all 0.2s ease-in-out;
+	}
+
+	&:hover:not(&--disabled) {
+		.play-icon__circle {
+			color: $color__primary;
+			stroke: $color__primary;
+		}
+
+		.play-icon__arrow {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+	}
+
+	&--disabled {
+		cursor: default;
+
+		.play-icon__circle {
+			color: $color__grey--warm;
+			stroke: $color__grey--warm;
+		}
+
+		.play-icon__arrow {
+			color: $color__grey--warm;
+			fill: $color__grey--warm;
+		}
+
+		.play-icon__container {
+			&:hover {
+				transform: none;
+			}
+
+			transition: none;
+		}
+	}
+
+	svg {
+		width: 55px;
+		height: 55px;
+	}
+}
+
+// show play icons with packshot hover popups only
+@include mq($from: desktop) {
+	.play-icon {
+		display: block;
+	}
+}
+
+.pg-account {
+	.packshot--poster,
+	.packshot--block,
+	.packshot--square {
+		@include play-icon-size(40px);
+	}
+
+	.packshot--tile {
+		@include play-icon-size(35px);
+	}
+}
+
+.packshot--square,
+.packshot--tile {
+	@include play-icon-size(45px);
+}
+
+.packshot-list__packshot {
+	.packshot--tile,
+	.packshot--square {
+		@include play-icon-size(40px);
+	}
+}

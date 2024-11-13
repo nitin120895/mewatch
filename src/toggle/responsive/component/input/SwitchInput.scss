@@ -1,0 +1,132 @@
+@import "shared/style/modules";
+
+$switch-width: 20px;
+$switch-height: $switch-width;
+$slider-padding: 5px;
+$slider-width: 2 * $switch-width + (4 * $slider-padding);
+$slider-height: $switch-height + (2 * $slider-padding);
+
+$switch-width-smaller: 14px;
+$switch-height-smaller: $switch-width-smaller;
+$slider-padding-smaller: 3px;
+$slider-width-smaller: 2 * $switch-width-smaller + (4 * $slider-padding-smaller);
+$slider-height-smaller: $switch-height-smaller + (2 * $slider-padding-smaller);
+
+@mixin transition-settings {
+	transition: all 0.2s;
+}
+
+.switch-input {
+	padding-bottom: 3px;
+	display: inline-block;
+	user-select: none;
+
+	&__label {
+		display: inline-block;
+		color: $color__grey;
+		font-size: 16px;
+		position: relative;
+		top: 5px;
+		text-align: right;
+
+		&--disabled {
+			color: $color__grey--warm;
+		}
+
+		&--right {
+			padding-left: 8px;
+		}
+
+		&--left {
+			padding-right: 8px;
+		}
+	}
+
+	&__slider {
+		@include transition-settings;
+		display: inline-block;
+		vertical-align: middle;
+		background: $color__grey--warm;
+		position: relative;
+		top: 3px;
+		border-radius: 100px;
+		width: $slider-width;
+		height: $slider-height;
+		cursor: pointer;
+
+		&--checked {
+			background: $color__primary--hover;
+		}
+
+		&--disabled {
+			background: $color__grey--light;
+
+			.switch-component__switch {
+				background: $color__off-white;
+			}
+		}
+
+		@include mq($from: phablet) {
+			width: $slider-width-smaller;
+			height: $slider-height-smaller;
+		}
+	}
+
+	&__switch {
+		@include transition-settings;
+		position: absolute;
+		border-radius: 100%;
+		width: $switch-width;
+		height: $switch-height;
+		background: $color__white;
+		margin-top: $slider-padding;
+		margin-left: $slider-padding;
+
+		&--checked {
+			margin-left: ($slider-width - $switch-width - $slider-padding);
+		}
+
+		@include mq($from: phablet) {
+			width: $switch-width-smaller;
+			height: $switch-height-smaller;
+			margin-top: $slider-padding-smaller;
+			margin-left: $slider-padding-smaller;
+
+			&--checked {
+				margin-left: ($slider-width-smaller - $switch-width-smaller - $slider-padding-smaller);
+			}
+		}
+	}
+
+	&__checkbox:focus + &__slider {
+		outline-width: thin;
+		outline-style: dotted;
+		outline-color: inherit;
+	}
+
+	&__label-padding {
+		height: 1px;
+		overflow: hidden;
+		font-size: 16px;
+		padding-right: 8px;
+		display: block;
+	}
+
+	&__label-padding-label {
+		user-select: none;
+		display: block;
+	}
+
+	&__label-wrapper {
+		display: inline-block;
+		vertical-align: middle;
+
+		&--left {
+			text-align: right;
+		}
+
+		&--right {
+			text-align: left;
+		}
+	}
+}

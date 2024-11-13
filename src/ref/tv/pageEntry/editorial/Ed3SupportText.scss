@@ -1,0 +1,40 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.ed3 {
+	font-family: $font-family-heading;
+	position: relative;
+	width: 100%;
+	max-height: $viewport-height;
+	overflow: hidden;
+
+	&__content {
+		width: 1400px;
+
+		&--left {
+			text-align: left;
+		}
+
+		&--center {
+			text-align: center;
+		}
+
+		&--right {
+			text-align: right;
+		}
+	}
+
+	&__scrollbar {
+		position: absolute;
+		top: 0;
+		right: 20px;
+		max-height: $viewport-height;
+		width: 10px;
+		background-color: $scrollbar_bg_color;
+	}
+
+	&__cursor {
+		width: 10px;
+		background-color: $color__white;
+	}
+}

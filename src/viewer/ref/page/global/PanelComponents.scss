@@ -1,0 +1,15 @@
+@import "~baseguide/scss/baseguide/vendor/mq";
+
+// Override the default colours to better suit the component viewer's theme
+.side-panel {
+	display: block !important; // ensure we override media queries
+	&__panel {
+		background-color: #aaa;
+		&--left {
+			border-right: 1px solid #666;
+		}
+		&--right {
+			border-left: 1px solid #666;
+		}
+	}
+}

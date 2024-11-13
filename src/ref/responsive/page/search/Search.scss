@@ -1,0 +1,49 @@
+@import "shared/style/modules";
+
+.search-page {
+	display: flex;
+	flex-direction: column;
+
+	&__message {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		margin-top: 40px;
+	}
+
+	&__message-title {
+		font-size: 16px;
+	}
+
+	&__message-info {
+		margin-top: 8px;
+		font-size: 12px;
+	}
+}
+
+@include mq($from: tablet) {
+	.search-page {
+		&__message-title {
+			font-size: 20px;
+		}
+
+		&__message-info {
+			margin-top: 10px;
+			font-size: 14px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.search-page {
+		&__message {
+			display: block;
+			text-align: left;
+		}
+
+		&__message-title {
+			font-size: 24px;
+		}
+	}
+}

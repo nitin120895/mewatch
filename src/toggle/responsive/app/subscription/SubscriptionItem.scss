@@ -1,0 +1,173 @@
+@import "shared/style/modules";
+
+.active-subscription-item {
+	padding: 20px 0;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 1px solid $color__off-white;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	img {
+		width: 112px;
+		height: 63px;
+		flex: 0 0 112px;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+
+	&__content-section {
+		flex: 0 0 58%;
+
+		.active-subscription-item__date {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__title {
+		color: $color__primary;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	&__price,
+	&__date,
+	&__unavailable {
+		font-size: 14px;
+		line-height: 1.43;
+		letter-spacing: -0.22px;
+		color: $color__grey;
+	}
+
+	&__unavailable {
+		margin-top: 10px;
+	}
+
+	&__actions {
+		text-align: right;
+		margin-top: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-end;
+
+		.cta-btn,
+		.active-subscription-item__cancelled {
+			padding: 0;
+			height: auto;
+		}
+
+		.cta-btn {
+			padding-left: 5px;
+			padding-right: 2px;
+			font-size: 14px;
+		}
+
+		.active-subscription-item__date {
+			font-size: 12px;
+			line-height: 1.67;
+			color: $color__grey--warm;
+		}
+	}
+
+	&__cancelled,
+	&__purchase {
+		font-size: 14px;
+		font-weight: bold;
+		color: $color__grey--warm;
+	}
+
+	&__purchase {
+		position: relative;
+		right: 0;
+		font-size: 14px;
+	}
+
+	&__hint-icon {
+		&:before {
+			content: "i";
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 1px solid $color__primary;
+			background-color: $color__primary;
+			border-radius: 10px;
+			font-size: 16px;
+			line-height: 18px;
+			text-align: center;
+			color: $color__white;
+			cursor: pointer;
+		}
+	}
+
+	&__tooltip {
+		margin-right: 10px;
+		line-height: 24px;
+
+		.tooltip__text {
+			padding: 6px 10px 18px 11px;
+			font-weight: normal;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.active-subscription-item {
+		.actions-container {
+			width: 100%;
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			margin-top: 20px;
+
+			&.cancelable {
+				position: absolute;
+				flex-direction: row;
+				margin-top: 0;
+			}
+		}
+
+		&__date,
+		&__purchase {
+			position: relative;
+			top: 5px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.active-subscription-item {
+		&__actions {
+			text-align: right;
+			margin-top: 0;
+			width: auto;
+
+			.active-subscription-item {
+				.actions-container {
+					flex-direction: column;
+				}
+			}
+		}
+
+		&__content-section {
+			flex: 2 0 auto;
+		}
+
+		&__purchase {
+			position: relative;
+			right: 0;
+			margin-top: 10px;
+		}
+
+		img {
+			width: 161px;
+			height: 90px;
+			flex: 0 0 161px;
+		}
+	}
+}

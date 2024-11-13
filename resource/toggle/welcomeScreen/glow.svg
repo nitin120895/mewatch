@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="351" height="18" viewBox="0 0 351 18">
+    <defs>
+        <radialGradient id="prefix__a" cx="50%" cy="50%" r="438.889%" fx="50%" fy="50%" gradientTransform="matrix(-.11392 0 0 -.11974 .557 .56)">
+            <stop offset="0%" stop-color="#BB9248"/>
+            <stop offset="100%" stop-color="#382711" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="prefix__b" cx="50%" cy="50%" r="991.667%" fx="50%" fy="50%" gradientTransform="matrix(-.05042 0 0 -.01118 .525 .506)">
+            <stop offset="0%" stop-color="#FFEDB5"/>
+            <stop offset="100%" stop-color="#DBA33E" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="prefix__c" cx="50%" cy="50%" r="991.667%" fx="50%" fy="50%" gradientTransform="matrix(-.05042 0 0 -.01473 .525 .507)">
+            <stop offset="0%" stop-color="#FFEDB5"/>
+            <stop offset="35.608%" stop-color="#CDA254"/>
+            <stop offset="100%" stop-color="#DBA33E" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" opacity=".7">
+        <path fill="url(#prefix__a)" d="M95 0H253V18H95z" transform="translate(-3)"/>
+        <path fill="url(#prefix__b)" d="M0 0H357V18H0z" transform="translate(-3)"/>
+        <path fill="url(#prefix__c)" d="M0 0H357V18H0z" transform="translate(-3)"/>
+    </g>
+</svg>

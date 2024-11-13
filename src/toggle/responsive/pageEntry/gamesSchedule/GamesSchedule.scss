@@ -1,0 +1,246 @@
+@import "shared/style/modules";
+
+.SXT1.page-entry:first-of-type:not(.page-entry--hero) {
+	margin: 0;
+}
+
+// Mobile app webview overrides
+.app.app-hide-menu {
+	.games-schedule__nav {
+		padding-top: 1.8em;
+	}
+}
+
+.games-schedule {
+	font-size: 1rem;
+
+	&__header {
+		background-color: $color__games-header;
+	}
+
+	&__filters-menu {
+		background-color: $color__games-header;
+		width: 100%;
+		z-index: $depth-header;
+	}
+
+	&__title {
+		font-size: 1.375em;
+		margin-bottom: 0;
+		margin-right: 20px;
+		transition: all 0.1s ease-out;
+		color: $color__white;
+	}
+
+	&__nav {
+		padding-top: 2.85em;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-bottom: 1em;
+	}
+
+	&__channel-view {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+
+		.cta-btn {
+			height: 30px;
+			margin-bottom: 0;
+			color: $color__games-cta-text;
+			border-color: $color__games-cta-text;
+			padding: 0 20px;
+			text-transform: uppercase;
+
+			&:hover:not(:disabled) {
+				background-color: $color__neutral;
+			}
+		}
+	}
+
+	&__secondary-filters {
+		background-color: $color__games-background;
+		padding: 1.5em 0;
+
+		.grid-margin {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	&__table {
+		display: flex;
+		background-color: $color__games-background;
+	}
+
+	&__category-item {
+		position: relative;
+		height: $sport-item-height-sm;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin: 0 1.625em 1.5em;
+	}
+
+	&__category-thumbnail {
+		position: relative;
+		margin-bottom: 1em;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 5em;
+			height: 1.8em;
+			background: $color__games-ellipse-bg;
+			border-radius: 50%;
+			transform: translate(-0.5em, 40%);
+		}
+
+		img {
+			position: relative;
+			max-height: 4em;
+			width: auto;
+		}
+	}
+
+	&__category-title {
+		color: $color__white;
+		line-height: 1.2;
+		font-size: 0.875em;
+		text-align: center;
+	}
+
+	&__category-thumbnail,
+	&__category-title {
+		font-size: 0.75em;
+	}
+
+	.floating-scrollable {
+		// Offset the margin for programmes list due to Add to Cal issue
+		margin-top: -3em;
+	}
+
+	&__programmes {
+		white-space: nowrap;
+		// To solve Add to Cal dropdown being cut off at the top
+		margin-top: 3em;
+	}
+
+	&__programme-list {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		min-width: 100%;
+	}
+}
+
+.games-schedule__filters-menu.sticky {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+
+	.date-picker-dropdown {
+		height: $games-cta-height;
+	}
+}
+
+@each $breakpoint in $display-margins {
+	@include mq($breakpoint) {
+		.games-schedule {
+			&__table {
+				$margin: get-grid-margin($breakpoint) - 5;
+				padding-left: $margin;
+			}
+		}
+	}
+}
+
+@include mq($until: desktop) {
+	.games-schedule {
+		&__table {
+			padding-left: 0;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.games-schedule {
+		&__title {
+			font-size: 1.75em;
+		}
+
+		&__nav {
+			margin-bottom: 0;
+		}
+
+		&__date-picker {
+			.date-picker-dropdown {
+				display: flex;
+				justify-content: space-between;
+				padding: 0 1.5rem;
+			}
+		}
+
+		&__channel-view {
+			margin-top: 0;
+			margin-bottom: 0;
+
+			.cta-btn {
+				height: 40px;
+				padding: 0 20px;
+			}
+		}
+	}
+}
+
+@include mq($from: tabletLandscape) {
+	.games-schedule {
+		&__category-item {
+			flex-direction: row;
+			height: $sport-item-height-lg;
+			min-width: 10em;
+			max-width: 10em;
+			justify-content: flex-start;
+		}
+
+		&__category-title {
+			font-size: 0.875em;
+			flex: 1 0 0;
+		}
+
+		&__category-thumbnail {
+			font-size: 1em;
+			margin-right: 5px;
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include mq($from: 1920px) {
+	.games-schedule {
+		font-size: 1.2rem;
+	}
+}
+
+@mixin noHover() {
+	.games-schedule {
+		&__filter-sg {
+			&:hover:not(:disabled) {
+				background-color: $color__games-bg;
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}

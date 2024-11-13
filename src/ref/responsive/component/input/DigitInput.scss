@@ -1,0 +1,52 @@
+@import "shared/style/modules";
+
+@mixin activeUnderline($color) {
+	box-shadow: 0 -3px 0 -1px $color inset;
+}
+
+@mixin underline($color) {
+	box-shadow: 0 -3px 0 -1px $color inset;
+}
+
+.digit-input {
+	@include underline($color__grey--warm);
+	padding: 0;
+	transition: box-shadow 0.2s;
+	margin: 0 8px 0 2px;
+	text-align: center;
+	border: none;
+	color: $color__black;
+	appearance: none;
+	outline: none;
+	background-color: transparent;
+	width: 38px;
+	height: 38px;
+	font-size: 16px;
+
+	&--error {
+		@include activeUnderline($color__error);
+	}
+
+	// Fix to remove required styling in firefox
+	&:invalid:not(&--error):not(:focus) {
+		@include underline($color__grey--warm);
+	}
+
+	&:focus {
+		@include activeUnderline($color__primary);
+	}
+
+	&:disabled {
+		@include underline($color__grey--light);
+	}
+
+	&--dark {
+		@include underline($color__grey--light);
+		color: $color__white;
+		border-color: $color__grey--light;
+
+		&:disabled {
+			@include underline($color__grey--warm);
+		}
+	}
+}

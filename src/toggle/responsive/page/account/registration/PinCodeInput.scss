@@ -1,0 +1,155 @@
+@import "shared/style/modules";
+
+$digits: 6;
+
+.pin {
+	&__error-message {
+		margin: 8px 0;
+		min-height: 16px;
+		line-height: 16px;
+		font-size: 12px;
+		color: $color__error;
+		text-align: left;
+	}
+
+	&__pin-input {
+		svg.tick-icon {
+			display: none;
+		}
+
+		&--success {
+			.pin__label {
+				color: $color__success;
+			}
+
+			.pin__input {
+				border-bottom: 2px solid $color__success;
+			}
+
+			svg.tick-icon {
+				display: block;
+				stroke: $color__success;
+				position: absolute;
+				right: -25px;
+				bottom: 15px;
+			}
+		}
+
+		&--focused {
+			.pin__label {
+				color: $color__primary;
+			}
+		}
+
+		&--error {
+			.pin__label {
+				color: $color__error;
+			}
+
+			.pin__input {
+				border-bottom: 2px solid $color__error;
+			}
+		}
+
+		&--disabled {
+			opacity: 0.5;
+			color: $color__grey--warm;
+			.pin__toggle-pin {
+				pointer-events: none;
+			}
+		}
+	}
+
+	&__toggle-pin {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		right: -70px;
+		top: 20px;
+		cursor: pointer;
+	}
+
+	&__inputs {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		position: relative;
+	}
+
+	&__exclamation {
+		width: 15px;
+		height: 15px;
+		width: 6px;
+		height: 25px;
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 1.39;
+		color: $color__error;
+		position: absolute;
+		right: -15px;
+		bottom: 5px;
+	}
+
+	&__input {
+		margin: 0;
+		padding: 0;
+		width: calc(100% / #{$digits} - 12px);
+		border: none;
+		border-bottom: 1px solid $color__grey--warm;
+		font-size: 26px;
+		color: $color__grey--warm;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0);
+		box-shadow: none;
+
+		&--security {
+			-webkit-text-security: disc;
+		}
+
+		&:focus {
+			outline: none;
+			border-bottom: 2px solid $color__primary;
+		}
+
+		&::-ms-clear {
+			display: none;
+		}
+
+		&--error {
+			color: $color__error;
+			border-color: $color__error;
+
+			&::placeholder {
+				color: $color__error;
+			}
+		}
+
+		&--disabled {
+			color: $color__grey--light;
+			border-color: $color__grey--light;
+
+			&::placeholder {
+				color: $color__grey--light;
+			}
+		}
+
+		@include mq($from: tablet) {
+			font-size: 32px;
+		}
+
+		@include mq($from: laptop) {
+			font-size: 36px;
+		}
+	}
+}
+
+.dark-background {
+	.pin__inputs {
+		.pin__input {
+			color: $color__white;
+			&:focus {
+				border-bottom: 2px solid $color__white;
+			}
+		}
+	}
+}

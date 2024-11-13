@@ -1,0 +1,87 @@
+@import "shared/style/modules";
+@import "./../playerVariables";
+
+.player-buttons__volume {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+
+	.volume-controls {
+		margin: 0 12px 0 0;
+		padding-right: 0;
+		text-align: left;
+		touch-action: manipulation;
+	}
+
+	.svg-icon {
+		height: $player-icon-mobile;
+		width: 21px;
+	}
+
+	.player-buttons & .scrubber {
+		display: none;
+		width: 100%;
+	}
+
+	&.open {
+		flex: 1 0 auto;
+		margin: 0;
+
+		.scrubber {
+			display: block;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.player-buttons__volume {
+		.player-buttons & .scrubber {
+			margin: 0;
+			width: 140px;
+		}
+
+		&.open {
+			flex: none;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.player-buttons__volume {
+		flex: none;
+
+		.volume-controls {
+			margin: 0 16px 0 0;
+		}
+
+		.player-buttons & .scrubber {
+			margin: 0;
+			width: 140px;
+		}
+
+		&.open {
+			flex: none;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player-buttons__volume {
+		.volume-controls {
+			padding: 0;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player-buttons__volume {
+		.svg-icon {
+			height: $player-icon-uhd;
+			width: 43px;
+		}
+
+		.player-buttons & .scrubber {
+			width: 220px;
+		}
+	}
+}

@@ -1,0 +1,310 @@
+@import "shared/style/modules";
+@import "../playerVariables";
+
+.scrubber {
+	$bgColor: $color__black3;
+
+	background-color: $scrubber-color;
+	border-radius: 4px;
+	height: $scrubber-height-mobile;
+	margin: 0;
+	position: relative;
+
+	&__time {
+		font-family: $font-family-body;
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	&__line {
+		background: $color__primary--hover;
+		border-radius: 4px;
+		height: $scrubber-height-mobile;
+		width: 0;
+
+		&--start-over-mode {
+			background: $color__white;
+		}
+	}
+
+	&__progress {
+		position: absolute;
+		height: $scrubber-height-mobile;
+		background: $color__primary--hover;
+	}
+
+	&__live-point {
+		display: block;
+		height: $scrubber-mobile-thumb-size;
+		margin-left: -($scrubber-mobile-thumb-size/2);
+		padding: ($scrubber-mobile-thumb-size - $scrubber-thumb-size) / 2;
+		position: absolute;
+		top: -(($scrubber-mobile-thumb-size - $scrubber-height-mobile) / 2);
+		width: $scrubber-mobile-thumb-size;
+		user-select: none;
+
+		&:after {
+			$margin: $scrubber-thumb-size/2;
+			background: $color__white;
+			border-radius: 50%;
+			border: 3px solid $color__white;
+			display: none;
+			content: "";
+			height: $scrubber-thumb-size;
+			left: 50%;
+			margin-top: -($margin);
+			margin-left: -($margin);
+			position: absolute;
+			top: 50%;
+			width: $scrubber-thumb-size;
+		}
+	}
+	&__live-label {
+		background-color: $color__primary--hover;
+		color: $color__white;
+		height: 17px;
+		width: 37px;
+		text-align: center;
+		border-radius: 2px;
+		padding: 1px 5px;
+		margin-right: 5px;
+
+		@include mq($from: desktop) {
+			height: 25px;
+			width: 50px;
+		}
+	}
+
+	&__live-tip {
+		position: absolute;
+		top: -16px;
+		left: 10px;
+		font-size: 12px;
+
+		&--right-align {
+			left: 12px;
+		}
+	}
+
+	&__progress-tip {
+		position: absolute;
+		top: -16px;
+		left: -15px;
+		font-size: 12px;
+
+		&--left-align {
+			left: -12px;
+		}
+	}
+
+	&__breakpoints {
+		display: block;
+		position: absolute;
+		top: 0px;
+		user-select: none;
+
+		&:after {
+			background: $color__yellow1;
+			display: block;
+			content: "";
+			height: $scrubber-height-mobile;
+			width: 8px;
+		}
+
+		&--pre:after {
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+			width: 4px;
+		}
+
+		&--post:after {
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			width: 4px;
+		}
+	}
+
+	&__thumb {
+		display: block;
+		height: $scrubber-mobile-thumb-size;
+		margin-left: -($scrubber-mobile-thumb-size/2);
+		padding: ($scrubber-mobile-thumb-size - $scrubber-thumb-size) / 2;
+		position: absolute;
+		top: -(($scrubber-mobile-thumb-size - $scrubber-height-mobile) / 2);
+		width: $scrubber-mobile-thumb-size;
+		user-select: none;
+
+		&:after {
+			$margin: $scrubber-thumb-size/2;
+			background: $color__primary--hover;
+			border-radius: 50%;
+			border: 3px solid $color__white;
+			display: block;
+			content: "";
+			height: $scrubber-thumb-size;
+			left: 50%;
+			margin-top: -($margin);
+			margin-left: -($margin);
+			position: absolute;
+			top: 50%;
+			width: $scrubber-thumb-size;
+		}
+
+		&:hover:after {
+			height: $scrubber-thumb-hover-size;
+			margin-left: -($scrubber-thumb-hover-size / 2);
+			margin-top: -($scrubber-thumb-hover-size / 2);
+			width: $scrubber-thumb-hover-size;
+		}
+	}
+
+	&__label {
+		display: none;
+		position: absolute;
+		left: 50%;
+		bottom: 24px;
+		padding: 0.25rem;
+
+		border-radius: 4px;
+
+		background-color: #222;
+		box-shadow: 0 2px 4px 0 rgba($color__black, 0.5);
+
+		font-size: 16px;
+		transform-origin: bottom left;
+		user-select: none;
+
+		&--show {
+			display: block;
+		}
+	}
+
+	&__thumbnail {
+		z-index: 13;
+		background-repeat: no-repeat;
+		background-size: auto;
+		background-position: center;
+		width: 125px;
+		height: 70px;
+	}
+
+	&__formatted-label {
+		padding: 0.25rem 0 0.125rem;
+		font-size: 16px;
+		text-align: center;
+		font-family: $font-family-heading;
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.scrubber {
+		height: $scrubber-height-mobile;
+		cursor: pointer;
+
+		&__line {
+			height: $scrubber-height-mobile;
+		}
+
+		&__thumb {
+			top: -(($scrubber-mobile-thumb-size - $scrubber-height-mobile) / 2);
+		}
+
+		&__progress-tip {
+			left: -12px;
+		}
+
+		&__live-tip {
+			left: 12px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.scrubber {
+		&__thumbnail {
+			width: 225px;
+			height: 125px;
+		}
+
+		&__progress-tip {
+			&--left-align {
+				left: -11px;
+			}
+		}
+	}
+}
+
+@include mq($from: tabletLandscape) {
+	.scrubber {
+		&__formatted-label {
+			font-size: 24px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.scrubber {
+		height: $scrubber-height-desktop;
+
+		&__time {
+			font-family: $font-family-body;
+			font-size: 24px;
+			font-weight: normal;
+		}
+
+		&__thumbnail {
+			width: 355px;
+			height: 200px;
+		}
+
+		&__line {
+			height: $scrubber-height-desktop;
+		}
+
+		&__progress-tip,
+		&__live-tip {
+			font-size: 16px;
+		}
+
+		&__progress-tip {
+			top: -35px;
+			left: -14px;
+
+			&--left-align {
+				left: -26px;
+			}
+		}
+
+		&__live-tip {
+			left: 7px;
+			top: -28px;
+			&--right-align {
+				left: 10px;
+			}
+		}
+
+		&__thumb {
+			background: $color__primary--hover;
+			border-radius: 50%;
+			border: 3px solid $color__white;
+			height: $scrubber-thumb-size;
+			margin-left: -($scrubber-thumb-size/2);
+			position: absolute;
+			top: -(($scrubber-thumb-size - $scrubber-height-mobile) / 2);
+			width: $scrubber-thumb-size;
+
+			&:hover {
+				border-width: 6px;
+				height: $scrubber-thumb-hover-size;
+				margin-left: -($scrubber-thumb-hover-size/2);
+				margin-top: 0;
+				top: -(($scrubber-thumb-hover-size - $scrubber-height-mobile) / 2);
+				width: $scrubber-thumb-hover-size;
+			}
+
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

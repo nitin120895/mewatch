@@ -1,0 +1,20 @@
+@import "shared/style/modules";
+
+.a2 {
+	display: block;
+
+	&__title {
+		display: inline-block;
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__grey--dark;
+	}
+
+	&__view-all {
+		float: right;
+		font-size: 14px;
+		font-weight: bold;
+		color: $color__primary;
+	}
+}

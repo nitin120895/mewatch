@@ -1,0 +1,67 @@
+@import "shared/style/modules";
+
+.profile-pin-input {
+	text-align: center;
+
+	&__title {
+		font-size: 24px;
+		max-width: 405px;
+		font-weight: normal;
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+		color: $color__link--hover;
+	}
+
+	&__pin {
+		margin-top: 48px;
+		display: inline-block;
+		width: 290px;
+		text-align: left;
+	}
+	.pin__pin-input {
+		margin-top: 48px;
+		display: inline-block;
+		width: 290px;
+		text-align: left;
+	}
+
+	&__pin-input {
+		text-align: center;
+	}
+
+	&__forgot-pin {
+		display: block;
+		cursor: pointer;
+		color: $color__white;
+		&:hover {
+			color: $color__link--hover;
+		}
+	}
+
+	&__submit {
+		margin-right: 24px;
+	}
+
+	.pin-group {
+		&__view-pin {
+			display: none;
+		}
+
+		.digit-input {
+			box-shadow: 0 -3px 0 -1px $color__grey--warm inset;
+
+			&:focus {
+				box-shadow: 0 -3px 0 -1px $color__white inset;
+			}
+		}
+
+		&__error {
+			height: auto;
+		}
+	}
+
+	&__buttons {
+		margin-top: 20px;
+	}
+}

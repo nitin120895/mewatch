@@ -1,0 +1,28 @@
+@import "src/ref/tv/style/modules";
+
+.gradient-title {
+	display: block;
+	width: 100%;
+	position: relative;
+	height: 80px;
+	bottom: 0;
+	background-image: linear-gradient(
+		to bottom,
+		rgba($color__black, 0),
+		rgba($color__black, 0.1) 66%,
+		rgba($color__black, 0.5)
+	);
+
+	&--noGradient {
+		background-color: rgba($color__black, 0.5);
+	}
+
+	&__title {
+		color: $color__white;
+		padding: 8px;
+		font-size: 24px;
+		font-weight: bold;
+		line-height: 30px;
+		margin: 23px 0;
+	}
+}

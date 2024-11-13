@@ -1,0 +1,10 @@
+@import "shared/style/modules";
+
+.live-progress {
+	$gap: 2px;
+	bottom: $gap;
+	left: $gap;
+	position: absolute;
+	right: $gap;
+	z-index: 2;
+}

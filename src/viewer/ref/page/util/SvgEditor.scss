@@ -1,0 +1,56 @@
+.svg-editor {
+	display: flex;
+	flex-direction: column;
+
+	&__svg {
+		flex: 0 0 auto;
+		margin-right: 12px;
+		margin-bottom: 12px;
+		width: 300px;
+		height: 300px;
+		background-color: #111;
+		stroke-linecap: round;
+	}
+
+	&__form {
+		display: inline-block;
+		vertical-align: top;
+		margin-bottom: 12px;
+	}
+
+	&__input-group {
+		display: flex;
+		margin-bottom: 12px;
+		align-items: center;
+
+		&--text {
+			align-items: flex-start;
+		}
+	}
+
+	&__label {
+		flex: 1 0 auto;
+	}
+
+	&__input {
+		flex: 0 1 auto;
+		width: 80px;
+		margin-left: 8px;
+	}
+
+	&__input-group--text &__input {
+		margin: 0 0 0 12px !important;
+		min-width: 300px;
+		min-height: 200px;
+	}
+
+	&__path {
+		display: block;
+		resize: vertical;
+		width: 300px;
+	}
+
+	&__submit {
+		font-size: 14px;
+	}
+}

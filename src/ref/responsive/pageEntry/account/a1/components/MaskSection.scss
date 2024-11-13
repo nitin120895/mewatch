@@ -1,0 +1,29 @@
+@import "shared/style/modules";
+
+.acct-mask {
+	&__title {
+		color: $color__grey--dark;
+		margin-bottom: 0;
+	}
+
+	&__pwd-change {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__pwd-mask-input {
+		letter-spacing: 0.2em;
+		font-size: 20px;
+		border: none;
+		color: $color__grey;
+		line-height: 10px;
+		min-width: 0;
+	}
+
+	&__link {
+		color: $color__primary;
+		font-weight: bold;
+		cursor: pointer;
+		flex: 0 0 auto;
+	}
+}

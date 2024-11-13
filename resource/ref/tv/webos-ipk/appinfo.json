@@ -1,0 +1,24 @@
+{
+	"id": "${WEBOS_PKG}",
+	"version": "${APP_VERSION}",
+	"vendor": "${VENDOR}",
+	"type": "web",
+	"main": "index.html",
+	"title": "${app_title}",
+	"icon": "icon-80.png",
+	"largeIcon": "icon-130.png",
+	"bgImage": "logo-axis-bg.png",
+	"splashBackground": "logo-axis-splash-bg.png",
+	"iconColor": "#0099f7",
+	"transparent": false,
+	"visible": true,
+	"uiRevision": 2,
+	"resolution": "${WEBOS_RESOLUTION}",
+	"disableBackHistoryAPI": true,
+	"class": {
+		"hidden": false
+	},
+	"accessibility": {
+		"supportsAudioGuidance": true
+	}
+}

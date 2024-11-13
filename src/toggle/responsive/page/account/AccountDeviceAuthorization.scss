@@ -1,0 +1,185 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+
+.code-page {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: calc(100vh - #{$header-height-small});
+	padding-top: $header-height-small;
+
+	&__title {
+		margin-bottom: 16px;
+		font-size: 28px;
+		color: $color__link--hover;
+		font-weight: normal;
+		text-align: center;
+		text-transform: capitalize;
+	}
+
+	&__subtitle {
+		margin-bottom: 16px;
+		font-size: 14px;
+		color: $color__white;
+		font-weight: normal;
+		text-align: center;
+		display: block;
+	}
+
+	&__specification {
+		font-size: 12px;
+		color: $color__white;
+		font-weight: normal;
+		opacity: 0.7;
+		text-align: center;
+		display: block;
+		max-width: 300px;
+		margin: 0 auto;
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: 6px;
+	}
+
+	&__input-code {
+		background: none;
+		padding: 4px;
+		color: $color__primary;
+		display: inline-block;
+		max-width: 240px;
+		margin-top: 24px;
+	}
+
+	&__input-name {
+		max-width: 360px;
+		margin: 0 auto;
+		&--error {
+			label.txt-input__label {
+				color: $color__error;
+				opacity: 1;
+				font-family: $font-family-heading;
+			}
+		}
+	}
+
+	&__error {
+		max-width: 300px;
+		color: rgba($color__white, 0.96);
+		background-color: rgba($color__white, 0.15);
+		margin: 0 auto;
+		display: block;
+		padding: 12px 20px 12px 46px;
+		text-align: left;
+		position: relative;
+
+		&--device-limit {
+			margin-bottom: 25px;
+		}
+	}
+
+	&__error-title {
+		font-weight: bold;
+		display: block;
+	}
+
+	&__error-circle {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		background-color: $color__error;
+		display: block;
+		height: 18px;
+		width: 18px;
+		border-radius: 9px;
+		text-align: center;
+	}
+
+	&__connect {
+		margin-top: 36px;
+		display: block;
+		background-color: $color__primary;
+		border-color: $color__primary;
+	}
+
+	&__cancel {
+		margin-top: 36px;
+		display: block;
+		border-color: $color__white;
+	}
+
+	&__form-code {
+		text-align: center;
+
+		.txt-input__optional {
+			display: none;
+		}
+
+		.txt-input__input {
+			box-shadow: 0 -2px 0 -1px rgba($color__white, 0.6) inset;
+			color: rgba($color__white, 0.96);
+		}
+
+		.txt-input__label {
+			color: $color__white;
+			font-family: $font-family-heading;
+			opacity: 0.7;
+		}
+
+		.txt-input--error {
+			color: $color__error;
+		}
+
+		.txt-input--error .txt-input__input {
+			box-shadow: 0 -2px 0 -1px $color__error inset;
+		}
+
+		.txt-input__message {
+			font-family: $font-family-heading;
+			color: $color__error;
+			font-weight: normal;
+			line-height: 1.42;
+			font-size: 12px;
+		}
+
+		.cta-btn {
+			display: inline-block;
+			margin-left: 10px;
+			margin-right: 10px;
+			color: $color__white;
+			width: 140px;
+		}
+
+		.account-btn__content {
+			padding-left: 6px;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.code-page {
+		min-height: 100vh;
+		padding-top: $header-height-large;
+		&__title {
+			font-size: 48px;
+			margin-bottom: 32px;
+		}
+		&__error {
+			max-width: 400px;
+
+			&--device-limit {
+				max-width: 470px;
+			}
+		}
+		&__specification {
+			max-width: 380px;
+		}
+		&__subtitle {
+			font-size: 18px;
+		}
+		&__connect,
+		&__cancel {
+			margin-top: 40px;
+		}
+	}
+}

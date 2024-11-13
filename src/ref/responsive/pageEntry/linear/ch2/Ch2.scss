@@ -1,0 +1,15 @@
+@import "shared/style/modules";
+
+.ch2 {
+	.scrollable .arrow__icon {
+		top: -25px;
+	}
+}
+
+@include mq($from: tablet) {
+	.ch2 {
+		.scrollable .arrow__icon {
+			top: -30px;
+		}
+	}
+}

@@ -1,0 +1,123 @@
+@import "shared/style/modules";
+@import "../playerVariables";
+
+$cast-button-color: $color__white;
+$cast-button-hover-color: $color__primary;
+$cast-button-height: 44px;
+$cast-button-width: 47px;
+$cast-button-height-desktop: 44px - $player-button-mobile * 2;
+$cast-button-width-desktop: 47px - $player-button-mobile * 2;
+$cast-button-height-uhd: $player-icon-uhd + 11px;
+$cast-button-width-uhd: 44px;
+
+.cast-control {
+	--connected-color: $cast-button-color;
+	--disconnected-color: $cast-button-color;
+	color: $cast-button-color;
+	fill: $cast-button-color;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	margin-top: -0.18rem;
+
+	&.active {
+		right: 0;
+	}
+
+	&:hover .svg-icon {
+		fill: $cast-button-hover-color;
+		color: $cast-button-hover-color;
+	}
+
+	@include mq($from: phablet, $and: "(orientation: landscape)") {
+		right: 54px;
+	}
+
+	@include mq($from: uhd) {
+		right: 78px;
+		top: -5px;
+	}
+
+	&__connecting {
+		@for $i from 1 through 3 {
+			.arch-#{$i} {
+				animation: animation-#{$i} 1s infinite;
+			}
+		}
+
+		#boxfill {
+			opacity: 0;
+		}
+	}
+
+	&__disconnected {
+		#boxfill {
+			opacity: 0;
+		}
+	}
+
+	&__connected {
+		#boxfill {
+			opacity: 1;
+		}
+	}
+
+	&__noDevices {
+		display: none;
+	}
+
+	@keyframes animation-1 {
+		0% {
+			opacity: 1;
+		}
+		50%,
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	@keyframes animation-2 {
+		0%,
+		100% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes animation-3 {
+		0%,
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+.player-control-button--cast {
+	line-height: 0;
+	.cast-button {
+		z-index: -1;
+	}
+}
+#google-cast-button {
+	--connected-color: $player-button-color;
+	--disconnected-color: $player-button-color;
+	border: none;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transform: translateY(-100%);
+
+	&:hover {
+		--disconnected-color: $cast-button-hover-color;
+		--connected-color: $cast-button-hover-color;
+	}
+
+	@include mq($from: desktop) {
+		padding: 0;
+	}
+}

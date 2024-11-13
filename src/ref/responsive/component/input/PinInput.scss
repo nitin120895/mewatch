@@ -1,0 +1,51 @@
+@import "shared/style/modules";
+
+.pin-group {
+	&__error {
+		transition: opacity 0.2s $easeOutSine;
+		margin-top: 8px;
+		height: 24px;
+		color: $color__error;
+		margin-bottom: 8px;
+		opacity: 0;
+
+		&--visible {
+			opacity: 1;
+		}
+	}
+
+	&__view-pin {
+		background-color: transparent;
+		color: $color__grey--warm;
+		transition: color 0.2s;
+
+		&:disabled {
+			color: $color__grey--light;
+		}
+	}
+
+	&__label {
+		color: $color__grey--warm;
+		font-size: 12px;
+	}
+
+	&:disabled {
+		color: $color__grey--light;
+	}
+
+	&--dark {
+		.pin-group {
+			&__view-pin {
+				color: $color__grey--light;
+			}
+
+			&__view-pin:disabled {
+				color: $color__grey--warm;
+			}
+
+			&__label {
+				color: $color__grey--light;
+			}
+		}
+	}
+}

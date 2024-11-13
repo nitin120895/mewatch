@@ -1,0 +1,66 @@
+@import "shared/style/modules";
+
+.modal-manager-components {
+	input[type="radio"],
+	input[type="checkbox"] {
+		position: static;
+	}
+
+	&__button-groups {
+		display: flex;
+		& > .btn:not(:last-child) {
+			margin-right: 20px;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		flex: 1 0 50%;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: flex-start;
+		&:not(:last-child) {
+			margin-right: 20px;
+		}
+		> button:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__spacer {
+		margin-bottom: 20px;
+	}
+
+	&__divider {
+		width: 100%;
+		border-color: white !important;
+	}
+
+	&__button-label {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+		label {
+			margin-left: 20px;
+		}
+		input {
+			margin: 0px 10px 0px 0px;
+		}
+	}
+}
+
+.modal-custom-dialog {
+	padding: 20px;
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-system-error-dialog {
+	padding: 20px;
+	background-color: $color__error;
+	color: white;
+	display: flex;
+	flex-direction: column;
+}

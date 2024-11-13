@@ -1,0 +1,24 @@
+@import "shared/style/modules";
+
+.embed-code-generator {
+	&__player-size {
+		margin-top: 20px;
+	}
+	&__radio {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 5px;
+		color: $color__grey--medium;
+
+		.radio-button span {
+			color: $color__grey--medium;
+
+			&:before {
+				border-color: $color__grey--medium;
+				background: $color__black6;
+			}
+		}
+	}
+}

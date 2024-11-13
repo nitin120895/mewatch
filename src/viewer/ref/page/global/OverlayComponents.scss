@@ -1,0 +1,59 @@
+@import "shared/style/modules";
+
+.overlay-view {
+	&__button {
+		position: relative;
+	}
+
+	&__modal {
+		position: absolute;
+		padding: 12px;
+		bottom: 20px;
+		background: #22a7f0;
+		border-radius: 2px;
+
+		&:before {
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			border-top: 5px solid #22a7f0;
+			content: "";
+			display: block;
+			height: 0;
+			left: 18px;
+			position: absolute;
+			bottom: -5px;
+			width: 0;
+		}
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&__body {
+		margin: 12px 0 0;
+
+		&--scrollable {
+			padding: 8px;
+			margin: 16px 0;
+			border: 1px solid grey;
+			overflow-x: hidden;
+			overflow-y: auto;
+			max-height: 200px;
+		}
+	}
+
+	&__btn {
+		margin-right: 16px;
+	}
+
+	&__collapse-box {
+		height: 200px;
+		background-color: red;
+	}
+
+	&__collapse-2-lines {
+		$lineHeight: 1.45em;
+		max-height: $lineHeight * 2;
+	}
+}

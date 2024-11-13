@@ -1,0 +1,90 @@
+@import "shared/style/modules";
+
+.recent-searches {
+	padding-top: 20px;
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	&__heading {
+		flex: 1 1 auto;
+		font-size: 16px;
+		color: $color__white;
+		margin-bottom: 26px;
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__item + &__item {
+		margin-top: 28px;
+	}
+
+	&__link {
+		color: $color__grey--light;
+		font-family: $font-family-heading;
+		font-size: 14px;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&__clear {
+		font-family: $font-family-heading;
+		font-size: 14px;
+		color: $color--white;
+		background: transparent;
+		margin-right: 10px;
+
+		&--bottom {
+			display: none;
+		}
+	}
+}
+
+@include mq(tablet) {
+	.recent-searches {
+		padding-top: 54px;
+
+		&__heading {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+
+		&__clear {
+			&--top {
+				display: none;
+			}
+
+			&--bottom {
+				margin-top: 31px;
+				display: block;
+			}
+		}
+	}
+}
+
+@include mq(desktop) {
+	.recent-searches {
+		padding-top: 40px;
+
+		&__heading {
+			font-size: 24px;
+			margin-bottom: 16px;
+		}
+
+		&__item + &__item {
+			margin-top: 8px;
+		}
+
+		&__clear--bottom {
+			margin-top: 16px;
+		}
+	}
+}

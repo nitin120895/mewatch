@@ -1,0 +1,36 @@
+@import "src/ref/tv/style/modules";
+
+$descriptionLineHeight: 1.5em;
+
+.episode-info {
+	height: $episode-info-height;
+
+	&__title {
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 42px;
+		color: $color__white;
+		width: 1200px;
+		max-height: 84px;
+		overflow: hidden;
+	}
+
+	&__duration {
+		line-height: 42px;
+		opacity: 0.7;
+		font-size: 28px;
+		padding-top: 10px;
+		padding-bottom: 50px;
+	}
+
+	&__desc {
+		margin-top: 20px;
+		font-size: 28px;
+		line-height: 42px;
+		width: 1200px;
+		max-height: 126px;
+		overflow: hidden;
+		text-shadow: 0 2px 4px rgba($color__black, 0.5);
+		color: $color__grey--light;
+	}
+}

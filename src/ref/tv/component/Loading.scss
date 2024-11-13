@@ -1,0 +1,25 @@
+@import "src/ref/tv/style/modules";
+
+.app-loading {
+	width: $viewport-width;
+	height: $viewport-height;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: $color__black;
+	opacity: 0;
+	display: none;
+	transition: opacity 150s;
+
+	&__spinner {
+		position: absolute;
+		left: 45%;
+		top: 45%;
+	}
+
+	&--show {
+		display: block;
+		opacity: 1;
+		z-index: 10;
+	}
+}

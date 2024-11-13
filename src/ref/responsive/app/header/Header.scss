@@ -1,0 +1,285 @@
+@import "shared/style/modules";
+@import "../../style/app/header";
+
+.header {
+	width: 100%;
+	background-color: $color__primary;
+	color: $color__white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: $depth-header;
+
+	&--fixed {
+		position: fixed;
+	}
+
+	// null transform hack
+	// force layer for browsers that don't support will-change
+	transform: translateZ(0);
+	will-change: top;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		background-image: linear-gradient(to bottom, rgba($color__black, 0.5), rgba($color__black, 0));
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	&--no-shadow:before {
+		content: none;
+	}
+
+	&__bar {
+		display: flex;
+		align-items: center;
+	}
+
+	&__icon-btn {
+		display: flex;
+		align-items: center;
+		min-width: 32px;
+		min-height: 32px;
+		color: $color__white;
+		background: transparent;
+
+		&:hover,
+		&:focus {
+			color: $color__white;
+		}
+
+		> .svg-icon {
+			// Ensure the button size provides a reasonable hit area around the icon (>= 32px).
+			// This usually means the button's dimensions will be larger than the icon's dimensions.
+			$iconSize: 18px;
+			width: $iconSize;
+			height: $iconSize;
+		}
+
+		&--search {
+			display: none;
+		}
+	}
+
+	&__logo {
+		$logo-colorful-color: $color__white;
+		flex: 0 0 auto;
+		color: $logo-colorful-color;
+
+		> .axis-logo {
+			width: 82px;
+			height: 24px;
+		}
+
+		&-transparent-background {
+			display: none;
+		}
+
+		&-colorful-background {
+			color: $logo-colorful-color;
+			display: block;
+			fill: $logo-colorful-color;
+		}
+	}
+
+	// By default we don't want any padding applied.
+	// The `.scrollbar-padding` class is added globablly but only applies to the mobile breakpoint's layout.
+	&__nav-top.scrollbar-padding {
+		padding-right: 0;
+	}
+
+	&__nav-account {
+		flex: 0 0 auto;
+
+		.profile-icon__name {
+			color: $color__white;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.header {
+		$mobilePrimaryNavColor: $color__primary--darker;
+
+		&__bar {
+			height: $header-height-small;
+		}
+
+		&__icon-btn--search-left {
+			display: flex;
+		}
+
+		&__logo {
+			margin: 0 auto;
+		}
+
+		&__nav-top {
+			display: none;
+		}
+
+		&__nav-bottom {
+			width: 100%;
+			height: $header-primary-nav-height;
+			background-color: $mobilePrimaryNavColor;
+			justify-content: space-between;
+
+			// Adding pseudo elements to the start and end so the justify layout will
+			// align the nav entries towards the center instead of flush to the edges
+			&:before,
+			&:after {
+				content: "";
+			}
+		}
+
+		~ .content {
+			// Ensure page content sits below the header bar
+			padding-top: $header-height-small + $header-primary-nav-height;
+		}
+		~ .app-background {
+			top: $header-height-small + $header-primary-nav-height;
+		}
+
+		&--no-nav {
+			~ .content {
+				// Don't include the $header-primary-nav-height when there's no bottom nav
+				padding-top: $header-height-small;
+			}
+			~ .app-background {
+				top: $header-height-small;
+			}
+		}
+	}
+}
+
+@include mq($until: desktop) {
+	.header {
+		.drop-menu {
+			display: none;
+		}
+
+		.header-search {
+			display: none;
+		}
+
+		&__nav-account {
+			display: none;
+		}
+	}
+}
+
+@include mq($from: tablet, $until: desktop) {
+	.header {
+		&__bar {
+			height: $header-height-small;
+		}
+
+		&--hero:before {
+			height: 74px;
+		}
+
+		&__nav-top {
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 20%;
+			right: 20%;
+		}
+
+		&__icon-btn--search-right {
+			display: flex;
+			margin-left: auto;
+			margin-right: 10px;
+		}
+
+		~ .content,
+		&-offset {
+			// Ensure page content sits below the header bar
+			padding-top: $header-height-small;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.header {
+		&--hero {
+			background-color: transparent;
+
+			&:before {
+				// We adjust the before :pseudo element to be used as the gradient background instead of drop shadow
+				top: 0;
+				background-image: linear-gradient(to bottom, rgba($color__black, 0.9), rgba($color__black, 0));
+			}
+
+			.header__logo {
+				$logo-transparent-color: $color__primary;
+				color: $logo-transparent-color;
+
+				&-transparent-background {
+					color: $logo-transparent-color;
+					display: block;
+					fill: $logo-transparent-color;
+				}
+
+				&-colorful-background {
+					display: none;
+				}
+			}
+		}
+
+		// Intentionally increasing specificity here so that it takes priority over other media query adjustments
+		&.header--hero-mode ~ .content {
+			// When in hero mode content sits underneath the header bar flush with the top of the page
+			padding-top: 0;
+		}
+
+		&__nav-bottom {
+			display: none;
+		}
+
+		&__nav-top {
+			flex: 1 1 auto;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.header {
+		&__bar {
+			height: $header-height-large;
+		}
+
+		&--hero:before {
+			height: 88px;
+		}
+
+		&__logo > .axis-logo {
+			width: 99px;
+			height: 29px;
+		}
+
+		&__nav-top {
+			margin: 0 44px;
+		}
+
+		&__icon-btn--menu {
+			display: none;
+		}
+
+		~ .content,
+		&-offset {
+			// Ensure page content sits below the header bar
+			padding-top: $header-height-large;
+		}
+
+		&:not(.header--hero) .drop-menu__content {
+			border-radius: 0 0 4px 4px;
+		}
+	}
+}

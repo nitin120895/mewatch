@@ -1,0 +1,28 @@
+// Available Fonts - web fonts should be declared within _fonts.scss first.
+$font-ubuntu: "Ubuntu";
+$font-arial: "Arial";
+
+// Set body & heading fonts
+$font-family-body: $font-arial, sans-serif !default;
+$font-family-heading: $font-ubuntu, sans-serif !default;
+
+// Available Fonts - web fonts should be declared within _fonts.scss first.
+$font-ubuntu: "Ubuntu";
+$font-arial: "Arial";
+
+// Set body & heading fonts
+$font-family-base: $font-arial, sans-serif !default;
+$headings-font-family: $font-ubuntu, sans-serif !default;
+
+// Typography
+$text-color: $color__white;
+$link-color: $color__primary;
+$link-hover-color: $color__primary;
+$link-hover-decoration: none;
+$font-size-base: 0.875em;
+$line-height-base: 1.45;
+$spacing-base: #{$line-height-base}em;
+$type-scale-base: $font-size-base;
+$type-scale: 1.333;
+$headings-spacing: 0.4em;
+$headings-line-height: 1.2;

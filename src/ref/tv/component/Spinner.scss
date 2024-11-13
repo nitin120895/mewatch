@@ -1,0 +1,24 @@
+.icon-spinner {
+	$size: 32px;
+	animation: spinner-spin 1s linear infinite;
+	height: $size;
+	width: $size;
+
+	background-image: url("../../../../resource/ref/tv/image/loading-spinner-blue.png");
+	background-size: contain;
+
+	&.player,
+	&.common {
+		width: 167px;
+		height: 167px;
+	}
+}
+
+@keyframes spinner-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

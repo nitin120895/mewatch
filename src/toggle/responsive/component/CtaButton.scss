@@ -1,0 +1,254 @@
+@import "shared/style/modules";
+@import "shared/style/generic/text";
+
+.cta-btn {
+	$heightSmall: 30px;
+	$height: $button-mobile-height;
+	$heightDesktop: $button-uhd-height;
+
+	border-radius: 100px;
+	font-family: $font-family-heading;
+	font-weight: bold;
+	text-transform: capitalize;
+	transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+	height: $height;
+	padding: 0 30px;
+
+	appearance: none;
+	font-size: 16px;
+
+	@include mq($until: phablet) {
+		font-size: 14px;
+	}
+
+	&:disabled {
+		// On touchstart events still fire on disabled buttons
+		// Hence this property is required as a fix for MEDTOG-16704
+		pointer-events: none;
+	}
+
+	&:focus {
+		outline-color: $color__white;
+	}
+	&--light:focus {
+		outline-color: $color__primary;
+	}
+
+	&--large {
+		height: $heightDesktop;
+		font-size: 18px;
+		min-width: 170px;
+		justify-content: center;
+	}
+
+	&--small {
+		padding: 0 20px;
+		height: $heightSmall;
+		font-size: 12px;
+	}
+	// Default CTA button style assumes dark background (thus also 'dark' theme)
+	&--primary {
+		background-color: $color__primary;
+		color: $color--white;
+		&:hover:not(:disabled) {
+			background-color: $color__primary--hover;
+		}
+		&:disabled {
+			color: $color__grey--warm;
+			background-color: $color__black4;
+		}
+
+		// white background theme
+		&-light {
+			color: $color__white;
+			&:disabled {
+				color: $color__grey--warm;
+				background-color: $color__off-white;
+			}
+		}
+
+		// blue background theme
+		&-blue {
+			color: $color__blue--light;
+			background-color: $color--white;
+			&:hover:not(:disabled) {
+				background-color: rgba($color__white, 0.8);
+			}
+			&:disabled {
+				color: $color__blue--light;
+				background-color: rgba($color__white, 0.6);
+			}
+		}
+
+		&-inverse {
+			color: $color__black3;
+			background-color: $color--white;
+			&:hover:not(:disabled) {
+				background-color: rgba($color__white, 0.8);
+			}
+			&:disabled {
+				color: $color__blue--light;
+				background-color: rgba($color__white, 0.6);
+			}
+		}
+	}
+
+	// Default CTA button style assumes dark background (thus also 'dark' theme)
+	&--secondary {
+		color: $color__white;
+		border: 1px solid $color__white;
+		background-color: transparent;
+		&:hover:not(:disabled) {
+			background-color: rgba($color__white, 0.2);
+		}
+		&:disabled {
+			color: $color__neutral;
+			border-color: $color__neutral;
+		}
+
+		// White Background theme
+		&-dark {
+			color: $color__primary;
+			border: 1px solid $color__primary;
+			&:hover:not(:disabled) {
+				background-color: rgba($color__primary, 0.2);
+			}
+		}
+
+		// White Background theme
+		&-light {
+			&:disabled {
+				background-color: transparent;
+			}
+		}
+
+		// blue background theme
+		&-blue {
+			color: $color__white;
+			border-color: $color__white;
+			&:hover:not(:disabled) {
+				background-color: rgba($color__white, 0.15);
+			}
+			&:disabled {
+				color: rgba($color__white, 0.8);
+				border-color: rgba($color__white, 0.4);
+			}
+		}
+	}
+
+	&--naked {
+		color: $color__white;
+		&:disabled {
+			color: $color__grey--warm;
+		}
+
+		&:hover:not(:disabled) {
+			color: $color__link--hover;
+		}
+
+		&-inverse:hover:not(:disabled) {
+			color: $color__white;
+			font-weight: bold;
+		}
+
+		&-light {
+			color: $color__primary;
+			&:hover:not(:disabled) {
+				color: $color__primary;
+				opacity: 0.8;
+				background: transparent;
+			}
+		}
+		&-blue {
+			&:hover:not(:disabled) {
+				color: rgba($color__white, 0.8);
+			}
+			&:disabled {
+				color: rgba($color__white, 0.8);
+			}
+		}
+	}
+
+	&--me-pass {
+		border-radius: 25px;
+		text-transform: none;
+		padding: 0 30px;
+		-webkit-tap-highlight-color: transparent;
+
+		@include mq($until: phablet) {
+			font-size: 16px;
+		}
+	}
+
+	&--me-pass#{&}--primary {
+		color: $color__white;
+		background-color: $color__black;
+		border-color: $color__black;
+
+		&.error {
+			color: $color__white;
+			background-color: $color__black;
+			border-color: $color__black;
+		}
+
+		&:hover:not(:disabled),
+		&:active:not(:disabled) {
+			background-color: $color__mepass-primary--hover;
+			border-color: $color__mepass-primary--hover;
+			color: $color__white;
+		}
+		&:disabled {
+			background-color: rgba($color__black, 0.5);
+		}
+	}
+
+	&--me-pass#{&}--secondary {
+		color: $color__black;
+		background-color: $color__white;
+		border: 1px solid $color__grey--light;
+
+		&:hover:not(:disabled) {
+			color: $color__black;
+			background-color: $color__white;
+			border-color: $color__grey--light;
+		}
+		&:disabled {
+			color: rgba($color__black, 0.6);
+			border-color: rgba($color__grey--light, 0.8);
+		}
+	}
+}
+
+@mixin noHover() {
+	.cta-btn {
+		&--me-pass#{&}--primary {
+			&:hover:not(:disabled) {
+				background-color: $color__black;
+				border-color: $color__black;
+			}
+			&:active:not(:disabled) {
+				background-color: $color__mepass-primary--hover;
+				border-color: $color__mepass-primary--hover;
+			}
+		}
+
+		&--secondary,
+		&--secondary-light {
+			&:hover:not(:disabled) {
+				background-color: transparent;
+			}
+
+			&:active:not(:disabled) {
+				background-color: rgba($color__white, 0.2);
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}

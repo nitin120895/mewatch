@@ -1,0 +1,17 @@
+:focus {
+	// Technically we only want an outline on all elements with focus in keyboard mode
+	// however, we've tried to keep the least specific selector as possible to make it easier to override
+	// to achieve the 'keyboard only' requirements, we instead just remove the outline while in not-key-mode (see below)
+	outline-width: thin;
+	outline-style: dotted;
+	// outline colour defaults to 'currentColor' at initial. This should cover 99% of required focus situations
+	// Otherwise, it should be overridable by two ways:
+	// <item class>:focus { outline-color: <your colour> }
+	// or if you need more specificity for whatever reason (probably shouldn't though)
+	// @include key-mode() { outline-color: <your colour> }
+	outline-color: initial;
+
+	@include not-key-mode() {
+		outline: none;
+	}
+}

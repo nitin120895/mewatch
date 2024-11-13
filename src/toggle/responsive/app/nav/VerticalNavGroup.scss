@@ -1,0 +1,78 @@
+@import "shared/style/modules";
+
+.vertical-nav-group {
+	padding: 14px 16px 14px 20px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+	&__groups {
+		padding-left: 0;
+		margin-bottom: 8px;
+		list-style-type: none;
+	}
+
+	&__link + &__groups {
+		margin-top: 18px;
+	}
+
+	&__group {
+		line-height: normal;
+
+		& + & {
+			margin-top: 30px;
+		}
+	}
+
+	&__items {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	&__link + &__items {
+		margin-top: 16px;
+	}
+
+	&__link {
+		&--customColor {
+			color: $color__grey--light;
+		}
+	}
+
+	&__item {
+		font-size: 14px;
+
+		&--single:nth-child(n + 2) {
+			margin-top: 22px;
+		}
+
+		&--dual {
+			display: inline-block;
+			width: 50%;
+
+			&:nth-child(n + 3) {
+				margin-top: 22px;
+			}
+
+			&:nth-child(odd) {
+				padding-right: 8px;
+			}
+
+			&:nth-child(even) {
+				padding-left: 8px;
+			}
+		}
+	}
+
+	.nav-entry-link {
+		line-height: normal;
+
+		&--primary,
+		&--group {
+			display: inline-block;
+			max-width: 100%;
+		}
+
+		&--primary {
+			font-size: 24px;
+		}
+	}
+}

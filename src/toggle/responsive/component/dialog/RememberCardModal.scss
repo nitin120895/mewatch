@@ -1,0 +1,45 @@
+@import "shared/style/modules";
+
+@mixin tablet-style {
+	.remember-card {
+		.confirmation-dialog {
+			&__buttons {
+				flex-direction: row;
+			}
+
+			.cta-btn {
+				margin-top: 0;
+
+				&--secondary {
+					margin-left: 20px;
+				}
+			}
+		}
+	}
+}
+
+.remember-card {
+	.confirmation-dialog {
+		&__buttons {
+			flex-direction: column;
+		}
+
+		.cta-btn {
+			width: 170px;
+			margin-top: 10px;
+			text-transform: none;
+
+			&--secondary {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media #{$blackberryPortrait} {
+	@include tablet-style();
+}
+
+@include mq($from: tablet) {
+	@include tablet-style();
+}

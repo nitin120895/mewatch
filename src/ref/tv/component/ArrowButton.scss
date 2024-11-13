@@ -1,0 +1,38 @@
+@import "src/ref/tv/style/modules";
+
+.arrow-button {
+	color: $color__white;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: $row-list-arrow-width;
+	opacity: 1;
+	transition: opacity 0.7s;
+
+	&--hide {
+		opacity: 0;
+	}
+
+	&--left {
+		background-image: linear-gradient(to left, transparent, $color__black);
+		left: 0;
+		right: auto;
+	}
+
+	&--right {
+		background-image: linear-gradient(to right, transparent, $color__black);
+		left: auto;
+		right: 0;
+	}
+
+	.icon {
+		display: block;
+		font-size: 60px;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+			transform: scale(1.5);
+		}
+	}
+}

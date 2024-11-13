@@ -1,0 +1,23 @@
+@import "shared/style/modules";
+
+.schedule-time {
+	color: $color__white;
+	font-size: 12px;
+	line-height: 13px;
+	margin-top: 0.6em;
+
+	&--on-now {
+		font-weight: bold;
+	}
+
+	&__link {
+		color: inherit;
+	}
+}
+
+@include mq($from: tablet) {
+	.schedule-time {
+		font-size: 14px;
+		line-height: 16px;
+	}
+}

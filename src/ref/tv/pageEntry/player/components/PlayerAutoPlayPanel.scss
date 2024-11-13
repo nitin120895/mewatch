@@ -1,0 +1,69 @@
+@import "src/ref/tv/style/modules";
+
+.player-end {
+	&__episode {
+		margin-left: 80px;
+	}
+
+	&__thumbnail {
+		display: inline-block;
+	}
+
+	&__count-down {
+		position: absolute;
+		bottom: 0;
+		right: 100px;
+		display: none;
+
+		&--show {
+			display: block;
+		}
+	}
+
+	&__starting-in {
+		display: inline-block;
+		font-size: 36px;
+		text-shadow: 0 2px 4px rgba($color__black, 0.6);
+	}
+
+	&__timer {
+		display: inline-block;
+	}
+}
+
+.player-end-episode-info {
+	display: inline-block;
+	margin-left: 40px;
+	vertical-align: top;
+	max-width: 1050px;
+
+	&__next {
+		font-size: 42px;
+		font-weight: bold;
+	}
+
+	&__number,
+	&__title {
+		font-size: 36px;
+		line-height: 42px;
+		max-height: 84px;
+		overflow: hidden;
+	}
+}
+
+.player-end-relatedList {
+	margin-left: 80px;
+	margin-top: 18px;
+
+	&__title {
+		font-size: 42px;
+		font-weight: bold;
+		line-height: 47px;
+		margin-bottom: 17px;
+	}
+
+	&__item {
+		margin-right: 20px;
+		display: inline-block;
+	}
+}

@@ -1,0 +1,187 @@
+@import "shared/style/modules";
+
+/**
+ * Override the default colour scheme with a version that
+ * matches the reference applications.
+ */
+
+body {
+	background-color: $app-bg-color !important;
+	color: $color__grey--light !important;
+}
+
+$keyline-color: $color__black4;
+
+.page-title-divider,
+.page-content-divider {
+	border-color: $keyline-color !important;
+}
+
+hr {
+	border-color: $keyline-color !important;
+}
+
+.fs {
+	border-color: $keyline-color !important;
+}
+
+.viewport__window {
+	background-color: $color__black !important;
+}
+
+.component-page {
+	.toc {
+		a {
+			color: $color__grey--light !important;
+			text-decoration: none !important;
+		}
+	}
+}
+
+pre {
+	background-color: #222 !important;
+}
+
+.item-search {
+	border-color: $keyline-color !important;
+
+	.active-item {
+		color: #ccc !important;
+	}
+
+	.previous-items__button {
+		background-color: #333 !important;
+	}
+
+	.previous-items__ul {
+		color: $color__black;
+	}
+}
+
+.results-box {
+	color: $color__black;
+}
+
+// Styles for inputs inside of component viewer
+
+label {
+	line-height: $line-height-base;
+	padding: 0;
+	cursor: pointer;
+
+	// For use with labels on the left of the input - single input per line
+	& > span:first-child + input[type="checkbox"],
+	& > span:first-child + input[type="radio"] {
+		margin-left: 6px;
+	}
+
+	// For use with labels on the left of the input - single input per line.
+	&:not(.label-inline) {
+		& + input[type="checkbox"],
+		& + input[type="radio"] {
+			margin-left: 6px;
+		}
+	}
+
+	& + input[type="radio"],
+	& + input[type="checkbox"] {
+		margin-left: 10px;
+	}
+
+	& > input[type="radio"],
+	& > input[type="checkbox"] {
+		margin-right: 8px;
+	}
+
+	& > input[type="radio"] + span,
+	& > input[type="checkbox"] + span {
+		margin-left: 0;
+	}
+}
+
+// Setting Default styles for below input types.
+$input-types: "text", "number", "password", "search", "email";
+$selector: unquote("textarea, select, ");
+
+@mixin disabled-state() {
+	background: $color__grey--light;
+	border-color: $color__grey--light;
+	color: $color__grey;
+}
+
+@mixin default-text-styles() {
+	display: block;
+	line-height: $line-height-base;
+	padding: 0.375em 0.75em;
+	height: 2.375em;
+	border-radius: 0;
+	background-clip: padding-box;
+	color: #222;
+	border: 1px solid $color__grey--dark;
+
+	&:disabled {
+		@include disabled-state();
+	}
+}
+
+@each $type in $input-types {
+	$selector: append($selector, unquote("input[type=#{$type}].default-input"), "comma");
+
+	@if $type == nth($input-types, length($input-types)) {
+		#{$selector} {
+			@include default-text-styles();
+		}
+	}
+}
+
+// For use with horizontally aligned radio buttons and checkboxes - multiple inputs per line.
+input[type="checkbox"] + label,
+input[type="checkbox"] + span,
+input[type="radio"] + label,
+input[type="radio"] + span {
+	margin-left: 7px;
+}
+
+input[type="checkbox"],
+input[type="label"] {
+	&:disabled {
+		@include disabled-state();
+	}
+}
+
+select[multiple],
+select[size],
+textarea {
+	height: auto;
+	min-width: 100px;
+}
+
+.fw-input > .default-input {
+	width: 100%;
+}
+
+.color-picker {
+	&__hex,
+	&__swatch {
+		display: inline-block !important;
+		vertical-align: middle;
+
+		&.is-default-color {
+			opacity: 0.5;
+		}
+	}
+
+	&__hex {
+		width: 138px; // allow some space for color picker
+	}
+
+	&__swatch {
+		width: 28px;
+		height: 32px;
+		padding: 0;
+		margin-left: 5px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+	}
+}

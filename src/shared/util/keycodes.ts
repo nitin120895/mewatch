@@ -1,0 +1,20 @@
+export const KEY_CODE = {
+	BACKSPACE: 8,
+	TAB: 9,
+	ENTER: 13,
+	SHIFT: 16,
+	CTRL: 17,
+	ALT: 18,
+	ESC: 27,
+	SPACE: 32,
+	LEFT: 37,
+	UP: 38,
+	RIGHT: 39,
+	DOWN: 40,
+	DELETE: 46,
+	M: 77,
+	N: 78,
+	F: 70,
+	LEFT_ARROW: 188,
+	RIGHT_ARROW: 190
+};

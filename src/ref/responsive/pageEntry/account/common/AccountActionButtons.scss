@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.account-action-btns {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	align-items: center;
+	flex-wrap: wrap;
+
+	/**
+	 * Force no border on Secondary action button
+	 */
+	.cta-btn--secondary {
+		border: none;
+
+		&:hover:not(:disabled) {
+			border: none;
+			background-color: transparent;
+		}
+	}
+}

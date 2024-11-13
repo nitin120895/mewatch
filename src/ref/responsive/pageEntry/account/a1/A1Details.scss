@@ -1,0 +1,25 @@
+@import "shared/style/modules";
+
+.a1-details {
+	&__success {
+		color: $color__success;
+	}
+
+	&__error {
+		background-color: $color__off-white;
+		text-align: center;
+		line-height: 24px;
+		position: relative;
+		opacity: 0;
+		transition: opacity 0.3s;
+		padding: 0;
+		margin: 0;
+		height: 0;
+		&--visible {
+			height: auto;
+			padding: 8px 0;
+			margin-top: 20px;
+			opacity: 1;
+		}
+	}
+}

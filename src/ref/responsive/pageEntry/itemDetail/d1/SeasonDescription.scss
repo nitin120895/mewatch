@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.d1-season-desc {
+	font-size: 1rem;
+	line-height: 1.25;
+	margin-bottom: 20px;
+	max-width: 596px;
+
+	&__text {
+		color: $color__grey--warm;
+		margin: 0;
+	}
+}

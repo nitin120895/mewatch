@@ -1,0 +1,146 @@
+@import "shared/style/modules";
+
+.games-epg-item {
+	$component: &;
+
+	&__cta {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1em;
+		width: calc(100% - 2em);
+		font-size: 1em;
+		height: 2.5em;
+	}
+
+	&__cta-group {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: 100%;
+		padding: 10px 0;
+
+		& > .cta-btn {
+			&:first-child {
+				margin-right: 0.5em;
+			}
+		}
+
+		#{$component}__cta-btn--startover {
+			width: 3.5rem;
+			padding: 0.5rem 0.8rem;
+		}
+
+		&.app-webview {
+			#{$component}__cta-btn--startover {
+				width: 2rem;
+			}
+		}
+	}
+
+	&__cta-icon {
+		height: 100%;
+		width: 100%;
+		color: $color__games-item-bg;
+	}
+
+	&__cta-btn {
+		padding: 10px 1.5rem;
+		width: 100%;
+		border-color: $color__games-item-bg;
+		color: $color__games-item-bg;
+
+		&--add-to-cal {
+			padding: 0;
+
+			&.add-to-calendar--app {
+				margin-bottom: 0.8rem;
+			}
+		}
+
+		&.cta-btn--secondary-dark.games-epg-item__cta-btn--vod {
+			&:hover {
+				background-color: transparent;
+			}
+		}
+
+		.add-to-calendar__calendar-btn {
+			font-size: inherit;
+			width: inherit;
+			padding: 10px 1.5rem;
+		}
+
+		&--startover {
+			padding: 0.5rem 1rem;
+			width: auto;
+		}
+
+		.app-webview &--startover {
+			padding: 0.5rem 0;
+			cursor: default;
+
+			.svg-icon {
+				color: $color__grey--dark;
+			}
+		}
+	}
+
+	&__cta-text,
+	.add-to-calendar__icon {
+		display: none;
+	}
+
+	&__cta .cta-btn--primary {
+		background-color: $color__games-item-bg;
+		color: $color__white;
+
+		&:hover {
+			border-color: $color__white;
+			background-color: $color__games-item-bg--hover;
+		}
+	}
+
+	&__cta-btn .cta-btn--secondary-dark,
+	&__cta-group .cta-btn--secondary-dark {
+		border-color: $color__games-item-bg;
+		color: $color__games-item-bg;
+
+		&:hover {
+			background-color: $color__white;
+		}
+	}
+}
+
+@include mq($from: tabletLandscape) {
+	.games-epg-item {
+		&__cta {
+			margin: 1.5em;
+			width: calc(100% - 3em);
+		}
+
+		&__cta-group {
+			justify-content: space-around;
+
+			&:not(.app-webview) > .cta-btn {
+				width: calc(50% - 0.5em);
+
+				&:first-child {
+					margin-right: 1rem;
+				}
+			}
+		}
+
+		.app-webview &__cta-icon,
+		&__cta-text {
+			display: block;
+		}
+
+		.app-webview &__cta-text,
+		&__cta-icon {
+			display: none;
+		}
+	}
+}

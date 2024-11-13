@@ -1,0 +1,16 @@
+@import "shared/style/modules";
+
+.billing-list-header {
+	display: none;
+	flex-wrap: wrap;
+	padding: 10px 0;
+	align-items: center;
+	justify-content: space-between;
+	color: $color__grey--dark;
+	font-weight: bold;
+
+	@include mq($from: tablet) {
+		flex-wrap: nowrap;
+		display: flex;
+	}
+}

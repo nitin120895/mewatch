@@ -1,0 +1,904 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/app-background.scss";
+@import "./playerVariables";
+
+// Mixin can be expanded for different resolutions
+// and orientations if required. Works off parents font-size
+@mixin subtitle-sizes {
+	& > div {
+		display: inline-block !important;
+		font-size: 0.7em !important;
+		line-height: 1.2 !important;
+	}
+}
+
+@mixin apply-subtitles-position {
+	.player-block__container {
+		.playkit-subtitles {
+			transform: translateY(0px);
+			transition: $player-controls-animation;
+
+			// Reset styling for inner playkit subtitles
+			// Overwrite element styles to display them corectly with scaling container
+			& > div > div {
+				top: unset !important;
+				bottom: 0 !important;
+				width: 100% !important;
+				height: unset !important;
+				@include subtitle-sizes();
+			}
+		}
+	}
+
+	.player-block__container--controls-shown {
+		.playkit-subtitles {
+			transform: translateY(-100px);
+
+			@include mq($until: laptop, $and: "(orientation: landscape)") {
+				transform: translateY(-75px);
+			}
+		}
+	}
+}
+
+@mixin hide-player-overlays() {
+	.player-overlay {
+		&--mobile {
+			display: none;
+		}
+
+		&--desktop {
+			display: none;
+		}
+	}
+}
+
+@mixin fullscreen-player-overlays() {
+	.player-overlay {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+}
+
+.pg-watch {
+	background-color: $color__black;
+
+	.page-entry:not(.page-entry--hero) {
+		margin: 0 !important;
+	}
+}
+
+.player-error-dialog,
+.cast-player-error-dialog {
+	text-align: center;
+}
+
+.player-error-dialog {
+	background: rgba($color__black, 0);
+	color: $color__white;
+
+	> .dialog-title {
+		color: $color__white;
+	}
+
+	.dialog__close-btn {
+		display: none;
+	}
+}
+
+.player {
+	background: transparent;
+	font-size: 1em;
+	position: relative;
+	width: 100%;
+	z-index: $depth-player;
+	transform-origin: top center;
+	overflow: hidden;
+
+	&--no-fullscreen {
+		z-index: $depth-player;
+		position: relative;
+	}
+
+	&--fake-fullscreen {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: var(--app-height);
+		background-color: $color__black3;
+		z-index: $depth-player-fake-fullscreen;
+	}
+
+	&--end-of-playback.player {
+		.player-overlay__back {
+			display: none;
+		}
+	}
+
+	&--end-credit {
+		.player-controls {
+			display: none;
+		}
+
+		@include mq($until: tablet, $and: "(orientation: portrait)") {
+			.end-of-playback__metadata {
+				display: none;
+			}
+		}
+
+		.end-of-playback__suggested-content {
+			padding: 0;
+		}
+
+		.player-block__controls {
+			visibility: hidden;
+		}
+
+		.player-metadata {
+			margin-top: 25px;
+		}
+	}
+
+	.player-btn {
+		border-color: $color__grey--light;
+		color: $color__white;
+		min-width: 152px;
+
+		&:hover {
+			border-color: $color__grey--light;
+			color: $color__white;
+		}
+	}
+
+	&__ads-metadata {
+		padding: 50px 16px 24px;
+	}
+
+	&__link-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	&-block {
+		background: black;
+		display: block;
+		height: 0;
+		margin: 0;
+		position: relative;
+		text-align: center;
+		padding-bottom: 56%;
+
+		&--is-autoplay-hero {
+			background: transparent;
+			opacity: 1;
+			transition: opacity 1s ease;
+		}
+
+		&--is-hidden {
+			opacity: 0;
+		}
+
+		.playkit-bumper-container {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			right: 0;
+			top: 0;
+
+			video {
+				width: 100%;
+				height: 100%;
+				right: 0;
+				top: 0;
+			}
+		}
+
+		&__container {
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+
+			&--hide {
+				display: none;
+			}
+
+			&--wrap .video {
+				z-index: $depth-player-end-of-video;
+			}
+		}
+
+		.video {
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+		}
+
+		&__mute-btn {
+			margin-bottom: 40px;
+
+			@include mq($until: tablet) {
+				margin-bottom: 20px;
+			}
+		}
+
+		&__fader {
+			position: absolute;
+			z-index: $depth-player-preview;
+			height: 100%;
+			width: 100%;
+			background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+			opacity: 0;
+			transition: opacity 0.5s ease-out;
+			pointer-events: none;
+
+			&--shown {
+				opacity: 1;
+			}
+		}
+
+		&__overlay-gradient {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 30%;
+			background-image: linear-gradient(to bottom, rgba($color__black, 0), rgba($player-background-gradient, 0.75));
+		}
+	}
+
+	.player-overlay {
+		z-index: $depth-player;
+
+		&--ui {
+			z-index: $depth-player-pause;
+
+			.player-overlay__back {
+				transform: translateY(0);
+				transition: $player-controls-animation;
+			}
+		}
+
+		&--desktop {
+			display: none;
+		}
+
+		&--mobile {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__back {
+			align-items: center;
+			display: flex;
+			height: 22px;
+			top: $metadata-top-position-mobile + 2;
+			left: $player-padding-mobile / 2;
+			line-height: $headings-line-height;
+			position: absolute;
+			width: 13px;
+			z-index: $depth-player-back;
+			cursor: pointer;
+			transform: translateY(-260%);
+		}
+
+		&--image-bg {
+			background-repeat: no-repeat;
+			background-size: cover;
+			z-index: 10;
+			opacity: 1;
+			height: 56vw;
+			transition: opacity 1s ease;
+		}
+
+		&--fade-in {
+			opacity: 1;
+		}
+
+		&--fade-out {
+			opacity: 0;
+		}
+
+		.player-block {
+			&__controls {
+				background: none;
+			}
+		}
+
+		&__pause-ad {
+			position: absolute;
+			z-index: $depth-player-ads;
+			top: 44px;
+			width: 100%;
+			overflow: hidden;
+			text-align: center;
+
+			&--portrait {
+				top: 13%;
+			}
+
+			&-container {
+				position: relative;
+				width: 320px;
+				margin: 0 auto;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			&-container--mobile-device {
+				width: 320px !important;
+			}
+
+			&-close {
+				position: relative;
+				margin-block-end: auto;
+				margin-top: 1%;
+				right: 20px;
+				width: 14px;
+				height: 14px;
+				cursor: pointer;
+			}
+		}
+
+		&__playback-speed-overlay {
+			position: absolute;
+			font-size: 0.75rem;
+			font-weight: 700;
+			top: 8%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: $depth-player-spinner;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgba(0, 0, 0, 0.7);
+			border-radius: 5%;
+			padding: 0.35rem 0.5rem;
+		}
+	}
+
+	.skip-intro-button {
+		position: absolute;
+		right: 30px;
+		bottom: 15px;
+		background-color: rgba($color__black, 0.5);
+		border: 2px solid rgba($color__grey--light, 0.7);
+		z-index: 12;
+		color: $color__white;
+		&:hover {
+			background-color: rgba($color__black, 0.7);
+		}
+	}
+
+	&__wrapper {
+		.player-controls,
+		.player-metadata,
+		.player-overlay__logo,
+		.player-overlay__back {
+			pointer-events: all;
+		}
+
+		&--vr {
+			pointer-events: none;
+		}
+	}
+
+	&__spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50px;
+		height: 50px;
+		z-index: $depth-player-spinner;
+	}
+
+	&-scrubber {
+		margin: 0 0 $scrubber-margin-mobile;
+		padding-left: 5px;
+		padding-right: 107px - $player-padding-mobile;
+		position: relative;
+
+		&--cast {
+			padding-left: 107px - $player-padding-mobile;
+		}
+
+		&__time-position {
+			position: absolute;
+			user-select: none;
+			transform: translateY(-50%);
+			top: 50%;
+		}
+
+		&__time {
+			@extend .player-scrubber__time-position;
+			right: 0;
+			font-size: 16px;
+			font-weight: normal;
+			font-style: normal;
+			font-family: $font-family-heading;
+		}
+
+		&__current-time {
+			@extend .player-scrubber__time-position;
+			left: 0;
+			font-size: 16px;
+			font-weight: normal;
+			font-style: normal;
+			font-family: $font-family-heading;
+		}
+	}
+
+	.thumbnail-hidden {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		width: 0;
+		height: 0;
+	}
+
+	&__vr-action-overlay {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: $depth-player-vr-overlay;
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&#{&}--ads-playing {
+		.player-block {
+			z-index: $depth-player-ads;
+			overflow: visible;
+		}
+
+		.player-block__container {
+			z-index: $depth-player-vr-overlay + 2;
+		}
+
+		.playkit-ads-container {
+			z-index: $depth-player-ads;
+		}
+
+		@include hide-player-overlays();
+	}
+}
+
+.xh2-autoplay .player-overlay {
+	&__wrapper::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: $depth-player-preview;
+		background-image: linear-gradient(to top, rgba($app-bg-gradient-color, 0.7), rgba($app-bg-gradient-color, 0));
+		pointer-events: none;
+	}
+}
+
+.player-block__tapable {
+	background: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0;
+	padding-bottom: 56%;
+}
+
+@mixin full-height-player() {
+	.chromeless--watch {
+		.main {
+			display: flex;
+
+			.page {
+				width: 100%;
+			}
+
+			.pg-watch {
+				height: 100%;
+			}
+		}
+
+		.page-entry:not(.page-entry--hero) {
+			display: flex;
+			height: 100%;
+		}
+	}
+
+	.player {
+		height: 100%;
+		height: var(--app-height);
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+
+		&-block {
+			height: 100%;
+			padding: 0;
+		}
+	}
+}
+
+@mixin show-desktop-overlay() {
+	.player-overlay {
+		&--mobile {
+			display: none;
+		}
+
+		&--desktop {
+			display: block;
+		}
+	}
+}
+
+@mixin phablet-landscape() {
+	@include apply-subtitles-position();
+	.player {
+		.skip-intro-button {
+			right: 30px;
+			bottom: 7.5rem;
+		}
+
+		&__wrapper {
+			&--ui {
+				.player-controls,
+				.player-metadata,
+				.player-metadata.showMetadata,
+				.player-overlay__logo,
+				.player-overlay__back {
+					transform: translateY(0);
+					transition: $player-controls-animation;
+				}
+			}
+		}
+	}
+}
+
+@mixin tablet-landscape() {
+	.player {
+		&-scrubber {
+			margin: 0 0 $scrubber-margin-tablet;
+		}
+
+		@include show-desktop-overlay();
+
+		&--ads-playing {
+			@include hide-player-overlays();
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.player-block {
+		overflow: hidden;
+	}
+
+	.player-overlay {
+		&__back {
+			width: 20px;
+			height: 30px;
+			top: $metadata-top-position-tablet + 7;
+			left: $player-padding-tablet;
+		}
+
+		& &__pause-ad {
+			top: 50px;
+		}
+
+		& &__pause-ad-container {
+			width: 728px;
+		}
+	}
+
+	.player__spinner {
+		width: 80px;
+		height: 80px;
+	}
+
+	.player {
+		.player-overlay {
+			&__playback-speed-overlay {
+				top: 18%;
+				font-size: 0.85rem;
+				padding: 0.6rem 1rem;
+			}
+		}
+	}
+}
+
+@include mq($from: tabletLandscape, $and: "(orientation: landscape)") {
+	.player {
+		.player-overlay {
+			&__playback-speed-overlay {
+				top: 28%;
+				font-size: 0.75rem;
+				padding: 0.6rem 1rem;
+			}
+
+			.player-overlay__pause-ad {
+				top: 110px;
+			}
+		}
+	}
+}
+
+@include mq($from: phone) {
+	& &__pause-ad-container {
+		width: 182px;
+		height: 22px;
+	}
+
+	&__pause-ad-close {
+		top: 7px;
+	}
+}
+
+@include mq($from: phoneLandscape) {
+	& &__pause-ad-container {
+		width: 364px;
+		height: 45px;
+	}
+	&__pause-ad-close {
+		top: 10px;
+	}
+}
+
+@include mq($from: phoneLandscape, $and: "(orientation: landscape)") {
+	.player {
+		.player-overlay {
+			&__pause-ad {
+				top: 50px;
+			}
+		}
+	}
+}
+
+@include mq($until: laptop) {
+	.player-block__container {
+		&--end-of-playback,
+		&--end-credit {
+			overflow: auto;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	@include phablet-landscape();
+}
+
+@include mq($from: tablet, $and: "(orientation: landscape)") {
+	@include tablet-landscape();
+}
+
+@include mq($from: desktop) {
+	.player {
+		$videoHeight: 189px;
+		$videoWidth: 336px;
+		$videoRightPosition: $player-padding-desktop;
+		$videoTopPosition: 18px;
+
+		&__spinner {
+			width: 100px;
+			height: 100px;
+		}
+
+		.player-overlay {
+			&__back {
+				width: 29px;
+				height: 45px;
+				top: $metadata-top-position-desktop + 10;
+				left: $player-padding-desktop;
+			}
+
+			&__pause-ad {
+				top: 200px;
+			}
+
+			&__playback-speed-overlay {
+				font-size: 1rem;
+				top: 35%;
+				padding: 0.5rem 1rem;
+			}
+		}
+
+		.skip-intro-button {
+			right: 60px;
+			bottom: 200px;
+			height: 50px;
+			font-size: 18px;
+			padding: 0 50px;
+		}
+
+		&-block {
+			&__mute-btn {
+				margin-bottom: 80px;
+			}
+		}
+
+		&-scrubber {
+			padding-right: 196px - $player-padding-desktop - 56px;
+			margin: 0 0 $scrubber-margin;
+
+			&--cast {
+				padding-left: 196px - $player-padding-desktop - 56px;
+			}
+
+			&__time {
+				font-size: 24px;
+				right: -5px;
+			}
+
+			&__current-time {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		$videoTopPosition: 100px;
+
+		.player-overlay {
+			&__back {
+				width: 29px;
+				height: 45px;
+				top: $metadata-top-position-uhd + 16px;
+			}
+		}
+
+		&-block__container--wrap {
+			top: $videoTopPosition;
+		}
+
+		&-block__container--overlay .player-block:after {
+			top: $videoTopPosition;
+		}
+
+		.player-btn {
+			height: $button-uhd-height;
+		}
+
+		&-scrubber {
+			padding-right: (196px - $player-padding-desktop);
+			margin: 0 0 $scrubber-margin;
+
+			&--cast {
+				padding-left: 196px - $player-padding-desktop;
+			}
+
+			&__time,
+			&__current-time {
+				font-size: 1.74em;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop, $until: desktop) {
+	.player {
+		.player-overlay {
+			&__playback-speed-overlay {
+				font-size: 1rem;
+				top: 24%;
+				padding: 0.5rem 1rem;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet, $until: tablet) {
+	.player {
+		.player-overlay {
+			&__playback-speed-overlay {
+				top: 15%;
+			}
+		}
+	}
+}
+
+.is-touch-device {
+	&.is-fullscreen {
+		@include fullscreen-player-overlays();
+	}
+
+	@media screen and (orientation: landscape) {
+		@include fullscreen-player-overlays();
+	}
+}
+
+@include mq($until: desktop, $and: "(orientation: portrait)") {
+	.pg-watch {
+		background-color: transparent;
+	}
+
+	.player-metadata {
+		padding: 1rem;
+		margin-top: 0;
+	}
+
+	body:not(.is-fullscreen) .skip-intro-button {
+		top: calc(56vw - 1.5rem);
+		bottom: auto;
+		transform: translateY(-100%);
+	}
+}
+
+.watch {
+	@media screen and (orientation: landscape) {
+		overflow: hidden;
+	}
+}
+
+.chromeless--watch {
+	@media screen and (min-width: 45em) and (orientation: landscape) {
+		.player {
+			&--scalable {
+				height: 100vh;
+			}
+
+			&--scalable .player-block {
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+}
+
+.is-fullscreen {
+	@include full-height-player();
+	@include apply-subtitles-position();
+
+	.player-metadata {
+		padding: 0;
+	}
+
+	.chromeless--watch {
+		@include mq($from: tablet, $and: "(orientation: landscape)") {
+			@include tablet-landscape();
+		}
+
+		@include mq($until: desktop) {
+			@include phablet-landscape();
+		}
+
+		@include mq($from: desktop, $and: "(orientation: portrait)") {
+			@include tablet-landscape();
+		}
+	}
+
+	@media (min-width: 480px) and (orientation: landscape), (min-width: 720px) {
+		.end-of-playback--end-credits .end-of-playback__suggested-content .play-next-episode__countdown {
+			top: -50px;
+		}
+	}
+}
+
+.fullscreen-hide-cursor .player {
+	cursor: none;
+}

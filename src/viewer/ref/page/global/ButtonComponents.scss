@@ -1,0 +1,41 @@
+@import "shared/style/modules";
+
+.button-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	h4 {
+		margin-bottom: 20px;
+	}
+}
+
+.cta-btns {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	margin-right: 10px;
+	max-width: 100%;
+	.cta-btn {
+		margin-bottom: 20px;
+		max-width: 100%;
+	}
+}
+.dark-theme {
+	background-color: $color__white;
+	padding: 40px 20px;
+	margin-bottom: 40px;
+}
+.light-theme {
+	background-color: $color__primary;
+	padding: 40px 20px;
+	h4 {
+		color: white;
+	}
+}
+
+.account-button {
+	max-width: 100%;
+	label {
+		display: block;
+	}
+}

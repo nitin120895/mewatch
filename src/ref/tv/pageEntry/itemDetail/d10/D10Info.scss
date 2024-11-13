@@ -1,0 +1,106 @@
+@import "src/ref/tv/style/modules";
+
+$content-margin: 20px;
+
+.d10 {
+	font-family: $font-family-heading;
+	position: relative;
+	padding: 70px 80px;
+	margin: 0 -80px;
+
+	&--focused {
+		background-color: $ed1_bg_color;
+	}
+
+	.entry-title {
+		height: $asset-list-title-height;
+		font-size: 42px;
+		font-weight: bold;
+	}
+
+	&__info {
+		margin-top: 20px;
+	}
+
+	&__image {
+		margin-right: 40px;
+		display: inline-block;
+	}
+
+	&__table-content {
+		display: inline-block;
+		vertical-align: top;
+		width: 1200px;
+	}
+
+	&__copyright {
+		color: $color__fg-rate;
+		display: inline-block;
+		font-size: 24px;
+		font-style: italic;
+		line-height: 37px;
+		width: 587px;
+		vertical-align: top;
+	}
+
+	&-rating {
+		display: inline-block;
+		width: 607px;
+		padding-right: 20px;
+
+		&__image {
+			display: inline-block;
+			width: 100px;
+			margin-right: 20px;
+		}
+
+		&__text {
+			font-size: 24px;
+			line-height: 1.54;
+			color: $color__fg-rate;
+			text-shadow: 0 2px 4px rgba($color__black, 0.5);
+			vertical-align: middle;
+		}
+	}
+
+	&-table {
+		margin-bottom: 20px;
+		text-align: left;
+		text-transform: capitalize;
+		font-size: 28px;
+
+		tbody {
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		tr {
+			padding-right: 0;
+			&:nth-child(2n + 1) {
+				padding-right: $content-margin;
+			}
+		}
+
+		&__cell {
+			color: $color__white;
+			width: 391px;
+			padding-left: $content-margin;
+			padding-bottom: 20px;
+		}
+
+		&__header {
+			vertical-align: baseline;
+			color: $color__grey--warm;
+			width: 190px;
+			padding-bottom: 20px;
+		}
+
+		&__genre {
+			color: $color__white;
+			&--isFocused {
+				outline: solid 4px $color__white;
+			}
+		}
+	}
+}

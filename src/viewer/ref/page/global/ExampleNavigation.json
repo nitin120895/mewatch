@@ -1,0 +1,196 @@
+{
+	"header": [
+		{
+			"label": "Home",
+			"path": "/"
+		},
+		{
+			"content": {
+				"title": "Trending Now",
+				"list": {
+					"id": "1459",
+					"path": "/list/1459",
+					"items": [],
+					"size": -1,
+					"paging": {
+						"total": -1,
+						"page": 0,
+						"size": 12,
+						"next": "/lists/1459?page_size=12&page=1"
+					}
+				}
+			},
+			"label": "Movies ",
+			"path": "/movies",
+			"children": [
+				{
+					"label": "Genres",
+					"path": "/movies/genres",
+					"children": [
+						{
+							"label": "Action",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Drama",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Adventure",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Horror",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Comedy",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Mystery",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Crime",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Science Fiction",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Documentary",
+							"path": "/movies/genres/{genre}"
+						},
+						{
+							"label": "Thriller",
+							"path": "/movies/genres/{genre}"
+						}
+					]
+				},
+				{
+					"children": [
+						{
+							"label": "A-Z",
+							"path": "/movies/a-z"
+						},
+						{
+							"label": "Top Charts"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "TV Shows",
+			"path": "/tv",
+			"children": [
+				{
+					"children": [
+						{
+							"label": "A-Z",
+							"path": "/tv/a-z"
+						},
+						{
+							"label": "New Releases"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Kids",
+			"children": [
+				{
+					"children": [
+						{
+							"label": "Kids Movies"
+						},
+						{
+							"label": "Kids TV Shows"
+						},
+						{
+							"label": "Cartoons"
+						},
+						{
+							"label": "Juniors"
+						},
+						{
+							"label": "Big Kids"
+						}
+					]
+				}
+			]
+		}
+	],
+	"footer": {
+		"customFields": {
+			"customFlag": true,
+			"customFlag2": true
+		},
+		"label": "Footer Heading",
+		"children": [
+			{
+				"label": "Group Heading",
+				"children": [
+					{
+						"label": "Help"
+					},
+					{
+						"label": "About Us",
+						"path": "/about"
+					},
+					{
+						"label": "Terms & Conditions",
+						"path": "/about/terms"
+					},
+					{
+						"label": "Privacy",
+						"path": "/about/privacy"
+					}
+				]
+			}
+		]
+	},
+	"account": {
+		"content": {
+			"title": "Trending Now",
+			"list": {
+				"id": "1459",
+				"path": "/list/1459",
+				"items": [],
+				"size": -1,
+				"paging": {
+					"total": -1,
+					"page": 0,
+					"size": 12,
+					"next": "/lists/1459?page_size=12&page=1"
+				}
+			}
+		},
+		"label": "Account",
+		"children": [
+			{
+				"label": "Group Heading",
+				"children": [
+					{
+						"label": "Details",
+						"path": "/account"
+					},
+					{
+						"label": "Library",
+						"path": "/account/library"
+					},
+					{
+						"label": "Bookmarks",
+						"path": "/account/profiles/bookmarks"
+					}
+				]
+			}
+		]
+	},
+	"customFields": {
+		"custom 1": "test 1"
+	}
+}

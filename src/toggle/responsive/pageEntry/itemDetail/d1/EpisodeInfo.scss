@@ -1,0 +1,87 @@
+@import "shared/style/modules";
+
+@mixin tablet-style() {
+	.d1-ep-info {
+		&__name {
+			font-size: 24px;
+		}
+
+		&__name-group {
+			flex-direction: row;
+		}
+
+		&__duration {
+			margin-left: 24px;
+		}
+	}
+}
+
+@mixin mobile-style {
+	&__name {
+		font-size: 20px;
+	}
+
+	&__name-group {
+		flex-direction: column;
+	}
+
+	&__duration {
+		margin-left: 0;
+	}
+}
+
+.d1-ep-info {
+	@include mobile-style();
+	&__show-title,
+	&__season-title {
+		font-size: 18px;
+		font-weight: normal;
+		margin: 0;
+		color: $color__off-white;
+	}
+
+	&__season-title {
+		margin-top: 4px;
+	}
+
+	&__name-group {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin: 16px 0;
+		white-space: nowrap;
+	}
+
+	&__name {
+		font-weight: normal;
+		color: $color__grey--warm;
+		margin: 0;
+	}
+
+	&__duration {
+		font-size: 14px;
+		font-family: $font-family-heading;
+		color: $color__grey--warm;
+	}
+
+	&__description {
+		font-size: 14px;
+		font-family: $font-family-heading;
+		color: $color__grey--light;
+		margin: 0;
+	}
+}
+
+@include mq($from: tablet) {
+	@include tablet-style();
+}
+
+@include mq($from: laptop) {
+	@include tablet-style();
+}
+
+@media #{$untilIphoneXLandscape} {
+	.d1-ep-info {
+		@include mobile-style();
+	}
+}

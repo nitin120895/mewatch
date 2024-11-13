@@ -1,0 +1,24 @@
+@import "shared/style/modules";
+
+.header-full-bleed {
+	@include full-bleed;
+}
+
+.hero-demo {
+	margin-bottom: 50px;
+	// Because we're leveraging the header navigation bar we need to ensure its
+	// absolute positioning is relative to where the h9 is placed on the page.
+	position: relative;
+
+	// The app fills the viewport so the footer is always at the bottom, but for
+	// this example we don't want that.
+	> .content {
+		min-height: inherit;
+	}
+}
+.row-title-hidden {
+	.entry-title,
+	.entry-title__tagline {
+		display: none;
+	}
+}

@@ -1,0 +1,15 @@
+@import "shared/style/modules";
+
+.scroll-loader {
+	&__panel {
+		position: fixed;
+	}
+	&__container {
+		height: 2000px;
+	}
+	&__end-container {
+		height: 500px;
+		border-top: 1px solid $color__white;
+		text-align: center;
+	}
+}

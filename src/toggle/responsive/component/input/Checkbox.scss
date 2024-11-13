@@ -1,0 +1,325 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/forms/blue-theme";
+
+@mixin mePassTheme($inacitve_color, $active_color) {
+	.checkbox {
+		&__box {
+			border-color: $inacitve_color;
+		}
+
+		&__input:checked {
+			& ~ .checkbox__box {
+				border-color: $active_color;
+			}
+
+			& ~ .checkbox__tick {
+				stroke: $active_color;
+				color: $active_color;
+			}
+		}
+
+		&__input:focus ~ .checkbox__box,
+		&:hover .checkbox__box {
+			border-color: $active_color;
+		}
+
+		&__input:focus ~ .checkbox__label,
+		&:hover .checkbox__label {
+			color: $active_color;
+		}
+	}
+
+	&:not(.checkbox--disabled):hover .checkbox__label {
+		color: $active_color;
+	}
+
+	&:not(.checkbox--disabled):hover .checkbox__box {
+		border-color: $active_color;
+	}
+
+	&.checkbox--error {
+		.checkbox__label {
+			color: inherit;
+		}
+
+		.checkbox__box {
+			border-color: $color__error;
+		}
+	}
+}
+
+@mixin mePassStyle($size) {
+	$text-padding: $size + 8px;
+	.checkbox {
+		&__box {
+			width: $size;
+			height: $size;
+		}
+
+		&__tick {
+			height: $size - 2px;
+			width: $size - 2px;
+		}
+		&__message {
+			margin: 0 0 0 $text-padding + 5px;
+		}
+		&__label {
+			display: inline-block;
+			width: calc(100% - #{$text-padding});
+			vertical-align: top;
+		}
+	}
+}
+
+.checkbox {
+	position: relative;
+	line-height: 24px;
+	vertical-align: middle;
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 1px;
+
+	&__label {
+		user-select: none;
+	}
+
+	&__box,
+	&__input,
+	&__tick-icon,
+	&__label {
+		transition: all 0.3s;
+	}
+
+	&__box {
+		content: "";
+		border-width: 1px;
+		border-style: solid;
+		display: inline-block;
+		border-radius: 3px;
+		width: 14px;
+		height: 14px;
+		position: relative;
+		top: -2px;
+		vertical-align: middle;
+		margin-right: 8px;
+	}
+
+	&__input {
+		margin-right: 0;
+	}
+
+	&__tick {
+		position: absolute;
+		left: 0px;
+		stroke-width: 3px;
+		height: 12px;
+		width: 12px;
+		top: 5px;
+	}
+
+	&--round {
+		.checkbox__tick {
+			width: 1.2rem;
+			height: 1.2rem;
+			line-height: 1;
+			stroke: transparent;
+			top: 3px;
+			left: 1px;
+		}
+
+		.checkbox__box {
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 50%;
+			background-color: transparent;
+			top: 0;
+		}
+
+		.checkbox__input:checked {
+			& ~ .checkbox__tick {
+				stroke: $color__white;
+				stroke-width: 1px;
+				color: $color__white;
+			}
+
+			& + .checkbox__box {
+				background-color: $color__primary;
+			}
+		}
+	}
+
+	&--disabled {
+		cursor: default;
+	}
+
+	&__tick-box-wrap {
+		display: inline-block;
+		position: relative;
+	}
+
+	&__message {
+		flex: 0 1 100%;
+		margin: 8px 0;
+		min-height: 24px;
+		line-height: 16px;
+		font-size: 12px;
+		text-align: left;
+	}
+}
+
+.form-white {
+	color: $color__grey--dark;
+
+	.checkbox {
+		&__box {
+			border-color: $color__grey--dark;
+		}
+
+		&__label,
+		&__message {
+			color: $color__grey--dark;
+		}
+
+		&__tick {
+			stroke: transparent;
+		}
+
+		&__input:checked {
+			& ~ .checkbox__box {
+				border-color: $color__primary;
+			}
+			& ~ .checkbox__tick {
+				stroke: $color__primary;
+				color: $color__primary;
+			}
+		}
+
+		&__input:focus ~ .checkbox__box,
+		&:hover .checkbox__box {
+			border-color: $color__primary;
+		}
+
+		&__input:focus ~ .checkbox__label,
+		&:hover .checkbox__label {
+			color: $color__primary;
+		}
+
+		&--error {
+			@include input-state($color__error);
+
+			.checkbox__label,
+			.checkbox__message {
+				color: $color__error;
+			}
+
+			.checkbox__box {
+				border-color: $color__error;
+			}
+		}
+
+		&--disabled,
+		&--disabled:hover {
+			.checkbox__label,
+			.checkbox__message {
+				color: $color__grey--light;
+			}
+
+			.checkbox__box {
+				border-color: $color__grey--light;
+			}
+
+			.checkbox__input:checked ~ .checkbox__tick {
+				stroke: $color__grey--light;
+			}
+
+			.checkbox__input:checked ~ .checkbox__box {
+				border-color: $color__grey--light;
+			}
+		}
+	}
+	.checkbox--me-pass {
+		@include mePassTheme(rgba($color__black, 0.25), $color__black);
+	}
+}
+
+.form-blue {
+	.checkbox {
+		&__box {
+			border-color: $color__white;
+			box-shadow: 0 0 0 1px transparent;
+		}
+
+		&__label,
+		&__message {
+			color: $color__white;
+		}
+
+		&__tick {
+			stroke: transparent;
+		}
+
+		.checkbox__input:checked ~ .checkbox__tick {
+			stroke: $color__white;
+		}
+
+		&:hover .checkbox__box,
+		&__input:focus ~ .checkbox__box {
+			background: rgba(255, 255, 255, 0.2);
+			box-shadow: 0 0 0 1px $color__white;
+		}
+
+		&--error {
+			@include input-state($color__white);
+		}
+
+		&--disabled,
+		&--disabled:hover {
+			.checkbox__label {
+				color: $color__blue-text;
+			}
+
+			.checkbox__box {
+				border-color: $color__blue-text;
+				box-shadow: none;
+				background: transparent;
+			}
+
+			.checkbox__input:checked ~ .checkbox__tick {
+				stroke: $color__blue-text;
+			}
+		}
+	}
+}
+
+.checkbox--me-pass {
+	-webkit-tap-highlight-color: transparent;
+	.checkbox {
+		&__box {
+			border-radius: unset;
+		}
+
+		&__tick {
+			position: absolute;
+			left: 0;
+			top: unset;
+			bottom: 3px;
+			stroke-width: 2px;
+			transform: rotate(-5deg);
+		}
+
+		&__required {
+			position: absolute;
+			left: -10px;
+			top: 0;
+			color: $color__error;
+			line-height: 1em;
+		}
+	}
+
+	$desktopSize: 22px;
+	$touchSize: 26px;
+	@include mePassStyle($touchSize);
+	@include mq($from: desktop) {
+		@include mePassStyle($desktopSize);
+	}
+}

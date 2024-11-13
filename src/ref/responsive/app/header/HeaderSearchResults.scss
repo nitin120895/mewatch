@@ -1,0 +1,66 @@
+@import "shared/style/modules";
+
+.header-search-results {
+	white-space: nowrap;
+	min-width: 240px;
+
+	&__recent,
+	&__items {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	&__recent-title {
+		font-family: $font-family-heading;
+		font-weight: bold;
+		margin-bottom: 6px;
+	}
+
+	&__clear,
+	&__show-all {
+		font-family: $font-family-heading;
+
+		&:hover,
+		&:focus {
+			color: $color__primary--darker;
+		}
+	}
+
+	&__clear {
+		margin-top: 16px;
+	}
+
+	&__items {
+		margin-bottom: 16px;
+	}
+
+	&__people {
+		margin-bottom: 16px;
+	}
+
+	&__pipe {
+		color: $color__grey--light;
+		margin: 0 5px;
+	}
+
+	&__message {
+		font-weight: bold;
+	}
+
+	&__link {
+		&:hover,
+		&:focus {
+			b {
+				color: inherit;
+			}
+		}
+		b {
+			color: $color__white;
+		}
+	}
+
+	&__link + &__link {
+		margin-top: 6px;
+	}
+}

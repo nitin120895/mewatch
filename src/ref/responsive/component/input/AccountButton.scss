@@ -1,0 +1,103 @@
+@import "shared/style/modules";
+@import "shared/style/modules/easings";
+
+.account-btn {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	vertical-align: top;
+
+	&--large {
+		& .account-btn__content {
+			min-width: 110px;
+		}
+	}
+
+	// All account buttons that are disabled use the same colour
+	// as their current colour, so no need to override
+	&--primary {
+		&-dark:not(:disabled),
+		&-light:not(:disabled) {
+			.account-btn__spinner {
+				color: $color__white;
+			}
+		}
+		&-blue:not(:disabled) {
+			.account-btn__spinner {
+				color: $color__primary--darker;
+			}
+		}
+	}
+
+	&--secondary {
+		&-dark:not(:disabled),
+		&-light:not(:disabled) {
+			.account-btn__spinner {
+				color: $color__primary--darker;
+			}
+		}
+		&-blue:not(:disabled) {
+			.account-btn__spinner {
+				color: $color__white;
+			}
+		}
+	}
+
+	&--naked {
+		&:not(:disabled) .account-btn__spinner {
+			color: $color__white;
+		}
+		&-light:not(:disabled) .account-btn__spinner {
+			color: $color__primary--darker;
+		}
+	}
+
+	&__spinner-container {
+		width: 0px;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		transition: width 0.2s $easeOutCubic 0.2s;
+		&--visible {
+			transition: width 0.2s $easeInCubic;
+			width: 20px;
+			// small buttons have less padding so it doesn't fit as well
+			// give it an extra 10px of width to give room for the loader
+			&.account-btn__spinner-container--small {
+				width: 30px;
+			}
+		}
+	}
+
+	&__spinner {
+		$size: 25px;
+		height: $size;
+		margin-top: -($size/2);
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		transform: scale(0);
+		transition: width 0.2s, opacity 0.2s, transform 0.2s $easeOutCubic;
+		width: $size;
+		&--visible {
+			opacity: 1;
+			transform: scale(1);
+			transition: width 0.2s 0.2s, opacity 0.2s 0.2s, transform 0.2s $easeInCubic 0.2s;
+		}
+		&--small {
+			$size: 20px;
+			height: $size;
+			width: $size;
+		}
+		&--left {
+			left: 10px;
+		}
+		&--right {
+			right: 10px;
+		}
+		&--center {
+			left: 50%;
+			margin-left: -($size/2);
+		}
+	}
+}

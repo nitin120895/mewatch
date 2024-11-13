@@ -1,0 +1,169 @@
+@import "shared/style/modules";
+
+@mixin noHover() {
+	.overlay-dropdown__option {
+		&:hover {
+			color: $color__white;
+		}
+
+		&:active {
+			color: $color__primary;
+		}
+	}
+}
+
+.datepicker-opened {
+	overflow: hidden;
+}
+
+.overlay-dropdown {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $color__black2;
+	z-index: 9999;
+	font-size: 16px;
+	display: flex;
+	flex-direction: column;
+
+	&__title {
+		padding: 25px;
+		font-weight: bold;
+		border-bottom: 1px solid #484848;
+		flex: 0;
+	}
+
+	&__options {
+		flex: 1 auto;
+		overflow: auto;
+
+		.selected {
+			align-items: center;
+
+			.svg-icon {
+				margin-left: 10px;
+			}
+		}
+	}
+
+	&__option {
+		padding: 20px;
+		text-transform: capitalize;
+		cursor: pointer;
+		display: flex;
+		min-width: 0;
+
+		&-label {
+			line-height: 1.1;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&:hover {
+			color: $color__primary;
+		}
+
+		.svg-icon {
+			display: inline-flex;
+			width: 25px;
+			stroke: $color__primary;
+		}
+
+		&.selected {
+			padding: 0 20px;
+			justify-content: space-between;
+
+			> .svg-icon {
+				stroke: $color__link--hover;
+				stroke-width: 2px;
+				flex: 0 0 25px;
+			}
+		}
+	}
+
+	&__cancel {
+		flex: 0;
+		width: 100%;
+		border-top: 1px solid #484848;
+		padding: 25px;
+
+		.svg-icon {
+			display: inline-block;
+			width: 15px;
+			margin-right: 10px;
+			stroke: white;
+		}
+	}
+
+	&:not(.full-screen) {
+		max-width: 90%;
+	}
+}
+
+@include mq($from: tablet) {
+	.overlay-dropdown {
+		&__title {
+			padding: 20px;
+			text-align: center;
+		}
+
+		&__option {
+			height: 46px;
+			padding: 15px;
+
+			&.selected {
+				padding: 0 15px;
+			}
+		}
+
+		&__cancel {
+			display: none;
+		}
+	}
+
+	.full-screen {
+		.overlay-dropdown__cancel {
+			display: block;
+		}
+	}
+}
+
+@include mq($until: tablet, $and: "(orientation: landscape)") {
+	.overlay-dropdown {
+		&__title {
+			padding: 25px;
+			text-align: left;
+		}
+
+		&__option {
+			padding: 20px;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.overlay-dropdown {
+		&__option {
+			height: 56px;
+
+			&.selected {
+				justify-content: flex-start;
+			}
+
+			.svg-icon {
+				margin-left: 52px;
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	@include noHover();
+}
+
+.is-touch-device {
+	@include noHover();
+}

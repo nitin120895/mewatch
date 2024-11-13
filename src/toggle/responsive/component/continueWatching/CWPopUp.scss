@@ -1,0 +1,32 @@
+@import "shared/style/modules";
+
+.cw-popup {
+	&__btn {
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 6px;
+
+		@include mq($from: desktop) {
+			width: 2rem;
+			height: 2rem;
+			padding: 8px;
+		}
+
+		&:hover {
+			background-color: $color__grey--dark;
+		}
+
+		.svg-icon {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	&--active &__btn {
+		background-color: $color__grey--dark;
+	}
+}

@@ -1,0 +1,137 @@
+@import "shared/style/modules";
+
+.h9 {
+	position: relative;
+
+	// Prevent title text from exceeding the image bounds.
+	// This may result in clipping the title but it's preferred over pushing the content down.
+	overflow: hidden;
+
+	// Enforce the correct aspect ratio when we know the image type
+	// ahead of time. This allows the correct reserved space on initial
+	// render prior to the image actually loading.
+	&--hero3x1 > .h9__ap {
+		@include fluid-aspect(3 1);
+	}
+	&--hero7x1 > .h9__ap {
+		@include fluid-aspect(7 1);
+	}
+	// We can't know the aspect ratio of a 'custom' image type ahead of time because they can
+	// be any dimensions.
+	&--custom {
+		// To ensure the page content doesn't jump around too much between the initial page load
+		// and when the image has loaded, we reserve a generous amount of space, and then the
+		// component removes this class once the image has loaded to allow it to resize to fit.
+		&-loading {
+			// Guess aspect ratio
+			@include fluid-aspect(5 2);
+		}
+	}
+
+	&__ap {
+		margin: auto;
+		&--left {
+			margin: 0;
+		}
+	}
+
+	&--percent {
+		.h9__text--left {
+			padding-left: 4%;
+		}
+		.h9__text--right {
+			padding-right: 4%;
+		}
+	}
+
+	// As a fallback for when a custom/unknown size is used we set this.
+	// When a hero modifier is assigned it supersedes these settings.
+	&__picture {
+		display: block;
+		width: 100%;
+	}
+
+	&__text {
+		position: absolute;
+		margin-top: 1%;
+		margin-bottom: 2%;
+		font-size: 28px;
+
+		// We colour this component using dynamic colours from our API.
+		// We delay assigning them until after the component mounts to avoid CSP issues
+		// when server rendering. By default this would flicker when the new colours are
+		// assigned so we set a transition to make it smoother.
+		transition: color 0.3s ease-in, opacity 0.3s ease-in;
+
+		// Horizontal alignment
+		&--left {
+			left: 0;
+		}
+		&--right {
+			right: 0;
+		}
+		&--center {
+			width: 100%;
+			margin-left: 0;
+		}
+
+		// Vertical alignment
+		&--top {
+			top: 0;
+		}
+		&--bottom {
+			bottom: 0;
+		}
+		&--middle {
+			// Using 38% here instead of calc(50% - font-size) since it's practically identical
+			// since our hero header takes up a large chuck
+			top: 38%;
+			margin-bottom: 0;
+		}
+	}
+}
+
+$font-sizes: (
+	mobile: 24px,
+	tablet: 38px,
+	desktop: 48px,
+	desktopWide: 54px
+);
+
+@each $breakpoint in $display-margins {
+	$font-size: map-get($font-sizes, mobile);
+	@include mq($breakpoint) {
+		$fs: map-get($font-sizes, $breakpoint);
+		@if $fs {
+			$font-size: $fs;
+		}
+
+		.h9__text {
+			// Match the page margin for alignment of the text within the image.
+			$margin: get-grid-margin($breakpoint);
+			margin-top: $margin;
+			// Because the text element always reserves space for descender characters we
+			// reduce it relative to the font-size to emulate the margin against the baseline.
+			$offset: $font-size * 0.25;
+			margin-bottom: ($margin - $offset);
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.h9__text {
+		font-size: map-get($font-sizes, tablet);
+	}
+}
+
+@include mq($from: desktop) {
+	.h9__text {
+		font-size: map-get($font-sizes, desktop);
+	}
+}
+
+@include mq($from: desktopWide) {
+	.h9__text {
+		font-size: map-get($font-sizes, desktopWide);
+	}
+}

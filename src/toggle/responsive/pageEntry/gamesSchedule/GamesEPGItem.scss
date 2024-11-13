@@ -1,0 +1,127 @@
+@import "shared/style/modules";
+
+.games-epg-item {
+	$component: &;
+
+	position: relative;
+	background: $color__white;
+	color: $color__black3;
+	height: $sport-item-height-sm;
+	width: $sport-item-width-sm;
+	min-width: $sport-item-width-sm;
+	max-width: $sport-item-width-sm;
+	line-height: 1.1;
+	cursor: pointer;
+	margin-bottom: 1.5em;
+	padding: 1em;
+	border-radius: 8px;
+
+	&:not(:last-child) {
+		margin-right: 1em;
+	}
+
+	&__title {
+		margin: 1em 0;
+		font-size: 0.875em;
+		font-weight: 700;
+		line-height: 1.1;
+		@include block-with-cut-rows(16, 1.1, 3, 0);
+	}
+
+	&--empty {
+		width: 100%;
+		min-width: 50vw;
+		color: $color__neutral;
+		background: transparent;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		border: 0;
+		cursor: default;
+	}
+
+	&--future {
+		background: $color__white;
+	}
+
+	&--past {
+		background: $color__games-epg-item-past-bg;
+
+		#{$component}__time {
+			color: $color__grey--light;
+		}
+
+		#{$component}__title {
+			color: $color__white;
+		}
+
+		#{$component}__live {
+			display: none;
+		}
+
+		#{$component}__cta-btn {
+			color: $color__white;
+			border-color: $color__white;
+		}
+	}
+
+	&--on-now {
+		#{$component}__live {
+			background-color: $color__games-live-now;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.games-epg-item {
+		&:not(&--empty) {
+			width: $sport-item-width-md;
+			min-width: $sport-item-width-md;
+			max-width: $sport-item-width-md;
+		}
+
+		&--empty {
+			min-width: 70vw;
+		}
+	}
+}
+
+@include mq($from: tabletLandscape) {
+	.games-epg-item {
+		height: $sport-item-height-lg;
+		padding: 1.5em;
+
+		&__title {
+			font-size: 1em;
+			@include block-with-cut-rows(16, 1.4, 2, 0);
+		}
+
+		&:not(:last-child) {
+			margin-right: 1.5em;
+		}
+
+		&:not(&--empty) {
+			width: $sport-item-width-lg;
+			min-width: $sport-item-width-lg;
+			max-width: $sport-item-width-lg;
+		}
+
+		&:not(&--empty):hover {
+			background: $color__games-epg-item-bg--hover;
+		}
+
+		&--past:not(&--empty):hover {
+			background: $color__games-epg-item-bg-past--hover;
+		}
+	}
+}
+
+@include mq($from: 1920px) {
+	.games-epg-item {
+		&__title {
+			line-height: 1.4;
+			@include block-with-cut-rows(19.2, 1.4, 2, 0);
+		}
+	}
+}

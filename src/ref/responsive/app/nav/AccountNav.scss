@@ -1,0 +1,39 @@
+@import "shared/style/modules";
+
+.account-nav {
+	display: flex;
+	position: relative;
+	align-items: center;
+	height: 100%;
+
+	&--signed-in {
+		margin-left: 20px;
+	}
+
+	&--empty {
+		width: 164px;
+	}
+
+	&__profile {
+		flex: 0 0 auto;
+		font-size: 12px;
+	}
+
+	// Handling the silly focus color change
+	@include not-key-mode() {
+		&__sign-in:focus:not(:hover) {
+			color: $color__white;
+		}
+	}
+
+	// Selecting for the injected column with account actions
+	.secondary-nav__row:first-of-type .secondary-nav__column:last-child {
+		flex: 1 0 auto;
+		max-width: none;
+		align-items: flex-end;
+
+		.secondary-nav__link {
+			margin-top: 0;
+		}
+	}
+}

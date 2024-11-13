@@ -1,0 +1,155 @@
+@import "shared/style/modules";
+
+.carousel-modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 16px 24px 10px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	background: $color__black;
+
+	&__entries {
+		height: 100%;
+		flex: 1 1 100%;
+		overflow: hidden;
+	}
+
+	&__buttons-wrapper {
+		display: flex;
+		flex: 0 0 auto;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	&__cta-button {
+		font-size: 16px;
+		margin: 0;
+		text-transform: none;
+
+		&--padded {
+			margin-top: 10px;
+		}
+	}
+	&__brand-logo {
+		margin: 0 auto;
+		width: 89px;
+		height: 28px;
+	}
+
+	&__deny-button {
+		margin-top: 10px;
+		font-size: 14px;
+		font-weight: normal;
+		text-transform: none;
+		padding: 0;
+	}
+
+	.me-connect-watch {
+		width: 137px;
+		margin: 0 auto;
+	}
+
+	.xus1 {
+		height: 100%;
+		padding-top: 16px;
+		margin: 0;
+	}
+
+	@media #{$fromIPhone} {
+		&__cta-button {
+			margin: 0 24px;
+
+			&--padded {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	@include mq($from: phoneLandscape) {
+		padding: 10px 24px 0;
+
+		&__buttons-wrapper {
+			flex-direction: row;
+		}
+
+		&__cta-button {
+			width: 280px;
+			margin: 0;
+			padding: 0 10px;
+			max-width: calc(50% - 5px);
+
+			&--padded {
+				margin-left: 10px;
+			}
+		}
+	}
+
+	@media screen and (min-height: 600px) {
+		padding: 50px 24px 20px;
+	}
+
+	@include mq($from: phoneLandscape, $and: "(orientation: landscape)") {
+		padding: 10px 24px 0;
+	}
+
+	@include mq($from: tablet, $and: "(orientation: portrait)") {
+		padding: 80px 100px 40px;
+
+		.me-connect-watch {
+			width: 262px;
+		}
+
+		.xus1 {
+			padding-top: 42px;
+		}
+	}
+
+	@include mq($from: tabletLandscape, $and: "(orientation: landscape)") {
+		padding: 80px 50px 70px;
+
+		&__cta-button {
+			&--padded {
+				margin-left: 10px;
+			}
+		}
+
+		.me-connect-watch {
+			width: 262px;
+		}
+
+		.xus1 {
+			padding-top: 30px;
+		}
+	}
+
+	@include mq($from: desktop) {
+		position: relative;
+		width: 1000px;
+		height: 600px;
+		padding: 60px 70px 50px;
+
+		&--fill {
+			width: 100%;
+			width: 100vw;
+			max-width: 1440px;
+			height: 100vh;
+			max-height: 100%;
+
+			.me-connect-watch {
+				width: 315px;
+			}
+		}
+		&__brand-logo {
+			width: 150px;
+			height: 48px;
+		}
+
+		.xus1 {
+			padding-top: 30px;
+		}
+	}
+}

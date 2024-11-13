@@ -1,0 +1,29 @@
+@import "shared/style/modules";
+
+.a1-pin {
+	&__text {
+		margin-top: 15px;
+		margin-bottom: 10px;
+		color: $color__grey--dark;
+	}
+
+	.pin-group {
+		width: 265px;
+		margin-top: 10px;
+	}
+
+	.account-action-btns {
+		margin-top: 0;
+	}
+
+	&__title {
+		color: $color__grey--dark;
+		margin-bottom: 0;
+	}
+
+	@include mq($from: tablet) {
+		.pwd-input {
+			width: 500px;
+		}
+	}
+}

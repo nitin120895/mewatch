@@ -1,0 +1,7 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+.delimiter {
+	width: 100%;
+	height: 1px;
+	background-color: $delimiter_color;
+}

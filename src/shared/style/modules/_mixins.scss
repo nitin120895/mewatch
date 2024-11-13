@@ -1,0 +1,103 @@
+// -------------------------------------- //
+// Mixins inject their code every time they're used.
+//
+// This results in duplicated styles throughout the stylesheet(s)
+// which increases the output filesize.
+//
+// Use these Mixin's sparingly.
+//
+// We recommend composition rather than duplication as the approach
+// scales better as applications grow.
+//
+// For example for each usage you'll be adding the filesize
+// weight of your class name's character length rather than
+// the character length of each line within the mixin.
+// -------------------------------------- //
+
+// @deprecated Please use `.truncate` instead.
+// For proper styling the parent will need a min-width set and the element needs to be block or inline-block.
+@mixin truncate-text() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin abs-fullscreen() {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+// Maintain aspect ratio
+@mixin fluid-aspect($ratio: 1 1, $selector: "> :first-child") {
+	$selector: unquote($selector);
+
+	padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+	position: relative;
+
+	#{$selector} {
+		left: 0;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+// Fill the viewport width (break out of the grid)
+@mixin full-bleed() {
+	width: 100vw;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+}
+
+// -------------------------------------- //
+// Accessibility
+// -------------------------------------- //
+
+@mixin input-mode($mode) {
+	html[data-inputmode="#{$mode}"] & {
+		@content;
+	}
+}
+
+@mixin not-input-mode($mode) {
+	html:not([data-inputmode="#{$mode}"]) & {
+		@content;
+	}
+}
+
+@mixin key-mode() {
+	@include input-mode("k") {
+		@content;
+	}
+}
+
+@mixin not-key-mode() {
+	@include not-input-mode("k") {
+		@content;
+	}
+}
+
+@mixin input-border($color) {
+	box-shadow: 0 -2px 0 -1px $color inset;
+}
+
+@mixin input-focused($color) {
+	box-shadow: 0 -3px 0 -1px $color inset;
+}
+
+@mixin input-state($color) {
+	.txt-input {
+		&__label {
+			color: $color;
+		}
+		&__input {
+			@include input-border($color);
+		}
+	}
+}

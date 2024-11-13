@@ -1,0 +1,30 @@
+@import "shared/style/modules";
+
+.account-entry {
+	font-family: $font-family-heading;
+
+	&__header {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-size: 16px;
+		line-height: 1.3;
+		text-transform: uppercase;
+		color: $color__black;
+
+		@include mq($from: tablet) {
+			font-size: 20px;
+		}
+
+		@include mq($from: desktop) {
+			font-size: 24px;
+		}
+	}
+
+	&__action-btn {
+		flex: 0 0 auto;
+	}
+}

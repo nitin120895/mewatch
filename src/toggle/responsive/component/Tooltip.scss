@@ -1,0 +1,41 @@
+@import "shared/style/modules";
+
+.tooltip {
+	display: inline-block;
+	position: relative;
+
+	&__text {
+		position: absolute;
+		bottom: 150%;
+		left: 50%;
+		margin-left: -80px;
+		padding: 5px 0;
+		width: 160px;
+		border-radius: 8px;
+		text-align: center;
+		color: $color__white;
+		background-color: $color__black2;
+		z-index: 1;
+		visibility: hidden;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: $color__black5 transparent transparent;
+		}
+
+		@include mq($from: tablet) {
+			margin-left: -120px;
+			width: 240px;
+		}
+	}
+
+	&:hover &__text {
+		visibility: visible;
+	}
+}

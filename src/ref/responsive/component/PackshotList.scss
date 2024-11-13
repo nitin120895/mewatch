@@ -1,0 +1,59 @@
+@import "shared/style/modules";
+
+.packshot-list {
+	position: relative;
+
+	// When wrapping we want to add the gutter spacing between rows
+	&.row {
+		.packshot-list__packshot {
+			margin-bottom: get-gutter();
+		}
+	}
+
+	// When peeking we want to overflow horizontally and prevent wrapping
+	&.row-peek {
+		// All the packshot inside is inline-block and has a default line-height, need to clear it
+		line-height: 0.9;
+
+		.packshot-list__packshot {
+			float: none !important;
+		}
+	}
+
+	&--double-row {
+		.packshot-list__packshot {
+			vertical-align: top;
+
+			// Double packshot wrapper
+			> .packshot-list__packshot {
+				display: block;
+				position: relative;
+			}
+
+			> .packshot-list__packshot + .packshot-list__packshot {
+				// When double row we want to add the gutter spacing between rows
+				margin-top: get-gutter();
+			}
+
+			.packshot-title {
+				left: 0;
+				right: 0;
+			}
+		}
+	}
+
+	// this is for proper z-index work on packshot hover panel
+	&:hover {
+		z-index: 6;
+	}
+}
+
+// When wrapping we want to add the gutter spacing between rows
+@include generate-breakpoint-gutters(".packshot-list.row .packshot", ("margin-bottom"), (1));
+
+// For double rows we want to add the gutter spacing between rows
+@include generate-breakpoint-gutters(
+	".packshot-list--double-row .packshot-list__packshot > .packshot + .packshot",
+	("margin-top"),
+	(1)
+);

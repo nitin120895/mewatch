@@ -1,0 +1,43 @@
+@import "shared/style/modules";
+
+.pop-over {
+	&__container {
+		max-width: 17.5rem;
+		min-width: 17rem;
+		border-radius: 0.5rem;
+		background: $color__white;
+		padding: 1rem;
+		color: $color__black;
+
+		::after {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 0.5rem solid transparent;
+			border-bottom-color: $color__white;
+		}
+
+		&--bottom {
+			::after {
+				top: 100%;
+				bottom: auto;
+				border-top-color: $color__white;
+				border-bottom-color: transparent;
+			}
+		}
+	}
+
+	&__header-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	&__header {
+		font-weight: 700;
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+	}
+}

@@ -1,0 +1,43 @@
+@import "shared/style/modules";
+
+$color--gold: #ffc800;
+
+.rating-list-item {
+	background-color: transparent;
+	// min-width/height used since these are used within a flex container.
+	// This is necessary for correct layout on legacy IE where regular dimensions
+	// are ignored when resizing the parent flex element.
+	min-width: 36px;
+	min-height: 36px;
+	padding: 0 10px;
+	display: block;
+
+	&:focus {
+		animation-name: expandClick;
+		animation-duration: 0.5s;
+		animation-timing-function: ease-in-out;
+		visibility: visible !important;
+	}
+
+	&__icon {
+		color: $color__grey--warm;
+		height: 28px;
+		width: 28px;
+		transition: color 0.1s;
+
+		&--highlight {
+			color: $color--gold;
+		}
+	}
+}
+
+@keyframes expandClick {
+	0% {
+		transform: scale(1.4);
+		opacity: 0.8;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}

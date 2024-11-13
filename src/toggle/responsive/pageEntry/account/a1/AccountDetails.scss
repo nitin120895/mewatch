@@ -1,0 +1,278 @@
+@import "shared/style/modules";
+
+.ah-row .ah2 {
+	.overlay-container {
+		position: relative;
+		left: 0;
+		right: 0;
+
+		.packshot-title {
+			font-size: 14px;
+			opacity: 0.96;
+			padding-left: 0;
+		}
+	}
+}
+
+.app--account .page-entry.no-padding {
+	padding: 0;
+}
+
+.A1 {
+	.account-entry {
+		&__action-btn {
+			border: 1px solid $color__primary;
+			text-transform: none;
+		}
+	}
+	.account-detail {
+		&__info {
+			margin-top: 25px;
+			padding-bottom: 20px;
+
+			.email {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				margin-right: 3px;
+				height: 16px;
+			}
+		}
+
+		&__entry,
+		&__entryName {
+			font-size: 14px;
+			margin: 7px 0 0;
+			padding: 0;
+			color: $color__grey;
+			line-height: 1;
+			box-shadow: none;
+		}
+
+		&__button-section {
+			display: block;
+			text-align: right;
+
+			& > a {
+				display: inline-block;
+			}
+		}
+
+		&__action-btn {
+			border: 1px solid $color__primary;
+			text-transform: none;
+		}
+
+		&__btn-tip {
+			display: block;
+			margin-top: 5px;
+		}
+	}
+
+	.cta-btn {
+		height: 40px;
+		padding: 7px 25px;
+	}
+
+	&__entryName {
+		font-weight: bold;
+		color: $color__grey--dark;
+		font-size: 16px;
+	}
+
+	.label-primary {
+		margin-left: 40px;
+		font-size: 14px;
+		font-weight: bold;
+		color: $color__primary;
+		cursor: pointer;
+	}
+
+	.disabled {
+		.label-primary {
+			opacity: 0.4;
+			cursor: default;
+		}
+	}
+
+	.gradient-top {
+		height: 15px;
+		background: linear-gradient($color__off-white, $color__white-gradient);
+	}
+
+	.gradient-bottom {
+		height: 15px;
+		background: linear-gradient($color__white-gradient, $color__off-white);
+	}
+
+	.input-border {
+		border-top: 1px solid $color__off-white;
+		border-bottom: 1px solid $color__off-white;
+
+		.account-change-password {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.no-border {
+		border-bottom: 0;
+	}
+
+	.gradient-background {
+		background: $color__white-gradient;
+		padding: 0;
+		margin-left: -10px;
+		margin-right: -10px;
+
+		.account-change-password {
+			padding: 5px 10px 25px;
+		}
+	}
+
+	.account-manage-pin__description {
+		max-width: 630px;
+	}
+
+	.account-manage-pin__container {
+		&:not(.gradient-background) {
+			.pin-container {
+				flex: 1 0 0;
+				height: 18px;
+			}
+
+			.pin__inputs {
+				width: 100px;
+				margin-top: 15px;
+			}
+
+			.pin__input {
+				border: 0;
+				font-size: 20px;
+				color: $color__black3;
+				height: 100%;
+				width: 12px;
+			}
+		}
+	}
+
+	.expanded {
+		margin-top: -1px;
+		.gradient-top {
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+	}
+}
+@include mq($until: phablet) {
+	.A1 {
+		.account-entry {
+			.account-detail__info {
+				.email {
+					margin: 5px 0;
+				}
+
+				.email-not-verified {
+					margin: 0;
+				}
+
+				.resend-verification {
+					margin: 16px 0 5px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.A1 {
+		.account-detail {
+			&__entry {
+				.email {
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+}
+@include mq($from: tablet) {
+	.A1 {
+		.expanded .gradient-top {
+			margin-left: -24px;
+			margin-right: -24px;
+		}
+
+		.gradient-background {
+			margin-left: -24px;
+			margin-right: -24px;
+			padding: 0 0 40px;
+			.account-change-password {
+				padding: 10px 24px 0;
+			}
+		}
+		.account-detail {
+			&__info {
+				padding-bottom: 20px;
+				margin: 0;
+			}
+
+			.gradient-bottom {
+				height: 0;
+			}
+
+			&__button-section {
+				display: none;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.A1 {
+		.account-detail {
+			&__info {
+				padding-bottom: 20px;
+			}
+		}
+	}
+}
+
+@include mq($from: tabletLandscape, $until: desktop) {
+	.A1 {
+		.expanded {
+			.gradient-top {
+				margin-left: -24px;
+				margin-right: -24px;
+			}
+		}
+
+		.gradient-background {
+			.account-change-password {
+				padding: 10px 24px;
+			}
+
+			margin-left: -24px;
+			margin-right: -24px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.A1 {
+		.expanded {
+			.gradient-top {
+				margin-left: -40px;
+				margin-right: -40px;
+			}
+		}
+
+		.gradient-background {
+			.account-change-password {
+				padding: 10px 40px 0;
+			}
+			margin-left: -40px;
+			margin-right: -40px;
+		}
+	}
+}

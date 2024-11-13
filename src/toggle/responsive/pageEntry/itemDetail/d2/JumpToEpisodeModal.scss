@@ -1,0 +1,67 @@
+@import "shared/style/modules";
+
+.jump-to-episode {
+	&__modal {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding: 30px 0;
+		margin: -110px 0 0 -165px;
+		width: 330px;
+		height: 220px;
+		color: $color__black3;
+		background-color: $color__white;
+		z-index: $depth-prompts;
+	}
+
+	&__close {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		width: 15px;
+		height: 15px;
+		cursor: pointer;
+
+		.svg-icon {
+			stroke: $color__black;
+		}
+	}
+
+	&__title {
+		margin-bottom: 10px;
+		font-size: 20px;
+	}
+
+	& &__input {
+		margin: 0;
+		width: 125px;
+	}
+
+	&__button + &__button {
+		margin-left: 10px;
+	}
+}
+
+@include mq($from: tablet) {
+	.jump-to-episode {
+		&__modal {
+			margin: -135px 0 0 -265px;
+			padding: 40px 0;
+			width: 530px;
+			height: 270px;
+		}
+
+		&__title {
+			margin-bottom: 30px;
+			font-size: 24px;
+		}
+
+		& &__input {
+			width: 135px;
+		}
+	}
+}

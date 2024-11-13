@@ -1,0 +1,17 @@
+addReviewers: true
+addAssignees: author
+
+reviewers:
+  - Suraksha1992
+  - NitinRaykhere
+  - pungism
+  - bharathGowda-logituit
+  - rahulvaluelabs
+  - sonika539
+  - pramitha-gatty
+  - dmprasannamurthy
+  - mudit-valuelabs
+  - amshuman01
+  - aniketankushrao
+
+numberOfReviewers: 0

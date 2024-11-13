@@ -1,0 +1,81 @@
+@import "src/ref/tv/style/modules";
+
+.cs-list {
+	&__drop-down-container {
+		text-align: right;
+		margin-bottom: 40px;
+	}
+
+	&__drop-down-btn {
+		border: solid 4px rgba($color__white, 0.25);
+		border-radius: 45px;
+		color: $color__white;
+		cursor: pointer;
+		font-size: 28px;
+		font-weight: bold;
+		height: $btn-height;
+		margin: 0 20px 0 0;
+		padding: 0 40px 0 50px;
+		opacity: 1;
+
+		&:last-child {
+			margin: 0;
+		}
+
+		.drop-button__btn {
+			height: 100%;
+
+			.drop-button__title {
+				line-height: 82px;
+			}
+
+			.drop-button__icon {
+				font-size: 17px;
+			}
+		}
+
+		.drop-button__bar {
+			display: none;
+		}
+
+		&.focused {
+			background-color: $color__white;
+			color: $color__blue--light;
+		}
+	}
+
+	&__grid {
+		display: block;
+		margin-right: -22px;
+
+		&-item {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	.clear-list-filters-btn {
+		font-size: 32px;
+		width: 300px;
+		height: $btn-height;
+		border-radius: 100px;
+		border: solid 4px $color__white;
+		font-family: $font-family-heading;
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		color: $color__white;
+		background-color: $transparent;
+
+		&.focused,
+		&:hover {
+			border-color: $color__white;
+			background-color: $color__white;
+			color: $color__primary;
+		}
+	}
+
+	.page-entry--empty {
+		font-size: 32px;
+	}
+}

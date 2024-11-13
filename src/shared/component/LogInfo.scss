@@ -1,0 +1,23 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.log {
+	width: $viewport-width;
+	height: $viewport-height;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	// display: none;
+	background-color: rgba($color__black, 0.6);
+	color: $color__white;
+
+	font-size: 20px;
+	white-space: nowrap;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	&--show {
+		display: block;
+	}
+}

@@ -1,0 +1,40 @@
+@import "shared/style/modules";
+
+.player-buttons {
+	&__subtitles,
+	&__audioLanguages,
+	&__settings {
+		.tag-icon {
+			position: absolute;
+			top: -2px;
+			left: 11px;
+			width: 18px;
+			height: 12px;
+			background: $color__primary;
+			text-align: center;
+			font-size: 8px;
+			text-transform: uppercase;
+			line-height: 12px;
+			font-weight: bold;
+			border-radius: 2px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player-buttons {
+		&__subtitles,
+		&__audioLanguages,
+		&__settings {
+			.tag-icon {
+				top: 0;
+				left: 20px;
+				width: 24px;
+				height: 16px;
+				line-height: 16px;
+				font-size: 11px;
+				font-family: $font-family-body;
+			}
+		}
+	}
+}

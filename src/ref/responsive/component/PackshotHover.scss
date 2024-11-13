@@ -1,0 +1,140 @@
+@import "shared/style/modules";
+
+@keyframes hover-animate-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes hover-animate-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+$font-size: 12px;
+$line-height: 18px;
+$line-height-text: 1.67;
+$background-color: #262626;
+$margin-bottom: 8px;
+$margin-left: -2px;
+$hover-width: 234px;
+$hover-height: 130px;
+$hover-overflow: 35px;
+
+.packshot-hover {
+	display: none;
+	position: absolute;
+	min-width: $hover-width;
+	min-height: 40%;
+	width: 100%;
+	left: 50%;
+
+	// CSS transition moves an element 1px to the right, bug with WebKit
+	// https://stackoverflow.com/questions/15464055/css-transition-effect-makes-image-blurry-moves-image-1px-in-chrome
+	transform: translate3d(-50%, 0, 0);
+
+	color: white;
+	opacity: 0;
+	padding: 14px 12px 13px;
+	white-space: normal;
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.7), 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
+	background-color: $background-color;
+	cursor: default;
+
+	&--show {
+		animation: hover-animate-in 0.3s ease-in-out 0s 1 normal forwards;
+	}
+
+	&--hide {
+		animation: hover-animate-out 0.3s ease-out 0s 1 normal forwards;
+	}
+
+	&__title {
+		display: inline-block;
+		font-size: 14px;
+		font-weight: bold;
+		font-family: $font-family-heading;
+		line-height: $line-height;
+		letter-spacing: normal;
+		text-align: left;
+		margin: 0 0 $margin-bottom;
+		color: white;
+
+		&:hover {
+			color: $color__primary;
+		}
+	}
+
+	&__subtitle {
+		@extend .packshot-hover__title;
+		display: block;
+		font-weight: normal;
+		color: $color__grey--light;
+
+		&:hover {
+			color: $color__grey--light;
+		}
+	}
+
+	&__text {
+		font-size: 12px;
+		font-family: $font-family-body;
+		letter-spacing: normal;
+		line-height: $line-height-text;
+		color: $color__grey--light;
+		overflow: hidden;
+		height: 61px;
+	}
+
+	&__progress {
+		margin: 0 0 $margin-bottom;
+	}
+
+	.rating--wrapper {
+		margin: 0 $margin-left $margin-bottom;
+	}
+}
+
+// don't show packshot hover popups for collections in main and account menu
+.nav-content__packshot,
+.vertical-nav__packshot,
+.packshot--hero7x1 {
+	.packshot-hover {
+		display: none;
+	}
+}
+
+// show packshot hover popups from desktop only
+@include mq($from: desktop) {
+	.packshot-hover {
+		display: block;
+		top: 60%;
+		z-index: $depth-packshot-hover;
+		cursor: pointer;
+	}
+}
+
+.pg-account {
+	.packshot-hover {
+		min-width: calc(100% + 2 *#{$hover-overflow});
+		width: 100%;
+	}
+}
+
+// account page padding customization, might not be usefull for service delivery projects
+.app--account .page {
+	padding-bottom: 50px !important;
+}
+
+@include mq($from: desktopWide) {
+	.app--account .page {
+		padding-bottom: 80px !important;
+	}
+}

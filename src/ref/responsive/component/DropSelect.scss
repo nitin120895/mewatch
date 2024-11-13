@@ -1,0 +1,145 @@
+@import "shared/style/modules";
+
+.drop-select {
+	font-size: 16px;
+	color: $color__white;
+	display: inline-block;
+	user-select: none;
+	cursor: pointer;
+
+	@include mq($from: tablet) {
+		// using !important to give this precedence over styles set on the style attribute of the element
+		width: auto !important;
+		margin-left: 0;
+
+		&:last-of-type {
+			margin-right: -20px;
+		}
+	}
+
+	&__mobile-drop-down {
+		appearance: none;
+		text-indent: 1px;
+		background: transparent url("../../../../resource/ref/image/forms/drop-select-arrow.svg") center right no-repeat;
+		background-size: 14px 14px;
+		padding: 0 20px 0 0;
+		border: none;
+		color: $color__off-white;
+		display: block;
+		width: 100%;
+
+		&::-ms-expand {
+			display: none;
+		}
+
+		option {
+			padding: 0;
+		}
+
+		@include mq($from: tablet) {
+			display: none;
+		}
+	}
+
+	&:after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+
+	&__current-option {
+		padding: 9px 40px 11px 20px;
+		display: inline-block;
+		font-family: $font-family-heading;
+		font-weight: bold;
+		transition: color 0.3s;
+
+		&:hover {
+			color: $color__primary;
+		}
+	}
+
+	&__arrow-icon {
+		display: inline-block;
+		margin: 0;
+		position: absolute;
+		right: 20px;
+		top: 15px;
+	}
+
+	&__options-drop-down {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		z-index: 1;
+		background: $color__black4;
+		color: $color__grey--warm;
+		font-weight: normal;
+
+		label {
+			display: block;
+		}
+	}
+
+	&__options {
+		display: none;
+		font-size: 16px;
+		position: relative;
+
+		@include mq($from: tablet) {
+			display: block;
+		}
+	}
+
+	&__options &__current-option--active {
+		background: $color__black4;
+		color: $color__white;
+	}
+
+	&__options &__current-option--active &__arrow-icon {
+		transform: rotate(180deg);
+	}
+
+	&__options &__options-drop-down--active {
+		top: auto;
+		left: auto;
+		right: 0;
+	}
+
+	&__option {
+		float: left;
+		white-space: nowrap;
+		cursor: pointer;
+
+		label {
+			padding: 12px 20px;
+		}
+
+		&:hover {
+			color: $color__primary;
+		}
+	}
+
+	&__selected-option--selected {
+		color: $color__white;
+	}
+
+	&__placeholder-option {
+		padding-top: 0;
+		padding-bottom: 0;
+		overflow: hidden;
+		height: 0;
+	}
+
+	// the rules for this are important as they position the element in a space
+	// that the user can't see, but results in an element which has dimensions
+	// this means that we're able to use it as a means of sizing the mobile drop downs
+	// left: -100px is needed here as when using mobile safari the width of elements which
+	// go past the right hand side of the <body> will result in a width that is truncated
+	&__drop-down-width-finder {
+		position: absolute;
+		visibility: hidden;
+		display: inline-block;
+		left: -100px;
+	}
+}

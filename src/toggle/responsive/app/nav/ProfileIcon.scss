@@ -1,0 +1,40 @@
+@import "shared/style/modules";
+
+.profile-icon {
+	$color__profileCircle: $color__secondary;
+
+	display: flex;
+	align-items: center;
+	font-family: $font-family-heading;
+	font-size: 14px;
+	color: $color__white;
+	max-width: 200px;
+
+	&:focus {
+		color: $color__white;
+	}
+
+	&__circle {
+		flex: 0 0 auto;
+		display: table;
+		width: 32px;
+		height: 32px;
+		background-color: $color__profileCircle;
+		border-radius: 50%;
+	}
+
+	&__initial {
+		color: $color__white;
+		display: table-cell;
+		font-weight: bold;
+		vertical-align: middle;
+		text-align: center;
+		line-height: 1;
+	}
+
+	&__name {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 8px;
+	}
+}

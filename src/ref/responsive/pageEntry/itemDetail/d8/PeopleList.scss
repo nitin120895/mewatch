@@ -1,0 +1,14 @@
+.people-list__list {
+	overflow: hidden;
+	white-space: nowrap;
+
+	.arrow {
+		// centre relative to the circle instead of the row
+		padding-bottom: 63px;
+	}
+
+	// When peaking we want to overflow horizontally and prevent wrapping
+	&.row-peek .d8-cast-member {
+		float: none !important;
+	}
+}

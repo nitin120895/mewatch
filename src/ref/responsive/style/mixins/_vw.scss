@@ -1,0 +1,20 @@
+@import "shared/style/modules";
+@import "../functions";
+
+/**
+ * View width mixin to set vw with pixel fallback based off breakpoint
+ * @param {string} $breakpoint - The font-size at given breakpoint;
+ * @param {string} $prop - The css property;
+ * @param {integer} $val - The pixel value;
+ */
+
+@mixin vw($prop, $val, $breakpoint: phone) {
+	$list: ();
+
+	@each $value in $val {
+		$list: append($list, vw(stripUnits($value), $breakpoint));
+	}
+
+	#{$prop}: $val;
+	#{$prop}: $list;
+}

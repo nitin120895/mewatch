@@ -1,0 +1,77 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.pin-input {
+	font-family: $font-family-heading;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: $color__black;
+
+	&__content {
+		text-align: center;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+
+		&--useOSK {
+			transform: translateX(-50%) translateY(-90%);
+		}
+	}
+
+	&__title {
+		font-size: 64px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&__prompt,
+	&__msg {
+		font-size: 36px;
+		line-height: 1.28;
+		text-align: center;
+		color: $color__grey--light;
+		margin: 50px 0 60px;
+	}
+
+	&__char {
+		display: inline-block;
+		width: 113px;
+		height: 113px;
+		background-color: rgba($color__white, 0.2);
+		margin: 0 10px;
+		&--focused {
+			background-color: $color__primary;
+			box-shadow: 0 0 0 8px $color__white;
+		}
+	}
+
+	&__star {
+		opacity: 0;
+		font-size: 72px;
+		line-height: 126px;
+
+		&--show {
+			opacity: 1;
+		}
+	}
+
+	&__msg {
+		opacity: 0;
+
+		&--show {
+			opacity: 1;
+		}
+	}
+
+	&__input {
+		position: absolute;
+		top: 100px;
+		opacity: 0;
+		width: 0;
+		height: 200px;
+		font-size: 72px;
+		color: red;
+	}
+}

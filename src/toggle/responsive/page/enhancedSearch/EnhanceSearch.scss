@@ -1,0 +1,58 @@
+@import "shared/style/modules";
+
+.enhance-search-page {
+	&__message {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		margin-top: 2.5rem;
+	}
+
+	&__message-title {
+		font-size: 1rem;
+	}
+
+	&__message-info {
+		margin-top: 0.5rem;
+		font-size: 0.75rem;
+	}
+
+	.page-entry {
+		&.SSB1 {
+			margin-top: 0;
+		}
+	}
+
+	&--empty-search {
+		.page-entry {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.enhance-search-page {
+		&__message-title {
+			font-size: 1.25rem;
+		}
+
+		&__message-info {
+			margin-top: 0.625rem;
+			font-size: 0.875rem;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.enhance-search-page {
+		&__message {
+			display: block;
+			text-align: left;
+		}
+
+		&__message-title {
+			font-size: 1.5rem;
+		}
+	}
+}

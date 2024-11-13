@@ -1,0 +1,65 @@
+@import "shared/style/modules";
+
+.confirmation-dialog-component {
+	display: flex;
+	flex-direction: column;
+
+	&__modifications {
+		display: flex;
+		flex-direction: column;
+		& > label {
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 400px;
+			& > input {
+				flex-grow: 1;
+			}
+		}
+	}
+
+	hr {
+		width: 100%;
+	}
+
+	&__buttons {
+		margin-top: 20px;
+		display: flex;
+		justify-content: space-between;
+		max-width: 400px;
+	}
+
+	&__message {
+		color: white;
+		transition: opacity 0.2s;
+		opacity: 1;
+		display: inline-block;
+		&--hidden {
+			opacity: 0;
+		}
+		&--visible {
+			animation: flash 0.3s;
+		}
+	}
+
+	&__message-container {
+		height: 20px;
+		margin-bottom: 5px;
+	}
+
+	@keyframes flash {
+		0% {
+			color: white;
+			transform: scale(1);
+		}
+		50% {
+			color: orange;
+			transform: scale(1.1);
+		}
+		100% {
+			color: white;
+			transform: scale(1);
+		}
+	}
+}

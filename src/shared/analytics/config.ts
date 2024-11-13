@@ -1,0 +1,6 @@
+export const SESSION_TIMEOUT_SECS = 300;
+export const TRACK_MISSING_RESOURCES = true;
+export const IMPRESSION_TIME_SECS = 0.5;
+export const FOCUS_TIME_SECS = 3;
+
+export const SESSION_TIMEOUT_MS = SESSION_TIMEOUT_SECS * 1000;

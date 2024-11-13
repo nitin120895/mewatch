@@ -1,0 +1,53 @@
+@import "shared/style/modules";
+
+.upsell-modal,
+.upsell-cessation-modal {
+	.dialog {
+		width: calc(100% - 40px);
+		max-width: 534px;
+		margin: 20px;
+		padding: 30px 16px;
+	}
+
+	.dialog-title {
+		max-width: 325px;
+		margin: 0 auto 20px;
+		padding-top: 5px;
+		font-size: 24px;
+		line-height: (28/24);
+	}
+	.confirmation-dialog__content {
+		font-size: 16px;
+	}
+	.confirmation-dialog__buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding-top: 20px;
+	}
+	.cta-btn {
+		padding: 0;
+		width: 120px;
+		&--secondary {
+			margin-left: 20px;
+		}
+	}
+	@include mq($from: tablet) {
+		.dialog {
+			padding: 40px;
+		}
+		.cta-btn {
+			width: 130px;
+		}
+		.confirmation-dialog__buttons {
+			padding-top: 40px;
+		}
+	}
+}
+.upsell-cessation-modal {
+	@include mq($from: tablet) {
+		.confirmation-dialog__content {
+			padding: 0 2.5rem;
+		}
+	}
+}

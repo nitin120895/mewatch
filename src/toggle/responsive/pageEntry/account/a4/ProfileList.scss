@@ -1,0 +1,70 @@
+@import "shared/style/modules";
+
+$circleWidth: 88px;
+$threeCircles: $circleWidth * 3;
+
+.profile-list-entry {
+	&__max-profiles-error {
+		display: flex;
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__grey--warm;
+		line-height: 1.25;
+		letter-spacing: -0.25px;
+		padding-top: 23px;
+
+		.warning-icon {
+			color: $color__yellow;
+			height: 21px;
+			width: 22px;
+			margin-right: 10px;
+		}
+	}
+
+	&__profiles-info {
+		max-width: 630px;
+		font-size: 14px;
+		line-height: 1.29;
+		color: $color__grey--dark;
+		font-family: $font-family-heading;
+	}
+
+	.profile-list {
+		margin-top: 0;
+		margin-left: -40px;
+		display: flex;
+		flex-wrap: wrap;
+
+		&__circle {
+			width: $circleWidth;
+			padding-top: 20px;
+			margin-left: 40px;
+		}
+	}
+}
+
+@include mq($until: phablet) {
+	.profile-list-entry {
+		.profile-list {
+			margin-left: 0;
+
+			&__circle {
+				display: inline-block;
+				vertical-align: top;
+				margin-left: 0;
+
+				&:nth-child(3n + 2) {
+					margin: 0 calc((100% - #{$threeCircles}) / 2);
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.profile-list-entry {
+		.profile-list {
+			overflow: hidden;
+		}
+	}
+}

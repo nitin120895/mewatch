@@ -1,0 +1,28 @@
+@import "shared/style/modules";
+
+.row-carousel {
+	position: relative;
+
+	.arrow__icon {
+		top: 0;
+	}
+}
+
+.row-carousel__container {
+	white-space: nowrap;
+	transform: translateX(0);
+	transition: transform 700ms $iron-man;
+	will-change: transform;
+
+	.grid-margin {
+		display: block;
+	}
+
+	&--no-transition {
+		transition: transform 0s ease-in-out;
+	}
+
+	&--centered {
+		text-align: center;
+	}
+}

@@ -1,0 +1,55 @@
+@import "shared/style/modules";
+
+// A 4:3 hero doesn't mathematically align with a 2:3 row.
+// The grid column assignment approximately matches the height of the adjacent content,
+// which are then offset to adjust alignment.
+.pb1 {
+	&__hero {
+		padding-right: 3.1% !important;
+		+ .packshot {
+			margin-left: -2.2% !important;
+		}
+
+		@include mq($from: phablet) {
+			padding-right: 1.8% !important;
+			+ .packshot {
+				margin-left: -1.2% !important;
+			}
+		}
+
+		@include mq($from: tablet) {
+			padding-right: 1.6% !important;
+			+ .packshot {
+				margin-left: -1.1% !important;
+			}
+		}
+
+		@include mq($from: laptop) {
+			padding-right: 1.2% !important;
+			+ .packshot {
+				margin-left: -0.7% !important;
+			}
+		}
+
+		@include mq($from: desktop) {
+			padding-right: 1.45% !important;
+			+ .packshot {
+				margin-left: -0.9% !important;
+			}
+		}
+
+		@include mq($from: desktopWide) {
+			padding-right: 1.65% !important;
+			+ .packshot {
+				margin-left: -1.1% !important;
+			}
+		}
+
+		@include mq($from: uhd) {
+			padding-right: 1.28% !important;
+			+ .packshot {
+				margin-left: -0.9% !important;
+			}
+		}
+	}
+}

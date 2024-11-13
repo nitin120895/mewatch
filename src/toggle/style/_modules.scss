@@ -1,0 +1,16 @@
+// -------------------------------------- //
+// Environmental Partials
+// -------------------------------------- //
+
+// There shouldn't be any output code within any imported partials within this file.
+// Import this within your component stylesheets to access variables and helpers.
+
+// The order of these imports matters since they're chaining their usage of the declared variables/functions.
+@import "./modules/colors";
+@import "./modules/variables";
+@import "./modules/functions";
+@import "./modules/mixins";
+@import "./modules/grid";
+@import "./modules/typography";
+@import "./modules/vendors";
+@import "./modules/easings";

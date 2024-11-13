@@ -1,0 +1,102 @@
+@import "shared/style/modules";
+
+$single-line-metadata-height: 25px;
+$double-line-metadata-height: 45px;
+$single-line-continue-metadata-height: 40px;
+$double-line-continue-metadata-height: 84px;
+$double-line-bookmarks-metadata-height: 64px;
+
+@mixin arrows-style($height, $secondaryHeight) {
+	.arrow {
+		height: calc(100% - #{$height});
+	}
+
+	&.has-secondary {
+		.arrow {
+			height: calc(100% - #{$secondaryHeight});
+		}
+	}
+}
+
+.packshot-list {
+	position: relative;
+
+	// When wrapping we want to add the gutter spacing between rows
+	&.row {
+		.packshot-list__packshot {
+			margin-bottom: get-gutter();
+		}
+	}
+
+	// When peeking we want to overflow horizontally and prevent wrapping
+	&.row-peek {
+		// All the packshot inside is inline-block and has a default line-height, need to clear it
+		line-height: 0.9;
+
+		.packshot-list__packshot {
+			float: none !important;
+		}
+	}
+
+	&--double-row {
+		.packshot-list__packshot {
+			vertical-align: top;
+
+			// Double packshot wrapper
+			> .packshot-list__packshot {
+				display: block;
+				position: relative;
+			}
+
+			> .packshot-list__packshot + .packshot-list__packshot {
+				// When double row we want to add the gutter spacing between rows
+				margin-top: get-gutter();
+			}
+
+			.packshot-title {
+				left: 0;
+				right: 0;
+				padding: 0px 3px 5px;
+			}
+		}
+		@include mq($from: desktop) {
+			.packshot-list__packshot .packshot-title {
+				padding: 0 0 5px;
+			}
+		}
+	}
+
+	&.bookmarks {
+		@include arrows-style($single-line-continue-metadata-height, $double-line-bookmarks-metadata-height);
+	}
+
+	&.title-below {
+		@include arrows-style($single-line-metadata-height, $double-line-metadata-height);
+	}
+
+	// this is for proper z-index work on packshot hover panel
+	&:hover {
+		z-index: 6;
+	}
+}
+
+// Shift packshot list slightly more to the right on tablet portrait view
+@include mq($from: tablet, $until: laptop) {
+	.branded-text-packshot,
+	.branded-bg,
+	.branded-image {
+		.packshot-list__packshot.col-tablet-offset-12 {
+			margin-left: 55%;
+		}
+	}
+}
+
+// When wrapping we want to add the gutter spacing between rows
+@include generate-breakpoint-gutters(".packshot-list.row .packshot", ("margin-bottom"), (1));
+
+// For double rows we want to add the gutter spacing between rows
+@include generate-breakpoint-gutters(
+	".packshot-list--double-row .packshot-list__packshot > .packshot + .packshot",
+	("margin-top"),
+	(1)
+);

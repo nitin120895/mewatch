@@ -1,0 +1,9 @@
+@import "shared/style/modules";
+
+.progress-bar {
+	background-color: $color__grey--dark;
+	&__bar {
+		background-color: $color__primary;
+		height: $progress-bar-height;
+	}
+}

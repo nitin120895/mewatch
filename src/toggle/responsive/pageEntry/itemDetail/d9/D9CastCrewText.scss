@@ -1,0 +1,57 @@
+@import "shared/style/modules";
+
+.d9 {
+	text-align: left;
+	font-size: 14px;
+
+	&__list {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+}
+
+.d9-cast-row {
+	min-height: 25px;
+	font-family: $font-family-heading;
+
+	&__role {
+		color: $color__grey--light;
+		vertical-align: top;
+		text-align: left;
+		text-transform: capitalize;
+		white-space: nowrap;
+	}
+
+	&__names {
+		padding-left: 36px;
+		vertical-align: top;
+	}
+
+	&__name {
+		color: $color__white;
+
+		&:hover,
+		&:focus {
+			outline: none;
+			color: $color__link--hover;
+		}
+	}
+
+	&__name + &__name {
+		&:before {
+			content: ", ";
+			color: $color__white;
+		}
+	}
+
+	&__character {
+		color: $color__grey--warm;
+		padding-left: 6px;
+	}
+}
+
+@include mq($from: tablet) {
+	.cast-crew-list {
+		font-size: 16px;
+	}
+}

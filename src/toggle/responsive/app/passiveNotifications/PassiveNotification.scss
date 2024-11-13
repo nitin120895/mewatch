@@ -1,0 +1,82 @@
+@import "shared/style/modules";
+
+.passive-notification {
+	background: $color__black3;
+	font-family: $font-family-body;
+	font-size: 14px;
+	color: $color__white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+	padding: 15px 52px 15px 25px;
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+	transition: transform 0.3s $easeOutCubic, opacity 0.3s;
+	// we do 650px worth of text, then 50px worth of padding. So max is 700.
+	max-width: 700px;
+	min-width: 300px;
+	pointer-events: all;
+
+	@include mq($from: tablet) {
+		min-width: 700px;
+	}
+
+	&--hidden {
+		opacity: 0;
+		transition-timing-function: $easeInCubic, linear;
+		transform: translate3d(0, -50px, 0);
+		pointer-events: none;
+	}
+
+	&__close-btn {
+		$size: 32px;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 10px;
+		// give it a nice big hit box to click on
+		height: $size;
+		width: $size;
+		color: $color__white;
+		transition: color 0.2s;
+		&:hover {
+			color: $color__grey--light;
+		}
+	}
+}
+
+.undo-delete-cw-toast {
+	background-color: $color__black6;
+	border-radius: 8px;
+	padding: 1rem;
+
+	@include mq($from: tablet) {
+		padding: 1rem 1.5rem;
+	}
+
+	.passive-notification__close-btn {
+		display: none;
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__message {
+		padding-right: 1rem;
+
+		@include mq($until: phablet) {
+			max-width: 14rem;
+		}
+	}
+
+	&__cta {
+		padding: 0;
+		height: auto;
+		text-transform: uppercase;
+	}
+}

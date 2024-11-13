@@ -1,0 +1,53 @@
+@import "shared/style/modules";
+
+.card-details {
+	display: flex;
+	position: relative;
+	margin-bottom: 20px;
+
+	&__information {
+		margin-left: 12px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__action-btn-grp {
+		margin-left: auto;
+	}
+
+	&__brand-value {
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__grey--dark;
+		text-transform: uppercase;
+	}
+
+	&__name {
+		margin: 10px 0 5px;
+	}
+
+	&__name,
+	&__expiry {
+		font-size: 14px;
+		color: $color__grey;
+	}
+
+	&__expired {
+		color: $color__error;
+		display: inline-block;
+	}
+}
+
+@include mq($from: tablet) {
+	.card-details {
+		&__brand-value {
+			font-size: 18px;
+		}
+
+		&__name,
+		&__expiry {
+			font-size: 16px;
+		}
+	}
+}

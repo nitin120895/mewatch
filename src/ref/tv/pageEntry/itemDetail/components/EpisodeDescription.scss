@@ -1,0 +1,21 @@
+@import "src/ref/tv/style/modules";
+
+$descriptionLineHeight: 1.5em;
+
+.d1-episode-desc {
+	&__text {
+		position: relative;
+		color: $color__grey--light;
+		margin: 0;
+		width: 1200px;
+		text-shadow: 0 2px 4px rgba($color__black, 0.5);
+		font-size: 28px;
+		line-height: $descriptionLineHeight;
+		height: 84px;
+		overflow: hidden;
+
+		&--displayThumbnail {
+			height: 126px;
+		}
+	}
+}

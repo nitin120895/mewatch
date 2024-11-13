@@ -1,0 +1,96 @@
+@import "shared/style/modules";
+
+$border-width: 1px;
+$cta-border-radius: 50px;
+
+.teamsg-toggle {
+	position: relative;
+	height: $games-cta-height;
+	border: $border-width solid $color__grey--warm;
+	border-radius: $cta-border-radius;
+	background-color: $color__games-background;
+
+	&__labels {
+		position: relative;
+	}
+
+	&__label {
+		text-align: center;
+		display: inline-block;
+		vertical-align: middle;
+		min-width: 3em;
+		width: 50%;
+	}
+
+	&__sg {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&__label {
+			margin-left: 5px;
+		}
+	}
+
+	&__flag {
+		display: inline-block;
+		border: 1px solid $color__grey--light;
+		border-radius: 4px;
+	}
+
+	&__slider {
+		position: absolute;
+		$slider-gap: 4px;
+		top: $slider-gap;
+		left: $slider-gap;
+		width: calc(50% - #{$slider-gap});
+		height: calc(100% - #{$slider-gap * 2});
+		border-radius: $cta-border-radius;
+		background-color: $color__games-item-bg;
+		transition: transform 0.3s ease-out;
+	}
+
+	&--on &__slider {
+		transform: translateX(100%);
+	}
+
+	&--off &__label--off,
+	&--on &__label--on {
+		color: $color__white;
+	}
+}
+
+.display-desktop {
+	display: none;
+}
+
+@include mq($from: tablet) {
+	.teamsg-toggle {
+		&__label {
+			min-width: 12em;
+		}
+	}
+
+	.display-mobile {
+		display: none;
+	}
+
+	.display-desktop {
+		display: block;
+	}
+}
+
+@media screen and (max-width: map-get($mq-breakpoints, phone)) {
+	.teamsg-toggle {
+		width: calc(100% - 11em);
+
+		&__label {
+			font-size: 0.8em;
+			min-width: auto;
+		}
+
+		&__flag {
+			max-width: 25px;
+		}
+	}
+}

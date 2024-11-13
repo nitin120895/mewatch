@@ -1,0 +1,137 @@
+@import "shared/style/modules";
+
+.channel-info-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	.channel-info-modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+		color: $color__black;
+		font-family: $font-family-heading;
+		background-color: $color__white;
+		height: 100%;
+
+		&__close {
+			position: absolute;
+			right: 15px;
+			top: 20px;
+			width: 15px;
+			height: 15px;
+			cursor: pointer;
+
+			.svg-icon {
+				stroke: $color__black;
+			}
+		}
+
+		&__container {
+			width: 100%;
+			padding: 52px 10px 20px;
+			display: flex;
+			flex-direction: column;
+			max-height: 100%;
+		}
+
+		&__img {
+			display: inline-flex;
+			img {
+				width: 100%;
+			}
+		}
+
+		&__content {
+			padding: 20px 0;
+			display: inline-flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+
+		&__title {
+			font-size: 28px;
+			font-weight: bold;
+			color: $color__black3;
+			line-height: normal;
+		}
+
+		&__text {
+			padding-top: 10px;
+			font-size: 14px;
+			line-height: 1.43;
+			color: $color__grey;
+		}
+
+		&__link {
+			font-size: 14px;
+			line-height: 1.43;
+			align-self: flex-start;
+			padding-top: 10px;
+			text-decoration: underline;
+		}
+	}
+
+	@include mq($until: tablet, $and: "(orientation: landscape)") {
+		.channel-info-modal {
+			&__container {
+				flex-direction: row;
+			}
+			&__img {
+				height: 136px;
+				flex: 0 0 240px;
+			}
+			&__content {
+				padding: 0 10px 0 20px;
+			}
+			&__text,
+			&__link {
+				padding-right: 10px;
+			}
+		}
+	}
+
+	@include mq($from: tablet) {
+		.channel-info-modal {
+			height: auto;
+			max-height: 60vh;
+
+			&__container {
+				flex-direction: row;
+				padding: 40px;
+				max-height: 60vh;
+			}
+
+			&__img {
+				flex: 0 0 233px;
+				height: 130px;
+			}
+
+			&__content {
+				padding: 0 0 0 20px;
+			}
+
+			&__text,
+			&__link {
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+	}
+
+	@include mq($from: laptop) {
+		.channel-info-modal {
+			width: 822px;
+
+			&__title {
+				font-size: 24px;
+			}
+		}
+	}
+}

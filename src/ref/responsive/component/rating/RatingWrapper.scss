@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.rating {
+	position: relative;
+
+	&--rate_or_rating {
+		margin-left: 20px;
+	}
+
+	.overlay__backdrop {
+		background-color: rgba($color__black, 0);
+	}
+}

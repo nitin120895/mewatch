@@ -1,0 +1,68 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+
+.tx1-links {
+	&__list-content {
+		position: relative;
+		width: 100%;
+	}
+
+	&__list {
+		display: inline-block;
+		position: relative;
+		height: $tx1-links-height;
+		white-space: nowrap;
+	}
+
+	&__button {
+		display: inline-block;
+		margin-right: 40px;
+		max-width: 534px;
+		padding: 0 50px;
+		height: $tx1-links-height;
+		border-radius: 100px;
+		border: solid 4px;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: $tx1-links-height;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&--focused {
+			border-color: $color__white;
+			background-color: $color__white;
+		}
+	}
+
+	&__arrow {
+		color: $color__white;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: $row-list-arrow-width;
+
+		&--prev {
+			background-image: linear-gradient(to left, transparent, $color__black);
+			left: -$row-list-arrow-width;
+			right: auto;
+		}
+
+		&--next {
+			background-image: linear-gradient(to right, transparent, $color__black);
+			left: auto;
+			right: -$row-list-arrow-width;
+		}
+
+		.icon {
+			display: block;
+			font-size: 60px;
+			opacity: 0.5;
+		}
+	}
+}

@@ -1,0 +1,106 @@
+@import "shared/style/modules";
+
+.sports-carousel {
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+
+	.col {
+		display: inline-block;
+		padding: 0 1px;
+		float: none;
+	}
+
+	@include mq($from: desktop) {
+		.col-desktop-3 {
+			width: 8.3%;
+		}
+	}
+
+	&__item {
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		vertical-align: top;
+
+		&__thumbnail {
+			padding: 0 5px;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		&--active &__img {
+			background-color: $color__games-item-bg;
+		}
+
+		&__title {
+			text-align: center;
+			font-size: 0.8125em;
+			color: $color__white;
+			white-space: normal;
+			line-height: 1.1;
+		}
+
+		&__img {
+			position: relative;
+			height: 4em;
+			width: 4em;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			margin-bottom: 0.5em;
+		}
+
+		img {
+			max-height: 2.5em;
+		}
+
+		&__tick {
+			position: absolute;
+			top: 0;
+			right: -0.625em;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 1.5em;
+			width: 1.5em;
+			border: 2px solid $color__games-header;
+			border-radius: 50%;
+			background-color: $color__white;
+		}
+
+		&__icon {
+			width: 1em;
+			height: 1em;
+			stroke: $color__games-item-bg;
+			stroke-width: 2px;
+		}
+
+		&__thumbnail--all-sports {
+			border-right: 1px solid $color__grey--dark;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.sports-carousel__item__thumbnail {
+		&:hover {
+			cursor: pointer;
+
+			.sports-carousel__item {
+				&__title {
+					color: $color__white;
+				}
+
+				&__img {
+					background-color: $color__games-item-bg;
+				}
+			}
+		}
+	}
+}

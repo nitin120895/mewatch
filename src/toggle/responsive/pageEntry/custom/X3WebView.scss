@@ -1,0 +1,17 @@
+.pg-webview--vp {
+	.x3 {
+		// Fills the viewport / content area height
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+
+		> .x2__frame {
+			flex: 1 1 auto;
+		}
+
+		.full-bleed,
+		.x2__frame {
+			height: 100%;
+		}
+	}
+}

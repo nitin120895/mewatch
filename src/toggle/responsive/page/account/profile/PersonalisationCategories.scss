@@ -1,0 +1,214 @@
+@import "shared/style/modules";
+
+.personalisation-step1 {
+	margin: 0 auto;
+	font-family: $font-family-heading;
+	padding: 15px 10px;
+
+	&__categories {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		img {
+			position: relative;
+			width: 25px;
+		}
+	}
+
+	&__category {
+		&.cta-btn {
+			position: relative;
+			display: flex;
+			flex-flow: row nowrap;
+			flex: 0 1 calc(50% - 4px);
+			height: 55px;
+			padding: 0 10px;
+			margin-bottom: 8px;
+			border-radius: 0;
+			border: none;
+		}
+
+		&-inner {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			align-items: center;
+		}
+
+		&.cta-btn--primary-dark {
+			.icon-wrapper {
+				display: block;
+				top: 50%;
+				transform: translateY(-50%);
+				right: 10px;
+				width: 20px;
+				height: 20px;
+			}
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, 0.4);
+			}
+		}
+
+		&.cta-btn:hover:not(:disabled) {
+			color: $color__white;
+		}
+	}
+
+	&__category-title {
+		padding-left: 8px;
+		align-self: center;
+		text-transform: uppercase;
+		font-size: 12px;
+		line-height: 12px;
+		font-family: $font-family-body;
+		font-weight: bold;
+	}
+}
+
+.successful-update-personalisation,
+.create-account-modal {
+	width: 100%;
+	.margin-bottom {
+		margin-bottom: 20px;
+	}
+	.bold-text {
+		font-weight: bold;
+		padding-left: 5px;
+	}
+
+	&.dialog {
+		width: 90%;
+		margin: 0 auto;
+		padding: 30px 20px;
+		.dialog-title {
+			padding: 0 30px;
+			font-size: 24px;
+		}
+
+		.cta-btn {
+			font-size: 16px;
+		}
+
+		.cta-btn--secondary {
+			margin-left: 0;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.successful-update-personalisation,
+	.create-account-modal {
+		&.dialog {
+			.cta-btn--secondary {
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 600px) and (min-height: 720px) and (orientation: portrait) {
+	.personalisation-step1 {
+		padding: 25px 10px 40px;
+
+		&__categories {
+			justify-content: space-between;
+			width: 100%;
+			margin: 0 auto;
+
+			img {
+				width: 40px;
+			}
+		}
+
+		&__category {
+			&.cta-btn {
+				flex: 0 1 calc(50% - 4px);
+				height: 100px;
+				margin: 0 0 8px;
+				padding: 0 29px;
+			}
+
+			&.cta-btn--primary-dark {
+				.icon-wrapper {
+					right: 29px;
+					width: 32px;
+					height: 32px;
+				}
+			}
+		}
+
+		&__category-title {
+			font-size: 16px;
+			padding-left: 16px;
+		}
+	}
+
+	.successful-update-personalisation,
+	.create-account-modal {
+		&.dialog {
+			width: 534px;
+			height: 403px;
+			padding: 80px 40px 40px;
+
+			.dialog-title {
+				padding: 0 80px;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: portrait)") {
+	.personalisation-step1 {
+		width: 638px;
+		padding: 25px 0 40px;
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.personalisation-step1 {
+		width: 942px;
+		padding: 25px 0;
+
+		&__categories {
+			justify-content: flex-start;
+			img {
+				width: 42px;
+			}
+		}
+
+		&__category {
+			&.cta-btn {
+				padding: 0 29px;
+				flex: 0 1 calc(33% - 6px);
+				max-width: 315px;
+				margin: 0 12px 12px 0;
+				height: 78px;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+
+			&.cta-btn--primary-dark {
+				.icon-wrapper {
+					right: 29px;
+					width: 32px;
+					height: 32px;
+				}
+			}
+		}
+
+		&__category-title {
+			font-size: 16px;
+			line-height: 16px;
+			padding-left: 16px;
+		}
+	}
+}

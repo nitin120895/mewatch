@@ -1,0 +1,65 @@
+@import "shared/style/modules";
+
+.payment-confirmation {
+	position: relative;
+	background-color: $color__white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 358px;
+	font-family: $font-family-heading;
+
+	&__title {
+		font-size: 24px;
+		line-height: 1.33;
+		color: $color__black3;
+	}
+
+	&__content {
+		font-size: 14px;
+		color: $color__grey;
+		padding: 0 10px;
+		line-height: 1.57;
+		color: $color__grey;
+		max-width: 473px;
+		text-align: center;
+		margin: 30px 0;
+	}
+
+	.margin-top {
+		margin-top: 30px;
+	}
+
+	.content-position {
+		position: relative;
+		text-align: center;
+	}
+}
+@include mq($from: tablet) {
+	.payment-confirmation {
+		height: 100vh;
+		justify-content: flex-start;
+
+		.second-line {
+			margin-top: 30px;
+		}
+
+		&__content {
+			font-size: 16px;
+			line-height: 1.25;
+		}
+
+		.content-position {
+			padding-top: 200px;
+		}
+	}
+}
+
+@include mq($from: tablet, $until: laptop, $and: "(orientation: landscape)") {
+	.payment-confirmation {
+		.content-position {
+			padding-top: 50px;
+		}
+	}
+}

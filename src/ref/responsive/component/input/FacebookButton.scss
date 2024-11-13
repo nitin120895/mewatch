@@ -1,0 +1,37 @@
+@import "shared/style/modules";
+
+$facebook-color: #3a5798;
+
+.facebook-button {
+	background-color: $facebook-color;
+	color: $color__white;
+
+	&:hover {
+		background-color: darken($facebook-color, 0.3);
+	}
+
+	&:focus {
+		color: $color__white;
+	}
+
+	&:disabled {
+		color: $color__white;
+		background-color: $color__grey--light;
+	}
+
+	.facebook-icon {
+		margin-right: 10px;
+		height: 20px;
+	}
+
+	&__button-content {
+		display: flex;
+		align-items: center;
+	}
+
+	.text {
+		// Balances out the margin on the facebook icon
+		// we want the text to look completey centered
+		padding-right: 10px;
+	}
+}

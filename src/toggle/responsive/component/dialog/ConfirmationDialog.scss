@@ -1,0 +1,128 @@
+@import "shared/style/modules";
+
+.confirmation-dialog {
+	width: 90%;
+	margin: 0 auto;
+	padding: 30px 20px;
+	font-family: $font-family-base;
+
+	&__content {
+		text-align: center;
+		word-wrap: break-word;
+		color: $color__grey;
+		padding: 0;
+		margin-top: 20px;
+
+		&:empty {
+			margin-top: 0;
+		}
+	}
+
+	.dialog-title {
+		margin: 0;
+	}
+
+	&__buttons {
+		padding: 20px 0 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__primary-btn {
+		max-width: 100%;
+	}
+
+	.cta-btn {
+		min-width: 120px;
+		text-transform: none;
+
+		&--secondary {
+			margin-left: 20px;
+		}
+	}
+
+	&.kids-profile-modal {
+		.confirmation-dialog__buttons {
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+		}
+
+		.dialog-title {
+			margin-top: 30px;
+		}
+
+		.cta-btn {
+			min-width: 156px;
+			&--secondary {
+				margin: 10px 0 0;
+				width: 156px;
+			}
+		}
+
+		svg {
+			position: absolute;
+			top: 40px;
+			right: 45%;
+		}
+	}
+
+	&.confirmed-kids-modal {
+		.confirmation-dialog__content {
+			padding-top: 40px;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.confirmation-dialog {
+		width: 70%;
+
+		&__buttons {
+			text-align: center;
+			overflow: hidden;
+			display: block;
+		}
+
+		&__content {
+			margin-top: 10px;
+		}
+
+		.cta-btn {
+			&--secondary {
+				margin-left: 20px;
+			}
+		}
+
+		&.kids-profile-modal {
+			.confirmation-dialog__buttons {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+			}
+
+			.cta-btn {
+				&--secondary {
+					margin: 0 0 0 10px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.confirmation-dialog {
+		width: 534px;
+		padding: 40px;
+
+		&__content {
+			margin-top: 20px;
+		}
+
+		&__buttons {
+			padding: 40px 0 0;
+		}
+	}
+}

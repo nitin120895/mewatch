@@ -1,0 +1,35 @@
+// -------------------------------------- //
+// Reset Top Level Elements
+//
+// To remove browser default styling add rules for the elements
+// you wish to reset and then apply styling yourself in external
+// stylesheets.
+//
+// Alternatively you can provide your own CSS Reset framework
+// to accomplish this task.
+//
+// The reference apps are providing their own resets to minimise
+// output filesize by only resetting elements we're using. e.g.
+// If you're not using the `<legend />` element then there is no
+// need to reset it.
+// -------------------------------------- //
+
+img,
+svg {
+	// Ensure we don't render white space below the image
+	display: block;
+	height: auto;
+}
+
+button {
+	appearance: none;
+	background-color: transparent;
+	color: inherit;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	&:disabled {
+		cursor: default;
+	}
+}

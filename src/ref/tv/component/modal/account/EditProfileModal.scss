@@ -1,0 +1,157 @@
+@import "src/ref/tv/style/modules";
+
+.edit-profile {
+	font-family: $font-family-heading;
+	color: $color__white;
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: $viewport-width;
+	height: $viewport-height;
+	text-align: center;
+	font-weight: bold;
+	background-color: $color__black;
+
+	&--blackBackground {
+		background-color: $color__black;
+	}
+
+	&--transparent {
+		background-color: rgba($color__black, 0.8);
+	}
+
+	&__container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+
+		&--showOSK {
+			transform: translateX(-50%) translateY(-95%);
+
+			input {
+				height: 70px !important;
+				line-height: 70px !important;
+			}
+		}
+	}
+
+	&__title {
+		line-height: 72px;
+		font-size: 64px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 80px;
+		text-transform: uppercase;
+	}
+
+	&__info {
+		width: 829px;
+		font-size: 28px;
+		line-height: 1.64;
+		color: $color__grey--light;
+		margin-top: 40px;
+	}
+
+	&__del-info {
+		width: 1110px;
+		font-size: 36px;
+		line-height: 1.28;
+		color: $color__grey--light;
+		margin-bottom: 80px;
+	}
+
+	&__buttons {
+		> button {
+			margin: 0 10px;
+			background-color: $color__black;
+		}
+
+		> button.focused {
+			background-color: $color__white;
+			color: $color__primary;
+		}
+	}
+
+	&__type {
+		background-color: rgba($color__white, 0.2);
+		display: inline-block;
+		text-align: center;
+		width: 250px;
+		height: 250px;
+		margin: 0 20px;
+		border: solid 4px transparent;
+		cursor: pointer;
+		vertical-align: top;
+
+		&--selected {
+			background-color: transparent;
+			border: solid 4px $color__white;
+		}
+
+		&--focused {
+			background-color: $color__primary;
+			border: solid 4px transparent;
+			outline: solid 8px $color__white;
+			opacity: 1;
+		}
+	}
+
+	&__type-icon {
+		width: 82px;
+		height: 82px;
+		margin: 30px 0 15px;
+		display: inline-block;
+	}
+
+	&__type-title {
+		line-height: 31px;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	&__type-desc {
+		line-height: 1.15;
+		font-size: 26px;
+		width: 240px;
+		height: 60px;
+		font-weight: normal;
+	}
+
+	&__input {
+		margin: 40px 20px 60px;
+		position: relative;
+		height: 100px;
+		font-size: 36px;
+		line-height: 100px;
+		opacity: 70%;
+		text-align: center;
+		background-color: rgba($color__white, 0.2);
+
+		> div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 10px 24px;
+			font-size: 32px;
+		}
+
+		.input-single-line__placeholder {
+			opacity: 0.7;
+			font-size: 36px;
+			font-weight: normal;
+			text-align: center;
+			width: 100%;
+			left: 0;
+			line-height: 100px;
+		}
+	}
+
+	&__error {
+		opacity: 0.7;
+		color: red;
+	}
+}

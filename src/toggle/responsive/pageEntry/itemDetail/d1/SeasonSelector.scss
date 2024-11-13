@@ -1,0 +1,131 @@
+@import "shared/style/modules";
+
+.d1-season-selector-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: $depth-modal-overlays;
+	display: flex;
+	background-color: rgba($color__black, 0.8);
+}
+
+.d1-season-selector {
+	position: relative;
+	color: $color__white;
+
+	&--drop-down {
+		margin: 5px 0;
+	}
+
+	&__button {
+		font-size: 1.125rem;
+		font-family: $font-family-heading;
+		color: $color__white;
+		padding: 10px 32px 10px 0;
+		position: relative;
+		background: transparent;
+
+		&:after {
+			border-style: solid;
+			border-width: 0 0 2px 2px;
+			content: "";
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			position: relative;
+			top: -4px;
+			left: 12px;
+			transform: rotate(-45deg);
+			vertical-align: middle;
+		}
+	}
+
+	&__listContainer {
+		display: none;
+		position: absolute;
+		top: 45px;
+		left: 0;
+		background-color: $color__black4;
+		padding-bottom: 15px;
+	}
+
+	&--right &__button {
+		float: right;
+		padding: 10px 16px 10px 10px;
+	}
+
+	&--expanded {
+		z-index: $depth-modal-overlays;
+		background-color: $color__black4;
+
+		.season-list__item {
+			padding-left: 0;
+		}
+	}
+
+	&--expanded &__listContainer {
+		display: block;
+		width: 100%;
+		background-color: $color__black4;
+	}
+
+	.d1-season-list {
+		margin: 0;
+
+		&__item--scrollable {
+			margin-right: 0;
+			text-align: left;
+			float: none;
+		}
+		&__item--list {
+			display: block;
+			float: left;
+		}
+	}
+}
+
+@include mq(tablet) {
+	.d1-season-selector {
+		&--auto-expand .season-list__item {
+			display: inline-block;
+			float: none;
+		}
+
+		&--auto-expand &__button {
+			display: none;
+		}
+
+		&--auto-expand &__listContainer {
+			position: static;
+			display: block;
+			width: 100%;
+			background-color: inherit;
+		}
+	}
+}
+
+@mixin season-selector-expanded-styles($breakpoint) {
+	$margin: get-grid-margin($breakpoint);
+	$gutter: get-gutter($breakpoint);
+	.d1-season-selector--expanded {
+		&.d1-season-selector--left .d1-season-selector__button {
+			margin-left: $margin * -1;
+			padding-left: $margin + $gutter / 2;
+		}
+		&.d1-season-selector--right .d1-season-selector__button {
+			margin-right: $margin * -1;
+			padding-right: 16px + $margin + $gutter / 2;
+		}
+		.d1-season-selector__listContainer .d1-season-list {
+			padding-left: $margin;
+		}
+	}
+}
+
+// We are using row-peek in the parent, so here we have to move the container to righ with $margin,
+// also have to adjust button position.
+@include loop-breakpoints($inclusive: true, $breakpoint-keys: $display-margins) {
+	@include season-selector-expanded-styles($breakpoint);
+}

@@ -1,0 +1,84 @@
+@import "shared/style/modules";
+@import "./player-variables";
+
+.player {
+	&-block__spinner {
+		$size: 72px;
+		height: $size;
+		left: 50%;
+		position: absolute;
+		margin-left: -($size/2);
+		margin-top: -($size/2);
+		top: 50%;
+		width: $size;
+		z-index: $depth-player-spinner;
+
+		.spinner__circle {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.screen-icon {
+		$size: 99px;
+		background: rgba($color__black, 0.7);
+		border-radius: 50%;
+		cursor: pointer;
+		height: $size;
+		left: 50%;
+		line-height: $size;
+		position: absolute;
+		margin-left: -($size/2);
+		margin-top: -($size/2);
+		text-align: center;
+		top: 50%;
+		transition: all $player-transition-time linear;
+		width: $size;
+		z-index: $depth-player-pause;
+
+		.svg-icon {
+			display: inline-block;
+			height: $size * 0.4;
+			width: $size * 0.4;
+			vertical-align: middle;
+		}
+
+		&__play .svg-icon {
+			margin: 0 0 0 ($size * 0.1);
+		}
+
+		&:hover {
+			opacity: 0.85;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player {
+		&-block__spinner {
+			$size: 100px;
+			height: $size;
+			margin-left: -($size/2);
+			margin-top: -($size/2);
+			width: $size;
+		}
+
+		.screen-icon {
+			$size: 198px;
+			height: $size;
+			line-height: $size;
+			margin-left: -($size/2);
+			margin-top: -($size/2);
+			width: $size;
+
+			.svg-icon {
+				height: $size * 0.4;
+				width: $size * 0.4;
+			}
+
+			&__play .svg-icon {
+				margin: 0 0 0 ($size * 0.1);
+			}
+		}
+	}
+}

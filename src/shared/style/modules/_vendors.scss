@@ -1,0 +1,59 @@
+@import "./variables";
+
+// -------------------------------------- //
+// BaseGuide
+// -------------------------------------- //
+
+// Consult `~/baseguide/scss/baseguide/_settings.scss` for
+// the full set of available variables.
+//
+// Note that grid related settings are defined within `./_grid.scss`
+
+// Assign base font
+$font-family-base: $font-family-body;
+$headings-font-family: $font-family-heading;
+
+// Use browser default styling
+$use-custom-forms: false;
+
+// Typography
+$text-color: $body-text-color;
+$link-color: $body-link-color;
+$link-hover-color: $body-link-color--hover;
+$link-hover-decoration: none;
+$font-size-base: 0.875em;
+$line-height-base: 1.45;
+$spacing-base: #{$line-height-base}em;
+$type-scale-base: $font-size-base;
+$type-scale: 1.333;
+$headings-spacing: 0.4em;
+$headings-line-height: 1.2;
+
+// Forms
+$input-height: 2.375em;
+$input-padding-vertical: 0.375em;
+$input-padding-horizontal: 0.75em;
+$input-bg: $color__white;
+$input-color: $color__black3;
+$input-border-color: $color__grey--dark;
+$input-focus-border-color: $color__grey--warm;
+$input-border-radius: 0;
+// $input-transition: border-color 0.15s ease-out !default;
+$input-disabled-bg: $color__grey--light;
+$input-disabled-color: $color__neutral;
+$input-disabled-border-color: $color__neutral--dark;
+$placeholder-color: $color__grey--warm;
+
+@import "~baseguide/scss/baseguide/settings";
+@import "~baseguide/scss/baseguide/vendor/mq";
+@import "~baseguide/scss/baseguide/mixins";
+@import "~baseguide/scss/baseguide/functions";
+
+@import "~baseguide/scss/baseguide/grid/gutter";
+@import "~baseguide/scss/baseguide/grid/container";
+@import "~baseguide/scss/baseguide/grid/row";
+@import "~baseguide/scss/baseguide/grid/column";
+
+// -------------------------------------- //
+// Your framework goes here
+// -------------------------------------- //

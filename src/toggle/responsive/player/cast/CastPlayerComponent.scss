@@ -1,0 +1,155 @@
+@import "shared/style/modules";
+@import "../EndOfPlayback";
+@import "../playerVariables";
+
+.player__cast {
+	overflow: hidden;
+	height: 100vh;
+
+	.player__connection-status {
+		height: 0;
+		left: 0;
+		margin: 0;
+		padding-bottom: 60%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 2;
+
+		span {
+			font-size: 18px;
+			left: 50%;
+			position: absolute;
+			transform: translateX(-50%) translateY(-50%);
+			top: 50%;
+			width: 90%;
+			text-align: center;
+		}
+	}
+
+	.background-image {
+		height: 0;
+		left: 0;
+		margin: 0;
+		overflow: hidden;
+		padding-bottom: 60%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+
+		&__wallpaper {
+			display: block;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+		}
+	}
+
+	&-metadata.player-metadata {
+		margin-top: 1rem;
+	}
+
+	@include mq($from: phablet, $and: "(orientation: landscape)") {
+		align-items: center;
+		display: flex;
+
+		&:before {
+			background-color: rgba(0, 0, 0, 0.65);
+			content: "";
+			left: 0;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 2;
+		}
+
+		.player-block {
+			display: none;
+		}
+
+		.background-image {
+			display: block;
+			height: 100%;
+			padding: 0;
+			position: relative;
+			width: 100%;
+
+			&__wallpaper {
+				position: relative;
+				top: 0;
+				transform: translateY(0);
+				width: auto;
+			}
+		}
+
+		.player__connection-status {
+			height: auto;
+			left: 50%;
+			right: auto;
+			padding: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+
+			span {
+				font-size: 24px;
+				left: 0;
+				position: relative;
+				transform: none;
+				top: 0;
+			}
+		}
+
+		.player__suggested-content {
+			position: absolute;
+			z-index: $depth-player-suggested-content;
+			left: 77px;
+			bottom: 106px;
+
+			& > h4 {
+				font-size: 2.14em;
+			}
+		}
+
+		&-metadata.player-metadata {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: $depth-player-end-of-playback;
+		}
+	}
+
+	@include mq($from: desktop) {
+		&-metadata.player-metadata {
+			margin-top: 60px;
+			padding-left: 130px;
+			max-width: 80%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: $depth-player-end-of-playback;
+		}
+		.end-of-playback__actions {
+			padding-left: 130px;
+		}
+	}
+}
+
+.live-player {
+	.player__cast {
+		height: 100%;
+		top: 0;
+
+		.player__wrapper--ui .player-controls__start-over {
+			display: none;
+		}
+	}
+	.player-metadata {
+		display: none;
+	}
+}

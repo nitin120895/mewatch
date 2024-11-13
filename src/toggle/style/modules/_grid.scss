@@ -1,0 +1,227 @@
+// Provide CSS Framework overrides
+
+// -------------------------------------- //
+// Breakpoints
+// -------------------------------------- //
+
+// We have augmented the mq breakpoints slightly to support orientation
+// media queries based on the breakpoint names. If you include a suffix
+// of either 'Landscape' or 'Portrait' it will only trigger when in the
+// correct orientation.
+//
+// You can leverage this to differentiate between overlapping breakpoints.
+//
+// You should define your breakpoints from smallest to largest. If you're
+// using orientation overlap ensure the orientation rule comes afterwards
+// to ensure it takes priority. e.g.
+//
+// ```
+// $mq-breakpoints: (
+//		phone: 320px,
+//		phablet: 480px, // any screen 480px and greater
+//		phoneLandscape: 480px // landscape screens 480px and greater
+// );
+
+$mq-breakpoints: (
+	phone: 320px,
+	phablet: 480px,
+	phoneLandscape: 480px,
+	tabletSmall: 600px,
+	tablet: 720px,
+	laptop: 960px,
+	tabletLandscape: 1024px,
+	desktop: 1200px,
+	desktopWide: 1440px,
+	uhd: 1921px
+);
+
+// List of defined breakpoints. Useful for looping.
+$display-breakpoints: map-keys($mq-breakpoints);
+
+// When `$mq-responsive` is false the value of `$mq-static-breakpoint` will be used.
+$mq-static-breakpoint: laptop;
+$mq-responsive: true;
+
+// Leave this empty.
+// We purposefully don't use this because we provide our own enhanced version within `DebugGrid.scss`.
+$mq-show-breakpoints: ();
+
+// Generic function for requesting a propery value for a given breakpoint
+@function get-grid-property($prop, $breakpoint: false) {
+	@if (type-of($prop) == map) {
+		@if $breakpoint {
+			@if map-has-key($prop, $breakpoint) {
+				$prop: map-get($prop, $breakpoint);
+			} @else {
+				@error "Breakpoint #{$breakpoint} wasn't found in $#{$prop}.";
+			}
+		} @else {
+			$prop: nth(map-values($prop), 1);
+		}
+	}
+
+	@return $prop;
+}
+
+// -------------------------------------- //
+// Reduces a list of breakpoint keys down to a subset.
+//
+// Example usage:
+// ```
+// @each $breakpoint in reduce-breakpoints((sm: 10px, lg: 20px), (sm, md, lg, xl) {
+// 	@include mq($breakpoint) {
+// 		.foo-#{$breakpoint} { ... }
+// 	}
+// }
+// ```
+// -------------------------------------- //
+@function reduce-breakpoints($subsetMap, $breakpoints: $display-breakpoints) {
+	$matches: null;
+	@if (type-of($subsetMap) == map and (type-of($breakpoints) == list or type-of($breakpoints) == string)) {
+		$matches: ();
+		@each $breakpoint in $breakpoints {
+			@if map-has-key($subsetMap, $breakpoint) {
+				$matches: append($matches, $breakpoint);
+			}
+		}
+	}
+	@return $matches;
+}
+
+// -------------------------------------- //
+// Grid
+// -------------------------------------- //
+
+// Number of columns
+$grid-columns: 24;
+
+// -------------------------------------- //
+// Space between each column
+// -------------------------------------- //
+
+// FIXME: Allow support for not specifying dupelicates
+
+// Set individual gutters per breakpoint if desired
+$grid-gutter: (
+	phone: 8px,
+	tablet: 8px,
+	laptop: 8px,
+	desktop: 12px,
+	desktopWide: 16px,
+	uhd: 16px
+);
+
+// Alternatively you can set a fixed value for all breakpoints instead....
+// $grid-gutter: 8px;
+
+$display-gutters: reduce-breakpoints($grid-gutter, $display-breakpoints);
+
+// Output alternate gutters per media query (if applicable)
+@mixin generate-breakpoint-gutters(
+	$selector,
+	$properties: ("padding-left", "padding-right"),
+	$divisions: (1, 1),
+	$breakpoints: $display-gutters
+) {
+	$selector: unquote($selector);
+	// stylelint-disable max-nesting-depth
+	@if (type-of($grid-gutter) == map and length($breakpoints) > 0) {
+		@each $breakpoint in $display-gutters {
+			@if map-has-key($grid-gutter, $breakpoint) {
+				@include mq($breakpoint) {
+					$gutter: get-gutter($breakpoint);
+					#{$selector} {
+						// Loop through the breakpoints that should be adjusted for
+						$num-props: length($properties);
+						@for $i from 1 through $num-props {
+							$prop: nth($properties, $i);
+							$division: nth($divisions, $i);
+							$value: ($gutter / $division);
+							// Output the adjusted properties one by one...
+							#{unquote($prop)}: if($prop == "padding", 0 $value, $value);
+						}
+					}
+				}
+			}
+		}
+	}
+	// stylelint-enable
+}
+
+// -------------------------------------- //
+// Outer Margin:
+// The space between the container and the
+// first & last column.
+// -------------------------------------- //
+
+// Set individual margins per breakpoint if desired
+$grid-margin: (
+	phone: 14px,
+	tablet: 24px,
+	laptop: 32px,
+	desktop: 40px,
+	desktopWide: 55px,
+	uhd: 65px
+);
+
+// Set individual player variable in _variables file if you want to change it
+// stylelint-disable value-keyword-case
+$grid-player-padding: (
+	phone: $player-padding-mobile,
+	tablet: $player-padding-mobile,
+	laptop: $player-padding-mobile,
+	desktop: $player-padding-desktop,
+	desktopWide: $player-padding-desktop,
+	uhd: $player-padding-desktop
+);
+// stylelint-enable
+
+// Alternatively you can set a fixed value for all breakpoints instead....
+// $grid-margin: 20px;
+
+$display-margins: reduce-breakpoints($grid-margin, $display-breakpoints);
+
+// Enable flexbox grid for modern browsers. Legacy browsers maintain float based grids.
+$grid-flexbox: true;
+
+// Output columns for all breakpoints
+// To prevent generating output code within these modules the generator leveraging this property
+// is imported within `_layout.scss`.
+$grid-columns-output: true;
+
+// Get the grid margin for the provided breakpoint. Similar to `get-gutter`.
+@function get-grid-margin($breakpoint: false, $margin: $grid-margin) {
+	@return get-grid-property($margin, $breakpoint);
+}
+
+// By default our grid adheres to an outer margin. To allow peeking content which is flush against the viewport
+// edge we offset the standard margin to allow horizontal scrolling of the entire viewport width.
+@mixin row-peek-custom($breakpoint, $margin, $ignore-gutter: false, $output-margin: true, $output-padding: true) {
+	$gutter: get-gutter($breakpoint);
+	$indent: if($ignore-gutter == true, $margin, $margin - $gutter / 2);
+	$outdent: $margin * -1;
+	@if ($output-margin == true) {
+		margin-left: $outdent;
+		margin-right: $outdent;
+		margin-left: to-rem($outdent);
+		margin-right: to-rem($outdent);
+	}
+	@if ($output-padding == true) {
+		padding-left: $indent;
+		padding-right: $indent;
+		padding-left: to-rem($indent);
+		padding-right: to-rem($indent);
+	}
+}
+
+@mixin row-peek($breakpoint) {
+	// Apply our grid margin
+	$margin: get-grid-margin($breakpoint);
+	@include row-peek-custom($breakpoint, $margin);
+}
+
+@mixin player-row-peek($breakpoint) {
+	// Apply our grid margin
+	$margin: get-grid-margin($breakpoint, $grid-player-padding);
+	@include row-peek-custom($breakpoint, $margin);
+}

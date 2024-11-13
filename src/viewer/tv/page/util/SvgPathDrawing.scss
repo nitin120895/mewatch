@@ -1,0 +1,14 @@
+.svg-path-drawing {
+	section + section {
+		margin-top: 24px;
+	}
+}
+
+.svg-color-form {
+	margin-bottom: 24px;
+	&__input-group {
+		display: inline-block;
+		margin-right: 10px;
+		margin-bottom: 5px;
+	}
+}

@@ -1,0 +1,14 @@
+.item-rows {
+	> section {
+		margin-bottom: 24px;
+	}
+}
+
+.secondary-action-buttons {
+	display: flex;
+	align-items: flex-start;
+	background: black;
+	border-radius: 5px;
+	padding: 12px;
+	margin-right: 15px;
+}

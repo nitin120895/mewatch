@@ -1,0 +1,153 @@
+@import "shared/style/modules";
+
+.primary-nav {
+	$linkPaddingSize: 12px;
+	$linkOverPaddingSize: 2px;
+
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+
+	&--clipped {
+		// We allow wrapping by default to aid in our overflow layout calculation.
+		// Once we know how many nav items fit within the available space we disable wrapping
+		// and the overflowing items get replaced with a more button.
+		flex-wrap: nowrap;
+	}
+
+	&--fixed {
+		overflow-y: hidden;
+	}
+
+	&__entry {
+		display: flex;
+		align-items: center;
+		position: relative;
+		height: 100%;
+
+		&--active {
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				height: 2px;
+				min-width: 32px;
+				width: calc(100% - #{2 * ($linkPaddingSize - $linkOverPaddingSize)});
+				background-color: $color__white;
+				transform: translateX(-50%);
+				left: 50%;
+			}
+
+			.primary-nav__entry-link {
+				opacity: 1;
+			}
+		}
+
+		&--inert {
+			// On mobile/tablet there isn't any point displaying a primary
+			// menu item if it's inert (non-interactive) since touch devices
+			// don't have hover states. Instead the hidden menu groups are
+			// available via the side menu navigation panel.
+			display: none;
+		}
+	}
+
+	&__entry--more .primary-nav__entry-link {
+		font-size: 20px;
+		font-weight: bold;
+
+		.primary-nav__btn-label {
+			$spacing: 2px;
+			width: 32px;
+			height: 22px;
+			padding-top: 4px;
+			line-height: 0;
+			letter-spacing: $spacing;
+			padding-left: $spacing;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+
+		&:focus,
+		&:hover {
+			.primary-nav__btn-label {
+				border-color: $color__white;
+			}
+		}
+	}
+
+	&__entry--more .primary-nav__entry-label {
+		text-align: center;
+	}
+
+	&__entry-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 32px;
+		height: 100%;
+		white-space: nowrap;
+		color: $color__white;
+		font-family: $font-family-heading;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+		opacity: 0.85;
+		background: transparent;
+		padding-left: $linkPaddingSize;
+		padding-right: $linkPaddingSize;
+
+		&--disabled {
+			cursor: default;
+		}
+
+		&:hover:not(.primary-nav__entry-link--disabled),
+		&:focus {
+			color: $color__white;
+			opacity: 1;
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.primary-nav__entry {
+		margin: 0 12px;
+	}
+}
+
+@include mq($until: desktop) {
+	.primary-nav {
+		&__entry--more {
+			display: none;
+		}
+
+		.nav-expand-btn {
+			display: none !important;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.primary-nav {
+		&__entry-link {
+			font-size: 16px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.primary-nav__entry {
+		&--expanded:before {
+			content: none;
+		}
+		&--inert:not(&--empty) {
+			// On desktop we allow displaying non-empty inert (non interactive)
+			// primary menu items since we have a drop down hover menu available.
+			display: flex;
+		}
+
+		& .primary-nav__entry {
+			margin-left: 20px;
+		}
+	}
+}

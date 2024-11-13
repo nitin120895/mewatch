@@ -1,0 +1,32 @@
+@import "src/ref/tv/style/modules";
+
+.star-icon {
+	&__star {
+		color: $color__fg-rate;
+		font-size: 120px;
+		margin: 0 15px;
+		overflow: visible !important;
+
+		&--isActive {
+			color: $color__primary;
+		}
+
+		&--isFocused {
+			position: relative;
+			transform: scale(1.2);
+
+			&:before {
+				color: $color__white;
+			}
+
+			&:after {
+				content: "\e919";
+				color: $color__primary;
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: scale(0.7);
+			}
+		}
+	}
+}

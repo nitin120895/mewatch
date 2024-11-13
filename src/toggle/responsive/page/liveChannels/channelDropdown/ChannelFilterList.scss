@@ -1,0 +1,40 @@
+@import "shared/style/modules";
+
+.channel-filter-list {
+	overflow: hidden;
+
+	&__option {
+		position: relative;
+		padding: 0.75rem 1.5rem;
+		line-height: 23px;
+
+		&:hover {
+			background-color: $color__grey--warm;
+			color: $color__white-gradient;
+			cursor: pointer;
+		}
+
+		&--category {
+			pointer-events: none;
+			border-top: 1px solid $color__grey;
+			font-weight: 700;
+		}
+	}
+
+	&__option--active &__label {
+		color: $color__link--hover;
+	}
+
+	&__label {
+		color: $color__grey--light;
+		font-size: 1rem;
+
+		&--category {
+			color: $color__grey;
+		}
+
+		&:hover {
+			color: $color__grey--light;
+		}
+	}
+}

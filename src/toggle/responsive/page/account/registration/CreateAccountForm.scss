@@ -1,0 +1,304 @@
+@import "shared/style/modules";
+
+.register-form {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 30px;
+	font-family: $font-family-heading;
+
+	&__divider {
+		height: 25px;
+		margin: 40px 0;
+		position: relative;
+		.divider-text {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 70px;
+			height: 25px;
+			margin: auto;
+			text-align: center;
+			background-color: white;
+		}
+		.divider-line {
+			top: 12px;
+			width: 100%;
+			position: absolute;
+			border-bottom: 1px solid $color__grey--light;
+		}
+	}
+
+	.txt-input {
+		&:hover .txt-input__label {
+			color: $color__primary;
+		}
+
+		&:hover .txt-input__input {
+			@include input-focused($color__primary);
+		}
+
+		&--active:hover {
+			.txt-input__label {
+				color: $color__primary;
+			}
+		}
+
+		&--focused {
+			@include input-state($color__primary);
+			.txt-input__input {
+				@include input-focused($color__primary);
+			}
+		}
+	}
+
+	.checkbox__label {
+		color: $color__grey;
+		line-height: 1.29;
+		padding-left: 5px;
+	}
+
+	&__register {
+		font-weight: bold;
+	}
+
+	&__error {
+		position: relative;
+		margin-bottom: 20px;
+		padding: 8px;
+		background-color: $color__off-white;
+		color: $color__grey--dark;
+		text-align: center;
+		line-height: 24px;
+	}
+
+	.form-title {
+		color: $color__black3;
+		text-align: center;
+		font-weight: normal;
+		margin-bottom: 30px;
+	}
+
+	.form-text {
+		font-size: 16px;
+	}
+
+	&__name-container {
+		display: flex;
+		.txt-input:first-child {
+			margin-right: 20px;
+		}
+	}
+
+	&__marketing {
+		text-align: center;
+	}
+
+	&__field-title {
+		font-weight: 500;
+		margin-bottom: 10px;
+	}
+
+	.field-title-gender {
+		margin-top: 30px;
+	}
+
+	&__optional,
+	.pin__label {
+		font-size: 13px;
+	}
+
+	&__field-description {
+		margin-bottom: 10px;
+	}
+
+	&__field-pin {
+		margin-bottom: 30px;
+		padding: 20px 10px;
+		background-color: $color__off-white;
+		border-radius: 8px;
+		&--disabled {
+			opacity: 0.4;
+			background-color: rgba($color__off-white, 0.8);
+			.checkbox--disabled .checkbox__label,
+			.checkbox--disabled:hover .checkbox__label {
+				color: $color__grey;
+			}
+		}
+	}
+
+	&__nested {
+		&--container {
+			padding-left: 34px;
+		}
+
+		@include mq($from: tablet) {
+			padding: 0 30px;
+			&--container {
+				padding-left: 0;
+			}
+		}
+	}
+
+	&__birth-date-input {
+		margin-top: 30px;
+	}
+
+	&__pin-description {
+		margin: 10px 0 0;
+	}
+
+	.pin__pin-input {
+		width: 80%;
+
+		.pin__label {
+			color: $color__grey--warm;
+		}
+
+		&--error {
+			.pin__label {
+				color: $color__error-me-pass;
+			}
+
+			.pin__input {
+				border-bottom: 1px solid $color__error-me-pass;
+			}
+		}
+
+		&--focused {
+			.pin__label {
+				color: $color_focused-me-pass;
+			}
+
+			.pin__input {
+				border-bottom: 1px solid $color_focused-me-pass;
+			}
+
+			.pin__input:focus {
+				border-bottom: 2px solid $color_focused-me-pass;
+			}
+		}
+
+		&--success {
+			.pin__label {
+				color: $color__black;
+			}
+
+			.pin__input {
+				border-bottom: 1px solid $color__black;
+			}
+
+			.tick-icon {
+				stroke: $color__black;
+			}
+		}
+	}
+
+	&__birth-date-message {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__exclamation {
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+	}
+
+	&__confirm-age {
+		margin: 30px 0;
+	}
+
+	&__field-gender {
+		margin-bottom: 41px;
+
+		.radio-button {
+			margin-right: 52px;
+		}
+	}
+
+	&__fields-marketing {
+		margin-bottom: 20px;
+		padding: 0 10px;
+	}
+
+	&__marketing-item {
+		margin: 0 0 30px;
+	}
+
+	&__hint-icon {
+		&:before {
+			content: "i";
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 1px solid $color__primary;
+			background-color: $color__primary;
+			border-radius: 10px;
+			font-size: 16px;
+			line-height: 18px;
+			text-align: center;
+			color: $color__white;
+			cursor: pointer;
+		}
+	}
+
+	&__tooltip {
+		margin-left: 10px;
+		line-height: 24px;
+
+		.tooltip__text {
+			padding: 6px 10px 18px 11px;
+		}
+	}
+
+	&__policy {
+		margin-bottom: 20px;
+		padding: 0 10px;
+	}
+
+	&__policy-link {
+		font-weight: 700;
+		color: $color__grey;
+		cursor: pointer;
+		text-decoration: underline;
+
+		&:hover {
+			color: $color__mepass-primary--hover;
+		}
+	}
+
+	&__spinner {
+		.spinner {
+			margin: auto;
+			width: 30px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.register-form {
+		padding: 45px 0;
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.register-form {
+		margin: 0;
+		padding: 50px 45px 50px 0;
+	}
+}
+
+@media (hover: none) {
+	.register-form__policy-link {
+		&:hover {
+			color: $color__grey;
+		}
+
+		&:active {
+			color: $color__mepass-primary--hover;
+		}
+	}
+}

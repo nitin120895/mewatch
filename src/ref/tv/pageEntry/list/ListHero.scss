@@ -1,0 +1,124 @@
+@import "src/ref/tv/style/modules";
+
+.page-entry .list-hero-offset {
+	position: relative;
+	left: initial;
+	width: initial;
+}
+
+.list-hero {
+	position: relative;
+	padding-top: $list-hero-height;
+	transition: padding-top 300ms;
+
+	&--lh1 {
+		text-align: left;
+	}
+
+	&--lh2 {
+		text-align: center;
+
+		.list-hero__brand {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	&__img-container {
+		z-index: -1;
+		position: absolute;
+		width: $viewport-width;
+		height: $viewport-height;
+		top: 0;
+		left: 0;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&__img-container-cover {
+		position: absolute;
+		width: $viewport-width;
+		height: $viewport-height;
+		top: 0;
+		left: 0;
+		background: linear-gradient(to bottom, transparent, $color__black);
+	}
+
+	&__heading {
+		position: absolute;
+		bottom: 15px;
+		width: 100%;
+	}
+
+	&__title {
+		font-size: 120px;
+		font-weight: bold;
+		line-height: $list-hero-title-line-height;
+
+		&--lh1 {
+			width: 85%;
+		}
+
+		&--lh2 {
+			width: 100%;
+			padding: 0 10%;
+		}
+
+		&--isLongTitle {
+			font-size: 100px;
+			line-height: 112px;
+			max-height: 224px;
+			overflow: hidden;
+		}
+	}
+
+	&__tagline {
+		font-size: 36px;
+		width: 100%;
+		margin-top: 20px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__overlays {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		height: $list-hero-height;
+	}
+
+	&__badge,
+	&__logo {
+		position: absolute;
+		top: 80px;
+		right: 0;
+		max-width: 150px;
+	}
+
+	&__brand,
+	&__description {
+		display: inline-block;
+	}
+
+	&__description {
+		position: absolute;
+		left: 0;
+		bottom: -125px;
+		width: 50%;
+		text-align: left;
+
+		&-btn {
+			border: solid 4px rgba($color__white, 0.25);
+			padding: 0 50px;
+			width: auto;
+
+			&--focused {
+				background-color: $color__white;
+				color: $color__blue--light;
+			}
+		}
+	}
+}

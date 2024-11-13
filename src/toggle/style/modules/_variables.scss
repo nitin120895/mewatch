@@ -1,0 +1,117 @@
+@import "./colors";
+@import "./typography";
+
+// -------------------------------------- //
+// Page
+// -------------------------------------- //
+
+// `body` element styling
+$body-bg-image-path: null !default;
+$body-bg-color: $color__black3 !default;
+
+// Optional top level app element styling (e.g. the child inside #root)
+$app-bg-color: $body-bg-color !default;
+
+$body-text-color: $color__white !default;
+$body-link-color: $color__primary !default;
+$body-link-color--hover: $color__primary !default;
+
+// -------------------------------------- //
+// Buttons
+// -------------------------------------- //
+
+$button-bg: $color__primary;
+$button-hover-bg: $color__primary--hover;
+$button-disabled-opacity: 1;
+$button-mobile-height: 40px;
+$button-uhd-height: 50px;
+
+// -------------------------------------- //
+// Packshot/Thumbnails
+// -------------------------------------- //
+
+// This value is relative to the height of a default 16:9 tile image
+$thumbnail-logo-overlay-height: 18%;
+
+// This value is relative to the height of a poster image
+$thumbnail-portrait-logo-overlay-height: 10%;
+
+// Top and Right position offsets for logo overlay on thumbnail
+$thumbnail-logo-offset-mobile: 5px;
+$thumbnail-logo-offset-tablet: 10px;
+
+// -------------------------------------- //
+// Player
+// -------------------------------------- //
+
+$progress-bar-height: 3px;
+$player-padding-mobile: 30px;
+$player-padding-desktop: 60px;
+
+// -------------------------------------- //
+// Layer Depth (z-index)
+// -------------------------------------- //
+
+$depth-header: 15;
+$depth-dropdown-overlays: 14;
+$depth-toast-notifications: 11;
+$depth-panel-overlays: 20;
+$depth-modal-overlays: 30;
+$depth-notifications: 40;
+$depth-prompts: 50;
+$depth-debug: 999;
+
+$depth-player: 1;
+$depth-player-end-of-playback: 2;
+$depth-player-end-of-picture: 3;
+$depth-player-end-of-background: 4;
+$depth-player-end-of-video: 5;
+$depth-player-suggested-content: 6;
+$depth-player-title: 7;
+$depth-player-bar: 8;
+$depth-player-back: 9;
+$depth-player-vr-overlay: 10;
+$depth-player-preview: 10;
+$depth-player-wrapper: 11;
+$depth-player-pause: 12;
+$depth-player-ads: 13;
+$depth-player-ads-overlay: $depth-player-ads + 1;
+$depth-player-spinner: 13;
+$depth-player-help-layer: 14;
+$depth-player-fake-fullscreen: 20;
+$depth-player-chromecast: 33;
+$depth-player-chromecast-text: 34;
+$depth-player-chromecast-icons: 35;
+
+$depth-packshot-progress: 2;
+$depth-packshot-title: 5;
+$depth-packshot-hover: 10;
+
+$progress-bar-desktop-height: 5px;
+$channel-rails-metadata-height: 70px;
+$continue-watching-metadata-height: 104px;
+$color__channel-item--hover: rgba($color__white, 0.1);
+
+// additional rules for specific devices
+$untilPhoneLandscape: "screen and (min-width: 720px) and (max-height: 414px) and (orientation: landscape)";
+$blackberryPortrait: "screen and (min-width: 600px) and (min-height: 720px) and (orientation: portrait)";
+$untilIphoneXLandscape: "screen and (max-width: 823px) and (max-height: 414px) and (orientation: landscape)";
+$fromIphoneXLandscape: "screen and (min-width: 720px) and (max-height: 414px) and (orientation: landscape)";
+$fromIPhone: "screen and (min-width : 374px)";
+
+// -------------------------------------- //
+// Cast
+// -------------------------------------- //
+$cast-height-sm: 50px;
+$cast-height-lg: 80px;
+
+// -------------------------------------- //
+// Games Schedule
+// -------------------------------------- //
+$sport-item-height-sm: 10.5em;
+$sport-item-width-sm: 60vw;
+$sport-item-height-md: 10.5em;
+$sport-item-width-md: 15em;
+$sport-item-height-lg: 11.7em;
+$sport-item-width-lg: 22em;
+$games-cta-height: 3.125em;

@@ -1,0 +1,102 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+
+.cs-packshot-list {
+	&--flush {
+		// When the sort/filter bar is enabled, and this row is scheduled beneath a
+		// hero header row, there is an abundantly large gap created since hero rows
+		// usually want more space between their adjacent content, however the filters
+		// compound this with their own row's whitespace, which effectively doubles the
+		// gap which ruins the aesthetics.
+		// To counteract this we add a negative margin to reverse the hero header margin
+		// which effectively makes the two rows sit almost flush together. We maintain
+		// the appearance of space between them thanks to the negative space in the
+		// filters row.
+		// This value should match the value defined for `$header-content-gap` within App.scss.
+		margin-top: -($header-content-gap-phone * 0.6);
+
+		@include mq($from: tablet) {
+			margin-top: -($header-content-gap-tablet * 0.8);
+		}
+	}
+
+	&__no-results-wrapper {
+		text-align: center;
+		.page-entry--empty {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+.filters-container {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 10px;
+	position: relative;
+	flex-wrap: wrap;
+
+	&__column {
+		flex-basis: 50%;
+		display: flex;
+		margin-bottom: 30px;
+		&:nth-child(even) {
+			justify-content: flex-end;
+		}
+	}
+
+	@include mq($from: tablet) {
+		justify-content: flex-end;
+		margin-bottom: 0;
+
+		&__column {
+			flex-basis: auto;
+			justify-content: flex-end;
+			margin-bottom: 20px;
+		}
+	}
+
+	@include mq($from: desktop) {
+		&__column {
+			margin-bottom: 25px;
+		}
+	}
+
+	&__offline {
+		pointer-events: none;
+		opacity: 0.3;
+	}
+}
+
+.page-entry--empty {
+	text-align: center;
+}
+
+.clear-list-filters-btn {
+	color: $color__grey--light;
+	line-height: 2em;
+	background: transparent;
+
+	&:hover,
+	&:active {
+		color: $color__link--hover;
+	}
+}
+
+.cw-empty-list {
+	color: $color__grey--light;
+
+	&__icon {
+		margin: auto;
+	}
+
+	&__title {
+		font-size: 1.125rem;
+		font-weight: 400;
+		margin: 1.5rem 0;
+	}
+
+	&__description {
+		font-size: 0.875rem;
+		margin-bottom: 1.5rem;
+	}
+}

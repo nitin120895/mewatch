@@ -1,0 +1,74 @@
+@import "shared/style/modules";
+
+.pg-auth {
+	width: 100%;
+
+	&__form {
+		max-width: 320px;
+		margin: 0 auto;
+		font-family: $font-family-heading;
+		width: 100%;
+		padding: 48px 8px;
+
+		@include mq(tablet) {
+			padding-top: 96px;
+			max-width: 340px;
+		}
+	}
+
+	.axis-logo {
+		width: 100%;
+	}
+
+	&__logo-wrapper {
+		text-align: center;
+	}
+
+	&__logo-link {
+		color: $color__white;
+		width: 40.5%;
+		max-width: 288px;
+		min-width: 180px;
+		margin: 0 auto;
+		padding-top: 48px;
+		display: inline-block;
+
+		&:hover,
+		&:focus {
+			color: $color__white;
+		}
+	}
+
+	&__spinner-wrapper {
+		position: fixed;
+		z-index: 10;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: $app-bg-color;
+	}
+
+	&__spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 60px;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.pg-auth-error {
+	background-color: $color__primary;
+	text-align: center;
+	line-height: 24px;
+	position: relative;
+	margin-bottom: 20px;
+	padding: 8px 4px;
+	font-family: $font-family-body;
+
+	.link {
+		padding: 0 4px;
+		font-weight: bold;
+	}
+}

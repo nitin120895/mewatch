@@ -1,0 +1,298 @@
+@import "shared/style/modules";
+@import "./playerVariables";
+
+.player {
+	.title-container {
+		cursor: default;
+	}
+
+	&-metadata {
+		$meta-data-color: $color__white;
+		margin-top: 50px;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+
+		.player__wrapper > & {
+			color: $meta-data-color;
+			text-align: left;
+		}
+
+		&__title {
+			line-height: 1;
+			font-weight: bold;
+			font-size: 18px;
+
+			a,
+			a:hover {
+				color: $meta-data-color;
+			}
+		}
+
+		&__secondary-title {
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 7px;
+			cursor: default;
+		}
+
+		&__description {
+			font-family: $font-family-heading;
+			font-size: 14px;
+			margin: 14px 0 0;
+			line-height: 22px;
+			cursor: default;
+		}
+
+		.episode-title {
+			margin-bottom: 14px;
+		}
+	}
+
+	.end-of-playback {
+		.player-metadata {
+			display: block;
+			max-width: 100%;
+			padding: 0;
+		}
+
+		.player-btn {
+			min-width: inherit;
+		}
+
+		&__metadata {
+			.player-metadata {
+				padding-top: 0;
+				margin-top: 0;
+			}
+
+			.player-metadata__description p {
+				padding-top: 6px;
+				margin: 0;
+			}
+
+			.player-metadata__description p:first-child {
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+@mixin phablet-landscape() {
+	.player {
+		&-metadata {
+			top: $metadata-top-position-mobile;
+			margin-top: 0;
+			margin-left: $player-padding-desktop;
+			max-width: 78%;
+
+			&__title {
+				font-size: 24px;
+			}
+
+			&__description {
+				font-size: 14px;
+			}
+
+			.short-description {
+				display: none;
+			}
+
+			.episode-title {
+				margin-bottom: 1.45em;
+			}
+		}
+
+		.end-of-playback__metadata {
+			padding: $metadata-top-position-mobile 0;
+			position: absolute;
+			top: 0;
+			left: 1rem;
+			z-index: $depth-player-title;
+		}
+
+		&__wrapper > .player-metadata {
+			position: absolute;
+			z-index: $depth-player-title;
+			transform: translateY(-150%);
+			transition: $player-controls-animation;
+			margin-top: 0;
+		}
+	}
+}
+
+@mixin tablet-landscape() {
+	.player {
+		&-metadata {
+			.player__wrapper > & {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	@include phablet-landscape();
+}
+
+@include mq($from: tablet) {
+	.player {
+		&-metadata {
+			.player__wrapper > & {
+				margin-top: 50px;
+			}
+
+			&__title {
+				font-size: 18px;
+			}
+
+			&__secondary-title {
+				font-size: 18px;
+			}
+
+			&__description {
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.player-metadata {
+		&__title {
+			font-size: 32px;
+		}
+
+		&__secondary-title {
+			font-size: 26px;
+		}
+
+		&__description {
+			font-size: 16px;
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: landscape)") {
+	@include tablet-landscape();
+}
+
+@media screen and (max-width: 823px) and (max-height: 414px) and (orientation: landscape) {
+	@include phablet-landscape();
+	.player__wrapper > {
+		.player {
+			&-metadata {
+				top: $metadata-top-position-mobile;
+				margin-top: 0;
+				padding-left: $player-padding-mobile + 10;
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	@include tablet-landscape();
+
+	.player {
+		.text-position {
+			left: $player-padding-desktop;
+			padding: $metadata-top-position-desktop 0;
+		}
+
+		&-metadata {
+			.player__wrapper > & {
+				top: $player-padding-desktop;
+				left: $player-padding-desktop;
+				position: absolute;
+				text-align: left;
+				z-index: $depth-player-title;
+			}
+
+			&__title {
+				font-size: 64px;
+			}
+		}
+
+		.end-of-playback__metadata {
+			top: 0;
+			left: 0;
+			padding: $player-padding-desktop $metadata-top-position-desktop;
+			position: absolute;
+			text-align: left;
+			z-index: $depth-player-title;
+
+			.player-metadata {
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+@include mq($from: $custom_wide_desktop) {
+	.player {
+		&-metadata {
+			max-width: 58%;
+
+			&__secondary-title {
+				font-size: 48px;
+				margin-top: -10px;
+				margin-bottom: 22px;
+			}
+
+			&__description {
+				font-size: 24px;
+			}
+
+			.player-metadata__description p {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		.text-position {
+			$position: 137px;
+			left: $position;
+			padding: $metadata-top-position-uhd 0;
+			right: $position;
+		}
+
+		.end-of-playback__metadata {
+			left: $player-padding-uhd + 15;
+			padding: $metadata-top-position-mobile 0;
+			position: absolute;
+			text-align: left;
+			top: 0;
+			z-index: $depth-player-title;
+
+			.player-metadata {
+				max-width: 650px;
+			}
+
+			.player-metadata__description p {
+				padding: 6px 0 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.is-fullscreen .chromeless--watch {
+	.player-metadata {
+		.short-description {
+			display: none;
+		}
+	}
+
+	@include mq($until: desktop) {
+		@include phablet-landscape();
+
+		.player-metadata {
+			margin-left: 40px;
+		}
+	}
+
+	@include mq($from: tablet) {
+		@include tablet-landscape();
+	}
+}

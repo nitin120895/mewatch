@@ -1,0 +1,22 @@
+@import "./variables";
+
+.d10 {
+	&-rating__genre:hover {
+		color: $color__white;
+	}
+}
+
+.language-select {
+	&:hover {
+		.language-select__languages {
+			color: $color__primary;
+		}
+		.language-select__indicator {
+			color: $color__primary;
+		}
+	}
+}
+
+.rating .star-rating__star--avg {
+	color: $color__yellow;
+}

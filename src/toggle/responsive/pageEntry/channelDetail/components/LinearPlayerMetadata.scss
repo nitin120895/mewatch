@@ -1,0 +1,72 @@
+@import "shared/style/modules";
+@import "toggle/responsive/player/playerVariables";
+
+.linear-player-metadata {
+	padding: 20px 0 0;
+	text-align: left;
+
+	&__title {
+		margin: 10px 0;
+		font-size: 18px;
+	}
+
+	&__secondary-title,
+	&__title {
+		font-weight: bold;
+	}
+
+	&__secondary-title {
+		font-size: 14px;
+	}
+
+	&__time {
+		font-size: 12px;
+		text-transform: uppercase;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+		color: $color__off-white;
+	}
+}
+
+@include mq($from: phablet) {
+	.linear-player-metadata {
+		&__secondary-title,
+		&__title {
+			font-size: 24px;
+			height: 100%;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.linear-player-metadata {
+		&__secondary-title,
+		&__title {
+			font-size: 28px;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.linear-player-metadata {
+		&__time {
+			font-size: 14px;
+		}
+
+		&__secondary-title,
+		&__title {
+			font-size: 28px;
+		}
+
+		&__title {
+			margin: 0;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.linear-player-metadata {
+		&__time {
+			font-size: 18px;
+		}
+	}
+}

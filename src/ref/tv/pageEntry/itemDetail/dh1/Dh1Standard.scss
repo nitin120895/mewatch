@@ -1,0 +1,192 @@
+@import "src/ref/tv/style/modules";
+
+.dh1-hero {
+	&__top {
+		width: 100%;
+	}
+
+	&__img-container {
+		position: absolute;
+		overflow: hidden;
+		width: $viewport-width;
+		height: $viewport-height;
+		top: 0;
+		left: 0;
+		transition: top $transition-duration, height $transition-duration;
+
+		&--isCollapsed {
+			height: $dh1-collapsed-height + $global-header-height;
+		}
+	}
+
+	&__img {
+		img {
+			width: 100%;
+		}
+	}
+
+	&__img-container-cover {
+		position: absolute;
+		width: $viewport-width;
+		height: $viewport-height;
+		bottom: -1px;
+		left: 0;
+		background: linear-gradient(to bottom, transparent, $color__black);
+		transition: height $transition-duration;
+
+		&--isCollapsed {
+			height: $dh1-collapsed-height + $global-header-height;
+		}
+	}
+
+	&__head-container {
+		position: relative;
+		width: 100%;
+		height: $dh1-height;
+		transition: height $transition-duration;
+
+		&--isCollapsed {
+			height: $dh1-collapsed-height;
+		}
+	}
+
+	&__info {
+		position: absolute;
+		bottom: 50px;
+
+		&--center {
+			text-align: center;
+			left: 50%;
+			transform: translateX(-50%);
+
+			.desc-container {
+				text-align: left;
+				padding-left: 230px;
+			}
+		}
+	}
+
+	&__title {
+		font-family: $font-family-heading;
+		font-size: 120px;
+		line-height: 112px;
+		font-weight: bold;
+		color: $color__white;
+
+		&--isCollapsed {
+			line-height: 135px;
+		}
+	}
+
+	&__brand {
+		display: inline-block;
+	}
+
+	&__metadata {
+		margin-top: 16px;
+		margin-bottom: 15px;
+
+		> div {
+			display: inline-block;
+		}
+
+		&--isCollapsed {
+			display: none;
+		}
+	}
+
+	&__meta-block {
+		height: 34px;
+		font-size: 28px;
+		line-height: 34px;
+		text-align: left;
+		color: $color__fg-light;
+		text-shadow: 0 2px 4px rgba($color__black, 0.6);
+
+		&:after {
+			content: "|";
+			margin: 0 15px;
+		}
+
+		&:last-child {
+			content: "";
+		}
+	}
+
+	&__episode-title {
+		color: $color__grey--light;
+		font-size: 28px;
+		font-weight: bold;
+		line-height: 1.5em;
+		margin-top: 25px;
+	}
+
+	&__description {
+		&--isCollapsed {
+			display: none;
+		}
+	}
+
+	&__actions {
+		margin-top: 15px;
+
+		> div {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		&--isCollapsed {
+			margin-top: 20px;
+			opacity: 0.5;
+		}
+	}
+
+	&__watch-btn,
+	&__sec-btn {
+		width: 300px;
+		height: 90px;
+		border-radius: 45px;
+		margin-right: 20px;
+		border: solid 4px $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		background-color: transparent;
+		color: $color__white;
+
+		&--isCollapsed {
+			border-width: 0;
+		}
+	}
+
+	&__actions--isFocused .dh1-hero__watch-btn,
+	&__actions--isFocused .dh1-hero__sec-btn {
+		&:hover,
+		&.focused {
+			border-color: $color__white;
+			background-color: $color__white;
+			color: $color__primary;
+		}
+	}
+
+	&__secondary-actions {
+		> div {
+			display: inline-block;
+		}
+	}
+
+	&__sec-btn {
+		$size: 90px;
+		border-radius: $size;
+		width: $size;
+		height: $size;
+		vertical-align: top;
+
+		&--rated {
+			border-color: rgba($color__white, 0.5);
+		}
+	}
+
+	&__progress {
+		margin-bottom: 4px;
+	}
+}

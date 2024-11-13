@@ -1,0 +1,54 @@
+@import "shared/style/modules";
+
+.d3 {
+	&__title {
+		margin: 0;
+	}
+
+	&__list {
+		position: relative;
+		white-space: nowrap;
+
+		&--description {
+			.arrow {
+				// Offset height of description text
+				top: -60px;
+			}
+		}
+	}
+
+	&__item {
+		display: inline-block;
+		vertical-align: top;
+		// We want to overflow horizontally and prevent wrapping
+		float: none !important;
+		white-space: normal;
+	}
+
+	&__modal {
+		background: $color__black2;
+		padding: 50px;
+		max-width: 750px;
+	}
+
+	&__title_container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+@include mq(tablet) {
+	.d3 {
+		&--description {
+			.arrow {
+				// Offset height of description text
+				top: -40px;
+			}
+		}
+
+		&__title_container {
+			display: block;
+		}
+	}
+}

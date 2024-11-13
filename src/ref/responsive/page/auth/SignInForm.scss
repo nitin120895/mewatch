@@ -1,0 +1,25 @@
+.sign-in-form {
+	&__forgot-pwd {
+		float: right;
+		margin-top: 2px;
+		font-weight: bold;
+	}
+
+	&__register {
+		font-weight: bold;
+	}
+
+	&__secondary-actions {
+		margin-bottom: 24px;
+	}
+
+	&__primary-action {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 40px;
+	}
+
+	&__tertiary-actions {
+		text-align: center;
+	}
+}

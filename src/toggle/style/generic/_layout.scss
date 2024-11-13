@@ -1,0 +1,80 @@
+// -------------------------------------- //
+// Layout related styles & media queries
+// -------------------------------------- //
+
+@import "~baseguide/scss/baseguide/grid/gutter";
+@import "~baseguide/scss/baseguide/grid/container";
+@import "~baseguide/scss/baseguide/grid/row";
+@import "~baseguide/scss/baseguide/grid/column";
+
+// -------------------------------------- //
+// Grid Layout
+// -------------------------------------- //
+
+// These are an extended output from `@import "~baseguide/scss/baseguide/grid/classes";`
+
+.container {
+	@include container;
+}
+
+// Grid Column
+.col {
+	@include column-base;
+}
+
+// Grid Row
+.row {
+	@include row;
+}
+
+// Peeking Grid Row
+@each $breakpoint in $display-margins {
+	@if (index($display-margins, $breakpoint) == 1) {
+		// Our baseline margin doesn't need a media query wrapper.
+		// This allows it to scale down below our smallest breakpoint.
+		.row-peek {
+			@include row-peek($breakpoint);
+		}
+		.player-row-peek {
+			@include player-row-peek($breakpoint);
+		}
+	} @else {
+		// Subsequent margins get wrapped in a media query wrapper
+		@include mq($breakpoint) {
+			.row-peek {
+				@include row-peek($breakpoint);
+			}
+			.player-row-peek {
+				@include player-row-peek($breakpoint);
+			}
+		}
+	}
+}
+
+// Generate the grid for each breakpoint
+@include loop-breakpoints($inclusive: true) {
+	@include loop-columns($breakpoint);
+}
+
+.full-bleed {
+	position: relative;
+	@include full-bleed;
+}
+
+// -------------------------------------- //
+// Images
+// -------------------------------------- //
+
+// Responsive image which fills available space within its container
+.img-r {
+	// `height` should also be `auto` but that's already set globally for img elements
+	width: 100%;
+}
+
+// -------------------------------------- //
+// Floats
+// -------------------------------------- //
+
+.clearfix {
+	@include clearfix;
+}

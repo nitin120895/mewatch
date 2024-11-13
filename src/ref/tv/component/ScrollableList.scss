@@ -1,0 +1,51 @@
+@import "src/ref/tv/style/modules";
+
+.scrollable-list {
+	position: relative;
+	padding-bottom: $scrollable-list-padding-bottom;
+
+	&__list {
+		white-space: nowrap;
+		position: relative;
+
+		> div {
+			display: inline-block;
+		}
+	}
+
+	&__arrow {
+		color: $color__white;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: $row-list-arrow-width;
+
+		&--prev {
+			background-image: linear-gradient(to left, transparent, $color__black);
+			left: -$row-list-arrow-width;
+			right: auto;
+		}
+
+		&--next {
+			background-image: linear-gradient(to right, transparent, $color__black);
+			left: auto;
+			right: -$row-list-arrow-width;
+		}
+
+		.icon {
+			display: block;
+			font-size: 60px;
+			opacity: 0.5;
+		}
+	}
+
+	&--focused {
+		.focused {
+			opacity: 1;
+		}
+
+		.episode-grid-item__container--focused {
+			outline: $color__white solid 6px;
+		}
+	}
+}

@@ -1,0 +1,106 @@
+@import "shared/style/modules";
+@import "./../_player-variables";
+
+.player-volume {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+
+	.player-button--volume {
+		margin: 0 12px 0 0;
+		padding-right: 0;
+	}
+
+	.svg-icon {
+		height: $player-icon-mobile;
+		width: 21px;
+	}
+
+	.player-buttons & .scrubber {
+		display: none;
+		width: 100%;
+	}
+
+	&.open {
+		flex: 1 0 auto;
+		padding-right: $player-button-mobile;
+
+		.scrubber {
+			display: block;
+		}
+
+		.player-button--volume .svg-icon {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.player-volume {
+		.player-buttons & .scrubber {
+			margin: 0;
+			width: 140px;
+		}
+
+		&.open {
+			flex: none;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.player-volume {
+		flex: none;
+
+		.player-button--volume {
+			margin: 0 16px 0 0;
+		}
+
+		.player-buttons & .scrubber {
+			margin: 0;
+			width: 140px;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player-volume {
+		.svg-icon {
+			height: $player-icon-uhd;
+			width: 43px;
+		}
+
+		.player-buttons & .scrubber {
+			width: 220px;
+		}
+	}
+}
+
+@media (hover: none) {
+	.player-volume.open {
+		.player-button--volume .svg-icon {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+
+		&:not(.disabled):hover .svg-icon {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+	}
+}
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+	.player-volume.open {
+		.player-button--volume .svg-icon {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+
+		&:not(.disabled):hover .svg-icon {
+			color: $color__primary;
+			fill: $color__primary;
+		}
+	}
+}

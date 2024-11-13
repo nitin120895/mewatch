@@ -1,0 +1,35 @@
+@import "shared/style/modules";
+
+.registration-pg {
+	width: 100%;
+
+	&__form {
+		margin: 0 auto;
+		font-family: $font-family-heading;
+		width: 100%;
+
+		@include mq($from: tablet) {
+			max-width: 450px;
+		}
+	}
+
+	&__logo-wrapper {
+		text-align: center;
+		background-color: $color__primary;
+	}
+
+	&__logo-link {
+		color: $color__white;
+		width: 40.5%;
+		max-width: 288px;
+		min-width: 180px;
+		margin: 0 auto;
+		padding: 60px 0;
+		display: inline-block;
+
+		&:hover,
+		&:focus {
+			color: $color__white;
+		}
+	}
+}

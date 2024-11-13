@@ -1,0 +1,247 @@
+@import "shared/style/modules";
+
+@mixin subscription-price-plan-section-header() {
+	line-height: 32px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.pg-subscriptions__price-plans {
+	.page-entry.SX2 {
+		padding: 0;
+		margin: 0 0 50px;
+	}
+}
+
+.subscription-plan {
+	font-family: $font-family-heading;
+	background-color: $color__white;
+	color: $color__black;
+
+	&__subscribe-section {
+		&--image {
+			@include fluid-aspect(16 9);
+		}
+
+		&--price-info {
+			background-color: $color__black2;
+			color: $color__white;
+		}
+
+		&--label {
+			line-height: 20px;
+			font-size: 14px;
+		}
+
+		&--price {
+			width: 100%;
+			@include subscription-price-plan-section-header;
+		}
+
+		&--contract {
+			font-size: 12px;
+			line-height: 20px;
+			color: $color__off-white;
+			opacity: 0.7;
+		}
+
+		&--view-plans {
+			font-weight: bold;
+			color: $color__link--hover;
+			cursor: pointer;
+		}
+	}
+
+	&__info-section {
+		padding: 20px 10px;
+	}
+
+	&__title {
+		padding: 0;
+		width: 100%;
+		@include subscription-price-plan-section-header;
+		font-size: 18px;
+
+		@include mq($from: desktop) {
+			font-size: 20px;
+		}
+	}
+
+	&__description {
+		padding: 0;
+		margin: 10px 0;
+		width: 100%;
+		font-size: 16px;
+		line-height: 24px;
+		color: $color__grey;
+	}
+
+	&__channels-carousel {
+		margin: 0 -10px 0 0;
+	}
+
+	&__channel-image-container {
+		margin: 11px 12px 5px 0;
+		display: inline-block;
+		width: 159px;
+		cursor: pointer;
+
+		img,
+		.no-image {
+			display: block;
+			width: 159px;
+			height: 88px;
+		}
+
+		.no-image {
+			background-image: url("../../../../../resource/toggle/image/icon/toggle.svg");
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			border: 1px solid $color__black3;
+			background-color: $color__black5;
+		}
+
+		.channel-title {
+			width: 159px;
+			text-align: center;
+			font-size: 14px;
+			color: $color__grey;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	@include mq($until: tabletSmall) {
+		display: block;
+		position: relative;
+		min-height: 750px;
+
+		&__subscribe-section {
+			&--image {
+				width: 100%;
+			}
+
+			&--price-info {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 182px;
+				text-align: center;
+				padding: 30px;
+			}
+
+			&--price {
+				width: 100%;
+				display: inline-block;
+			}
+
+			&--button-container {
+				width: 100%;
+				padding: 20px 0;
+			}
+		}
+
+		&__info-section {
+			width: 100%;
+		}
+
+		&__channels-carousel {
+			margin-bottom: 182px;
+		}
+	}
+
+	@include mq($from: tabletSmall) {
+		display: flex;
+		position: relative;
+		width: 100%;
+
+		&__subscribe-section {
+			width: 50%;
+
+			&--price {
+				width: 100%;
+			}
+
+			&--image {
+				width: 100%;
+			}
+
+			&--price-info {
+				position: relative;
+				width: 100%;
+				padding: 20px 30px;
+			}
+
+			&--cta,
+			&--view-plans {
+				position: absolute;
+				right: 30px;
+				top: 50%;
+				transform: translateY(-50%);
+				padding: 0 25px;
+				width: 150px;
+			}
+		}
+
+		&__info-section {
+			width: 50%;
+			padding: 30px;
+		}
+
+		&__title,
+		&__description {
+			width: 100%;
+		}
+
+		&__channels-carousel {
+			margin: 0;
+		}
+
+		&__channel-image-container {
+			width: 119px;
+
+			img,
+			.no-image {
+				width: 119px;
+				height: 66px;
+			}
+			.channel-title {
+				width: 119px;
+			}
+		}
+	}
+
+	@include mq($from: tabletSmall, $until: laptop) {
+		&__subscribe-section {
+			&--label {
+				width: 100%;
+			}
+
+			&--cta,
+			&--view-plans {
+				position: static;
+				transform: translateY(0);
+			}
+
+			&--button-container {
+				width: 100%;
+				padding: 20px 0 10px;
+			}
+
+			&--details {
+				display: flex;
+				flex-direction: column;
+			}
+
+			&--price-info {
+				flex-grow: 1;
+			}
+		}
+
+		&__channels-carousel {
+			margin: 0;
+		}
+	}
+}

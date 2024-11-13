@@ -1,0 +1,76 @@
+@import "shared/style/modules";
+
+.circle-timer {
+	color: $color__white;
+	position: relative;
+
+	&:after {
+		content: attr(data-time);
+		font-size: 1.25rem;
+		font-weight: bold;
+		left: 0;
+		line-height: 0.86;
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
+
+	.svg-icon {
+		$size: 2.5rem;
+		fill: none;
+		height: $size;
+		width: $size;
+	}
+
+	&__bottom-svg {
+		stroke-width: 10;
+		path {
+			fill: none;
+			stroke: $color__grey;
+		}
+	}
+
+	&__top-svg {
+		left: 0;
+		position: absolute;
+		top: 0;
+		transform: rotate(90deg) scale(-1, 1);
+		stroke-width: 15;
+		path {
+			fill: none;
+			stroke-dasharray: 629;
+			stroke-linecap: round;
+			stroke: $color__primary;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.circle-timer {
+		&:after {
+			font-size: 2.25rem;
+		}
+
+		.svg-icon {
+			$size: 4rem;
+			height: $size;
+			width: $size;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.circle-timer {
+		&:after {
+			font-size: 4rem;
+		}
+
+		.svg-icon {
+			$size: 6.3rem;
+			height: $size;
+			width: $size;
+		}
+	}
+}

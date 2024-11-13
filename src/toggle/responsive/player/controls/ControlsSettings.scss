@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+.video-type {
+	align-items: center;
+
+	.tag-icon {
+		color: $color__link--hover;
+		position: relative;
+		width: 24px;
+		margin-left: 0;
+		font-size: 11px;
+		font-weight: bold;
+		top: -4px;
+		font-family: $font-family-body;
+		left: 2px;
+	}
+
+	> span {
+		width: 45px;
+	}
+}

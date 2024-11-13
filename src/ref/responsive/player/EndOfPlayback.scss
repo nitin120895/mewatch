@@ -1,0 +1,214 @@
+@import "shared/style/modules";
+@import "./_player-variables";
+
+.end-of-playback {
+	padding: 27px $player-padding-mobile;
+
+	&__actions {
+		padding: 18px 0 0;
+		display: flex;
+		align-items: flex-start;
+
+		.rating--rate_or_rating {
+			margin-left: 16px;
+
+			.rating-button {
+				top: 0;
+				width: $button-mobile-height;
+			}
+		}
+
+		.cta-toggle-btn {
+			display: block;
+			height: $player-button-height-mobile;
+			font-size: 0;
+			line-height: $player-button-height-mobile;
+			padding: 0;
+			margin: 0 auto;
+			text-align: center;
+			width: $player-button-height-mobile;
+			vertical-align: middle;
+
+			&__icon {
+				display: inline-block;
+				margin: 0;
+			}
+		}
+
+		.rating .rating-list {
+			left: 50%;
+			margin-left: -125px;
+		}
+
+		.rating .rating-list:before {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	&__suggested-content {
+		padding: 50px 0 0;
+
+		h4 {
+			margin-bottom: 13px;
+			text-transform: uppercase;
+		}
+	}
+
+	.wallpaper-block {
+		height: 0;
+		left: 0;
+		margin: 0;
+		overflow: hidden;
+		padding-bottom: 60%;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	&__wallpaper {
+		display: block;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
+}
+
+@media (max-height: 17em) and (orientation: landscape) {
+	.end-of-playback__suggested-content {
+		display: none;
+	}
+}
+
+@media (max-height: 23em) and (orientation: landscape) {
+	.end-of-playback__suggested-content {
+		&.suggested-content-tile {
+			.packshot.col-phablet-8 {
+				width: 20%;
+			}
+		}
+		&.suggested-content-poster {
+			.packshot.col-phablet-4 {
+				width: 12%;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.end-of-playback {
+		align-items: center;
+		bottom: 0;
+		display: flex;
+		left: 0;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: $depth-player-end-of-playback;
+
+		&:before {
+			background-color: rgba(0, 0, 0, 0.65);
+			content: "";
+			left: 0;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: $depth-player-end-of-background;
+		}
+
+		.wallpaper-block {
+			display: block;
+			height: auto;
+			padding: 0;
+			position: relative;
+			width: 100%;
+			z-index: $depth-player-end-of-picture;
+		}
+
+		&__wallpaper {
+			position: relative;
+			top: 0;
+			transform: translateY(0);
+			width: auto;
+		}
+
+		&__image {
+			width: 100%;
+			height: 100%;
+		}
+
+		&__suggested-content {
+			bottom: 15px;
+			left: $player-padding-mobile;
+			padding: 0;
+			position: absolute;
+			right: $player-padding-mobile;
+			z-index: $depth-player-suggested-content;
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: landscape)") {
+	.end-of-playback {
+		&__actions {
+			padding: 18px 30px 0;
+		}
+		&__suggested-content {
+			bottom: 30px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.end-of-playback {
+		&__suggested-content {
+			bottom: 30px;
+			left: $player-padding-desktop;
+			right: $player-padding-desktop;
+
+			h4 {
+				font-size: 1.5em;
+			}
+		}
+
+		.player-icon {
+			content: "";
+			left: 50%;
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			transition: opacity $player-transition-time;
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.end-of-playback {
+		&__suggested-content {
+			left: 77px;
+			bottom: 106px;
+
+			& > h4 {
+				font-size: 2.14em;
+			}
+		}
+
+		&__actions {
+			padding: 26px 0 0;
+			.rating .rating-button {
+				width: $button-uhd-height;
+			}
+			.cta-toggle-btn {
+				height: $player-button-height-uhd;
+				line-height: $player-button-height-uhd;
+				width: $player-button-height-uhd;
+			}
+		}
+	}
+}

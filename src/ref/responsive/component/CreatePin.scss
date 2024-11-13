@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.create-pin {
+	&__title,
+	&__content {
+		font-size: 14px;
+		color: $color__grey--dark;
+	}
+
+	&__button {
+		vertical-align: top;
+	}
+}

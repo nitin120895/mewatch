@@ -1,0 +1,44 @@
+@import "shared/style/modules";
+
+.view-full-schedule {
+	display: inline-block;
+	vertical-align: top;
+	cursor: pointer;
+
+	&__content {
+		position: relative;
+		background-color: $color__primary;
+	}
+
+	&__packshot {
+		@include fluid-aspect(16 9);
+	}
+
+	&__title {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 12px;
+		font-weight: bold;
+		color: $color__white;
+	}
+}
+
+@include mq($from: tablet) {
+	.view-full-schedule {
+		&__title {
+			font-size: 16px;
+			line-height: 18px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.view-full-schedule {
+		&__title {
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
+}

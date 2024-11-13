@@ -1,0 +1,136 @@
+@import "src/ref/tv/style/modules";
+@import "src/ref/tv/style/icons";
+
+// -------------------------------------- //
+// Root elements
+// -------------------------------------- //
+html {
+	// Disallow horizontal page scrolling.
+	overflow-x: hidden;
+}
+
+html,
+body,
+#root {
+	// Fill the viewport height
+	width: $viewport-width;
+	height: $viewport-height;
+	overflow: hidden;
+	font-family: $font-family-heading;
+}
+
+// -------------------------------------- //
+// Global App Backgrounds
+// -------------------------------------- //
+// Override the default variable values from `_variables.scss`
+// to set a background image and/or colors.
+//
+// Example:
+// $body-bg-image-path: "../../../resource/image/background-page.jpg";
+// $body-bg-color: #3d075b; // Matches the bottom of the above image
+%body-background {
+	@if $body-bg-image-path {
+		background: $body-bg-color url($body-bg-image-path) top center no-repeat;
+	} @else {
+		background-color: $body-bg-color;
+	}
+}
+
+%app-background {
+	@if $app-bg-color and $app-bg-color !=$body-bg-color {
+		background-color: $app-bg-color;
+	} @else {
+		background-color: inherit;
+	}
+}
+
+body {
+	@extend %body-background;
+}
+
+// -------------------------------------- //
+// Global App Footer
+// -------------------------------------- //
+.app {
+	position: relative;
+	// Allows a footer that's always bottom aligned.
+	width: $viewport-width;
+	height: $viewport-height;
+	overflow: hidden;
+	// Optional background color
+	@extend %app-background;
+}
+
+#commonLayer {
+	position: relative;
+	width: $viewport-width;
+	min-height: $viewport-height;
+}
+
+// -------------------------------------- //
+// Common Elements
+// -------------------------------------- //
+// Apply this as a compositional class to any elements that should adhere to the
+// margins from the grid system.
+// For mouse users the window's vertical scrollbars impact the width of the content area.
+// This usually results in content shifting when the user navigates between pages which scroll, and those which don't.
+// Since nothing is simple in web development the width of the scrollbar varies between OS and browser vendors.
+// We can however determine the scrollbar width in an agnostic way: `calc(100vw - 100%)`.
+// The above calculation results in the width of the scrollbar when present, or zero when not present.
+// We can use this to our advantage to offset our app margins to be consistent whether the page scrolls or not.
+// The downside to this approach is that our right margin is now reduced by the width of the scrollbar, which means
+// the amount of peeking content is reduced when a scrollbar is present. This is considered an acceptable trade off.
+.grid-margin {
+	margin: 0 !important;
+}
+
+.content-margin,
+.item-detail,
+.pg-account,
+.list-pg,
+.pg-editorial,
+.pg-support,
+.footer {
+	margin: $content__margin;
+}
+
+.pg-account {
+	position: relative;
+}
+
+// Every page entry should reserved their expected height to prevent reflows flickering when the content loads in.
+.page-entry {
+	padding-bottom: $padding-between-entries;
+	&--hero {
+		padding-bottom: $half-padding-between-entries;
+	}
+	&:first-of-type:not(.page-entry--hero) {
+		padding-top: $half-padding-between-entries;
+	}
+	&.no-bottom-padding {
+		padding-bottom: 0;
+	}
+	&.entry-hidden {
+		display: none;
+	}
+}
+
+.txt {
+	&-left {
+		text-align: left;
+	}
+	&-center {
+		text-align: center;
+	}
+	&-right {
+		text-align: right;
+	}
+}
+
+.page-entry--unsupported {
+	display: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}

@@ -1,0 +1,59 @@
+@import "shared/style/modules";
+
+.billing-history {
+	padding: 10px;
+	.account-entry__heading {
+		align-items: start;
+	}
+
+	.account-entry__cta-btn {
+		height: auto;
+		padding: 0;
+		margin-bottom: 0;
+		border: none;
+	}
+
+	&__load-btn {
+		margin-top: 10px;
+	}
+
+	&__no-purchase {
+		margin-top: 20px;
+		color: $color__grey--dark;
+		margin-bottom: 0;
+	}
+
+	&__header {
+		margin-top: 20px;
+	}
+
+	.spinner {
+		width: 2rem;
+		margin: 20px auto 0;
+	}
+
+	@include mq($from: tablet) {
+		padding: 40px;
+
+		.column-1,
+		.column-2,
+		.column-3,
+		.column-4 {
+			margin-right: 40px;
+			min-width: 85px;
+		}
+
+		.column-2 {
+			flex: 1;
+			min-width: 0;
+		}
+		.column-3 {
+			min-width: 130px;
+		}
+
+		.column-4 {
+			margin-right: 0;
+			text-align: right;
+		}
+	}
+}

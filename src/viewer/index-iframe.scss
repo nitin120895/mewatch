@@ -1,0 +1,115 @@
+/**
+	Styles related to child component pages that are served within the iFrame.
+	Component viewer styles are declared within index.scss instead.
+**/
+body {
+	background-color: #ccc;
+	color: #444;
+}
+
+hr {
+	border: 1px inset;
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+#root > .component-page {
+	padding: 30px;
+}
+
+.page-title {
+	padding-top: 25px;
+	&-divider {
+		margin-top: 20px;
+	}
+}
+.page-content-divider {
+	margin-bottom: 30px;
+}
+
+.flex-horz-edges {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.titled-comp {
+	margin-bottom: 25px;
+}
+
+.fs {
+	// Safari 11 requires relative positioning to ensure child legend elements remain clickable
+	position: relative;
+
+	border: 1px solid #999;
+	padding: 0.35em 0.625em 0.75em;
+	margin-bottom: 20px;
+	height: auto;
+
+	> legend {
+		font-weight: bold;
+		margin: 0;
+		cursor: pointer;
+	}
+	&--collapsed {
+		// Height of label text
+		height: 24px;
+		overflow: hidden;
+		padding-bottom: 0.3em;
+	}
+}
+
+.horz > input,
+.horz > select {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.invert-title > .titled-comp__heading {
+	order: 99;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.toc {
+	list-style: none;
+	padding: 0;
+	padding-left: 10px;
+	> li {
+		list-style: none;
+		margin-bottom: 5px;
+	}
+	> .parent-link {
+		margin-bottom: 10px;
+		margin-left: -10px;
+	}
+	a {
+		color: #555;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+pre {
+	background-color: #eee;
+	padding: 12px;
+	overflow-x: auto;
+}
+
+.pre {
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+.icon-btn {
+	cursor: pointer;
+	appearance: none;
+	> .svg-icon {
+		margin: 0 auto;
+	}
+}

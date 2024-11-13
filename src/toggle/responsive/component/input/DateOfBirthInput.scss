@@ -1,0 +1,221 @@
+@import "shared/style/modules";
+
+.date-of-birth-input {
+	$height: 50px;
+	$divider-color: #757575;
+
+	margin: 24px 0;
+	&__content {
+		height: $height;
+		border: 1px solid $color__black;
+		border-radius: $height / 2;
+		position: relative;
+	}
+
+	&__inputs-wrapper {
+		display: flex;
+		height: 100%;
+		&--hidden {
+			opacity: 0;
+		}
+	}
+
+	&__input {
+		width: 30%;
+		height: 100%;
+		border: none;
+		outline: none;
+		background: transparent;
+		flex-grow: 1;
+		text-align: center;
+		font-size: 16px;
+		box-shadow: none;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		&::placeholder {
+			/* Chrome, Firefox, Opera, Safari 10.1+ */
+			color: $color__grey--me-pass;
+			opacity: 1; /* Firefox */
+		}
+
+		&:-ms-input-placeholder {
+			/* Internet Explorer 10-11 */
+			color: $color__grey--me-pass;
+		}
+
+		&::-ms-input-placeholder {
+			/* Microsoft Edge */
+			color: $color__grey--me-pass;
+		}
+	}
+	&__divider {
+		$divider-height: 32px;
+		&::after {
+			content: "";
+			position: absolute;
+			top: ($height - $divider-height) / 2;
+			height: $divider-height;
+			border-left: 1px solid $divider-color;
+			transform: rotate(20deg);
+		}
+	}
+	&__placeholder {
+		width: 100%;
+		padding-left: 16px;
+		color: $color__grey--me-pass;
+		font-size: 16px;
+		line-height: $height;
+		position: absolute;
+		transition: all 0.25s $easeOutSine;
+		top: 0;
+		&--lifted {
+			position: absolute;
+			top: -1.5em;
+			color: $color__black;
+			line-height: 1.5em;
+		}
+		&--hidden {
+			z-index: -1;
+		}
+	}
+	&__message {
+		margin: 4px 0 0 16px;
+		line-height: 1em;
+		font-size: 12px;
+		&--error {
+			color: $color__error-me-pass;
+		}
+	}
+	&--success {
+		.date-of-birth-input__content::after {
+			content: "";
+			position: absolute;
+			right: -20px;
+			top: 20px;
+			transform: rotate(-45deg);
+			width: 14px;
+			height: 7px;
+			border-width: 0 0 2px 2px;
+			border-style: solid;
+			color: $color__black;
+		}
+	}
+	&--pristine {
+		.date-of-birth-input__content {
+			border-color: rgba($color__black, 0.25);
+		}
+	}
+	&--focused {
+		.date-of-birth-input__content {
+			border-color: $color__black;
+		}
+	}
+
+	&--error {
+		.date-of-birth-input__content::after {
+			content: "!";
+			position: absolute;
+			right: -14px;
+			top: 4px;
+			color: $color__error-me-pass;
+			font-size: 28px;
+		}
+		.date-of-birth-input__input {
+			color: $color__error-me-pass;
+		}
+		.date-of-birth-input__divider::after {
+			border-left-color: $color__error-me-pass;
+		}
+	}
+	&--error#{&}--pristine {
+		.date-of-birth-input__content {
+			border-color: $color__error-me-pass;
+		}
+	}
+
+	&--unbordered #{&} {
+		$height: 40px;
+		&__content {
+			height: $height;
+			border: none;
+			border-bottom: 1px solid $color__grey--light;
+			border-radius: initial;
+		}
+		&__input {
+			flex-grow: 0;
+			max-width: 72px;
+		}
+		&__divider {
+			margin: 0 10px;
+			$divider-height: 25px;
+			&::after {
+				top: ($height - $divider-height) / 2;
+				height: $divider-height;
+			}
+		}
+		&__placeholder {
+			padding-left: 0;
+			line-height: $height;
+			color: $color__grey--warm;
+			&--lifted {
+				top: -1em;
+				font-size: 12px;
+				line-height: 18px;
+			}
+		}
+		&__message {
+			margin-left: 0;
+			position: absolute;
+		}
+	}
+
+	&--unbordered#{&} {
+		&--error {
+			.date-of-birth-input__placeholder {
+				color: $color__error-me-pass;
+			}
+			.date-of-birth-input__content {
+				border-color: $color__error-me-pass;
+			}
+			.date-of-birth-input__content::after {
+				right: 14px;
+				top: 5px;
+				font-size: 20px;
+			}
+			.date-of-birth-input__divider::after {
+				border-left-color: $divider-color;
+			}
+		}
+
+		&--success {
+			.date-of-birth-input__content::after {
+				right: 11px;
+				top: 15px;
+				color: $color__success;
+			}
+		}
+
+		&--focused {
+			.date-of-birth-input__placeholder {
+				color: $color__primary;
+			}
+			.date-of-birth-input__message {
+				color: $color__grey--warm;
+			}
+		}
+
+		&--success.date-of-birth-input--focused {
+			.date-of-birth-input__placeholder {
+				color: $color__success;
+			}
+			.date-of-birth-input__content {
+				border-color: $color__success;
+			}
+		}
+	}
+}

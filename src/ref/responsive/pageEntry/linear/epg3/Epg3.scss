@@ -1,0 +1,15 @@
+@import "shared/style/modules";
+
+.epg3 {
+	.scrollable .arrow__icon {
+		top: -25px;
+	}
+}
+
+@include mq($from: tablet) {
+	.epg3 {
+		.scrollable .arrow__icon {
+			top: -30px;
+		}
+	}
+}

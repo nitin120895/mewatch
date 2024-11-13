@@ -1,0 +1,133 @@
+@import "src/ref/tv/style/modules";
+
+.input-with-vk {
+	$iconSize: 58.9px;
+	position: relative;
+	margin-bottom: 0;
+	height: $search-input-height;
+
+	&--focused {
+		height: 360px;
+
+		.input-with-vk__background {
+			opacity: 1;
+		}
+	}
+
+	&__background {
+		background-color: $color__primary;
+		height: 100%;
+		opacity: 0.9;
+	}
+
+	&__form {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		margin: 0;
+	}
+
+	&__icons {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+
+	&__icon {
+		color: $color__white;
+		opacity: 0.3;
+		padding: 6px;
+		width: $iconSize;
+		height: $iconSize;
+
+		&--spinner,
+		&--search {
+			pointer-events: none;
+		}
+
+		&--clear {
+			margin-left: 10px;
+			width: $iconSize + 3px;
+			cursor: pointer;
+			pointer-events: auto;
+		}
+	}
+
+	&__input {
+		position: absolute;
+		width: 100vw;
+		height: 100%;
+		font-size: 20px;
+		background-color: transparent;
+		border: none;
+		color: $color__white;
+
+		&--hasText {
+			display: none;
+		}
+	}
+
+	&__placeholder {
+		color: $color__white;
+		opacity: 0.3;
+		font-size: 80px;
+		line-height: $search-input-height;
+		margin: auto auto auto 165px;
+	}
+
+	&__curValue {
+		width: 100%;
+		padding-left: 60px;
+		position: absolute;
+		top: 0;
+	}
+
+	&__text {
+		color: $color__white;
+		font-size: 80px;
+		line-height: $search-input-height;
+		margin: auto;
+		display: inline;
+	}
+
+	&__cursor {
+		width: 2px;
+		height: 90px;
+		margin-left: 6px;
+		margin-bottom: -14px;
+		opacity: 0.3;
+		display: none;
+		border: solid 5px $color__white;
+		background-color: $color__white;
+
+		&--focused {
+			display: inline-block;
+			animation: cursorAnimate;
+			animation-duration: 1s;
+			animation-timing-function: cubic-bezier(1, 0, 0, 1);
+			animation-iteration-count: infinite;
+			animation-fill-mode: bothp;
+		}
+	}
+
+	&__keyboard {
+		background-color: rgba($color__primary, 0.9);
+		padding: 0 20px 0 80px;
+	}
+}
+
+@keyframes cursorAnimate {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 0;
+	}
+}

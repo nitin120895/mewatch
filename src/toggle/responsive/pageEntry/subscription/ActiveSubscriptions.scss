@@ -1,0 +1,17 @@
+@import "shared/style/modules";
+
+.page-entry.SX1 {
+	margin: 0;
+}
+
+.active-subscriptions {
+	background-color: $color__white;
+	color: $color__black;
+
+	&__title {
+		font-size: 18px;
+		font-weight: bold;
+		color: $color__black3;
+		margin-bottom: 20px;
+	}
+}

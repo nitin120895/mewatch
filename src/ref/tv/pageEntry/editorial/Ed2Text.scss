@@ -1,0 +1,68 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+.ed2 {
+	font-family: $font-family-heading;
+	padding: 50px 0;
+	&__background {
+		margin: 0 -80px;
+		padding: 40px 80px;
+		position: relative;
+		&--focused {
+			background-color: rgba($color__white, 0.1);
+		}
+		&--left {
+			text-align: left;
+		}
+		&--center {
+			text-align: center;
+		}
+		&--right {
+			text-align: right;
+		}
+	}
+	&__html {
+		max-width: 1600px;
+		max-height: 730px;
+		overflow-y: hidden;
+		.ed-html {
+			p:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	&__more {
+		position: absolute;
+		right: 80px;
+		bottom: 40px;
+		width: 131px;
+		height: 51px;
+		border-radius: 8px;
+		background-color: $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		line-height: 51px;
+		text-align: center;
+		color: $color__blue--light;
+		cursor: pointer;
+	}
+	&__focus-underline {
+		background-color: $color__white;
+		width: calc(100% - 160px);
+		height: 11px;
+		position: absolute;
+		bottom: 0;
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-left: 14px solid transparent;
+			border-bottom: 14px solid $color__white;
+			border-right: 14px solid transparent;
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}

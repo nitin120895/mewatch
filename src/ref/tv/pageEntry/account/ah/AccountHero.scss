@@ -1,0 +1,28 @@
+@import "src/ref/tv/style/modules";
+
+.account-hero {
+	padding: 0 80px $ah-padding-bottom;
+	background-image: $account_hero_bg;
+	position: relative;
+
+	&--isRenderList {
+		height: $ah-hero-height;
+	}
+
+	&__greeting {
+		font-size: 120px;
+		line-height: normal;
+		padding-top: $ah-greeting-padding-top;
+		width: 1470px;
+		height: $ah-greeting-height + $ah-greeting-padding-top;
+		text-overflow: ellipsis;
+		overflow-x: hidden;
+		white-space: nowrap;
+	}
+
+	&__list {
+		position: absolute;
+		bottom: $ah-padding-bottom;
+		max-width: $content-width;
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"module": "esnext"
+	},
+	"include": [
+		"../../src/ref/tv/**/*.ts",
+		"../../src/ref/tv/**/*.tsx",
+		"../../src/shared/**/*.ts",
+		"../../src/shared/**/*.tsx"
+	]
+}

@@ -1,0 +1,31 @@
+@import "shared/style/modules";
+.app-background {
+	position: absolute;
+	width: 100%;
+
+	~ .content {
+		// When the wallpaper is displayed it gets moved into a new
+		// stacking context since it's absolutely positioned. This
+		// means it could overlap page content at certain breakpoints.
+		// To prevent this, relative positioning allows the content to
+		// move into the same stacking context and remain above it.
+		position: relative;
+	}
+
+	&__image {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__picture-wrapper {
+		cursor: pointer;
+	}
+}
+
+@include mq($until: tablet) {
+	.app-background {
+		&.no-hero-image {
+			height: 212px;
+		}
+	}
+}

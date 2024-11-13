@@ -1,0 +1,70 @@
+@import "shared/style/modules";
+
+.header-search {
+	display: block;
+	align-items: center;
+	position: relative;
+
+	&__form {
+		display: block;
+		width: 200px;
+		height: 28px;
+		border-radius: 4px;
+		padding: 3px 6px;
+		color: $color__white;
+		background-color: rgba($color__white, 0.25);
+		border: 1px solid transparent;
+		margin: 0;
+		position: relative;
+		cursor: text;
+
+		&:hover {
+			border-color: rgba($color__white, 0.5);
+			background-color: rgba($color__white, 0.3);
+		}
+	}
+
+	&--focused &__form {
+		background-color: $color__white;
+		color: $color__black3;
+	}
+
+	&__input {
+		display: inline-block;
+		color: inherit;
+		border: none;
+		font-size: 14px;
+		font-family: $font-family-heading;
+		background: none;
+		outline: none;
+		width: 90%;
+	}
+
+	// Need to increase specificity
+	.header-search__input::placeholder {
+		color: $color__black;
+		opacity: 0.3;
+		// Must specify important to override placeholder pseudo element style
+		text-overflow: ellipsis !important;
+	}
+
+	.header-search__input::-ms-clear {
+		display: none;
+	}
+
+	&__icon {
+		background-color: transparent;
+		margin: 0 4px;
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
+
+	&__menu-container {
+		position: absolute;
+		right: 18px;
+		bottom: -12px;
+	}
+}

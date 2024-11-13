@@ -1,0 +1,44 @@
+@import "shared/style/modules";
+
+.payment-method-row {
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 20px 0;
+	border-bottom: 1px solid $color__off-white;
+	align-items: center;
+	color: $color__black;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&__icon {
+		width: 55px;
+		height: 35px;
+	}
+
+	&__logo,
+	&__info,
+	&__digits,
+	&__exp {
+		white-space: nowrap;
+	}
+	&__info {
+		padding: 0 25px;
+
+		@include mq($from: phablet) {
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: center;
+		}
+	}
+	&__exp {
+		@include mq($from: phablet) {
+			margin-left: 25px;
+		}
+	}
+	&__contextual {
+		flex-grow: 1;
+		text-align: right;
+	}
+}

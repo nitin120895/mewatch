@@ -1,0 +1,135 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/rows";
+
+$gradient-color: $color__black4;
+
+.wallpaper {
+	position: relative;
+	order: 2;
+	z-index: 1;
+	padding-bottom: percentage(9/16);
+
+	&__custom {
+		position: absolute;
+		z-index: 3;
+		left: 0;
+		width: 100%;
+		/**
+		 * The following properties prevent the image from pushing the boundaries of the page on mobile causing
+		 * horizontal scroll, while still allowing the custom image to break out of the container on top and/or bottom.
+		 */
+		overflow: hidden;
+		top: -$branded-page-entry-outset-distance;
+		height: calc(100% + #{$branded-page-entry-outset-distance * 2});
+		padding-top: $branded-page-entry-outset-distance;
+		padding-bottom: $branded-page-entry-outset-distance;
+	}
+
+	/**
+	 * We want to keep the gradient within bounds (after transform) but allow the custom image to "peek" outside the
+	 * container
+	 */
+	&__gradient-bounds {
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		@include mq($from: tablet) {
+			position: relative;
+			width: auto;
+		}
+	}
+
+	&__gradient {
+		display: inline-block;
+		position: absolute;
+		bottom: -1px; // fixes keyline appearing on iOS Safari
+		right: 0;
+		width: 100%;
+		height: 20%;
+		z-index: 4;
+
+		&--horizontal {
+			display: none;
+		}
+
+		@include mq($from: tablet) {
+			position: relative;
+
+			&--vertical {
+				display: none;
+			}
+			&--horizontal {
+				display: inline-block;
+				width: 150px;
+				height: 100%;
+				z-index: 2; // custom image must sit atop the gradient from tablet onwards
+				transform: translateX(-99%) scaleY(1.02);
+			}
+		}
+	}
+
+	&__image {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+
+		@include mq($from: tablet) {
+			display: inline-block;
+		}
+	}
+
+	&__custom,
+	&__image,
+	&__gradient-bounds {
+		/**
+		 * The wallpaper elements should fade/slide to the left (when scrolling through the packshot list) on mobile
+		 * devices only
+		 */
+		@include mq($until: tablet) {
+			transform: translateX(0) !important;
+			opacity: 1 !important;
+		}
+
+		@include mq($from: tablet) {
+			transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+		}
+	}
+
+	// Do not use CSS transitions when using touch
+	&.no-transition {
+		.wallpaper__custom,
+		.wallpaper__image,
+		.wallpaper__gradient-bounds {
+			transition: none;
+		}
+	}
+
+	@include mq($until: tablet) {
+		/*
+		* Cropping the area to make it 2:1 instead of 16:9
+		* We set a margin-bottom equal to the difference between the 2:1 and 16:9 aspect ratios' padding-bottom
+		*/
+		margin-bottom: percentage(1/2) - percentage(9/16);
+	}
+
+	@include mq($from: tablet) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding-bottom: 0;
+	}
+}
+
+/**
+ * This is a flag added on the container when no background image has been specified by the operator; it adds a padding
+ * on mobile screens to account for the fact that there is no image pushing the packshot list down
+ */
+.no-wallpaper {
+	.packshot-list {
+		padding-top: get-grid-margin();
+	}
+}

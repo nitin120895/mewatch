@@ -1,0 +1,120 @@
+@import "shared/style/modules";
+
+.profile-selector {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: $color__black;
+	z-index: $depth-header + 1;
+	overflow: auto;
+	overflow-x: hidden;
+
+	&--locked {
+		overflow: hidden;
+	}
+
+	&__logo-wrap {
+		overflow: visible;
+		height: 0;
+	}
+
+	&__logo {
+		position: relative;
+		left: 0;
+		color: $color__primary;
+		top: 16px;
+		width: 99px;
+	}
+
+	&__selector,
+	&__pin-prompt {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		overflow: visible;
+		position: relative;
+		opacity: 0;
+		z-index: 0;
+		transition: opacity 0.6s, transform 0.6s;
+	}
+
+	&__selector {
+		transform: translateY(-24px);
+
+		&--visible {
+			opacity: 1;
+			z-index: 1;
+			transform: translateY(0);
+		}
+	}
+
+	&__pin-prompt {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		transform: translateY(-24px);
+
+		&--visible {
+			opacity: 1;
+			z-index: 1;
+			transform: translateY(0);
+		}
+	}
+
+	&__container {
+		position: relative;
+		overflow: visible;
+		padding: 67px 0 0;
+		max-height: 100%;
+		max-width: 100%;
+	}
+
+	.axis-logo {
+		height: 44px;
+	}
+
+	.spinner {
+		fill: $color__white;
+		stroke: $color__white;
+	}
+
+	.profile-circle__lock {
+		.lock-icon-inner {
+			stroke: $color__white;
+			stroke-width: 2;
+		}
+
+		.lock-keyhole {
+			fill: $color__grey--dark;
+		}
+
+		.bottom {
+			fill: $color__white;
+		}
+	}
+}
+
+@include mq($until: desktop) {
+	.profile-selector {
+		&__logo {
+			top: 11px;
+			width: 82px;
+		}
+
+		&__title {
+			font-size: 36px;
+		}
+	}
+}
+
+@include mq($until: tablet, $and: "(orientation: landscape)") {
+	.profile-selector {
+		&__pin-prompt {
+			overflow-y: auto;
+		}
+	}
+}

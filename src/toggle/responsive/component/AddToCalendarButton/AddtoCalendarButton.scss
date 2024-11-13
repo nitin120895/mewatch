@@ -1,0 +1,124 @@
+@import "shared/style/modules";
+
+.add-to-calendar {
+	position: relative;
+
+	&__calendar-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-transform: none;
+	}
+
+	&__icon {
+		display: inline-block;
+		height: 1.2em;
+		width: auto;
+		min-width: 1em;
+		margin-right: 0.5em;
+	}
+
+	&--dropdown#{&}--open {
+		.add-to-calendar__calendar-btn {
+			background-color: $color__black4;
+		}
+	}
+
+	&--app:after {
+		content: "Open in web browser";
+		position: absolute;
+		bottom: -1rem;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		color: $color__grey--dark;
+		font-size: 10px;
+	}
+}
+
+.add-to-calendar-button-tooltip {
+	position: absolute;
+	left: 50%;
+	top: -10px;
+	min-width: 12em;
+	transform: translate(-50%, -100%);
+	background-color: $color__grey--dark;
+	z-index: $depth-dropdown-overlays;
+
+	&:after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: 1px;
+		transform: translate(-50%, 100%);
+		width: 0;
+		height: 0;
+		border-left: 0.5em solid transparent;
+		border-right: 0.5em solid transparent;
+		border-top: 0.5em solid $color__grey--dark;
+	}
+
+	button {
+		display: block;
+	}
+
+	&__calendar-icon {
+		height: 1em;
+		width: 1em;
+	}
+
+	&__calendar-provider-link {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		color: $color__grey--light;
+		font-size: 0.875em;
+		padding: 10px;
+
+		&:hover {
+			color: $color__white;
+		}
+
+		span {
+			line-height: 1;
+			margin-left: 0.5em;
+		}
+	}
+}
+
+// EPG page variant
+.add-to-calendar--dropdown {
+	@include mq($from: tablet) {
+		margin-left: -10px;
+	}
+
+	.add-to-calendar__label {
+		font-size: 0.875rem;
+	}
+
+	.add-to-calendar__calendar-btn {
+		padding: 0 8px;
+		font-weight: 400;
+		border-radius: 0;
+		width: 100%;
+		justify-content: flex-start;
+		font-size: 0.875rem;
+	}
+
+	.add-to-calendar-button-tooltip {
+		top: auto;
+		bottom: 0;
+		transform: translate(-50%, 100%);
+		background-color: $color__black4;
+		min-width: 100%;
+		padding-left: 5px;
+
+		&:after {
+			display: none;
+		}
+
+		&__calendar-provider-link {
+			font-size: 1em;
+		}
+	}
+}

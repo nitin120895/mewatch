@@ -1,0 +1,214 @@
+@import "shared/style/modules";
+
+.cast-intro {
+	&__overlay {
+		background-color: rgba($color__black, 0.8);
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: $depth-player-chromecast;
+	}
+
+	&__overlay-inner {
+		padding-bottom: 60%;
+		position: relative;
+	}
+
+	&__overlay-icon {
+		margin: 32px 0 0;
+		position: relative;
+	}
+
+	&__container {
+		position: absolute;
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		min-width: 220px;
+		padding: 0 10px;
+	}
+
+	&__label {
+		color: $color__white;
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 24px;
+		margin-bottom: 15px;
+		margin-top: 2px;
+	}
+
+	&__icon {
+		$size: 60px;
+		border: medium solid $color__primary;
+		padding: 15px;
+		position: absolute;
+		border-radius: $size;
+		height: $size;
+		width: $size;
+		right: 16%;
+		bottom: -50px;
+	}
+
+	&__dismiss-error {
+		width: 170px;
+		height: 50px;
+		text-transform: uppercase;
+	}
+
+	@include mq($from: phablet) {
+		&__icon {
+			bottom: -43px;
+			right: 76px;
+		}
+	}
+
+	@include mq($from: phablet, $and: "(orientation: landscape)") {
+		&__overlay-inner {
+			bottom: 0;
+			left: 0;
+			padding-bottom: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: $depth-player-chromecast-text;
+		}
+
+		&__overlay-icon {
+			bottom: 0;
+			left: 0;
+			margin: 0;
+			position: absolute;
+			right: 0;
+			z-index: $depth-player-chromecast-icons;
+		}
+
+		&__icon {
+			bottom: 4px;
+		}
+	}
+
+	@include mq($from: tablet, $and: "(orientation: portrait)") {
+		&__icon {
+			bottom: -37px;
+		}
+	}
+
+	@include mq($from: desktop) {
+		&__icon {
+			$size: 78px;
+			width: $size;
+			height: $size;
+			right: 114px;
+			bottom: 5px;
+		}
+
+		&__label {
+			font-size: 30px;
+			margin-bottom: 25px;
+		}
+	}
+
+	@include mq($from: uhd) {
+		&__icon {
+			$size: 80px;
+			align-items: center;
+			border-radius: $size;
+			bottom: 34px;
+			display: flex;
+			height: $size;
+			justify-content: center;
+			right: 114px;
+			width: $size;
+
+			.svg-icon {
+				height: 40px;
+				width: auto;
+			}
+		}
+	}
+}
+
+.live-player {
+	.cast-intro {
+		&__overlay {
+			transform: translateY(-100%);
+			position: relative;
+		}
+		&__overlay-inner {
+			$player-control-height: 45px;
+			padding-bottom: calc(60% + #{$player-control-height});
+			position: relative;
+		}
+		&__icon {
+			right: 52px;
+			bottom: 13px;
+		}
+
+		@include mq($until: laptop, $and: "(orientation: landscape)") {
+			&__overlay {
+				transform: translateY(calc(-100% + 77px));
+			}
+			&__icon {
+				right: 60px;
+				bottom: -14px;
+			}
+		}
+
+		@include mq($until: tablet, $and: "(orientation: landscape)") {
+			&__overlay {
+				transform: translateY(calc(-100% + 65px));
+			}
+			&__icon {
+				right: 52px;
+				bottom: -10px;
+			}
+		}
+
+		@include mq($from: laptop, $and: "(orientation: landscape)") {
+			&__overlay {
+				transform: none;
+				position: absolute;
+			}
+			&__overlay-inner {
+				padding-bottom: 60%;
+				position: absolute;
+			}
+			&__icon {
+				right: 52px;
+				bottom: 13px;
+			}
+		}
+
+		@include mq($from: tablet, $and: "(orientation: portrait)") {
+			&__overlay-inner {
+				$player-control-height: 60px;
+				padding-bottom: calc(60% + #{$player-control-height});
+				position: relative;
+			}
+			&__icon {
+				bottom: 36px;
+				right: 60px;
+			}
+		}
+		@include mq($from: laptop) {
+			&__icon {
+				right: 68px;
+				bottom: 12px;
+			}
+		}
+		@include mq($from: desktop) {
+			&__icon {
+				$size: 56px;
+				width: $size;
+				height: $size;
+				bottom: 13px;
+			}
+		}
+	}
+}

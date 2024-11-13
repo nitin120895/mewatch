@@ -1,0 +1,108 @@
+@import "shared/style/modules";
+@import "shared/style/generic/text";
+
+.language-select {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	max-width: 100%;
+	position: relative;
+	@extend .truncate;
+
+	// default scheme is dark
+	&__languages {
+		flex-grow: 1;
+		background: transparent;
+		border: 0px solid transparent;
+		transition: 0.2s color, background-color 0.2s, border-color 0.2s;
+		// padding for where chevron sits
+		padding-left: 10px;
+		padding-right: 25px;
+		appearance: none;
+		color: $color__grey--light;
+		@extend .truncate;
+		max-width: 100%;
+		width: 100%;
+
+		@include mq($until: phablet) {
+			// iphones auto-zoom on select unless font size is 16px or higher
+			// trying to increase 'legability'. But this makes the site look
+			// horizontally scrollable. So set our font size appropriately.
+			font-size: 14px;
+			border-radius: 5px;
+		}
+
+		&:hover {
+			color: $color__primary;
+
+			& + .language-select__indicator {
+				color: $color__primary;
+			}
+		}
+
+		&:focus {
+			background-color: $color__black4;
+			color: $color__white;
+			transition: none;
+
+			& + .language-select__indicator {
+				color: $color__white;
+			}
+		}
+
+		&::-ms-expand {
+			display: none;
+		}
+	}
+
+	&__languages-item {
+		color: $color__black2;
+		background-color: $color__off-white;
+		transition: 0.2s color, background-color 0.2s;
+	}
+
+	&--light {
+		color: $color__grey--dark;
+		.language-select__languages {
+			color: $color__grey--dark;
+
+			&:focus {
+				background-color: $color__white;
+			}
+
+			&:focus + .language-select__indicator {
+				color: $color__black2;
+			}
+		}
+
+		.language-select__languages-item {
+			color: $color__grey--dark;
+		}
+	}
+
+	&__globe {
+		$size: 20px;
+		height: $size;
+		flex-shrink: 0;
+		width: $size;
+	}
+
+	&__indicator {
+		height: 8px;
+		pointer-events: none;
+		position: absolute;
+		right: 5px;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: color 0.2s;
+		z-index: 1;
+
+		&:hover {
+			color: $color__primary;
+		}
+	}
+
+	@include mq($from: tablet) {
+		max-width: 250px;
+	}
+}

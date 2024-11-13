@@ -1,0 +1,36 @@
+@import "src/ref/tv/style/modules";
+
+.entry-title {
+	font-family: $font-family-heading;
+	text-align: initial;
+	margin-bottom: $asset-list-title-margin-bottom;
+
+	&--brand-row {
+		padding-bottom: $asset-list-title-padding-bottom;
+	}
+
+	&--none {
+		display: none;
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 42px;
+		line-height: $asset-list-title-height;
+		text-transform: uppercase;
+		position: relative;
+		height: $asset-list-title-height;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	&__tagline {
+		font-size: 28px;
+		line-height: $asset-list-tagline-height;
+		height: $asset-list-tagline-height;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}

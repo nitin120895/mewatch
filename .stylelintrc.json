@@ -1,0 +1,23 @@
+{
+	"rules": {
+		"block-no-empty": true,
+		"block-opening-brace-newline-after": "always",
+		"block-closing-brace-newline-before": "always",
+		"color-hex-case": ["lower", { "severity": "warning" }],
+		"color-hex-length": "short",
+		"color-no-invalid-hex": true,
+		"max-empty-lines": 2,
+		"no-extra-semicolons": true,
+		"no-duplicate-selectors": true,
+		"number-leading-zero": "always",
+		"number-no-trailing-zeros": true,
+		"selector-max-compound-selectors": 4,
+		"selector-max-universal": 0,
+		"shorthand-property-no-redundant-values": true,
+		"string-quotes": "double",
+		"max-nesting-depth": 3,
+		"unit-case": "lower",
+		"value-no-vendor-prefix": true,
+		"value-keyword-case": ["lower", { "ignoreKeywords": ["/^(desktop|phone|tablet).*/"] }]
+	}
+}

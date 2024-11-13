@@ -1,0 +1,3 @@
+@import "shared/style/modules/variables";
+
+$app-bg-gradient-color: if($app-bg-color and $app-bg-color != $body-bg-color, $app-bg-color, $body-bg-color);

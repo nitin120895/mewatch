@@ -1,0 +1,205 @@
+@import "shared/style/modules";
+
+.static-pg-account,
+.personalization {
+	.button-container {
+		display: flex;
+		text-align: center;
+		width: 100%;
+		flex-direction: row;
+		align-items: center;
+		padding: 40px 0 0;
+
+		.cta-btn {
+			width: 160px;
+			padding: 0 27px;
+
+			&--primary {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	.edit-account-entry,
+	.add-account-entry {
+		.radio-button {
+			margin-right: 25px;
+
+			span {
+				margin-bottom: 10px;
+				min-width: 80px;
+			}
+		}
+
+		.switch-input__slider {
+			width: 40px;
+			border-radius: 10px;
+			height: 20px;
+			background: $color__grey--light;
+
+			.switch-input__switch {
+				width: 14px;
+				height: 14px;
+				margin-top: 3px;
+			}
+
+			.switch-input__switch--checked {
+				margin-left: 22px;
+			}
+		}
+
+		.switch-input__slider--checked {
+			background: $color__primary--hover;
+		}
+	}
+
+	.add-account-entry {
+		padding: 15px 10px;
+		border-bottom: 4px solid $color__off-white;
+
+		.profile-personalisation {
+			&__label {
+				margin: 20px 0 40px;
+				font-size: 14px;
+				color: $color__grey--dark;
+			}
+		}
+	}
+
+	.edit-account-entry {
+		padding: 30px 10px;
+		border-bottom: 4px solid $color__off-white;
+
+		.disabled {
+			opacity: 0.4;
+			pointer-events: none;
+		}
+	}
+
+	.add-account-entry-buttons,
+	.edit-account-entry-buttons {
+		padding: 15px 10px;
+		border-bottom: 4px solid $color__off-white;
+		background: $color__off-white;
+
+		.submit-profile,
+		.delete-profile {
+			touch-action: none;
+		}
+	}
+
+	.edit-account-entry-buttons {
+		display: flex;
+		justify-content: center;
+
+		.cta-btn:disabled {
+			color: $color__white;
+			background-color: $color__grey--light;
+		}
+
+		.submit-profile {
+			margin-bottom: 8px;
+			margin-right: 12px;
+		}
+
+		.submit-profile,
+		.delete-profile {
+			vertical-align: top;
+		}
+
+		.delete-profile {
+			font-size: 14px;
+			margin-top: 4px;
+			padding-left: 8px;
+			margin-left: auto;
+		}
+
+		.delete-contents {
+			display: flex;
+			align-items: center;
+		}
+
+		.delete-icon {
+			margin-right: 10px;
+		}
+	}
+
+	.account-entry {
+		.acct-setting-switch__label {
+			font-size: 14px;
+			margin-top: 10px;
+		}
+
+		.acct-setting-switch__switch {
+			margin-top: -30px;
+		}
+	}
+}
+
+.created-profile__modal {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	span {
+		padding-bottom: 20px;
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.static-pg-account,
+	.personalization {
+		.add-account-entry-buttons,
+		.edit-account-entry-buttons {
+			padding: 40px 24px 30px;
+		}
+
+		.add-account-entry,
+		.edit-account-entry {
+			padding: 40px 24px 30px;
+
+			.profiles-form__choices {
+				display: block;
+			}
+
+			.radio-button {
+				margin-right: 45px;
+			}
+		}
+
+		.account-entry .acct-setting-switch__label {
+			font-size: 14px;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.static-pg-account {
+		.no-padding .profiles-form {
+			padding: 0;
+		}
+
+		.add-account-entry-buttons,
+		.edit-account-entry-buttons {
+			padding: 40px 24px;
+		}
+
+		.add-account-entry,
+		.edit-account-entry {
+			padding: 40px 24px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.static-pg-account {
+		.add-account-entry,
+		.edit-account-entry,
+		.add-account-entry-buttons,
+		.edit-account-entry-buttons {
+			padding: 40px;
+		}
+	}
+}

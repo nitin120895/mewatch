@@ -1,0 +1,17 @@
+.example {
+	margin-bottom: 20px;
+
+	.packshot {
+		width: 250px;
+		position: relative;
+		float: none !important;
+	}
+
+	& .packshot__image .img-r {
+		background-color: #666;
+	}
+}
+
+.packshot-form {
+	margin-bottom: 24px;
+}

@@ -1,0 +1,18 @@
+@import "src/ref/tv/style/modules";
+
+.search-page {
+	&__message {
+		text-align: center;
+		margin-top: 220px;
+		opacity: 0.5;
+		font-size: 64px;
+	}
+
+	.icon-spinner {
+		$size: 120px;
+		display: block;
+		height: $size;
+		margin: 245px auto 0;
+		width: $size;
+	}
+}

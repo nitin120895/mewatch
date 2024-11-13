@@ -1,0 +1,57 @@
+@import "shared/style/modules";
+
+.d1-episode {
+	position: relative;
+	margin-bottom: 8px;
+
+	&__packshot {
+		display: block;
+		position: relative;
+		width: 100%;
+		user-select: none;
+
+		.packshot__image {
+			background-color: $color__black5;
+		}
+	}
+
+	&__packshot-group {
+		position: relative;
+	}
+
+	&__packshot-link {
+		display: block;
+
+		&:focus {
+			outline: $color__primary;
+		}
+	}
+
+	&__title-group {
+		position: absolute;
+		z-index: 2;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 40px 8px 10px;
+		color: $color__white;
+		pointer-events: none;
+	}
+
+	&__number {
+		font-size: 2.3rem;
+		font-weight: bold;
+		font-family: $font-family-heading;
+		line-height: normal;
+	}
+
+	&__price {
+		position: absolute;
+		right: 12px;
+		top: 12px;
+	}
+
+	&__description {
+		margin-bottom: 8px;
+	}
+}

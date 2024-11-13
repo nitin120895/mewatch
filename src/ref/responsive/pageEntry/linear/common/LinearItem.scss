@@ -1,0 +1,72 @@
+@import "shared/style/modules";
+
+.linear-item {
+	display: inline-block;
+	vertical-align: top;
+
+	&:hover {
+		.linear-item__packshot-overlay {
+			display: block;
+		}
+	}
+
+	&__packshot {
+		display: block;
+		position: relative;
+		width: 100%;
+		user-select: none;
+	}
+
+	&__packshot-overlay {
+		display: none;
+	}
+
+	.packshot__image-shadow {
+		background: linear-gradient(to bottom, transparent, rgba($color__black, 0.8) 100%);
+	}
+
+	.play-icon {
+		&:hover {
+			.play-icon__circle {
+				color: white;
+				stroke: white;
+			}
+
+			.play-icon__arrow {
+				color: white;
+				fill: white;
+			}
+		}
+	}
+}
+
+@mixin play-icon-size($size) {
+	.linear-item {
+		.packshot {
+			.play-icon {
+				svg {
+					width: $size;
+					height: $size;
+				}
+			}
+		}
+	}
+}
+
+@include play-icon-size(27px);
+
+@include mq($from: phablet) {
+	@include play-icon-size(32px);
+}
+
+@include mq($from: tablet) {
+	@include play-icon-size(38px);
+}
+
+@include mq($from: desktop) {
+	@include play-icon-size(45px);
+}
+
+@include mq($from: uhd) {
+	@include play-icon-size(55px);
+}

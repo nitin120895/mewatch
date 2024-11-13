@@ -1,0 +1,110 @@
+@import "shared/style/modules";
+
+.sso-wrapper {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: center;
+	align-items: center;
+
+	&__cancel-section-wrapper {
+		position: fixed;
+		height: 2.875rem;
+		top: 0;
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		z-index: $depth-prompts;
+
+		@include mq($from: desktop) {
+			height: 3.75rem;
+		}
+
+		.cta-btn--secondary:active:not(:disabled),
+		.cta-btn--secondary:hover:not(:disabled) {
+			background-color: $color__black;
+		}
+	}
+
+	&__close-icon {
+		color: rgba($color__white, 0.7);
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $color__black;
+			color: rgba($color__white, 0.9);
+			outline-color: $color__black;
+		}
+	}
+
+	&__cancel-btn.cta-btn {
+		padding: 0;
+		margin-right: 0.875rem;
+		border-radius: 0;
+		border: 0;
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: rgba($color__white, 0.7);
+		border: none;
+
+		position: relative;
+		top: 0;
+		z-index: $depth-prompts;
+
+		@include mq($from: desktop) {
+			height: auto;
+			margin-right: 2.5rem;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $color__black;
+			color: rgba($color__white, 0.9);
+			outline-color: $color__black;
+		}
+	}
+
+	&__content {
+		flex: 1 1 100%;
+		width: 100%;
+		max-width: 500px;
+	}
+
+	&--scrollable-content {
+		.sso-wrapper__content {
+			max-width: unset;
+		}
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.sso-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+
+		&__content {
+			flex: 1 1 50%;
+			max-width: 100%;
+			&--hidden-me-connect {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.sso-wrapper {
+		&__content {
+			padding-left: 110px;
+			&--hidden-me-connect {
+				padding-left: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,308 @@
+@import "shared/style/modules";
+@import "./_player-variables";
+
+.pg-watch {
+	.page-entry:not(.page-entry--hero) {
+		margin: 0;
+	}
+	.dialog-modal {
+		h1 {
+			font-size: 24px;
+		}
+		p {
+			font-size: 14px;
+		}
+
+		@include mq($from: desktop) {
+			h1 {
+				font-size: 36px;
+			}
+			p {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+.player {
+	background: transparent;
+	font-size: 1em;
+	position: relative;
+	width: 100%;
+	z-index: $depth-player;
+
+	.player-btn {
+		border-color: $color__grey--light;
+		color: $color__white;
+		min-width: 152px;
+
+		&:hover {
+			border-color: $color__grey--light;
+			color: $color__white;
+		}
+	}
+
+	&-block {
+		background: black;
+		display: block;
+		height: 0;
+		margin: 0;
+		padding-bottom: 60%;
+		position: relative;
+		text-align: center;
+
+		&__container {
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			transition: all $player-transition-time linear;
+			width: 100%;
+
+			&--hide {
+				display: none;
+			}
+
+			&--wrap .video {
+				cursor: pointer;
+				z-index: $depth-player-end-of-video;
+			}
+
+			// Safari don't show cursor pointer for video element for some reason,
+			// we have to use pseudo-element to add a cursor
+			&--wrap:after {
+				bottom: 0;
+				content: "";
+				cursor: pointer;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: $depth-player-end-of-video + 1;
+			}
+		}
+
+		.video {
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	&__wrapper {
+		padding: 24px $player-padding-mobile;
+	}
+
+	&-scrubber {
+		margin: 0 0 $scrubber-margin-mobile;
+		padding-right: 107px - $player-padding-mobile;
+		position: relative;
+
+		&--cast {
+			padding-left: 107px - $player-padding-mobile;
+		}
+
+		&__time-position {
+			position: absolute;
+			user-select: none;
+			transform: translateY(-50%);
+			top: 50%;
+		}
+
+		&__time {
+			@extend .player-scrubber__time-position;
+			right: 0;
+		}
+
+		&__current-time {
+			@extend .player-scrubber__time-position;
+			left: 0;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.chromeless--watch {
+		.main {
+			display: flex;
+
+			.page {
+				width: 100%;
+			}
+
+			.pg-watch {
+				height: 100%;
+			}
+		}
+
+		.page-entry:not(.page-entry--hero) {
+			display: flex;
+			height: 100%;
+		}
+
+		.player {
+			height: 100%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+
+			&-block {
+				height: 100%;
+				padding: 0;
+			}
+		}
+	}
+
+	.player {
+		&-block {
+			margin: 0;
+			padding-bottom: 56%;
+
+			&__container {
+				z-index: $depth-player-preview;
+
+				$videoHeight: 59px;
+				$videoWidth: 100px;
+				$videoRightPosition: $player-padding-mobile;
+				$videoTopPosition: 18px;
+
+				&--wrap {
+					cursor: pointer;
+					height: $videoHeight;
+					position: absolute;
+					right: $videoRightPosition;
+					top: $videoTopPosition;
+					width: $videoWidth;
+				}
+
+				&--overlay .player-block:after {
+					background-color: $overlay-layer-color;
+					content: "";
+					height: $videoHeight;
+					position: absolute;
+					right: $videoRightPosition;
+					top: $videoTopPosition;
+					width: $videoWidth;
+					z-index: $depth-player-help-layer;
+				}
+
+				&--overlay-hide .player-block:after {
+					display: none;
+				}
+
+				&--hide {
+					display: none;
+				}
+			}
+		}
+
+		&__wrapper {
+			left: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: $depth-player-wrapper;
+
+			&--controls {
+				height: 100%;
+				overflow: hidden;
+			}
+
+			&--ui {
+				.player-controls {
+					transform: translateY(0);
+					transition: $player-controls-animation;
+				}
+
+				&.player__wrapper > .player-metadata {
+					transform: translateY(0);
+					transition: $player-controls-animation;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet, $and: "(orientation: landscape)") {
+	.player-block__container {
+		$videoHeight: 96px;
+		$videoWidth: 170px;
+
+		&--wrap {
+			height: $videoHeight;
+			width: $videoWidth;
+		}
+		&--overlay .player-block:after {
+			height: $videoHeight;
+			width: $videoWidth;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player {
+		$videoHeight: 189px;
+		$videoWidth: 336px;
+		$videoRightPosition: $player-padding-desktop;
+		$videoTopPosition: 18px;
+
+		&-block__container--wrap {
+			height: $videoHeight;
+			right: $videoRightPosition;
+			top: $videoTopPosition;
+			width: $videoWidth;
+		}
+
+		&-block__container--overlay .player-block:after {
+			height: $videoHeight;
+			right: $videoRightPosition;
+			top: $videoTopPosition;
+			width: $videoWidth;
+		}
+
+		&-scrubber {
+			padding-right: 196px - $player-padding-desktop - 56px;
+			margin: 0 0 $scrubber-margin;
+
+			&--cast {
+				padding-left: 196px - $player-padding-desktop - 56px;
+			}
+		}
+	}
+}
+
+@include mq($from: uhd) {
+	.player {
+		$videoTopPosition: 100px;
+
+		&-block__container--wrap {
+			top: $videoTopPosition;
+		}
+
+		&-block__container--overlay .player-block:after {
+			top: $videoTopPosition;
+		}
+
+		.player-btn {
+			height: $button-uhd-height;
+		}
+
+		&-scrubber {
+			padding-right: (196px - $player-padding-desktop);
+			margin: 0 0 $scrubber-margin-uhd;
+
+			&--cast {
+				padding-left: 196px - $player-padding-desktop;
+			}
+
+			&__time,
+			&__current-time {
+				font-size: 1.74em;
+			}
+		}
+	}
+}

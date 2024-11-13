@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Axis.Web.Nginx</id>
+        <version>0.0.0</version>
+        <authors>Massive Interactive</authors>
+        <owners>Massive Interactive</owners>
+        <projectUrl>http://www.massiveaxis.com</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>AXIS web nginx reverse proxy and load balancer</description>
+        <releaseNotes>See changes.md</releaseNotes>
+        <copyright>Copyright Massive Interactive 2016</copyright>
+        <language>en-US</language>
+        <tags>axis web mui</tags>
+    </metadata>
+    <files>
+        <file src="docker.info" target="." />
+    </files>
+</package>

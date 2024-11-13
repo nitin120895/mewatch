@@ -1,0 +1,174 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+@import "ref/responsive/style/app/rows";
+
+.branded-text-packshot {
+	position: relative;
+	padding-bottom: get-grid-margin();
+
+	&__background {
+		display: block;
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 50%;
+		right: 50%;
+		width: 100vw;
+		height: 100%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		background-color: $color__black4;
+	}
+
+	.row-peek {
+		line-height: 0;
+	}
+
+	.packshot-list__packshot:last-child {
+		@include mq($from: tablet) {
+			margin-right: 24px;
+		}
+
+		@include mq($from: desktop) {
+			margin-right: 32px;
+		}
+
+		@include mq($from: desktopWide) {
+			margin-right: 40px;
+		}
+	}
+
+	&.branded-text-packshot--double-row {
+		.packshot-list__packshot:last-child {
+			margin-right: 0;
+		}
+	}
+
+	@include mq(tablet) {
+		padding-top: $branded-page-entry-outset-distance;
+		padding-bottom: $branded-page-entry-outset-distance;
+
+		.packshot-list {
+			flex: 1 1 auto;
+		}
+	}
+}
+
+.branded-text-cover {
+	@include mq($until: tablet) {
+		// prevent image from sliding out and fading when scrolling
+		transform: translateX(0) !important;
+		opacity: 1 !important;
+	}
+
+	@include mq(tablet) {
+		// Allow for animating out of the way of the packshot list
+		transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+
+		&.no-transition {
+			transition: none;
+		}
+	}
+
+	&.col {
+		padding-right: to-rem(get-grid-margin());
+
+		@include mq(tablet) {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			padding-right: to-rem(get-grid-margin(tablet));
+			padding-left: 0;
+		}
+		@include mq(laptop) {
+			padding-right: to-rem(get-grid-margin(laptop));
+		}
+		@include mq(desktop) {
+			padding-right: to-rem(get-grid-margin(desktop));
+		}
+		@include mq(desktopWide) {
+			padding-right: to-rem(get-grid-margin(uhd));
+		}
+	}
+
+	&__link {
+		display: block;
+		text-align: center;
+
+		@include mq($until: tablet) {
+			@include fluid-aspect(2 1);
+		}
+
+		@include mq($from: tablet) {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		padding: 20px 0;
+		color: $color__white;
+	}
+
+	&__image {
+		display: inline-block;
+		max-height: vw(90);
+		max-width: 100%;
+		align-self: center;
+
+		@include mq($from: tablet) {
+			max-height: 50%;
+		}
+	}
+
+	&__title-text {
+		// When the title is too long, use a smaller font size whose value is determined by this ratio
+		$long-title-shrink-ratio: 1/1.4;
+		font-size: 28px;
+		margin-bottom: 0;
+		text-transform: uppercase;
+		word-wrap: break-word;
+
+		&--long {
+			// Hard clip the title when it is too long
+			overflow: hidden;
+			max-height: 180px;
+			font-size: 28px * $long-title-shrink-ratio;
+		}
+
+		@include mq($from: phablet) {
+			font-size: 36px;
+
+			&--long {
+				font-size: 36px * $long-title-shrink-ratio;
+			}
+		}
+
+		@include mq($from: desktop) {
+			font-size: 42px;
+
+			&--long {
+				font-size: 42px * $long-title-shrink-ratio;
+			}
+		}
+	}
+
+	&__tagline {
+		font-size: 16px;
+		max-width: 100%;
+		white-space: normal;
+		line-height: initial;
+		margin-top: 10px;
+		margin-bottom: 0;
+
+		@include mq($from: phablet) {
+			font-size: 20px;
+			margin-top: 20px;
+		}
+	}
+}

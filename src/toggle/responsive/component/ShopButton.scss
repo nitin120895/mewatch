@@ -1,0 +1,25 @@
+@import "shared/style/modules";
+
+.shop-button {
+	color: $color__grey--light;
+	position: relative;
+	margin-right: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__label {
+		color: $color__grey--light;
+		text-transform: capitalize;
+		margin-top: 4px;
+		display: block;
+		font-size: 12px;
+		line-height: 1.25em;
+		transition: color 0.2s;
+		white-space: nowrap;
+		word-wrap: break-word;
+	}
+	&__gif-image {
+		width: 40px;
+	}
+}

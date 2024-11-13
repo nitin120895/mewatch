@@ -1,0 +1,110 @@
+@import "shared/style/modules";
+
+// -------------------------------------- //
+// Debugging Styles
+// -------------------------------------- //
+
+// These styles will NOT be included within production builds
+// provided the DebugGrid.tsx component isn't included. Consult
+// the documentation at the top of DebugGrid.tsx for more info.
+
+$overlay-color: #0ff;
+
+// -------------------------------------- //
+// Grid Visualiser
+// -------------------------------------- //
+
+.grid-expose {
+	$padding: (get-grid-margin() - (get-gutter() / 2));
+	pointer-events: none;
+	z-index: $depth-debug;
+	@include abs-fullscreen();
+	// Apply our grid margin
+	padding: 0 $padding;
+	// Accounts for optional scrollbar for mouse users
+	padding-right: calc(#{$padding} - (100vw - 100%));
+	> .col {
+		height: 100%;
+	}
+	.col-child {
+		background-color: rgba($overlay-color, 0.1);
+		height: 100%;
+	}
+}
+
+@each $breakpoint in $display-margins {
+	@include mq($breakpoint) {
+		.grid-expose {
+			$padding: (get-grid-margin($breakpoint) - (get-gutter($breakpoint) / 2));
+			// Apply our grid margin
+			padding: 0 $padding;
+			padding-right: calc(#{$padding} - (100vw - 100%));
+		}
+	}
+}
+
+// -------------------------------------- //
+// Typography Baseline Visualiser
+// -------------------------------------- //
+
+.baseline-expose {
+	background-image: linear-gradient(to bottom, rgba($overlay-color, 0.25) 0, rgba(255, 255, 255, 0) 1px);
+	background-repeat: repeat-y;
+	background-size: 100% #{$line-height-base}em;
+}
+
+// -------------------------------------- //
+// Breakpoint Visualiser
+// -------------------------------------- //
+
+// This is similar to the `$mq-show-breakpoints` within the `mq` library,
+// however this version allows support for orientation based media queries.
+
+@mixin show-breakpoints($show-breakpoints, $breakpoints: $mq-breakpoints) {
+	.grid-expose:before {
+		background-color: rgba($overlay-color, 0.4);
+		border-bottom-left-radius: 5px;
+		color: white;
+		font: small-caption;
+		font-weight: bold;
+		font-style: italic;
+		text-transform: capitalize;
+		padding: 3px 6px;
+		pointer-events: none;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: $depth-debug;
+
+		// Loop through the breakpoints that should be shown
+		$num-breakpoints: length($show-breakpoints);
+		@for $i from 1 through $num-breakpoints {
+			$show-breakpoint: nth($show-breakpoints, $i);
+			$next-breakpoint: if($i < $num-breakpoints, nth($show-breakpoints, $i + 1), null);
+			$width: mq-get-breakpoint-width($show-breakpoint, $breakpoints);
+			$landscape: ends-with($show-breakpoint, "landscape");
+			$portrait: ends-with($show-breakpoint, "portrait");
+			@if $landscape {
+				$next-width: if($next-breakpoint != null, mq-get-breakpoint-width($next-breakpoint, $breakpoints), 0);
+				$conditions: "(orientation: landscape) and (min-device-width: #{$width})";
+				$conditions: if($next-width > $width, ($conditions + " and (max-device-width: #{$next-width})"), $conditions);
+				@include mq($show-breakpoint, $breakpoints: $breakpoints, $and: $conditions) {
+					content: "#{$show-breakpoint} ≥ #{$width} (#{mq-px2em($width)})";
+				}
+			} @else if $portrait {
+				@include mq($show-breakpoint, $breakpoints: $breakpoints, $and: "(orientation: portrait)") {
+					content: "#{$show-breakpoint} ≥ #{$width} (#{mq-px2em($width)})";
+				}
+			} @else {
+				@include mq($show-breakpoint, $breakpoints: $breakpoints) {
+					content: "#{$show-breakpoint} ≥ #{$width} (#{mq-px2em($width)})";
+				}
+			}
+		}
+	}
+}
+
+@if length($display-breakpoints) > 0 {
+	// Output breakpoint visualiser
+	@include show-breakpoints($display-breakpoints, $mq-breakpoints);
+}

@@ -1,0 +1,22 @@
+@import "shared/style/modules";
+
+.passive-notification-manager {
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	opacity: 1;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	&--hidden {
+		display: none;
+	}
+}
+
+.root-block > .passive-notification-manager {
+	display: none;
+}
+
+.root-block.modal-active > .passive-notification-manager {
+	display: flex;
+}

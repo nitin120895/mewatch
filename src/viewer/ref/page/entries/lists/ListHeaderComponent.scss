@@ -1,0 +1,15 @@
+@import "shared/style/modules";
+
+.input-toggler {
+	label {
+		margin-right: 13px;
+	}
+}
+
+.lh {
+	// This allows clicking the checkboxes when the background image
+	// is displayed since the .lh__push is using a negative top margin
+	// with viewport units which overflows into the form area preventing
+	// interaction.
+	overflow: hidden;
+}

@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.ah-title {
+	color: $color__white;
+
+	@include mq($from: tablet) {
+		padding-top: 60px;
+	}
+
+	@include mq($from: laptop) {
+		padding-top: 90px;
+	}
+}

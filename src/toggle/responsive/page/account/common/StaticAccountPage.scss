@@ -1,0 +1,14 @@
+@import "shared/style/modules";
+
+.app--account .static-pg-account {
+	.page-entry {
+		border-bottom: 0;
+	}
+
+	.page-entry:not(.page-entry--hero) {
+		padding: 0;
+	}
+	.acc-pg-title__heading {
+		color: $color__link--hover;
+	}
+}

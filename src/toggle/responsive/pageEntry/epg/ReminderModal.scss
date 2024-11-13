@@ -1,0 +1,65 @@
+@import "shared/style/modules";
+
+.reminder-overlay {
+	position: relative;
+	z-index: $depth-notifications;
+	background: $color__white;
+	color: $color__grey--dark;
+	width: 335px;
+	height: 212px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+	&__modal {
+		text-align: center;
+	}
+
+	&__title {
+		font-size: 24px;
+		line-height: 1.17;
+		color: $color__black3;
+		padding: 30px 0 0;
+	}
+
+	&__close {
+		position: absolute;
+		right: 15px;
+		top: 20px;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		.svg-icon {
+			stroke: $color__black;
+		}
+	}
+
+	&__details {
+		font-size: 16px;
+		line-height: 1.5;
+		color: $color__grey;
+		padding: 10px 20px 20px;
+	}
+
+	&__button {
+		margin-bottom: 30px;
+	}
+}
+
+@include mq($from: tablet) {
+	.reminder-overlay {
+		width: 534px;
+		height: 238px;
+
+		&__title {
+			padding: 40px 0 0;
+		}
+
+		&__details {
+			padding: 20px 40px 40px;
+		}
+
+		&__button {
+			margin-bottom: 40px;
+		}
+	}
+}

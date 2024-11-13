@@ -1,0 +1,22 @@
+// Whether a string ends with another string.
+@function ends-with($string, $find, $caseInsensitive: true) {
+	$string: if($caseInsensitive, to-lower-case($string), $string);
+	@if (str-length($find) > str-length($string)) {
+		@return false;
+	}
+	@if (str-slice($string, (str-length($string) - str-length($find) + 1)) == $find) {
+		@return true;
+	} @else {
+		@return false;
+	}
+}
+
+// Returns the first value in a list.
+@function first($list) {
+	@return nth($list, 1);
+}
+
+// Returns the last value in a list.
+@function last($list) {
+	@return nth($list, length($list));
+}

@@ -1,0 +1,23 @@
+.list-search {
+	&__input {
+		width: 49%;
+		float: left;
+		margin: 0 1% 0 0;
+
+		&:last-child {
+			margin: 0 0 0 1%;
+		}
+
+		label {
+			margin-bottom: 12px;
+		}
+
+		.default-input {
+			width: 100%;
+		}
+	}
+
+	&__list {
+		width: 100%;
+	}
+}

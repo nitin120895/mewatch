@@ -1,0 +1,14 @@
+.btn.disabled,
+.btn[disabled] {
+	background-color: $color__primary--disabled;
+}
+
+.btn-group {
+	margin-bottom: 0;
+	> .btn {
+		margin-right: 1em;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+
+// This page template is coupled with the X3 page entry row.
+.pg-webview {
+	// This element fills the available content area within the viewport, with the app footer
+	// sitting underneath (below the fold) regardless of the viewport height.
+	// Because our header component has multiple layouts depending on whether a hero page entry
+	// row has been scheduled on the page, we achieve this via the media queries below.
+	&--vp {
+		// Allow scheduled rows to fill the viewport height until they reach the footer
+		display: flex;
+		flex-direction: column;
+		// The Web View page supports an optional header row and a single X3 row, so
+		// we always want to target the last page entry when allowing full height.
+		.page-entry:last-child {
+			// Fill the remaining content area height
+			flex: 1 0 auto;
+			// Use flexbox ready for the child X3 row nested inside
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}
+
+.header ~ .content {
+	// An X3 scheduled alone needs to offset the header height.
+	.pg-webview--vp {
+		height: calc(100vh - #{$header-height-small});
+		@include mq($from: desktop) {
+			height: calc(100vh - #{$header-height-large});
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	// An X3 scheduled below a hero page entry row can ignore the header height
+	.header--hero-mode ~ .content {
+		.pg-webview--vp {
+			height: 100vh;
+		}
+	}
+}

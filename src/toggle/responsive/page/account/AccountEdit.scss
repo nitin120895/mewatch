@@ -1,0 +1,203 @@
+@import "shared/style/modules";
+
+.account-edit {
+	margin: 0 auto;
+	background-color: $color__white;
+	padding: 20px 80px 40px 10px;
+
+	&__item {
+		color: $color__grey--warm;
+		text-align: left;
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	.select {
+		width: 100%;
+
+		&__button {
+			padding-left: 0;
+			font-size: 16px;
+		}
+	}
+
+	.form-white {
+		.txt-input__optional {
+			display: none;
+		}
+
+		.txt-input__input {
+			box-shadow: 0 -2px 0 -1px $color__grey--warm inset;
+			color: $color__black3;
+		}
+
+		.txt-input__label {
+			color: $color__grey--warm;
+			font-family: $font-family-heading;
+		}
+
+		.txt-input--error .txt-input__input {
+			box-shadow: 0 -2px 0 -1px $color__error inset;
+		}
+
+		.txt-input {
+			&--active,
+			&--empty {
+				margin-bottom: 32px;
+			}
+		}
+	}
+
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+	}
+
+	&__form {
+		margin: 0;
+	}
+
+	&__heading {
+		font-size: 20px;
+		font-weight: bold;
+		color: $color__black3;
+		text-transform: uppercase;
+		padding-top: 20px;
+	}
+
+	&__postCode {
+		position: relative;
+
+		button {
+			position: absolute;
+			top: 10px;
+			right: 0;
+			font-size: 14px;
+			font-weight: bold;
+			color: $color__primary;
+			font-family: $font-family-heading;
+		}
+	}
+
+	&__primary-details {
+		margin-top: 25px;
+	}
+
+	&__location-details {
+		margin-top: 35px;
+	}
+
+	&__gender {
+		padding-bottom: 6px;
+	}
+
+	&__gender-radio {
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	&__gender-error {
+		display: none;
+		font-size: 12px;
+		color: $color__error;
+		margin-top: -10px;
+		margin-bottom: 10px;
+		&--error {
+			display: block;
+		}
+	}
+
+	&__email {
+		position: relative;
+		.lock-icon {
+			width: 23px;
+			height: 23px;
+			position: absolute;
+			top: 15px;
+			right: 5px;
+			color: $color__black3;
+			svg {
+				width: 17px;
+				height: 19px;
+			}
+		}
+	}
+
+	&__exclamation {
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+	}
+	&__field-title-gender {
+		font-size: 16px;
+		color: $color__black3;
+		font-weight: normal;
+		&--error {
+			color: $color__error;
+		}
+	}
+
+	&__buttons {
+		background: $color__off-white;
+		padding: 40px 0 0 10px;
+
+		.cancel {
+			margin-left: 20px;
+			border: 1px solid $color__primary;
+		}
+		.disabled {
+			border: 1px solid $color__grey--warm;
+		}
+	}
+
+	.marginTop {
+		margin-top: 28px;
+	}
+
+	.postCodeError {
+		.txt-input__icon {
+			top: 7px;
+			right: 0;
+		}
+		button {
+			right: 15px;
+		}
+	}
+
+	.date-of-birth-input {
+		margin: 42px 0 50px;
+	}
+}
+
+@include mq($from: tablet) {
+	.account-edit {
+		padding: 20px 0 40px 25px;
+		&__form {
+			width: 70%;
+		}
+		&__buttons {
+			padding: 40px 0 0 24px;
+		}
+	}
+}
+
+@include mq($from: laptop, $and: "(orientation: landscape)") {
+	.account-edit {
+		padding: 20px 0 40px 25px;
+		&__form {
+			width: 70%;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.account-edit {
+		padding: 20px 0 40px 40px;
+		&__form {
+			width: 50%;
+		}
+		&__buttons {
+			padding: 40px 0 0 50px;
+		}
+	}
+}

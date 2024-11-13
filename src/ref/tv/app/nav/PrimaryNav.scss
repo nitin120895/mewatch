@@ -1,0 +1,61 @@
+@import "src/ref/tv/style/modules";
+
+.primary-nav {
+	overflow: hidden;
+
+	&__entry {
+		display: inline-block;
+		position: relative;
+		height: 100%;
+		margin-right: 20px;
+		outline: none !important;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&.focused {
+		.primary-nav__entry--active {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 10px;
+				background-color: $color__white;
+				margin: 0 30px;
+			}
+
+			.primary-nav__entry-link {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__entry-link {
+		display: inline-block;
+		min-width: 32px;
+		height: 100%;
+		white-space: nowrap;
+		color: $color__white;
+		font-family: $font-family-heading;
+		font-size: 36px;
+		font-weight: bold;
+		text-transform: uppercase;
+		line-height: 146px;
+		padding: 0 30px;
+		opacity: 0.5;
+
+		&:hover {
+			color: $color__white;
+			opacity: 1;
+			background-color: rgba($color__white, 0.3);
+		}
+
+		&:focus {
+			color: $color__white;
+		}
+	}
+}

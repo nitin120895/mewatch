@@ -1,0 +1,132 @@
+@import "src/ref/tv/style/modules";
+
+.player-progress {
+	margin: 0 80px;
+	position: relative;
+
+	&__timebar {
+		position: relative;
+	}
+
+	&__bar {
+		position: relative;
+		width: 1560px;
+		height: 4px;
+		background-color: $color__progress_bar__bg;
+	}
+
+	&__bar-current {
+		background-color: $color__progress_bar__current;
+		height: 100%;
+		position: relative;
+
+		&:before {
+			position: absolute;
+			content: "";
+			height: 20px;
+			width: 20px;
+			top: -8px;
+			right: -8px;
+			border-radius: 10px;
+			background-color: $color__progress_bar__current;
+			border: solid 3px $color__white;
+		}
+	}
+
+	&__text {
+		position: absolute;
+		top: -10px;
+		right: 0;
+		line-height: 27px;
+		font-size: 24px;
+		text-shadow: 0 2px 4px rgba($color__black, 0.6);
+	}
+
+	&__text-cur-pos {
+		color: $color__fg-light;
+	}
+
+	&__text-center {
+		margin: 0 4px;
+		color: $color__progress_bar__bg;
+	}
+
+	&__text-duration {
+		color: $color__progress_bar__bg;
+	}
+
+	&__text-snap {
+		position: absolute;
+		bottom: 0;
+		right: -120px;
+		margin-bottom: 33px;
+		width: 242px;
+		height: 72px;
+		background-color: rgba($color__black, 0.3);
+		font-size: 28px;
+		line-height: 72px;
+		text-align: center;
+		display: none;
+
+		&--show {
+			display: block;
+		}
+	}
+
+	&__thumb-snap {
+		position: absolute;
+		bottom: 0;
+		right: -213px;
+		margin-bottom: 33px;
+		width: 427px;
+		height: 240px;
+		outline: solid 4px rgba($color__black, 0.3);
+		font-size: 28px;
+		display: none;
+
+		&--show {
+			display: block;
+		}
+
+		.cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(to bottom, rgba($color__black, 0), rgba($color__black, 0.8));
+		}
+	}
+
+	&__state {
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		span {
+			display: inline-block;
+		}
+
+		&--textMode {
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+		}
+	}
+
+	&__icon {
+		font-size: 23px;
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	&__pos {
+		margin-right: 15px;
+	}
+}

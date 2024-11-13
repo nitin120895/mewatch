@@ -1,0 +1,195 @@
+@import "shared/style/modules";
+
+$title-font-size: 14px;
+
+.dr-epg {
+	.arrow {
+		height: calc(100% - #{$channel-rails-metadata-height});
+	}
+}
+
+.epg-image {
+	display: inline-block;
+	float: none !important;
+	vertical-align: top;
+	font-size: 11px;
+	cursor: pointer;
+
+	&__pic {
+		padding: 56.26% 0 0; // 56.26% is for 16:9
+		position: relative;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: auto calc(100% - 50px);
+		overflow: hidden;
+
+		&--no-programme {
+			background-color: $color__black5;
+		}
+	}
+
+	&__item-pic {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__spinner {
+		width: 3rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__title {
+		margin: 6px 0 2px;
+		font-size: $title-font-size;
+		line-height: 1.2;
+		font-family: $font-family-heading;
+		color: $color__white;
+
+		&--text-clip {
+			line-height: 1.4;
+			@include block-with-cut-rows(14, 1.4, 2, 0);
+		}
+
+		&--no-programme {
+			line-height: 1.4;
+			color: $color__grey;
+			white-space: normal;
+		}
+	}
+
+	&__time {
+		margin: 10px 0 0;
+		font-size: 12px;
+		color: $color__grey;
+		text-transform: uppercase;
+	}
+
+	&__subtitle {
+		margin-top: 0.5em;
+		color: $color__grey--dark;
+		text-transform: uppercase;
+	}
+
+	.live-progress {
+		position: absolute;
+		width: 100%;
+		height: $progress-bar-desktop-height;
+		bottom: 0;
+		border-radius: 0;
+
+		.progress-bar {
+			height: $progress-bar-desktop-height;
+
+			&__bar {
+				height: $progress-bar-desktop-height;
+				border-radius: 0;
+			}
+		}
+	}
+
+	&__channel-logo {
+		position: absolute;
+		top: $thumbnail-logo-offset-mobile;
+		right: $thumbnail-logo-offset-mobile;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-start;
+		height: $thumbnail-logo-overlay-height;
+		width: auto;
+		user-select: none;
+
+		img {
+			height: 100%;
+			width: auto;
+
+			&::selection {
+				background: transparent;
+			}
+		}
+	}
+
+	&__item-img {
+		width: 100%;
+	}
+
+	&__vod-icon {
+		position: absolute;
+		left: 5px;
+		bottom: 15px;
+		width: 20px;
+		height: 20px;
+		color: $color__white;
+	}
+
+	&__channel-name-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__channel-name {
+		text-align: center;
+		font-size: 16px;
+		padding: 6px;
+		text-transform: capitalize;
+		color: $color__white;
+		opacity: 0.4;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	&:hover {
+		.epg-image__title {
+			color: $color__primary;
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.epg-image {
+		&__pic {
+			background-size: auto calc(100% - 70px);
+		}
+
+		&__title {
+			font-size: $title-font-size;
+			margin-bottom: 4px;
+		}
+
+		&__channel-logo {
+			top: $thumbnail-logo-offset-tablet;
+			right: $thumbnail-logo-offset-tablet;
+		}
+
+		&__vod-icon {
+			left: 10px;
+			bottom: 20px;
+		}
+	}
+}
+
+@media (hover: none) {
+	.epg-image {
+		&:hover {
+			.epg-image__title {
+				color: $color__white;
+			}
+		}
+
+		&:active {
+			.epg-image__title {
+				color: $color__primary;
+			}
+		}
+	}
+}

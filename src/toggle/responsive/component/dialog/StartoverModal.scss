@@ -1,0 +1,21 @@
+@import "shared/style/modules";
+
+@include mq($until: tablet) {
+	.startover-switch-modal {
+		.dialog-title {
+			font-size: 16px;
+		}
+		.cta-btn {
+			min-width: 230px;
+			margin-bottom: 10px;
+			&--secondary {
+				margin: 0 0 0 0px;
+			}
+		}
+
+		.confirmation-dialog__buttons {
+			flex-direction: column;
+			padding-top: 40px 0 0;
+		}
+	}
+}

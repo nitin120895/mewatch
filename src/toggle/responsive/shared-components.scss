@@ -1,0 +1,180 @@
+// -------------------------------------- //
+// Styling for Shared Components
+// -------------------------------------- //
+
+@import "shared/style/modules";
+@import "ref/responsive/style/app/rows";
+@import "ref/responsive/style/app/header";
+
+// -------------------------------------- //
+// `customFields.ImageVerticalSpacing`
+// -------------------------------------- //
+
+.cf-vspacing {
+	&--flush-bottom {
+		margin-bottom: -$page-entry-bottom-margin-phone;
+
+		@include mq($from: laptop) {
+			margin-bottom: -$page-entry-bottom-margin-laptop;
+		}
+	}
+
+	&--flush-top {
+		margin-top: -$page-entry-bottom-margin-phone;
+
+		@include mq($from: laptop) {
+			margin-top: -$page-entry-bottom-margin-laptop;
+		}
+	}
+}
+
+// Hero entries have a larger gap between their adjacent row so we need to account for the enlarged margin
+.page-entry--hero + .page-entry > .cf-vspacing--flush-top {
+	margin-top: -$header-content-gap-phone;
+
+	@include mq($from: tablet) {
+		margin-top: -$header-content-gap-tablet;
+	}
+	@include mq($from: desktop) {
+		margin-top: -$header-content-gap-desktop;
+	}
+	@include mq($from: uhd) {
+		margin-top: -$header-content-gap-uhd;
+	}
+}
+
+// -------------------------------------- //
+// `customFields.AspectRatio`
+// -------------------------------------- //
+
+.cf-ap {
+	&--16x9 {
+		@include fluid-aspect(16 9);
+	}
+	&--1x1 {
+		@include fluid-aspect(1 1);
+	}
+	&--2x1 {
+		@include fluid-aspect(2 1);
+	}
+	&--3x1 {
+		@include fluid-aspect(3 1);
+	}
+	&--7x1 {
+		@include fluid-aspect(7 1);
+	}
+}
+
+// -------------------------------------- //
+// `src/shared/components/FocusCaptureGroup.tsx`
+// -------------------------------------- //
+
+.focus-capture {
+	position: absolute;
+}
+
+// -------------------------------------- //
+// `src/shared/components/SidePanelOverlay.tsx`
+// -------------------------------------- //
+.side-panel {
+	$sidePanelMaxWidth: 326px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	pointer-events: none;
+
+	overflow-y: hidden;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($color__black, 0.5);
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 0.2s cubic-bezier(0, 0, 0.3, 1);
+	}
+
+	&--animatable {
+		.side-panel__panel {
+			transition: transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+		}
+	}
+
+	&--visible {
+		pointer-events: auto;
+		z-index: $depth-panel-overlays;
+		&::before {
+			opacity: 1;
+		}
+		&.side-panel--animatable {
+			.side-panel__panel {
+				transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+			}
+		}
+		.side-panel__panel {
+			transform: none;
+		}
+	}
+
+	&__close-btn {
+		// The close button is ordered first but needs to be positioned
+		// on top so that it isn't blocked from being clicked
+		z-index: $depth-panel-overlays + 1;
+		position: absolute;
+		pointer-events: auto;
+		cursor: default;
+		width: 14%;
+		min-width: calc(100vw - #{$sidePanelMaxWidth});
+		height: 100%;
+		background: transparent;
+	}
+
+	&__panel--left + .side-panel__close-btn {
+		right: 0;
+	}
+
+	&__panel {
+		$offset: 104%;
+
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		width: 86%;
+		max-width: $sidePanelMaxWidth;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: $color__black6;
+		backface-visibility: hidden;
+		transform: translateZ(0);
+		will-change: transform;
+
+		&--left {
+			left: 0;
+			transform: translateX(-$offset);
+			box-shadow: 4px 0 12px rgba($color__black, 0.4);
+		}
+		&--right {
+			right: 0;
+			left: auto;
+			transform: translateX($offset);
+			box-shadow: -4px 0 12px rgba($color__black, 0.4);
+		}
+	}
+}
+
+@media (hover: none) {
+	.side-panel {
+		display: block;
+	}
+}

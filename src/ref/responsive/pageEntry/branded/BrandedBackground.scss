@@ -1,0 +1,38 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/rows";
+
+$gradient-color: $color__black4;
+
+.branded-bg {
+	position: relative;
+
+	&__packshot-wrapper {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__container {
+		position: relative;
+		background-color: $gradient-color;
+	}
+
+	.packshot-list {
+		position: relative;
+		z-index: 3;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: auto;
+		padding-right: auto;
+		padding-bottom: get-grid-margin();
+	}
+}
+
+@include mq($from: tablet) {
+	.branded-bg {
+		.packshot-list {
+			margin-top: 0;
+			padding-bottom: $branded-page-entry-outset-distance;
+			padding-top: $branded-page-entry-outset-distance;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+@import "shared/style/modules";
+
+.required-modal {
+	&.dialog {
+		width: 335px;
+		padding: 30px;
+
+		&-title {
+			font-size: 24px;
+		}
+
+		.confirmation-dialog {
+			&__content {
+				font-size: 16px;
+				padding: 0 15px;
+			}
+
+			&__buttons {
+				flex-direction: row;
+			}
+		}
+
+		.cta-btn {
+			padding: 0 10px;
+
+			&--secondary {
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+@include mq($from: phoneLandscape) {
+	.required-modal {
+		&.dialog {
+			width: 534px;
+
+			.cta-btn {
+				padding: 0 20px;
+
+				&--secondary {
+					margin-left: 20px;
+				}
+			}
+		}
+	}
+}

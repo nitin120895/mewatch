@@ -1,0 +1,130 @@
+@import "shared/style/modules";
+
+.reset-pin {
+	margin-top: 20px;
+	font-family: $font-family-heading;
+
+	&__form {
+		margin-top: 60px;
+	}
+
+	&__pin-input {
+		width: 80%;
+
+		.pin__input {
+			width: calc(100% / 6 - 10px);
+			color: $color__black;
+			border-bottom: 1px solid $color__grey--light;
+
+			&--error {
+				color: $color__error;
+				border-bottom: 2px solid $color__error;
+			}
+
+			&:focus {
+				border-bottom: 2px solid $color__primary;
+			}
+		}
+	}
+
+	&__otp-container {
+		position: relative;
+	}
+
+	&__toast {
+		&--bold {
+			font-weight: bold;
+		}
+	}
+
+	.cta-btn--primary-light:disabled {
+		color: $color__white;
+		background-color: $color__neutral;
+	}
+
+	&__otp-container .otp {
+		&__description,
+		&__expiry-description,
+		&__title,
+		&__content,
+		&__buttons,
+		.pin__error-message {
+			text-align: left;
+		}
+
+		&__description {
+			max-width: 355px;
+			font-size: 14px;
+			line-height: 1.29;
+			color: $color__grey--dark;
+		}
+
+		&__title {
+			font-size: 16px;
+			font-weight: bold;
+			color: $color__grey--dark;
+		}
+
+		&__content {
+			margin-bottom: 40px;
+		}
+
+		.otp-cancel {
+			display: none;
+		}
+
+		&__otp-code {
+			text-align: left;
+			margin: 0;
+			.pin__inputs {
+				margin: 0;
+			}
+		}
+		&__resend {
+			text-align: left;
+			white-space: pre-wrap;
+			margin-left: -25px;
+			font-size: 14px;
+		}
+	}
+
+	&__pin-label {
+		font-size: 12px;
+	}
+
+	&__pin-title {
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__grey--dark;
+		margin-bottom: 24px;
+
+		&--disabled {
+			opacity: 0.5;
+			color: $color__grey--warm;
+		}
+	}
+
+	&__cancel-btn {
+		margin-left: 1rem;
+	}
+}
+
+@media screen and (min-width: 428px) {
+	.reset-pin {
+		.otp {
+			&__description {
+				max-width: 572px;
+			}
+			&__input-group {
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-end;
+			}
+
+			&__buttons {
+				padding: 0 1.5rem 2rem;
+				margin: 0;
+			}
+		}
+	}
+}

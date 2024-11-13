@@ -1,0 +1,30 @@
+@import "src/ref/tv/style/modules";
+
+.season-selector {
+	&__season {
+		width: 347px;
+		font-size: 38px;
+
+		&-content {
+			cursor: pointer;
+			display: inline-block;
+			opacity: 0.5;
+
+			&:not(.focused):hover {
+				color: $color__white;
+				opacity: 0.75;
+			}
+
+			&.focused {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__bar {
+		opacity: 0;
+		width: 153px;
+		height: 10px;
+		background-color: $color__white;
+	}
+}

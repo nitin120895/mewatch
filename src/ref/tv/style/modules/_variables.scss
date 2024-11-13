@@ -1,0 +1,41 @@
+@import "./colors";
+
+// -------------------------------------- //
+// Page
+// -------------------------------------- //
+
+// `body` element styling
+$body-bg-image-path: null !default;
+$body-bg-color: $color__black !default;
+
+// Optional top level app element styling (e.g. the child inside #root)
+$app-bg-color: $body-bg-color !default;
+
+$body-text-color: $color__white !default;
+$body-link-color: $color__primary !default;
+$body-link-color--hover: $color__primary !default;
+
+// -------------------------------------- //
+// Buttons
+// -------------------------------------- //
+
+$button-bg: $color__primary;
+$button-hover-bg: $color__primary--hover;
+$button-disabled-opacity: 1;
+
+// -------------------------------------- //
+// Layer Depth (z-index)
+// -------------------------------------- //
+
+$depth-header: 10;
+$depth-panel-overlays: 20;
+$depth-notifications: 30;
+$depth-prompts: 40;
+$depth-modal-overlays: 50;
+$depth-debug: 999;
+
+// -------------------------------------- //
+// Sizes
+// -------------------------------------- //
+$account_hero_bg: linear-gradient(to top, rgba($color__primary, 0.35), rgba($color__primary, 0));
+$content__margin: 0 80px;

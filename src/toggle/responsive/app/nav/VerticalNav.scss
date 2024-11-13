@@ -1,0 +1,102 @@
+@import "shared/style/modules";
+
+.vertical-nav {
+	$posterWidth: 104px;
+	$tileWidth: 216px;
+	$hero3x1Width: 425px;
+
+	position: absolute;
+	min-height: 100%;
+	left: 0;
+	right: 0;
+	padding-bottom: 16px;
+
+	&__title {
+		padding: 0 16px 0 20px;
+		max-width: 100%;
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	&__account-section {
+		display: flex;
+		padding: 15px;
+		align-items: center;
+
+		&--signed-out {
+			padding-top: 5px;
+			padding-bottom: 15px;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__profile-name {
+		flex: 1;
+		padding-right: 30px;
+		padding-left: 10px;
+		font-size: 12px;
+	}
+
+	&__sign-in-action {
+		padding: 10px 5px 0;
+		flex: 1 0 110px;
+	}
+
+	&__action-button {
+		width: 100%;
+	}
+
+	&__profile {
+		flex: 0 1 auto;
+	}
+
+	&__switch-button {
+		font-family: $font-family-heading;
+		font-size: 12px;
+		transition: color 0.2s;
+		color: $color__white;
+		&:hover {
+			color: $color__primary;
+		}
+	}
+
+	&__list {
+		margin-bottom: 12px;
+		padding: 8px 16px 0 20px;
+		max-width: 100%;
+
+		&.continue-watching {
+			.arrow {
+				height: calc(100% - #{$continue-watching-metadata-height});
+			}
+		}
+	}
+
+	&__packshot + &__packshot {
+		margin-left: 8px;
+	}
+
+	&__packshot {
+		position: relative;
+		margin: 0;
+		width: $posterWidth;
+
+		&--tile {
+			width: $tileWidth;
+		}
+
+		&--hero3x1 {
+			width: $hero3x1Width;
+		}
+
+		.packshot-title {
+			margin-top: 5px;
+			padding-left: 0;
+		}
+	}
+
+	.overlay-container {
+		position: relative;
+		left: 0;
+	}
+}

@@ -1,0 +1,97 @@
+// Generic Color Pallette
+$color__black: #000 !default;
+$color__black2: #1a1a1a !default;
+$color__black3: #222 !default;
+$color__black4: #262626 !default;
+$color__black5: #333 !default;
+$color__black6: #2e2e2e !default;
+$color__black7: #0e0e0e !default;
+
+$color__white: #fff !default;
+$color__off-white: #f0f0f0 !default;
+$color__white-gradient: #fafafa !default;
+
+$color__grey--light: #ccc !default;
+$color__grey--warm: #808080 !default;
+$color__grey--me-pass: #d3d3d3 !default;
+$color__warm-me-pass: #a6a6a6 !default;
+$color__grey: #666 !default;
+$color__grey--medium: #7a7a7a !default;
+$color__grey--dark: #4d4d4d !default;
+$color__grey--lighter: #eaeaea !default;
+
+$color__blue--lighter: #4ab5f7 !default;
+$color__blue--light: #0099f7 !default;
+$color__blue: #007bc7 !default;
+
+$color__yellow: #f0b040 !default;
+$color__yellow1: #ffea00 !default;
+
+$color__orange: #f47e2c !default;
+
+$color__green: #54b948 !default;
+
+// Neutral Color Pallete
+$color__neutral: #a0a0a0 !default;
+$color__neutral--light: $color__grey--light !default;
+$color__neutral--dark: $color__grey--dark !default;
+
+// Brand Color Pallete
+$color__primary: #a5238c !default;
+$color__primary--hover: #b74fa3 !default;
+$color__primary--disabled: $color__neutral !default;
+$color__primary--darker: darken(desaturate($color__primary, 8.51), 10.78) !default;
+$color__secondary: #f0008c !default;
+$color__secondary--hover: #f0008c !default;
+$color__link--hover: #e04fc5 !default;
+$color__secondary--disabled: $color__neutral !default;
+$color__tertiary: $color__blue !default;
+$color__tertiary--hover: #1db7c7 !default;
+$color__tertiary--disabled: $color__neutral !default;
+
+// Complementary
+$color__complimentary: #ffb200 !default;
+
+// Playback Entitlement Pallete
+$color__entitled: #82a608 !default;
+$color__entitled--hover: #90b413 !default;
+
+// Error & Success Pallete
+$color__success: #4ca224 !default;
+$color__error: #ec0000 !default;
+$color__error-me-pass: #e94335 !default;
+$color_focused-me-pass: #597532 !default;
+
+$overlay-layer-color: rgba($color__black, 0.7);
+
+$facebook-color: #3a5798;
+
+// mePAss rebranding
+$color__mepass-primary--hover: #02664b !default;
+$color__notification-info-icon: #ff0bac;
+$color__notification-purple: #b92e9a;
+
+// Games Schedule Palette
+$color__games-header: #022366;
+$color__games-cta-text: #5785e2;
+$color__games-bg: $color__black6;
+$color__games-background: #001540;
+$color__games-date-picker: $color__black4;
+$color__games-date-hover: $color__link--hover;
+$color__games-date-text: $color__grey--warm;
+$color__games-epg-item-hover: #d3d4d7;
+$color__games-epg-item-bg: linear-gradient(180deg, #eaeaea 0%, #bcbcbc 100%);
+$color__games-epg-item-past-bg: #015a9d;
+$color__games-epg-item-bg--hover: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+$color__games-epg-item-bg-past--hover: #0373c7;
+$color__games-epg-modal-sport-bg: linear-gradient(270deg, #7ea2d5 0%, #fba8cb 100%);
+$color__games-cta-bg: #3f4449;
+$color__games-item-bg: #009cdf;
+$color__games-item-bg--hover: #67c1e9;
+$color__games-ellipse-bg: $color__games-epg-modal-sport-bg;
+$color__games-gradient-bg: linear-gradient(270deg, #fba9cb 0%, #009ce0 100%);
+$color__games-live-now: #ba000d;
+
+$color__mewatch-background: #f900e4;
+$color__banner-bg: rgba(249, 0, 228, 0.3);
+$color--banner: linear-gradient(180deg, #1f0e1d 0%, #5b0a54 100%);

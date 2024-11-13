@@ -1,0 +1,108 @@
+@import "src/ref/tv/style/modules";
+
+.h5-thumbnail {
+	position: relative;
+	height: $viewport-height;
+
+	&__carousel {
+		height: $viewport-height;
+		width: 100%;
+		margin: 0;
+		white-space: nowrap;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		img {
+			min-width: 100%;
+		}
+	}
+
+	&__carousel-image {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: $viewport-height;
+		margin: 0;
+		white-space: nowrap;
+
+		> div {
+			position: absolute;
+			transition: left 0.3s;
+		}
+
+		img {
+			min-width: 100%;
+		}
+	}
+
+	&__bgCover {
+		position: absolute;
+		left: 0;
+		top: 1px;
+		width: 100%;
+		height: 100%;
+		background-image: linear-gradient(to bottom, rgba($color__black, 0), rgba($color__black, 0.6));
+	}
+
+	&__item {
+		min-width: 100%;
+		position: absolute;
+		transition: left 0.3s;
+	}
+
+	&__lists {
+		position: absolute;
+		left: 0;
+		height: 183px;
+		top: $h5-list-top;
+		width: 100%;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		transition: top $transition-duration;
+	}
+
+	&__arrowDiv {
+		position: absolute;
+		z-index: 2;
+		bottom: 190px;
+		width: 100%;
+		height: 80px;
+		background: none;
+		border: 0;
+		font-size: 32px;
+		cursor: pointer;
+		color: $color__white;
+		font-size: 26px;
+		padding: 5px;
+
+		&:hover {
+			button {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		top: $h5-bottom-btn-top;
+
+		&--hide {
+			opacity: 1;
+		}
+
+		&--down {
+			background: transparent;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			transition: top $transition-duration;
+		}
+
+		.icon {
+			color: $color__white;
+			display: block;
+			font-size: 35px;
+		}
+	}
+}

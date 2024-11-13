@@ -1,0 +1,58 @@
+@import "shared/style/modules";
+
+.selector {
+	@keyframes loaded {
+		0% {
+			opacity: 0;
+			transform: scale(0.7);
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	&__title {
+		text-align: center;
+		font-size: 28px;
+		font-weight: 300;
+		margin-bottom: 30px;
+
+		@include mq($from: desktop) {
+			font-size: 42px;
+			margin-bottom: 45px;
+		}
+	}
+
+	&__items {
+		text-align: center;
+		padding: 0;
+		margin: 0 auto;
+		max-width: 320px;
+
+		@include mq($from: phablet) {
+			max-width: 480px;
+		}
+
+		@include mq($from: tablet) {
+			max-width: 600px;
+		}
+	}
+
+	&__item {
+		vertical-align: top;
+		display: inline-block;
+		margin-left: 16px;
+		margin-right: 16px;
+		margin-bottom: 32px;
+
+		> .profile-circle {
+			margin: 0;
+			color: $color__white;
+		}
+	}
+
+	&__circle {
+		animation: loaded 0.2s forwards;
+	}
+}

@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.otp-modal {
+	width: 100%;
+	font-family: $font-family-base;
+}
+
+@include mq($from: phablet) {
+	.otp-modal {
+		width: 500px;
+		padding: 40px;
+	}
+}

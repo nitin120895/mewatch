@@ -1,0 +1,31 @@
+$barColor: #fffbc5;
+
+/* Make clicks pass-through */
+#apploader {
+	pointer-events: none;
+}
+
+#apploader .bar {
+	background: $barColor;
+
+	position: fixed;
+	z-index: 1111;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 2px;
+}
+
+/* Fancy blur effect */
+#apploader .peg {
+	display: block;
+	position: absolute;
+	right: 0px;
+	width: 100px;
+	height: 100%;
+	box-shadow: 0 0 10px $barColor, 0 0 5px $barColor;
+	opacity: 1;
+
+	transform: rotate(3deg) translate(0px, -4px);
+}

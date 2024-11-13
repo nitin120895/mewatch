@@ -1,0 +1,31 @@
+@import "src/ref/tv/style/modules";
+
+.mosaic-cell {
+	background-size: cover;
+	font-family: $font-family-heading;
+	overflow: hidden;
+	position: relative;
+	background-color: rgba($color__white, 0.4);
+
+	&.focused {
+		outline: solid 6px $color__white;
+	}
+
+	&__title {
+		position: absolute;
+		text-transform: uppercase;
+		height: auto;
+
+		.gradient-title__title {
+			margin: 0;
+			max-height: 82px;
+			padding: 11px 18px;
+			white-space: normal;
+			overflow-y: hidden;
+		}
+	}
+
+	&--empty {
+		background-color: rgba($color__white, 0.2);
+	}
+}

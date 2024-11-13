@@ -1,0 +1,28 @@
+@import "src/ref/tv/style/modules";
+
+.d1 {
+	font-family: $font-family-heading;
+
+	&__episodes {
+		margin-right: -20px;
+
+		.episode-grid-item {
+			display: inline-block;
+		}
+	}
+
+	.episode-grid-item__container {
+		&--focused,
+		&:hover {
+			outline: $color__white solid 6px;
+		}
+	}
+
+	.desc-container {
+		padding: 20px 0;
+	}
+
+	.d1-season-desc {
+		margin: 0 0 0 -20px;
+	}
+}

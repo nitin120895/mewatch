@@ -1,0 +1,9 @@
+// Available Fonts - web fonts should be declared within _fonts.scss first.
+$font-roboto: "Roboto";
+
+// Set body & heading fonts
+$font-family-body: $font-roboto, sans-serif !default;
+$font-family-heading: $font-roboto, sans-serif !default;
+
+// Sizing
+$font-size-base: 0.875em;

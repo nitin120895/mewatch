@@ -1,0 +1,23 @@
+@import "src/ref/tv/style/modules";
+
+.signout-button {
+	margin-bottom: $signout-btn-margin-bottom;
+
+	&__button {
+		width: 265px;
+		height: $btn-height;
+		border-radius: 45px;
+		border: solid 4px $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 82px;
+		cursor: pointer;
+
+		&--focused,
+		&:hover {
+			color: $color__button_active;
+			background-color: $color__white;
+		}
+	}
+}

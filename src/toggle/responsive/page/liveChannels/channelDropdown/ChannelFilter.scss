@@ -1,0 +1,59 @@
+@import "shared/style/modules";
+
+.channel-filter {
+	position: relative;
+	color: $color__white;
+
+	span {
+		margin-right: 1.5rem;
+	}
+
+	&__button {
+		font-size: 1rem;
+		padding: 1rem;
+		min-width: 8.2rem;
+		background: $color__black4;
+		text-align: left;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		&--expanded {
+			.channel-filter__arrow-icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&__list-container {
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 3.3rem;
+		background-color: $color__grey--dark;
+
+		ul {
+			padding-left: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	&--right &__button {
+		float: right;
+	}
+
+	&--expanded &__list-container {
+		display: block;
+		max-width: 13.875rem;
+		background: $color__black4;
+		max-height: 24rem;
+		box-shadow: 0px 0.25rem 0.25rem 0px rgba($color__black, 0.25);
+		overflow: auto;
+		z-index: $depth-header - 1;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}

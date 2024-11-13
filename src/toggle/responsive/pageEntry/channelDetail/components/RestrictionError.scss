@@ -1,0 +1,88 @@
+@import "shared/style/modules";
+
+.restriction-error {
+	&__wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		font-size: 14px;
+
+		h3 {
+			font-size: 1rem;
+		}
+
+		h4 {
+			margin: 1em 20px;
+			font-size: 18px;
+		}
+
+		p {
+			margin: 0px 20px 15px;
+		}
+
+		.cta-btn {
+			text-transform: none;
+			height: 30px;
+		}
+
+		.player-metadata {
+			margin-top: 1em;
+		}
+	}
+
+	&__main {
+		height: 100%;
+		&.isFullScreenPlayer {
+			height: 0;
+			padding-bottom: 56%;
+			overflow: hidden;
+			position: relative;
+		}
+	}
+	&__inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		align-content: center;
+		height: 100%;
+		justify-content: center;
+		text-align: center;
+		background-color: $color__black;
+	}
+}
+
+@include mq($from: phablet) {
+	.restriction-error {
+		&__wrapper {
+			h3 {
+				font-size: 24px;
+				margin-bottom: 1em;
+			}
+			p {
+				font-size: 18px;
+				margin-bottom: 1em;
+			}
+			.cta-btn {
+				height: 40px;
+				margin-top: 1em;
+			}
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.restriction-error {
+		&__wrapper {
+			.player-metadata {
+				display: none;
+			}
+		}
+	}
+}

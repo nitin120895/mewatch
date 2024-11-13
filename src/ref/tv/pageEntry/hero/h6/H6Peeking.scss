@@ -1,0 +1,34 @@
+@import "src/ref/tv/style/modules";
+
+.h6-peeking {
+	.h1-entry {
+		@include fluid-aspect(1500px, 16 9);
+	}
+
+	.hero-carousel {
+		&__carousel {
+			width: $viewport-width - $h6-peek-size * 2;
+			margin: 0 $h6-peek-size;
+		}
+
+		&__item {
+			width: $viewport-width - $h6-peek-size * 2 - 6px;
+
+			&--inactive {
+				opacity: 0.5;
+			}
+		}
+	}
+
+	.focused {
+		.hero-carousel__arrow {
+			opacity: 0;
+		}
+
+		.hero-carousel__item--active .hero-item__box {
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+	}
+}

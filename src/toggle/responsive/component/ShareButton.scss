@@ -1,0 +1,123 @@
+@import "shared/style/modules";
+
+.share-button {
+	color: $color__grey--light;
+	position: relative;
+	height: 60px;
+	display: block;
+	align-items: center;
+
+	&__button-arrow {
+		background: transparent;
+		min-width: 40px;
+		text-align: center;
+		cursor: pointer;
+		transition: color 0.2s;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		// Pseudo element for triangle
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: -19px;
+			left: 50%;
+			width: 0;
+			height: 0;
+			transform: translateX(-50%);
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-top: 9px solid $color__grey--dark;
+		}
+	}
+
+	&__button {
+		background: transparent;
+		min-width: 40px;
+		text-align: center;
+		cursor: pointer;
+		transition: color 0.2s;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__label {
+		color: $color__grey--light;
+		text-transform: capitalize;
+		margin-top: 6px;
+		display: block;
+		font-size: 12px;
+		line-height: 1.25em;
+		transition: color 0.2s;
+		white-space: nowrap;
+		word-wrap: break-word;
+	}
+
+	&__icon {
+		margin: 0 auto;
+		height: 26px;
+		width: 26px;
+		transition: stroke 0.2s;
+		stroke: $color__grey--light;
+	}
+
+	.overlay__backdrop {
+		background-color: rgba($color__black, 0);
+	}
+
+	&:hover {
+		color: $color__white;
+		.share-button__icon {
+			stroke: $color__white !important;
+		}
+
+		.share-button__label {
+			color: $color__white;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		background-color: $color__grey--dark;
+		border-radius: 8px;
+		position: absolute;
+		left: -50%;
+		bottom: 130%;
+		margin-left: -30px;
+		padding: 5px;
+		z-index: $depth-modal-overlays + 1;
+		min-width: 180px;
+		min-height: 45px;
+		transform: translateX(-25%);
+	}
+
+	@keyframes expand-open {
+		0% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+		60% {
+			transform: scale(1.1);
+		}
+		80% {
+			transform: scale(0.9);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+//this media query for gelaxy fold.
+@media (min-width: 200px) and (max-width: 320px) and (orientation: portrait) {
+	.share-button {
+		&__menu {
+			left: 0px;
+			transform: translateX(-53%);
+		}
+	}
+}

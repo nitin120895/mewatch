@@ -1,0 +1,79 @@
+@import "shared/style/modules";
+
+.nav-content {
+	$dropMenuPadding: 30px;
+	$posterWidth: 99px;
+	$tileWidth: 135px;
+	$hero3x1Width: 425px;
+	$packshotSpacing: 10px;
+
+	&__title {
+		color: $color__white;
+		font-weight: bold;
+
+		&:hover,
+		&:active {
+			color: $color__primary;
+		}
+	}
+
+	&__title + &__row {
+		margin-top: 16px;
+	}
+
+	&__row {
+		margin-top: 4px;
+		white-space: nowrap;
+
+		&--scrollable {
+			max-width: ($posterWidth + $packshotSpacing) * 6;
+			margin-right: -$dropMenuPadding;
+			margin-left: -$dropMenuPadding;
+			padding-right: $dropMenuPadding;
+			padding-left: $dropMenuPadding;
+
+			.arrow--left {
+				left: 6px - $dropMenuPadding;
+			}
+
+			.arrow--right {
+				right: 6px - $dropMenuPadding;
+			}
+		}
+	}
+
+	&__packshot + &__packshot {
+		margin-left: $packshotSpacing;
+	}
+
+	&__packshot {
+		position: relative;
+		margin: 0;
+		width: $posterWidth;
+
+		&--tile {
+			width: $tileWidth;
+		}
+
+		&--hero3x1 {
+			width: $hero3x1Width;
+		}
+
+		.packshot-title {
+			font-size: 14px;
+			opacity: 0.96;
+			margin-top: 5px;
+		}
+
+		.partner-logo {
+			top: $thumbnail-logo-offset-mobile;
+			right: $thumbnail-logo-offset-mobile;
+		}
+	}
+
+	.overlay-container {
+		position: relative;
+		left: 0;
+		right: 0;
+	}
+}

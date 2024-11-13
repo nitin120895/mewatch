@@ -1,0 +1,44 @@
+@import "src/ref/tv/style/modules";
+
+.switch-profile-modal {
+	font-family: $font-family-heading;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: $color__black;
+
+	&__logo {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		width: 193px;
+		height: 57px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url("../../../../../resource/ref/tv/image/axis-logo-blue.png");
+	}
+
+	&__content {
+		text-align: center;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	&__title {
+		font-size: 64px;
+		margin-bottom: 50px;
+	}
+
+	&__profiles {
+		margin-right: -50px;
+		text-align: left;
+	}
+
+	&__pin {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}

@@ -1,0 +1,21 @@
+@import "src/ref/tv/style/modules";
+
+.footer {
+	padding: $footer-padding-top 0 $footer-padding-bottom;
+
+	&--hide {
+		opacity: 0;
+		padding: 0;
+		height: 0;
+	}
+
+	&__back-to-top {
+		&--focused,
+		&:hover,
+		&:focus {
+			background-color: $color__white;
+			border: solid 4px $color__white;
+			color: $color__primary;
+		}
+	}
+}

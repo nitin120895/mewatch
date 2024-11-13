@@ -1,0 +1,93 @@
+@import "shared/style/modules";
+
+.manage-preferences {
+	.form-white {
+		margin-bottom: 0;
+	}
+
+	&__classification {
+		font-family: $font-family-heading;
+		font-size: 16px;
+		font-weight: bold;
+		color: $color__black2;
+	}
+
+	&__subscribed-section {
+		padding: 40px 0 0;
+
+		div {
+			margin-top: 20px;
+		}
+	}
+
+	&__newsletters-list {
+		padding: 0 40px 30px;
+	}
+
+	&__submit-preferences {
+		.truncate {
+			margin: 0 auto;
+		}
+	}
+
+	&__container-button {
+		display: flex;
+		text-align: center;
+		width: 100%;
+		flex-direction: row;
+		align-items: center;
+		padding: 40px;
+		background: $color__off-white;
+
+		.cta-btn {
+			width: 140px;
+
+			&--primary {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	h3 {
+		font-family: $font-family-heading;
+		font-size: 20px;
+		font-weight: bold;
+		color: $color__primary;
+		text-transform: uppercase;
+	}
+
+	.checkbox {
+		&__message {
+			font-family: $font-family-heading;
+			font-size: 14px;
+			line-height: 1.21;
+			letter-spacing: normal;
+			color: $color__grey;
+			padding-left: 28px;
+		}
+
+		&__label {
+			font-family: $font-family-heading;
+			font-size: 16px;
+			font-weight: bold;
+			color: $color__grey;
+			padding-left: 6px;
+		}
+	}
+}
+
+@include mq($until: phablet) {
+	.manage-preferences {
+		.checkbox {
+			&__label {
+				display: inline-block;
+				width: 90%;
+				margin-left: 20px;
+			}
+
+			&__tick-box-wrap {
+				position: absolute;
+			}
+		}
+	}
+}

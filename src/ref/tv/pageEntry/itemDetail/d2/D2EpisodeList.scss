@@ -1,0 +1,57 @@
+@import "src/ref/tv/style/modules";
+
+.d2 {
+	font-family: $font-family-heading;
+
+	&__title {
+		margin: 0;
+	}
+
+	&__season-group {
+		position: relative;
+	}
+
+	&__season {
+		display: inline-block;
+		height: $btn-height;
+		border-radius: 45px;
+		border: solid 4px $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		line-height: 82px;
+		margin: $d2-season-drop-btn-margin-top 0;
+		padding-left: 42px;
+		cursor: pointer;
+
+		&--focused {
+			color: $color__primary;
+			background-color: $color__white;
+		}
+	}
+
+	&__drop-icon {
+		font-size: 20px;
+		font-weight: bold !important;
+		margin: 0 40px;
+	}
+
+	&__cta-btn {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__description {
+		margin-bottom: 32px;
+	}
+
+	&__episodes {
+		margin-top: $d2-list-margin-top;
+		position: relative;
+	}
+
+	&__seasonNo {
+		display: none;
+	}
+}

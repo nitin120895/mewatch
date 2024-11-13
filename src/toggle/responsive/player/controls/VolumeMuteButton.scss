@@ -1,0 +1,85 @@
+@import "shared/style/modules";
+
+$border-color: rgba($color__white, 0.5);
+
+@mixin noHoverAndActive() {
+	&:hover {
+		background-color: $overlay-layer-color;
+		border-color: $border-color;
+	}
+	&:active {
+		background-color: $color__primary;
+		border-color: $color__primary;
+	}
+}
+
+.volume-mute-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 60px;
+	height: 60px;
+	border: 3px solid $border-color;
+	border-radius: 50px;
+	background-color: $overlay-layer-color;
+	z-index: $depth-panel-overlays;
+	cursor: pointer;
+
+	@include mq($until: tablet) {
+		$margin: to-rem(get-grid-margin(phone));
+		right: $margin;
+		width: 40px;
+		height: 40px;
+	}
+
+	@include mq(tablet) {
+		$margin: to-rem(get-grid-margin(tablet));
+		right: $margin;
+	}
+
+	@include mq(laptop) {
+		$margin: to-rem(get-grid-margin(laptop));
+		right: $margin;
+	}
+	@include mq(desktop) {
+		$margin: to-rem(get-grid-margin(desktop));
+		right: $margin;
+	}
+
+	@include mq($from: desktop) {
+		&:hover {
+			background-color: $color__primary;
+			border-color: $color__primary;
+		}
+	}
+
+	@include mq(desktopWide) {
+		$margin: to-rem(get-grid-margin(uhd));
+		right: $margin;
+	}
+
+	.svg-icon {
+		position: absolute;
+		margin: -15px 0 0 -15px;
+		top: 50%;
+		left: 50%;
+		width: 30px;
+		height: 30px;
+
+		@include mq($until: tablet) {
+			margin: -10px 0 0 -10px;
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	@media (hover: none) {
+		@include noHoverAndActive();
+	}
+}
+
+.is-touch-device {
+	.volume-mute-btn {
+		@include noHoverAndActive();
+	}
+}

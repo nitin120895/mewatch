@@ -1,0 +1,221 @@
+@import "shared/style/modules";
+
+.personalisation-settings {
+	&__content-container {
+		&--error {
+			min-height: auto;
+		}
+	}
+
+	&__intro {
+		padding: 20px 14px 0;
+		font-size: 18px;
+		font-family: $font-family-heading;
+		color: $color__black3;
+		text-align: center;
+
+		h2 {
+			margin-bottom: 10px;
+			color: $color__black3;
+			font-size: 24px;
+		}
+
+		.form-text {
+			color: $color__grey;
+			font-size: 14px;
+			margin-bottom: 5px;
+			padding: 0 10px;
+		}
+
+		.ah-title {
+			padding-top: 0;
+		}
+	}
+
+	&__error {
+		width: 100%;
+		max-width: 347px;
+		margin: 20px auto 40px;
+		font-family: $font-family-heading;
+		padding: 0;
+		color: $color__grey--dark;
+		font-size: 16px;
+		line-height: 1.22;
+		text-align: center;
+
+		.margin-top {
+			margin-top: 20px;
+		}
+	}
+
+	&__buttons {
+		text-align: center;
+		padding: 0 0 40px;
+		.cta-btn {
+			min-width: 146px;
+			&:disabled {
+				color: $color__white;
+				background-color: $color__primary--disabled;
+			}
+		}
+		button:first-child {
+			margin-right: 20px;
+		}
+	}
+
+	.icon-wrapper {
+		position: absolute;
+		z-index: 1;
+		top: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		display: none;
+		background-color: $color__secondary;
+		border-radius: 50%;
+	}
+
+	.personalisation-step2 {
+		&__item .icon-wrapper {
+			display: block;
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	&__toast {
+		&--bold {
+			font-weight: bold;
+		}
+	}
+
+	&__logo-link {
+		display: inline-block;
+		margin: 0 auto;
+		padding: 35px 0;
+		color: $color__primary;
+		@include mq($from: tablet) {
+			padding: 75px 0;
+		}
+	}
+}
+
+@include mq($from: phablet, $and: "(orientation: landscape)") {
+	.personalisation-settings {
+		&__intro {
+			.form-text {
+				margin: 0 auto;
+			}
+		}
+
+		&__content-container {
+			&--coldstart .personalisation-step2__items {
+				&--scrollable {
+					max-height: 180px;
+				}
+			}
+		}
+	}
+}
+
+@media #{$blackberryPortrait} {
+	.personalisation-settings {
+		&__intro {
+			padding: 40px 14px 0;
+			h2 {
+				font-size: 24px;
+			}
+
+			.form-text {
+				font-size: 16px;
+				text-align: center;
+				margin: 0 auto;
+				padding: 0;
+			}
+		}
+
+		&__content-container {
+			&--coldstart .personalisation-step2__items {
+				&--scrollable {
+					min-height: calc(100vh - 420px);
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.personalisation-settings {
+		&__content-container {
+			&--coldstart .personalisation-step2__items {
+				&--scrollable {
+					min-height: calc(100vh - 420px);
+				}
+			}
+		}
+	}
+}
+
+@media #{$untilPhoneLandscape} {
+	.personalisation-settings {
+		&__content-container {
+			&--coldstart .personalisation-step2__items {
+				&--scrollable {
+					max-height: 180px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.personalisation-settings {
+		&__intro {
+			padding-top: 40px;
+
+			h2 {
+				margin-bottom: 20px;
+			}
+		}
+
+		&__error {
+			font-size: 18px;
+			padding: 20px 15px 40px;
+		}
+
+		.form-text {
+			font-size: 16px;
+			margin: 0 auto;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.personalisation-settings {
+		&__intro {
+			padding: 40px 14px 10px;
+
+			h2 {
+				font-size: 32px;
+			}
+
+			.form-text {
+				font-size: 18px;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	.personalisation-settings {
+		&__buttons .cta-btn--secondary {
+			&:hover:not(:disabled) {
+				background-color: $color__white;
+			}
+			&:active:not(:disabled) {
+				background-color: rgba($color__primary, 0.2);
+			}
+		}
+	}
+}

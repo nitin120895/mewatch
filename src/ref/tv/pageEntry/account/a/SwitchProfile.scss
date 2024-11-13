@@ -1,0 +1,32 @@
+@import "shared/style/modules";
+@import "src/ref/tv/style/modules";
+.switch-profile {
+	font-family: $font-family-heading;
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 94px;
+	z-index: 1;
+
+	&--isVisible {
+		display: block;
+	}
+
+	&__button {
+		padding: 0 50px;
+		height: 90px;
+		border-radius: 100px;
+		border: solid 4px $color__white;
+		font-size: 28px;
+		font-weight: bold;
+		line-height: 82px;
+		text-align: center;
+		cursor: pointer;
+
+		&--focused,
+		&:hover {
+			color: $color__primary;
+			background-color: $color__white;
+		}
+	}
+}

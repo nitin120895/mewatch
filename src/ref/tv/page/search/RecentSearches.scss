@@ -1,0 +1,71 @@
+@import "src/ref/tv/style/modules";
+
+.recent-searches {
+	padding-top: 80px;
+	padding-left: 80px;
+	position: relative;
+
+	&__header {
+		position: relative;
+	}
+
+	&__heading {
+		font-size: 42px;
+		height: $asset-list-title-height;
+		color: $color__white;
+		margin-bottom: 32px;
+		text-transform: uppercase;
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative;
+		width: 634px;
+	}
+
+	&__item {
+		height: 90px;
+		width: 100%;
+		opacity: 0.7;
+		color: $color__white;
+		&:hover,
+		&.focused {
+			opacity: 1;
+			color: $color__primary;
+			border-radius: 10px;
+			background-color: $color__white;
+		}
+	}
+
+	&__link {
+		font-family: $font-family-heading;
+		font-size: 36px;
+		line-height: 90px;
+		padding: 22px 40px;
+		color: inherit;
+
+		&:hover,
+		&.focused {
+			text-decoration: none;
+		}
+	}
+
+	&__clear {
+		display: none;
+		position: absolute;
+		top: 159px;
+		right: 75px;
+		font-family: $font-family-heading;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	&--focused,
+	&:hover {
+		.recent-searches__clear {
+			display: block;
+		}
+	}
+}

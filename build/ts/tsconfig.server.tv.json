@@ -1,0 +1,11 @@
+{
+	"extends": "../../tsconfig.json",
+	"include": [
+		"../../src/ref/tv/**/*.ts",
+		"../../src/ref/tv/**/*.tsx",
+		"../../src/shared/**/*.ts",
+		"../../src/shared/**/*.tsx",
+		"../../src/server/**/*.ts",
+		"../../src/server/**/*.tsx"
+	]
+}

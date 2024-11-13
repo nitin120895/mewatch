@@ -1,0 +1,664 @@
+@import "shared/style/modules";
+@import "../../../player/playerVariables";
+
+.channel-detail {
+	.xchd1__title {
+		font-size: 28px;
+	}
+}
+
+.live-player {
+	display: flex;
+	width: 100%;
+	background-color: $color__black2;
+	outline: 2px solid $color__black3;
+
+	&__title-container {
+		&--fullscreen {
+			display: none;
+		}
+	}
+
+	&__title {
+		margin-bottom: 10px;
+		padding-top: 40px;
+		font-size: 28px;
+	}
+
+	&__overlay {
+		width: 100%;
+		background-color: $color__black2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		overflow: hidden;
+
+		img {
+			width: 60px;
+		}
+	}
+
+	&__info-panel {
+		width: 28%;
+		min-width: 28%;
+		height: 40.5vw;
+	}
+
+	.player-controls {
+		&__start-over {
+			display: none;
+			justify-content: flex-end;
+			position: absolute;
+			right: 16px;
+			bottom: 50px;
+			z-index: $depth-player-ads;
+
+			.cta {
+				padding: 0 25px;
+			}
+
+			button {
+				border: solid 2px rgba($color__grey--light, 0.5);
+				background-color: rgba(0, 0, 0, 0.5);
+				font-size: 16px;
+				font-weight: bold;
+				color: $color__white;
+				padding: 0 20px;
+			}
+
+			.svg-icon {
+				display: inline-block;
+				margin-right: 10px;
+			}
+		}
+	}
+
+	.player__wrapper--ui .player-controls__start-over,
+	.player__wrapper--ui .player-controls__on-demand {
+		display: flex;
+	}
+
+	&__player {
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.align-right {
+			.player-control-button {
+				margin: 0 12px;
+			}
+		}
+
+		.player-metadata {
+			padding-left: 60px;
+		}
+
+		&.error {
+			padding-top: 56.25%;
+		}
+	}
+
+	.player-overlay {
+		&__back {
+			position: fixed;
+		}
+	}
+
+	.player-scrubber {
+		height: $scrubber-height-mobile;
+	}
+
+	&__subscribe-section {
+		&--cta {
+			padding: 0 40px;
+		}
+	}
+
+	&__subscription-text {
+		font-size: 24px;
+		margin: 40px 0 70px;
+	}
+
+	&:not(&--startover) .player-scrubber {
+		padding: 0;
+
+		&__time {
+			display: none;
+		}
+	}
+
+	&__button {
+		margin-top: 10px;
+
+		.svg-icon {
+			margin-right: 5px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+		}
+	}
+
+	.player-control-button.player-buttons__volume.open {
+		width: 24px;
+	}
+
+	.player-controls.volume-active .align-right {
+		display: flex;
+	}
+
+	&__error-message {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+		padding: 0 50px;
+		line-height: 1.33;
+		font-size: 18px;
+
+		span,
+		p,
+		h4 {
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+
+		h4 {
+			margin-bottom: $spacing-base;
+		}
+
+		img {
+			padding: 10px 0;
+		}
+
+		.cta-btn {
+			margin-bottom: 20px;
+		}
+	}
+
+	&:not(&--startover) {
+		.player-seek-controls__rwd,
+		.player-seek-controls__fwd {
+			display: none;
+		}
+	}
+
+	&:not(&--fullscreen) {
+		.linear-player-metadata,
+		.player-overlay__back {
+			display: none;
+		}
+	}
+
+	&--fullscreen .player__cast .player-controls {
+		bottom: 0;
+	}
+
+	&--fullscreen {
+		height: 100%;
+
+		.player-block {
+			height: 100%;
+		}
+
+		.live-player__error-message {
+			.cta-btn {
+				margin-top: 30px;
+			}
+		}
+
+		.player-controls {
+			right: 0;
+			left: 0;
+			bottom: 0;
+			height: initial;
+
+			&__start-over,
+			&__on-demand {
+				margin-bottom: 40px;
+			}
+		}
+
+		.player-overlay__back {
+			transform: translateY(-250%);
+			transition: transform 0.5s ease-out;
+			&--showUI {
+				transform: translateY(0);
+				transition: transform 0.5s ease-out;
+			}
+		}
+
+		.entitled-overlay--upsell,
+		.live-player__error-message {
+			position: fixed;
+			z-index: $depth-player-wrapper;
+			background: $app-bg-color;
+		}
+		.linear-player-metadata {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+		}
+	}
+}
+
+@include mq($from: phablet, $until: tablet) {
+	.live-player {
+		&--fullscreen {
+			.player-controls {
+				&__start-over,
+				&__on-demand {
+					position: static;
+				}
+			}
+		}
+	}
+}
+
+@include mq($until: tablet) {
+	.live-player {
+		&:not(&--fullscreen) {
+			.player-scrubber {
+				margin: 0 0 17px;
+			}
+
+			.player__wrapper {
+				&--controls {
+					overflow: visible;
+				}
+			}
+
+			.live-player__player.error {
+				padding-bottom: 0;
+			}
+		}
+
+		&--fullscreen {
+			.player-scrubber {
+				margin: 0 0 38px;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.live-player {
+		&__title {
+			margin-top: -60px;
+			padding-top: 100px;
+			padding-bottom: 24px;
+			font-size: 38px;
+			font-weight: normal;
+		}
+
+		&__info-panel {
+			padding-top: 24px;
+		}
+
+		.player-controls {
+			&__start-over,
+			&__on-demand {
+				bottom: 80px;
+				right: 28px;
+			}
+
+			.player-scrubber {
+				margin: 0 0 26px;
+			}
+		}
+
+		&--fullscreen {
+			.player-controls {
+				&__start-over,
+				&__on-demand {
+					margin-bottom: 2rem;
+				}
+
+				.player-scrubber {
+					margin: 0 0 27px;
+				}
+			}
+		}
+	}
+}
+
+@include mq($until: laptop, $and: "(orientation: landscape)") {
+	.live-player {
+		&--fullscreen {
+			.player-controls {
+				margin: 1rem 2rem;
+				bottom: -25px;
+				&__start-over,
+				&__on-demand {
+					position: absolute;
+					top: 3px;
+					right: 30px;
+				}
+			}
+
+			.player__wrapper--ui {
+				.player-controls {
+					bottom: 0;
+					transform: translateY(0);
+				}
+			}
+		}
+
+		&:not(&--fullscreen) {
+			.player-controls {
+				transition: none;
+				background: none;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet, $until: laptop) {
+	.live-player {
+		&:not(&--fullscreen) {
+			.live-player__player {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+@include mq($until: laptop) {
+	.live-player {
+		flex-direction: column;
+
+		&__player {
+			width: 100%;
+		}
+
+		&__info-panel {
+			width: 100%;
+			height: auto;
+			flex: 1;
+		}
+
+		&:not(&--fullscreen) {
+			.player__wrapper--ui .player-controls {
+				background: none;
+			}
+		}
+
+		&--fullscreen {
+			.player-controls {
+				&__start-over,
+				&__on-demand {
+					position: static;
+				}
+			}
+
+			.linear-player-metadata {
+				position: fixed;
+				margin-top: 0;
+				padding: 0 15px 0 40px;
+				top: 18px;
+				margin-left: 1.5rem;
+				transform: translateY(-130%);
+				transition: transform 0.5s ease-out;
+
+				&.showMetadata {
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+}
+
+@include mq($until: laptop, $and: "(orientation: portrait)") {
+	.live-player {
+		.player-controls {
+			&__start-over,
+			&__on-demand {
+				bottom: 9.5rem;
+			}
+		}
+
+		&--fullscreen {
+			.linear-player-metadata {
+				padding: 0 15px 0 20px;
+				z-index: $depth-player-wrapper;
+			}
+			.player__wrapper--ui {
+				.player-controls {
+					transform: translateY(0);
+					z-index: $depth-player-wrapper;
+				}
+			}
+
+			.player-controls {
+				position: fixed;
+				bottom: 0;
+				transform: translateY(200%);
+				transition: $player-controls-animation;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.live-player {
+		&__info-panel {
+			padding-top: 1px;
+		}
+
+		&__player {
+			height: auto;
+
+			&.error {
+				padding-top: 0;
+			}
+		}
+
+		&__error-message {
+			font-size: 24px;
+		}
+
+		.player-overlay {
+			&--linear {
+				top: 0;
+			}
+		}
+
+		.player-control-button.player-buttons__volume.open {
+			width: auto;
+		}
+
+		&--fullscreen {
+			.player-block {
+				height: 100%;
+			}
+
+			.live-player__player {
+				height: 100vh;
+			}
+
+			.linear-player-metadata {
+				position: fixed;
+				margin-top: 0;
+				padding: 0 15px 0 40px;
+				top: 18px;
+				transform: translateY(-130%);
+				transition: transform 0.5s ease-out;
+
+				&.showMetadata {
+					transform: translateY(0);
+				}
+			}
+
+			.player-controls {
+				bottom: 0;
+				left: 0;
+				position: absolute;
+				right: 0;
+			}
+		}
+
+		.player-controls {
+			&__start-over,
+			&__on-demand {
+				position: static;
+				padding-bottom: 50px;
+				margin-bottom: 0;
+			}
+		}
+
+		.player__wrapper--ui {
+			.player-controls,
+			.player-metadata.showMetadata,
+			.player-overlay__logo,
+			.player-overlay__back {
+				transform: translateY(0);
+				transition: transform 0.5s ease-out;
+			}
+		}
+	}
+}
+
+@include mq($from: laptop, $until: desktop, $and: "(orientation: portrait)") {
+	.live-player:not(.live-player--fullscreen) {
+		flex-direction: column;
+	}
+
+	.live-player__info-panel {
+		width: 100%;
+		height: auto;
+		flex: 1;
+	}
+
+	.live-player .player-controls {
+		&__start-over,
+		&__on-demand {
+			position: absolute;
+			bottom: 8rem;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.live-player {
+		&__title {
+			margin-top: -60px;
+			padding-top: 120px;
+			padding-bottom: 46px;
+		}
+
+		&:not(&--fullscreen) {
+			.player-control-button {
+				width: $player-button-width-mobile;
+				height: $player-button-height-mobile;
+
+				.svg-icon {
+					width: $player-button-width-mobile;
+					height: $player-button-height-mobile;
+				}
+
+				.tag-icon {
+					top: -1px;
+					width: 18px;
+					height: 12px;
+					left: 11px;
+					font-size: 8px;
+					line-height: 12px;
+				}
+
+				&.player-buttons__volume .svg-icon {
+					width: $player-button-width-mobile;
+					height: $player-button-height-mobile;
+				}
+			}
+			.player-scrubber {
+				margin: 0 0 30px;
+			}
+		}
+
+		.player-overlay__back {
+			top: 50px;
+		}
+		.clickable-link-container {
+			top: 30px;
+		}
+
+		.linear-player-metadata {
+			padding: 25px 15px 0 115px;
+			z-index: $depth-player-wrapper;
+		}
+
+		&--fullscreen {
+			.tag-icon {
+				height: 16px;
+				line-height: 16px;
+				font-size: 9px;
+			}
+
+			.player-controls {
+				&__start-over,
+				&__on-demand {
+					padding-bottom: 60px;
+				}
+
+				&__start-over .cta-btn,
+				&__on-demand .cta-btn {
+					padding: 0 40px;
+					height: 50px;
+					font-size: 18px;
+				}
+			}
+
+			.player-scrubber {
+				margin: 0 0 45px;
+			}
+
+			.linear-player-metadata {
+				.time {
+					text-transform: uppercase;
+					color: $color__grey--light;
+					font-weight: bold;
+				}
+
+				&__title {
+					font-size: 64px;
+				}
+
+				&__secondary-title {
+					font-size: 38px;
+				}
+			}
+		}
+	}
+}
+
+// Mobile portrait mode, overlaying controls below player
+@include mq($until: tablet, $and: "(orientation: portrait)") {
+	.live-player {
+		.player-controls__start-over {
+			right: 2rem;
+			bottom: 6.875rem;
+		}
+
+		.player-controls {
+			margin: 2rem 2rem 1rem;
+		}
+	}
+}
+
+.fake-fullscreen {
+	.live-player--fullscreen {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: $color__black3;
+		z-index: $depth-player-fake-fullscreen;
+	}
+}

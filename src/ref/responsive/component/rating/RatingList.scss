@@ -1,0 +1,81 @@
+@import "shared/style/modules";
+.rating {
+	.rating-list {
+		display: flex;
+		background-color: $color__grey--dark;
+		border-radius: 28px;
+		position: absolute;
+		left: -50%;
+		top: -70px;
+		margin-left: -100px;
+		padding: 10px;
+		z-index: $depth-modal-overlays + 1;
+
+		animation-name: expand-open;
+		animation-duration: 0.5s;
+		animation-timing-function: ease-in-out;
+		visibility: visible !important;
+
+		// Pseudo element for triangle
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -9px;
+			left: 77%;
+			width: 0;
+			height: 0;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-top: 9px solid $color__grey--dark;
+		}
+
+		&--centered {
+			margin-left: 0px;
+
+			&:before {
+				left: 36%;
+			}
+		}
+	}
+
+	&--rate_or_rating {
+		.rating-list {
+			top: 50px;
+
+			&:before {
+				top: -16px;
+				border-top: 7px solid transparent;
+				border-bottom: 9px solid $color__grey--dark;
+			}
+		}
+	}
+
+	@keyframes expand-open {
+		0% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+		60% {
+			transform: scale(1.1);
+		}
+		80% {
+			transform: scale(0.9);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	@include mq($from: phablet) {
+		.rating-list {
+			margin-left: -30px;
+
+			&:before {
+				left: 47%;
+			}
+		}
+	}
+}

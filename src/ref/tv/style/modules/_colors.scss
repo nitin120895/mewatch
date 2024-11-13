@@ -1,0 +1,70 @@
+// Generic Color Pallette
+$color__black: #000 !default;
+$color__black2: #1a1a1a !default;
+$color__black3: #222 !default;
+$color__black4: #262626 !default;
+$color__black5: #333 !default;
+
+$color__white: #fff !default;
+$color__off-white: #f0f0f0 !default;
+$transparent: transparent !default;
+
+$color__grey--light: #ccc !default;
+$color__grey--warm: #808080 !default;
+$color__grey: #666 !default;
+$color__grey--dark: #4d4d4d !default;
+
+$color__blue--light: #22a7f0 !default;
+$color__blue: #1e96d8 !default;
+$color__blue--dark: #1b85c0 !default;
+$color__blue-text: #a7dcf9;
+$color__bg-blue: #0099f7 !default;
+$color__singInModal-light: #009dff !default; // singInMode liner color
+$color__singInModal-heavy: #0a68c7 !default; // singInMode liner color
+
+$color__bg-dark: #343434 !default;
+$color__bg-light: #4c4c4c !default; // d8
+$color__fg-dark: #7f7f7f !default; // d8
+$color__fg-rate: #888 !default;
+
+$color__fg-light: #e6e6e6 !default; // dh1
+$color__bg-account: #ffb500 !default;
+$color__bg-badge: #ffb200 !default;
+$account_hero_color: $color__blue--light !default;
+
+// Neutral Color Palette
+$color__neutral: #aaa !default;
+$color__neutral--light: $color__grey--light !default;
+$color__neutral--dark: $color__grey--dark !default;
+
+// Brand Color Palette
+$color__primary: $color__bg-blue !default;
+$color__primary--hover: #e0246f !default;
+$color__primary--disabled: $color__neutral !default;
+$color__secondary: $color__blue !default;
+$color__secondary--hover: #580b78 !default;
+$color__secondary--disabled: $color__neutral !default;
+$color__tertiary: $color__blue--dark !default;
+$color__tertiary--hover: #1db7c7 !default;
+$color__tertiary--disabled: $color__neutral !default;
+
+// Complementary
+$color__complimentary: #ffb200 !default;
+
+// Playback Entitlement Palette
+$color__entitled: #82a608 !default;
+$color__entitled--hover: #90b413 !default;
+
+// Error & Success Palette
+$color__success: #4ca224 !default;
+$color__error: #ec0000 !default;
+
+$ed1_bg_color: rgba($color__white, 0.2);
+$scrollbar_bg_color: rgba($color__white, 0.3);
+$caption_color: #ccc;
+$delimiter_color: #979797;
+
+// Player
+$color__progress_bar__bg: rgba($color__white, 0.7);
+$color__progress_bar__current: $color__primary;
+$color__button_active: $color__primary;

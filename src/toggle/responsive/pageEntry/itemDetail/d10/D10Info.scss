@@ -1,0 +1,163 @@
+@import "shared/style/modules";
+
+$content-margin: 20px;
+
+.d10 {
+	.packshot {
+		// We don't want the packshot interactive on this page
+		pointer-events: none;
+		user-select: none;
+		// Hidden by default on smaller devices
+		display: none;
+		flex: 0 0 auto;
+		margin-right: 30px;
+	}
+
+	&__info {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		text-align: left;
+		flex-direction: column;
+
+		@include mq($from: tablet) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__copyright {
+		font-size: 11px;
+		font-style: italic;
+		color: $color__grey--warm;
+		margin-top: 15px;
+	}
+
+	&-rating {
+		display: flex;
+		align-items: flex-start;
+		flex: 0 0 auto;
+		margin-top: 30px;
+		padding-left: get-gutter() / 2;
+		padding-left: to-rem(get-gutter() / 2);
+		width: 100%;
+
+		&__image {
+			width: 58px;
+			display: inline-flex;
+			padding-right: $content-margin;
+		}
+
+		&__text {
+			color: $color__grey--warm;
+			font-size: 11px;
+
+			@include mq($from: tablet, $until: desktop) {
+				padding-left: 0;
+				text-align: left;
+			}
+		}
+
+		@include mq($from: desktop) {
+			padding-right: get-gutter(desktop) / 2;
+			padding-right: to-rem(get-gutter(desktop) / 2);
+		}
+
+		@include mq($from: desktopWide) {
+			width: auto;
+			padding-right: get-gutter(desktopWide) / 2;
+			padding-right: to-rem(get-gutter(desktopWide) / 2);
+		}
+	}
+
+	&-table {
+		display: inline-block;
+		margin: 10px $content-margin 0 0;
+		width: auto;
+		text-align: left;
+		text-transform: capitalize;
+		font-size: 16px;
+
+		&__cell {
+			padding-left: $content-margin;
+			color: $color__grey--warm;
+
+			a {
+				color: $color__grey--warm;
+			}
+
+			&--duration {
+				text-transform: none;
+			}
+		}
+
+		&__header {
+			vertical-align: baseline;
+			color: $color__grey--light;
+			font-weight: normal;
+		}
+
+		&__genre:hover {
+			color: $color__link--hover;
+		}
+	}
+}
+
+@include mq($from: phablet) {
+	.d10 {
+		&-rating {
+			flex-direction: row;
+			margin-top: 14px;
+			padding-right: get-gutter(tablet) / 2;
+			padding-right: to-rem(get-gutter(tablet) / 2);
+		}
+
+		.packshot {
+			display: block;
+			margin-right: $content-margin;
+		}
+
+		&__info {
+			flex-direction: row;
+		}
+	}
+}
+
+@include mq($from: phablet, $until: laptop, $and: "(orientation: landscape)") {
+	.d10-rating {
+		padding: 0;
+	}
+}
+
+@include mq($from: tablet) {
+	.d10 {
+		.classificationExists {
+			width: 30%;
+		}
+
+		&-rating {
+			width: 25%;
+			margin-left: auto;
+			justify-content: flex-end;
+		}
+	}
+}
+
+@include mq($from: laptop) {
+	.d10 {
+		&__info {
+			flex-wrap: nowrap;
+		}
+
+		&-rating {
+			padding-left: 20px;
+
+			&__image {
+				width: 72px;
+			}
+
+			&__text {
+				font-size: 12px;
+			}
+		}
+	}
+}

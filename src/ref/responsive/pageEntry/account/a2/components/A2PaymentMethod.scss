@@ -1,0 +1,15 @@
+@import "shared/style/modules";
+
+.a2-payment-method {
+	&__icon {
+		width: 40px;
+		height: 28px;
+		display: inline-block;
+		margin-right: 13px;
+		vertical-align: middle;
+	}
+
+	&__expired {
+		color: $color__error;
+	}
+}

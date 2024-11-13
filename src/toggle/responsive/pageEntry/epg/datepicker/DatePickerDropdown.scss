@@ -1,0 +1,52 @@
+@import "shared/style/modules";
+
+.date-picker-dropdown {
+	cursor: pointer;
+	background-color: $color__black4;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid $color__grey;
+	border-left: none;
+	border-right: none;
+
+	&__dropdown-label {
+		font-size: 18px;
+	}
+
+	&__svg-icon {
+		background: transparent url("../../../../../../resource/toggle/image/forms/drop-select-arrow.svg") center right
+			no-repeat;
+		color: $color__white;
+		width: 20px;
+		height: 24px;
+	}
+}
+
+.datepickerDropdownEPG {
+	z-index: $depth-dropdown-overlays;
+	background-color: $color__black4;
+	.overlay-dropdown__title,
+	.overlay-dropdown__cancel {
+		display: none;
+	}
+
+	.overlay-dropdown__option {
+		color: $color__grey;
+		&:hover {
+			color: $color__grey;
+		}
+	}
+
+	.overlay-dropdown__options .selected {
+		color: $color__white;
+	}
+}
+
+@include mq($from: tablet) {
+	.date-picker-dropdown,
+	.datepickerDropdownEPG {
+		display: none;
+	}
+}

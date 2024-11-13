@@ -1,0 +1,66 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/header";
+
+.epg2 {
+	font-family: $font-family-heading;
+
+	&__epg-controls {
+		position: fixed;
+		width: 100%;
+		top: calc(#{$header-height-small} + var(--banner-height, 0px));
+		z-index: 4;
+		transition: all 0.5s ease 0s;
+	}
+
+	&__schedule-list {
+		min-height: 50vh;
+	}
+
+	&__no-schedule {
+		height: 60vh;
+		padding: 25vh 50px;
+		text-align: center;
+		font-size: 18px;
+		line-height: 22px;
+
+		.marginTop {
+			margin-top: 15px;
+		}
+	}
+
+	&__spinner {
+		margin: auto;
+		padding-top: 200px;
+		width: 60px;
+	}
+
+	&__title {
+		padding-top: 80px;
+		padding-bottom: 12px;
+		font-size: 28px;
+		background-color: $color__black2;
+	}
+}
+
+@include mq($from: tablet) {
+	.epg2 {
+		&__title {
+			padding-top: 100px;
+			padding-bottom: 24px;
+			font-size: 38px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.epg2 {
+		&__epg-controls {
+			top: $header-height-large;
+		}
+
+		&__title {
+			padding-bottom: 46px;
+			font-size: 54px;
+		}
+	}
+}

@@ -1,0 +1,239 @@
+@import "./_colors";
+
+$transition-duration: 300ms;
+
+// -------------------------------------- //
+// Sizes
+// -------------------------------------- //
+$viewport-width: 1920 + 0px;
+$viewport-height: 1080 + 0px;
+$content-width: 1760 + 0px;
+$half-viewport-width: 960 + 0px;
+
+$global-header-height: 146 + 0px;
+
+$cast-crew-image-width: 234 + 0px;
+$poster-image-width: 276 + 0px;
+$square-image-width: 276 + 0px;
+$tile-image-width: 336 + 0px;
+$block-image-width: 336 + 0px;
+$block-large-image-width: 555 + 0px;
+
+$tile-thumbnail-width: 302 + 0px;
+
+$image-component-width: 200 + 0px;
+$image-component-height: 300 + 0px;
+$picture-component-wallpaper-image-width: 680 + 0px;
+
+$list-hero-wallpaper-image-width: $viewport-width;
+
+$pb-cover-first-image-width: 552 + 0px;
+$sb-cover-first-image-width: 448 + 0px;
+$sb-image-first-image-width: 712 + 0px;
+$sb-image-list-height: 536 + 0px;
+$pb-image-list-height: 576 + 0px;
+$tb-image-list-height: 522 + 0px;
+
+$t-double-featured-image-width: 334 + 0px;
+$t-double-featured-first-image-width: 700.5 + 0px;
+$t-large-image-tile-width: 573 + 0px;
+
+$tb-image-width: 573 + 0px;
+$tb-first-image-width: 592 + 0px;
+$tb-cover-image-width: 336 + 0px;
+$tb-cover-first-image-width: 527 + 0px;
+
+$h9-image-component-url-width: 640 + 0px;
+$h9-image-component-url-height: 360 + 0px;
+
+$d10-info-icon-width: 64 + 0px;
+
+$lh-standard-component-wallpaper-image-width: $viewport-width;
+$lh-standard-component-wallpaper-image-height: $viewport-height;
+$lh-standard-component-badge-image-width: 200 + 0px;
+$lh-standard-component-badge-image-height: 200 + 0px;
+$lh-standard-component-brand-image-width: 1579 + 0px;
+$lh-standard-component-brand-image-height: 715 + 0px;
+
+$panel-components-width: 32 + 0px;
+$panel-components-height: 32 + 0px;
+
+$overlay-component-max-height: 66 + 0px;
+
+$viewer-margin-top: 40 + 0px;
+$viewer-margin-bottom: 24 + 0px;
+
+$header-menu-button-size: 20 + 0px;
+
+$episode-grid-item-width: 573 + 0px;
+$trailers-item-width: 573 + 0px;
+
+$season-selector-item-width: 347 + 0px;
+
+$list-margin: 5 + 0px;
+$scrollable-list-margin: 30 + 0px;
+$item-margin: 20 + 0px;
+$asset-list-item-margin: 10 + 0px;
+
+$auto-scroll-height: 108 + 0px;
+$auto-scroll-spacing: 20 + 0px;
+
+$branded-image-inset-height: 50 + 0px;
+$branded-image-outset-height: 50 + 0px;
+
+$player-count-down-timer-height: 102 + 0px;
+$player-count-down-timer-width: 102 + 0px;
+
+$player-count-down-timer-border-width: 6 + 0px;
+$player-count-down-timer-border-color: $color__primary;
+
+$ed3-client-height-offset: 980 + 0px;
+$ed3-scrollbar-diff: 894 + 0px;
+$text-scrollbar-diff: 804 + 0px;
+$scrollable-page-size: 800 + 0px;
+
+$tx1-left-edge: 80 + 0px;
+$tx1-right-edge: 1840 + 0px;
+$tx1-item-margin-right: 40 + 0px;
+$pr1-width: 1680 + 0px;
+$asset-gradient-width: 210 + 0px;
+
+$h7-item-margin: 18 + 0px;
+$h7-group-width: 980 + $h7-item-margin + 0px;
+$h7-small-item-width: 481 + 0px;
+
+$item-padding: 70 + 0px;
+
+$input-max-width: 852 + 0px;
+
+$h2-peek-size: 150 + 0px;
+$h6-peek-size: 210 + 0px;
+
+$h5-list-padding: 165 + 0px;
+$h5-list-top: 767 + 0px;
+$h5-item-spacing: 20 + 0px;
+$h5-bottom-btn-top: 991 + 0px;
+
+$scrollable-text-modal-padding: 80 + 0px;
+$scrollable-text-modal-scrollBar-height: 116 + 0px;
+
+$cs-list-margin-top: 125 + 0px;
+
+$row-list-arrow-width: 85 + 0px;
+
+$btn-height: 90 + 0px;
+$padding-between-entries: 70 + 0px;
+$half-padding-between-entries: 35 + 0px;
+$asset-list-title-height: 47 + 0px;
+$asset-list-tagline-height: 31 + 0px;
+$asset-list-title-margin-bottom: 10 + 0px;
+$asset-list-title-padding-bottom: 19 + 0px;
+$asset-list-brand-image-padding: 60 + 0px;
+$asset-below-title-height: 60 + 0px;
+$asset-below-title-margin-top: 6 + 0px;
+$asset-below-title-total-height: $asset-below-title-height + $asset-below-title-margin-top;
+$asset-block-height: 272 + 0px;
+$asset-post-height: 434 + 0px;
+$asset-square-height: 296 + 0px;
+$asset-tile-height: 209 + 0px;
+$asset-tall-height: 572 + 0px;
+$scrollable-list-padding-bottom: 20 + 0px;
+$b1-standard-height: $asset-block-height;
+$b2-large-height: 436 + 0px;
+$b3-double-height: 544 + 0px;
+$p1-standard-height: $asset-post-height;
+$p2-large-height: 524 + 0px;
+$pb1-cover-height: $asset-post-height;
+$pb4-image-height: 576 + 0px;
+$pb4-image-margin-top: 71 + 0px;
+$s1-standard-height: $asset-square-height;
+$s2-large-height: 356 + 0px;
+$s3-double-height: 592 + 0px;
+$sb1-cover-height: $s2-large-height;
+$sb4-image-height: 536 + 0px;
+$sb4-image-margin-top: 90 + 0px;
+$t1-standard-height: $asset-tile-height;
+$t2-large-height: 342 + 0px;
+$t3-double-height: 418 + 0px;
+$t4-double-large-height: 684 + 0px;
+$t5-double-featured-height: $t3-double-height;
+$tb1-cover-height: $t3-double-height;
+$tb4-image-height: 522 + 0px;
+$tb4-image-margin-top: 90 + 0px;
+$tl1-standard-height: $asset-tall-height;
+$u1-poster-height: $asset-post-height;
+$u2-tile-height: $asset-tile-height;
+$u3-block-height: $asset-block-height;
+$u4-square-height: $asset-square-height;
+$tx1-links-height: 150 + 0px;
+$ah-greeting-height: 138 + 0px;
+$ah-greeting-padding-top: 70 + 0px;
+$ah-padding-bottom: 70 + 0px;
+$ah-hero-height: 855 + 0px;
+$ah3-hero-height: $ah-greeting-height + $ah-greeting-padding-top + $ah-padding-bottom;
+$a1-detail-padding-top: 70 + 0px;
+$a1-detail-content-margin-top: 20 + 0px;
+$a1-detail-content-height: 52 + 0px;
+$a1-detail-less-height: $a1-detail-padding-top * 2 + $a1-detail-content-margin-top + $a1-detail-content-height;
+$a1-detail-height: $a1-detail-less-height + $asset-list-title-height;
+$a4-profiles-margin-top: 20 + 0px;
+$a4-profiles-height: 211 + 0px;
+$a4-profiles-total-height: $a4-profiles-height + $a4-profiles-margin-top;
+$a5-parental-lock-title-height: 60 + 0px;
+$a5-parental-lock-title-margin-bottom: 20 + 0px;
+$a5-parental-lock-less-height: $btn-height;
+$a5-parental-lock-height: $a5-parental-lock-title-height + $a5-parental-lock-title-margin-bottom +
+	$a5-parental-lock-less-height;
+$h1-height: 640 + 0px;
+$h2-padding-top: 28 + 0px;
+$h2-height: 540 + 0px;
+$h2-large-height: $h1-height;
+$h5-height: $viewport-height;
+$h6-padding-top: 10 + 0px;
+$h6-height: 844 + 0px;
+$h7-padding-top: 20 + 0px;
+$h7-group-height: 841 + 0px;
+$h7-height: $h7-group-height + $h7-padding-top * 2;
+$h10-padding-top: 109 + 0px;
+$h10-padding-bottom: 42 + 0px;
+$h10-heading-height: 70 + 0px;
+$h10-sub-heading-height: 40 + 0px;
+$h10-sub-heading-margin-top: 10 + 0px;
+$h10-less-height: $h10-padding-top + $h10-padding-bottom + $h10-heading-height;
+$h10-height: $h10-less-height + $h10-sub-heading-height + $h10-sub-heading-margin-top;
+$dh1-height: 917 + 0px;
+$dh1-collapsed-height: 400 + 0px;
+$d2-season-drop-btn-margin-top: 20 + 0px;
+$d2-season-drop-btn-height: $btn-height + $d2-season-drop-btn-margin-top * 2;
+$d2-season-desc-max-height: 202 + 0px;
+$d2-list-margin-top: 66 + 0px;
+$d2-list-item-height: 206 + 0px;
+$d2-list-thumbnail-height: 248 + 0px;
+$d3-episode-list-height: 405 + 0px;
+$d3-episode-list-padding-top: 38 + 0px;
+$d4-height: $t2-large-height;
+$d5-height: $asset-tile-height;
+$d6-height: $asset-post-height;
+$d7-height: $asset-square-height;
+$d8-title-margin-bottom: 20 + 0px;
+$d8-title-content-height: 60 + 0px;
+$d8-title-height: $d8-title-margin-bottom + $d8-title-content-height;
+$d8-circle-height: 234 + 0px;
+$d8-circle-margin-bottom: 20 + 0px;
+$d8-actor-height: 40 + 0px;
+$d8-character-height: 34 + 0px;
+$d8-content-height: 333 + 0px;
+$d8-height: $d8-content-height + $scrollable-list-padding-bottom;
+$season-selector-height: 85 + 0px;
+$episode-grid-item-height: 348 + 0px;
+$episode-info-height: 302 + 0px;
+$list-hero-height: 435 + 0px;
+$list-hero-title-line-height: 138 + 0px;
+$list-filter-drop-btn-height: 130 + 0px;
+$list-clear-filter-btn-height: 241 + 0px;
+$search-input-height: 180 + 0px;
+$signout-btn-margin-bottom: 40 + 0px;
+$signout-btn-height: $btn-height + $signout-btn-margin-bottom;
+$footer-padding-top: 56 + 0px;
+$footer-padding-bottom: 80 + 0px;
+$footer-height: $footer-padding-top + $footer-padding-bottom + $btn-height;

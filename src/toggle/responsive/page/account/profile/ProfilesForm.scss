@@ -1,0 +1,164 @@
+@import "shared/style/modules";
+
+.profiles-form {
+	background-color: $color__white;
+	flex-direction: column;
+
+	&__choices {
+		display: flex;
+		justify-content: start;
+		margin-bottom: 1em;
+
+		@include mq($from: phablet) {
+			justify-content: flex-start;
+			//needed for ie11
+			display: block;
+		}
+	}
+
+	&__button {
+		padding: 12px 8px 8px;
+		border: 1px solid $color__off-white;
+		border-radius: 10px;
+		display: inline-block;
+		color: $color__grey--warm;
+		background: transparent;
+		transition: background-color 200ms, color 200ms;
+		outline: none;
+		margin: 0;
+		// needed for ie11
+		flex: 1;
+		max-width: 114px;
+		height: 88px;
+
+		@include mq($from: phablet) {
+			height: 88px;
+			width: 112px;
+		}
+
+		&:hover:not(.profiles-form__button--chosen) {
+			background-color: $color__off-white;
+		}
+
+		&:focus:not(.profiles-form__button--chosen) {
+			background-color: $color__off-white;
+			color: $color__grey--warm;
+		}
+
+		.profiles-form__icon {
+			color: $color__grey--light;
+		}
+
+		&--chosen {
+			background-color: $color__primary;
+			color: $color__white;
+
+			&:hover,
+			&:focus {
+				color: $color__white;
+				background-color: $color__primary;
+			}
+
+			.profiles-form__label {
+				color: $color__white;
+			}
+			.profiles-form__icon {
+				color: $color__white;
+			}
+		}
+
+		&:first-child {
+			margin-right: 4px;
+		}
+
+		&:last-child {
+			margin-left: 4px;
+		}
+	}
+
+	&__label {
+		display: block;
+		color: $color__grey--light;
+	}
+
+	&__icon {
+		width: 39%;
+		display: block;
+		margin: 0 auto 8px;
+		height: 40px;
+
+		&--lock {
+			width: 35%;
+		}
+	}
+
+	&__helper-text-wrap {
+		max-width: 650px;
+		margin-bottom: 1em;
+	}
+
+	&__helper-text {
+		width: 100%;
+		margin-bottom: 0;
+		color: $color__grey--warm;
+	}
+
+	&__input {
+		max-width: 300px;
+		.txt-input__label {
+			color: $color__primary;
+		}
+		.txt-input__input {
+			color: #000;
+			box-shadow: 0 -2px 0 0 $color__primary inset;
+			padding: 0;
+		}
+	}
+
+	.txt-input {
+		&__message {
+			display: inline-block;
+		}
+
+		&:hover .txt-input__label {
+			color: $color__primary;
+		}
+
+		&:hover .txt-input__input {
+			@include input-focused($color__primary);
+		}
+
+		&--active:hover {
+			.txt-input__label {
+				color: $color__primary;
+			}
+		}
+		&--focused {
+			@include input-state($color__primary);
+			.txt-input__input {
+				@include input-focused($color__primary);
+			}
+		}
+		&__input {
+			max-width: 190px;
+		}
+
+		&__icon {
+			position: relative;
+			top: 0;
+			right: 0;
+
+			&--error {
+				margin-right: 5px;
+				font-size: 16px;
+			}
+		}
+	}
+	.account-btn--naked-light:not(:disabled) .account-btn__spinner {
+		color: $color__primary;
+	}
+
+	.disabled {
+		opacity: 0.4;
+	}
+}

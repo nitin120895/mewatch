@@ -1,0 +1,25 @@
+@import "shared/style/modules";
+
+.partner-logo {
+	position: absolute;
+	top: $thumbnail-logo-offset-mobile;
+	right: $thumbnail-logo-offset-mobile;
+	height: $thumbnail-logo-overlay-height;
+
+	picture {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-start;
+		height: 100%;
+	}
+
+	&__logo {
+		height: inherit;
+		width: auto;
+	}
+
+	@include mq($from: tablet) {
+		top: $thumbnail-logo-offset-tablet;
+		right: $thumbnail-logo-offset-tablet;
+	}
+}

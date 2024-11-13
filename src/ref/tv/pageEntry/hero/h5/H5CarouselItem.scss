@@ -1,0 +1,129 @@
+@import "src/ref/tv/style/modules";
+
+.h5-item {
+	height: $viewport-height;
+	min-width: 100%;
+	position: relative;
+
+	&__info {
+		position: absolute;
+		left: 0;
+		bottom: 364px;
+		height: $viewport-height - 364;
+		width: 100%;
+	}
+
+	&__info-details {
+		position: absolute;
+		bottom: 0;
+		max-width: 90%;
+
+		&.center {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&.left {
+			left: 80px;
+			right: auto;
+		}
+
+		&.right {
+			left: auto;
+			right: 80px;
+		}
+
+		&.middle {
+			bottom: auto;
+		}
+
+		&.top {
+			top: 146px;
+			bottom: auto;
+		}
+	}
+
+	&__badge {
+		position: absolute;
+		top: 582px;
+		right: 80px;
+		max-width: 150px;
+		max-height: 150px;
+
+		&.right {
+			right: auto;
+			left: 80px;
+		}
+	}
+}
+
+.h5-text {
+	white-space: nowrap;
+	padding: 0 80px;
+	text-align: left;
+	position: relative;
+	height: 100%;
+
+	> div {
+		display: inline-block;
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	&.right {
+		text-align: right;
+	}
+
+	&.middle {
+		padding-top: 240px;
+	}
+
+	&.top {
+		padding-top: 146px;
+	}
+
+	&__title {
+		color: $color__white;
+		font-family: $font-family-heading;
+		font-size: 72px;
+		font-weight: bold;
+		line-height: 87px;
+		max-height: 261px;
+		overflow: hidden;
+		white-space: normal;
+		text-transform: uppercase;
+	}
+
+	&__badge {
+		display: block;
+		margin-bottom: 10px;
+
+		> div {
+			display: inline-block;
+			background-color: $color__bg-badge;
+			padding-inline-start: 13px;
+			padding-inline-end: 13px;
+			font-family: $font-family-heading;
+			font-size: 28px;
+			font-weight: bold;
+			color: $color__black;
+			line-height: 44px;
+			text-transform: uppercase;
+		}
+	}
+
+	&__tagline {
+		font-size: 36px;
+		line-height: 44px;
+		max-height: 44px;
+		overflow: hidden;
+		margin-top: 10px;
+		text-overflow: ellipsis;
+	}
+
+	&__brand {
+		display: inline-block;
+	}
+}

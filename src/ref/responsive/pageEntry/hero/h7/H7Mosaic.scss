@@ -1,0 +1,145 @@
+@import "shared/style/modules";
+
+.h7-entry {
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+
+	&__scroll {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch; // prefix not automatically added
+		-ms-overflow-style: none; // for ie/edge hide scroll bars
+
+		@include mq(tablet) {
+			@include fluid-aspect(2 1);
+		}
+
+		@include mq(desktop) {
+			@include fluid-aspect(5 2);
+		}
+
+		&::-webkit-scrollbar {
+			// for webkit hide scroll bars
+			display: none;
+		}
+	}
+
+	&--disable-scroll {
+		.h7-entry__scroll {
+			overflow-x: hidden;
+		}
+	}
+
+	.arrow {
+		display: none;
+
+		@include mq(tablet) {
+			display: block;
+		}
+	}
+}
+
+// for firefox hide scroll bars
+@-moz-document url-prefix() {
+	.h7-entry__scroll {
+		overflow: hidden;
+		&__scroll {
+			overflow: -moz-hidden-unscrollable; // hide scroll bars in firefox
+		}
+	}
+}
+
+.h7-mosaic {
+	&__group {
+		@include mq($until: tablet) {
+			// On small screens we're using floats so we need to ensure we clear.
+			@include clearfix;
+		}
+
+		&:nth-child(n + 4) {
+			// On mobile the content wraps vertically so we cap it at 3 groups (9 items) to avoid taking
+			// up too much vertical space. This prevents tab focus from occuring on the hidden/clipped items.
+			display: none;
+		}
+
+		@include mq(tablet) {
+			display: inline-block;
+			height: 100%;
+			width: 59%;
+
+			// On tablet onwards the content wraps horizontally so we uncap it and and restore tab focus for the
+			// latter groups.
+			&:nth-child(n + 4) {
+				display: inline-block;
+			}
+		}
+
+		@include mq(desktop) {
+			width: 47.4%;
+		}
+	}
+
+	.mosaic-cell {
+		// Floats are used on small screens and get removed for tablet and beyond.
+		float: left;
+		outline: 0;
+
+		&:first-child {
+			width: 100%;
+			background: lighten($color__black, 20%);
+		}
+
+		&:nth-child(2) {
+			background: lighten($color__black, 22.5%);
+		}
+
+		&:last-child {
+			background: lighten($color__black, 25%);
+		}
+	}
+
+	@include mq(tablet) {
+		white-space: nowrap;
+
+		&__group {
+			display: inline-flex;
+			flex-wrap: wrap;
+			height: 100%;
+			vertical-align: top;
+			width: 59%;
+
+			.mosasic-cell {
+				float: none;
+			}
+		}
+
+		// On tablet onwards the content wraps horizontally so we uncap it and and restore tab focus for the
+		// latter groups.
+		&__group:nth-child(n + 4) {
+			display: inline-flex;
+		}
+
+		&__group:nth-child(2n + 2) {
+			.mosaic-cell:first-child {
+				width: 100%;
+				min-width: 100%;
+				order: 3;
+			}
+
+			.mosaic-cell:nth-child(2) {
+				order: 1;
+			}
+
+			.mosaic-cell:last-child {
+				width: 50%;
+				min-width: 50%;
+				order: 2;
+			}
+		}
+	}
+
+	@include mq(desktop) {
+		&__group {
+			width: 47.3%;
+		}
+	}
+}

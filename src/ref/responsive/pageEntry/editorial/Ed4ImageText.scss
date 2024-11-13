@@ -1,0 +1,98 @@
+@import "shared/style/modules";
+
+.ed4 {
+	@include mq($from: tablet) {
+		display: flex;
+		align-items: center;
+	}
+
+	&__img {
+		@include mq($from: tablet) {
+			width: 50%;
+		}
+	}
+
+	&__fallback {
+		width: 100%; // img element should expand to fill its container
+	}
+
+	&__content {
+		font-family: $font-family-heading;
+		color: $color--white;
+
+		@include mq($from: tablet) {
+			width: 50%;
+		}
+	}
+
+	&__heading {
+		margin-bottom: 10px;
+		font-size: 24px;
+		line-height: 1.32;
+
+		@include mq($from: tablet) {
+			font-size: 26px;
+		}
+		@include mq($from: laptop) {
+			font-size: 32px;
+		}
+		@include mq($from: desktopWide) {
+			font-size: 38px;
+		}
+	}
+
+	&__text {
+		padding: 10px map-get($grid-margin, phone) 0;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 1.43;
+
+		@include mq($from: tablet) {
+			padding-top: 0;
+			padding-left: 40px;
+			padding-right: 20px;
+		}
+		@include mq($from: laptop) {
+			padding-left: 60px;
+			padding-right: 40px;
+			font-size: 18px;
+		}
+		@include mq($from: desktopWide) {
+			padding-left: 170px;
+			padding-right: 150px;
+			font-size: 20px;
+		}
+	}
+}
+
+// Variation: position the image to the right of the text
+.ed4--right {
+	@include mq($from: tablet) {
+		.ed4__img {
+			order: 2;
+		}
+
+		.ed4__text {
+			flex-grow: 2;
+		}
+	}
+}
+
+// Variation: align the text to the right
+.ed4__text--right {
+	text-align: right;
+
+	@include mq($from: tablet) {
+		float: right;
+		padding-right: 40px;
+		padding-left: 20px;
+	}
+	@include mq($from: laptop) {
+		padding-right: 60px;
+		padding-left: 40px;
+	}
+	@include mq($from: desktopWide) {
+		padding-right: 170px;
+		padding-left: 150px;
+	}
+}

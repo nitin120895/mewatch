@@ -1,0 +1,91 @@
+@import "shared/style/modules";
+
+.billing-history-item {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px 0;
+	border-bottom: 1px solid $color__off-white;
+	align-items: center;
+	justify-content: space-between;
+
+	&:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	@include mq($from: tablet) {
+		flex-wrap: nowrap;
+	}
+
+	&__description {
+		flex: 1;
+		min-width: 0;
+		margin-right: 15px;
+		color: $color__black;
+	}
+
+	&__title {
+		@include mq($until: tablet) {
+			@include truncate-text;
+		}
+	}
+
+	&__amount {
+		color: $color__black;
+		text-align: right;
+
+		@include mq($from: tablet) {
+			order: 2;
+			min-width: 60px;
+			margin-left: 15px;
+			color: $color__grey--warm;
+		}
+	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+
+		@include mq($until: tablet) {
+			flex-basis: 100%;
+			margin-top: 10px;
+		}
+	}
+
+	&__date,
+	&__method {
+		white-space: nowrap;
+	}
+
+	&__date {
+		margin-left: 15px;
+		text-align: right;
+
+		@include mq($from: tablet) {
+			min-width: 70px;
+		}
+	}
+
+	&__unavail {
+		display: flex;
+		align-items: center;
+	}
+
+	&__no-card {
+		display: inline-block;
+		width: 22px;
+		height: 22px;
+		margin-right: 10px;
+	}
+
+	.help-circle__content {
+		@include mq($until: tablet) {
+			left: 0;
+			transform: translateX(-12px);
+
+			&:after {
+				left: 20px;
+			}
+		}
+	}
+}

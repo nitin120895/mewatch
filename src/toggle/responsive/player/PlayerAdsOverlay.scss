@@ -1,0 +1,145 @@
+@import "shared/style/modules";
+
+$ads-overlay-transition: opacity 0.25s linear;
+
+.player-ads-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: $depth-player-ads-overlay;
+	pointer-events: none;
+
+	&__fader {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 150px;
+		pointer-events: none;
+		background-image: linear-gradient(to bottom, rgba($color__black, 0), rgba($color__black, 0.25));
+		transition: $ads-overlay-transition;
+	}
+
+	&__player-controls {
+		position: absolute;
+		bottom: 95px;
+		left: 0;
+		right: 0;
+		padding: 0 $player-padding-mobile;
+		transition: $ads-overlay-transition;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__col-left {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	&__col-right {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&__volume {
+		align-items: center;
+		display: flex;
+		flex-wrap: nowrap;
+		pointer-events: auto;
+
+		// overwrite styles from general player controls
+		.player &,
+		.live-player .player &,
+		.live-player:not(.live-player--fullscreen) .player & {
+			width: auto;
+		}
+
+		.volume-controls {
+			margin: 0 12px 0 0;
+			padding-right: 0;
+			text-align: left;
+			touch-action: manipulation;
+		}
+
+		.svg-icon {
+			width: 24px;
+			height: 20px;
+			pointer-events: auto;
+		}
+
+		.scrubber {
+			display: none;
+		}
+	}
+
+	&__fullscreen {
+		display: block;
+		pointer-events: auto;
+	}
+}
+
+@include mq($until: desktop, $and: "(orientation: portrait)") {
+	.player-ads-overlay {
+		&:not(&--fullscreen) {
+			.player-ads-overlay__fader {
+				display: none;
+			}
+
+			.player-ads-overlay__player-controls {
+				bottom: -45px;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.player-ads-overlay {
+		&__fader {
+			height: 400px;
+		}
+	}
+}
+
+@include mq($from: desktop) {
+	.player-ads-overlay {
+		display: none;
+
+		&--ads-playing {
+			display: block;
+		}
+
+		&__player-controls,
+		&__fader {
+			opacity: 0;
+		}
+
+		&--controls-shown {
+			.player-ads-overlay__player-controls,
+			.player-ads-overlay__fader {
+				opacity: 1;
+			}
+		}
+
+		&__volume {
+			.svg-icon {
+				width: 42px;
+				height: 34px;
+			}
+
+			.scrubber {
+				display: none;
+				margin: 0;
+				width: 140px;
+			}
+
+			&.open {
+				.scrubber {
+					display: block;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,186 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/mixins/vw";
+
+@keyframes arrow__animate-right {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+	30% {
+		opacity: 1;
+	}
+	70% {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(110%);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow__animate-left {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+	30% {
+		opacity: 1;
+	}
+	70% {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(-110%);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow__animate-down {
+	0% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	30% {
+		opacity: 1;
+	}
+	70% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(110%);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow__animate-up {
+	0% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	30% {
+		opacity: 1;
+	}
+	70% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-110%);
+		opacity: 0;
+	}
+}
+
+.arrow {
+	font-size: 32px;
+	@include vw(width, 30px);
+	color: $color__white;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	cursor: pointer;
+	transition: transform 0.3s $easeInOutQuad, opacity 0.3s $easeInOutQuad;
+	animation-duration: 3s;
+	animation-timing-function: $easeInOutQuad;
+	background: transparent;
+	filter: drop-shadow(0 0 2px rgba($color__black, 0.5));
+
+	@include mq($from: tablet) {
+		@include vw(width, 15px);
+	}
+
+	&--left {
+		left: 0;
+		transform: translateX(-110%);
+	}
+
+	&--right {
+		right: 0;
+		transform: translateX(110%);
+	}
+
+	&--up {
+		top: 0;
+		transform: translateY(-110%);
+
+		.arrow__icon {
+			top: 0;
+		}
+	}
+
+	&--down {
+		bottom: 0;
+		top: unset;
+		transform: translateY(110%);
+
+		.arrow__icon {
+			top: 10px;
+		}
+	}
+
+	&--up,
+	&--down {
+		width: 100%;
+		height: 5%;
+		text-align: center;
+		cursor: pointer;
+
+		&.arrow--visible {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		.arrow__icon {
+			stroke-width: 2px;
+			width: 50px;
+			height: 50px;
+		}
+	}
+
+	&--animate-left {
+		animation-name: arrow__animate-left;
+	}
+
+	&--animate-right {
+		animation-name: arrow__animate-right;
+	}
+
+	&--animate-top {
+		animation-name: arrow__animate-top;
+	}
+
+	&--animate-down {
+		animation-name: arrow__animate-down;
+	}
+
+	&--visible {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	&__icon {
+		display: inline-block;
+		stroke: $color__white;
+		stroke-width: 3px;
+		position: relative;
+		top: 2vw;
+		@include vw(width, 10px);
+
+		@include mq($from: tablet) {
+			@include vw(width, 10px, tablet);
+		}
+
+		path {
+			fill: transparent;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}

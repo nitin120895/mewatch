@@ -1,0 +1,84 @@
+@import "shared/style/modules";
+
+.date-carousel {
+	display: none;
+	border: 1px solid $color__grey--dark;
+	border-left: none;
+	border-right: none;
+	background-color: $color__black2;
+
+	.date-entry {
+		&__grid-cell {
+			display: inline-block;
+			padding: 0;
+			float: none;
+		}
+
+		&__flex-container {
+			display: inline-block;
+			position: relative;
+			padding: 10px;
+			height: 62px;
+			text-align: center;
+			vertical-align: middle;
+			white-space: normal;
+			border: 2px solid $color__black2;
+			background-color: $color__black2;
+			cursor: pointer;
+		}
+
+		&__day {
+			font-size: 15px;
+			opacity: 0.5;
+			text-transform: uppercase;
+		}
+
+		&__date {
+			font-size: 14px;
+			opacity: 0.3;
+			text-transform: uppercase;
+		}
+	}
+
+	.isActive {
+		border: 2px solid $color__white;
+
+		.date-entry {
+			&__day {
+				opacity: 1;
+			}
+			&__date {
+				opacity: 0.6;
+			}
+		}
+	}
+}
+
+@include mq($from: tablet) {
+	.date-carousel {
+		display: block;
+	}
+}
+
+@media (hover: hover) {
+	.date-entry {
+		&__flex-container:hover {
+			background: $color__black3;
+			border-color: $color__black3;
+
+			&.isActive {
+				border-color: $color__white;
+			}
+
+			.date-entry {
+				&__day {
+					opacity: 1;
+				}
+
+				&__date {
+					opacity: 0.6;
+				}
+			}
+		}
+	}
+}

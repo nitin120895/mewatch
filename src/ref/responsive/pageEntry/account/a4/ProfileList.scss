@@ -1,0 +1,35 @@
+@import "shared/style/modules";
+
+$circleWidth: 88px;
+$threeCircles: $circleWidth * 3;
+
+.profile-list {
+	margin-top: -20px;
+	margin-left: -40px;
+	display: flex;
+	flex-wrap: wrap;
+
+	&__circle {
+		width: $circleWidth;
+		padding-top: 20px;
+		margin-left: 40px;
+	}
+
+	@include mq($until: phablet) {
+		margin-left: 0;
+
+		&__circle {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 0;
+
+			&:nth-child(3n + 2) {
+				margin: 0 calc((100% - #{$threeCircles}) / 2);
+			}
+		}
+	}
+
+	@include mq($from: phablet) {
+		overflow: hidden;
+	}
+}

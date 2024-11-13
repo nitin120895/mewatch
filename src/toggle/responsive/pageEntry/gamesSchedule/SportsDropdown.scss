@@ -1,0 +1,78 @@
+@import "shared/style/modules";
+
+.sports-dropdown {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translateY(100%);
+	width: 100%;
+	background-color: $color__black4;
+	z-index: $depth-modal-overlays;
+
+	&__list {
+		max-height: 55vh;
+		overflow: auto;
+	}
+
+	&__item {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 1em;
+
+		&__thumbnail {
+			max-width: 2em;
+			margin-right: 0.5em;
+		}
+
+		&__tick {
+			position: absolute;
+			top: 50%;
+			right: 1em;
+			transform: translateY(-50%);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 1.5em;
+			width: 1.5em;
+			border-radius: 50%;
+			background-color: $color__primary;
+		}
+
+		&__icon {
+			width: 1em;
+			height: 1em;
+			stroke: $color__white;
+			stroke-width: 2px;
+		}
+
+		&--active {
+			background-color: $color__games-item-bg;
+		}
+	}
+
+	&__cta {
+		margin: 1em;
+		width: calc(100% - 2em);
+	}
+}
+
+@include mq($from: phone) {
+	.sports-dropdown {
+		&__item {
+			&--active {
+				background-color: $color__games-cta-bg;
+			}
+			&__icon {
+				stroke: $color__games-item-bg;
+			}
+			&__tick {
+				background-color: $color__white;
+			}
+		}
+		&__cta {
+			background-color: $color__games-item-bg;
+		}
+	}
+}

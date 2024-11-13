@@ -1,0 +1,264 @@
+@import "shared/style/modules";
+
+.choose-plan-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	.choose-plan-modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 534px;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+		font-family: $font-family-heading;
+		background-color: $color__white;
+
+		&__close {
+			position: absolute;
+			right: 15px;
+			top: 20px;
+			width: 20px;
+			height: 20px;
+			cursor: pointer;
+			color: $color__grey;
+		}
+
+		&__container {
+			text-align: left;
+			width: 100%;
+
+			&--title {
+				font-size: 24px;
+				line-height: 1.17;
+				text-align: center;
+				color: $color__black3;
+				padding: 0 0 20px;
+			}
+
+			&--buttons {
+				margin-top: 20px;
+				padding: 0;
+				text-align: center;
+			}
+
+			.cta-btn {
+				text-transform: none;
+			}
+
+			button {
+				cursor: pointer;
+			}
+		}
+
+		&__price-plan-input {
+			display: inline;
+			padding-left: 0;
+			padding-right: 10px;
+			font-size: 20px;
+			line-height: 1.75;
+			color: $color__black3;
+
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
+
+		&__contract {
+			display: inline-block;
+			margin: 0;
+			line-height: 20px;
+			font-size: 12px;
+			padding: 0;
+			color: $color__grey--warm;
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
+
+		.radio-button__label {
+			display: inline-block;
+
+			&:before {
+				top: 8px;
+			}
+
+			&:after {
+				top: 10px;
+			}
+		}
+
+		&__option {
+			margin-bottom: 25px;
+			position: relative;
+			padding: 0;
+
+			.radio-button {
+				display: inline;
+				margin-right: 0;
+				padding: 0;
+			}
+
+			&--prepayment {
+				margin: 0;
+				padding: 5px 28px;
+				font-size: 14px;
+				line-height: 24px;
+				color: $color__grey;
+			}
+
+			.bonus-link {
+				position: relative;
+				padding-left: 42px;
+				padding-right: 10px;
+			}
+
+			.bonus-link::before {
+				content: "";
+				position: absolute;
+				top: 6px;
+				left: 28px;
+				width: 6px;
+				height: 6px;
+				border-right: 1px solid $color__primary;
+				border-bottom: 1px solid $color__primary;
+				transform: rotate(-45deg);
+			}
+		}
+
+		&__option--secondary .radio-button__label {
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
+
+		&__options {
+			padding-top: 5px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		&__warning {
+			font-size: 12px;
+			color: $color__grey--warm;
+			background-color: $color__off-white;
+			vertical-align: middle;
+			border-radius: 5px;
+			display: inline-block;
+			padding: 10px;
+		}
+
+		&__warning-icon {
+			display: inline-block;
+			margin-top: -3px;
+			margin-right: 10px;
+			height: 16px;
+			color: $color__complimentary;
+		}
+
+		@include mq($until: tablet) {
+			width: 90vw;
+			max-height: 70vh;
+
+			&__container {
+				padding: 30px 20px;
+			}
+
+			&__container--title {
+				padding: 0 0 20px;
+			}
+
+			&__container--buttons {
+				padding: 0;
+			}
+
+			&__option--currency {
+				margin-left: 10px;
+			}
+
+			&__options {
+				max-height: calc(70vh - 210px);
+			}
+
+			&__warning {
+				font-size: 10px;
+			}
+		}
+
+		@media (max-height: 26em) and (orientation: landscape) {
+			width: 70vw;
+			max-height: 80vh;
+
+			&__options {
+				max-height: calc(80vh - 180px);
+			}
+		}
+
+		@include mq($from: tablet, $until: laptop, $and: "(orientation: portrait)") {
+			width: 70vw;
+			max-height: 60vh;
+
+			&__options {
+				max-height: calc(60vh - 154px);
+			}
+		}
+
+		@include mq($from: tablet, $and: "(orientation: portrait)") {
+			&__options {
+				max-height: 290px;
+			}
+		}
+
+		@include mq($from: tablet) {
+			&__container {
+				padding: 36px;
+			}
+
+			&__price-plan-input {
+				font-size: 24px;
+				line-height: 1.33;
+			}
+
+			&__container--buttons {
+				padding: 0;
+			}
+
+			&__container--title {
+				padding: 0 0 20px;
+			}
+
+			&__option--currency {
+				position: absolute;
+				right: 60px;
+				top: 0;
+			}
+		}
+
+		@include mq($from: laptop, $and: "(orientation: landscape)") {
+			&__options {
+				max-height: 290px;
+			}
+		}
+	}
+}
+
+@media (hover: none) {
+	.choose-plan-overlay {
+		.choose-plan-modal {
+			.bonus-link:hover {
+				color: $color__primary;
+			}
+
+			.bonus-link:active {
+				color: $color__primary--hover;
+			}
+		}
+	}
+}

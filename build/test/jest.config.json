@@ -1,0 +1,29 @@
+{
+	"rootDir": "../../",
+	"transform": {
+		"\\.tsx?$": "ts-jest"
+	},
+	"moduleFileExtensions": ["ts", "tsx", "js"],
+	"testRegex": "\\.spec\\.tsx?$",
+	"moduleDirectories": ["node_modules"],
+	"moduleNameMapper": {
+		"^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": "<rootDir>/build/test/mock/fileMock.js",
+		"^.+\\.(css|less|scss)$": "<rootDir>/build/test/mock/styleMock.js",
+		"^rxjs/(.*)": "<rootDir>/node_modules/rxjs/internal/$1"
+	},
+	"testPathIgnorePatterns": ["/node_modules/", "bin/", "build/", "src/viewer"],
+	"collectCoverageFrom": ["src/**/*.ts", "src/**/*.tsx"],
+	"coveragePathIgnorePatterns": ["src/viewer"],
+	"setupFilesAfterEnv": ["./build/test/jest.setup.js"],
+	"testResultsProcessor": "./build/test/jest.reporter.js",
+	"coverageReporters": ["clover", "text"],
+	"coverageDirectory": "bin/test/coverage",
+	"globals": {
+		"_DEV_": false,
+		"_QA_": false,
+		"_SERVER_": false,
+		"_SSR_": false,
+		"_TV_": false
+	},
+	"modulePaths": ["<rootDir>/src/"]
+}

@@ -1,0 +1,30 @@
+@import "shared/style/modules";
+
+.ah-row {
+	.entry-title {
+		text-transform: capitalize;
+		color: $color__white;
+	}
+
+	.entry-title__link {
+		color: $color__white;
+
+		&:hover {
+			color: rgba($color__white, 0.85);
+		}
+	}
+
+	.entry-title__tagline {
+		color: $color__white;
+	}
+
+	.packshot {
+		color: $color__white;
+
+		&:hover {
+			.packshot-title--below {
+				color: rgba($color__white, 0.85);
+			}
+		}
+	}
+}

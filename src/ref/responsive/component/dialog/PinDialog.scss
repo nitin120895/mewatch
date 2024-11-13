@@ -1,0 +1,25 @@
+@import "shared/style/modules";
+
+.pin-group {
+	display: flex;
+	flex-direction: column;
+
+	&__error {
+		font-size: 12px;
+		max-width: 340px;
+		flex-wrap: wrap;
+		display: inline-table;
+	}
+
+	&__view-pin {
+		font-size: 14px;
+	}
+
+	&__label {
+		color: $color__primary;
+
+		&--error {
+			color: $color__error;
+		}
+	}
+}

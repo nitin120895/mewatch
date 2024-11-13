@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"module": "esnext"
+	},
+	"include": [
+		"../../src/ref/responsive/**/*.ts",
+		"../../src/ref/responsive/**/*.tsx",
+		"../../src/shared/**/*.ts",
+		"../../src/shared/**/*.tsx"
+	]
+}

@@ -1,0 +1,102 @@
+@import "shared/style/modules";
+
+.embed-player {
+	width: 100%;
+	height: 100vh;
+
+	&.linear {
+		.player-seek-controls__rwd,
+		.player-seek-controls__fwd,
+		.player-scrubber__time {
+			display: none;
+		}
+	}
+
+	.player-overlay__back {
+		display: none;
+	}
+	.player .player-overlay--desktop {
+		display: block;
+	}
+	.player.player--ads-playing .player-overlay--desktop {
+		display: none;
+	}
+	.player-block__container--end-of-playback .player-block {
+		display: none;
+	}
+	.short-description {
+		display: none;
+	}
+
+	.player {
+		&--scalable {
+			height: 100vh;
+		}
+
+		&--scalable .player-block {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&-overlay .player-overlaying-controls__wrapper .player-seek-controls {
+			height: auto;
+		}
+
+		&-controls {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		&-metadata {
+			position: absolute;
+			top: 1rem;
+			margin-left: 1rem;
+			margin-top: 1rem;
+		}
+
+		.end-of-playback {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.background-image {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		@include mq($from: phablet, $and: "(orientation: landscape)") {
+			.background-image {
+				top: 0;
+				transform: translateY(0);
+			}
+		}
+
+		.end-of-playback__metadata {
+			width: 100%;
+			height: 100%;
+			margin-top: 1rem;
+			position: absolute;
+			top: 0;
+		}
+
+		@include mq(desktop) {
+			.end-of-playback__metadata {
+				padding-top: 1.125rem;
+			}
+		}
+
+		.end-of-playback__metadata .player-metadata {
+			position: static;
+		}
+
+		.end-of-playback__actions {
+			padding: 0;
+			margin-top: 1rem;
+			margin-left: 1rem;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+@import "shared/style/modules";
+
+.dialog-title {
+	font-size: 18px;
+	margin-bottom: 20px;
+	color: $color__black3;
+	text-align: center;
+
+	@include mq($from: tablet) {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+}

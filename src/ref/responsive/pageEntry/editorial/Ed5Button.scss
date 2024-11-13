@@ -1,0 +1,11 @@
+@import "shared/style/modules";
+
+.ed5 {
+	&__link {
+		display: inline-block;
+	}
+
+	&__btn {
+		max-width: 245px;
+	}
+}

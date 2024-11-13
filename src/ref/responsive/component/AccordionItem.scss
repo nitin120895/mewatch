@@ -1,0 +1,28 @@
+@import "shared/style/modules";
+
+.accordion-item {
+	overflow: hidden;
+	// Modifiers
+	&--closed {
+		display: none;
+	}
+	&--open {
+		overflow: initial;
+	}
+
+	// Standalone classes provided as defaults (can be replaced).
+	&-closing,
+	&-opening {
+		transition-duration: 0.4s;
+		transition-property: height, padding-top, padding-bottom, border-top-width, border-bottom-width, margin-top,
+			margin-bottom;
+	}
+	&-closing {
+		// can supply individual duration/properties if you wish!
+		transition-timing-function: $easeInOutQuad;
+	}
+	&-opening {
+		// can supply individual duration/properties if you wish!
+		transition-timing-function: $easeInOutQuad;
+	}
+}

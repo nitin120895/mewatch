@@ -1,0 +1,70 @@
+@import "shared/style/modules";
+@import "ref/responsive/style/app/rows";
+@import "ref/responsive/style/app/header";
+
+.ed1 {
+	position: relative;
+
+	// Prevent title text from exceeding the image bounds.
+	// This may result in clipping the title but it's preferred over pushing the content down.
+
+	&--hero3x1 > .ed1__ap {
+		@include fluid-aspect(3 1);
+	}
+
+	&--custom {
+		// As a fallback for when a custom/unknown size is used we set this.
+		// When a hero modifier is assigned it supersedes these settings.
+		min-height: 100px;
+	}
+
+	&__caption {
+		position: relative;
+		padding: 5px 0;
+		font-family: $font-family-heading;
+		font-size: 12px;
+		text-align: center;
+	}
+}
+
+.ed1-img {
+	position: relative;
+
+	&--percent {
+		position: relative;
+	}
+
+	&__ap {
+		margin: auto;
+		&--left {
+			margin: 0;
+		}
+	}
+
+	&__overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		&:hover {
+			background-color: $color__black;
+			opacity: 0.1;
+		}
+	}
+
+	.ed1-picture {
+		display: block;
+		width: 100%;
+	}
+}
+
+@each $breakpoint in $display-margins {
+	@include mq($breakpoint) {
+		.full-bleed {
+			.ed1__caption {
+				$margin: get-grid-margin($breakpoint);
+				margin: auto $margin;
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+@import "shared/style/modules";
+
+.nav-entry-link {
+	color: $color__white;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+
+	&--primary {
+		font-family: $font-family-heading;
+		font-size: 20px;
+	}
+
+	&--group {
+		font-family: $font-family-heading;
+	}
+
+	&--primary,
+	&--group {
+		font-weight: bold;
+	}
+
+	&--item {
+		color: $color__grey--light;
+	}
+
+	&--disabled {
+		cursor: default;
+		pointer-events: none;
+		color: $color__grey--warm;
+
+		&.nav-entry-link--item {
+			opacity: 0.3;
+		}
+	}
+}
